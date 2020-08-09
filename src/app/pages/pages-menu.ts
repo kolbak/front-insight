@@ -2,18 +2,18 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: 'Dashboard',
-    icon: 'home-outline',
+    title: 'Главная страница',
+    icon: 'grid-outline',
     link: '/pages/dashboard',
     home: true,
   },
   {
-    title: 'FEATURES',
+    title: 'Сервисы',
     group: true,
   },
   {
-    title: 'Auth',
-    icon: 'lock-outline',
+    title: 'Пользователи',
+    icon: 'person-outline',
     children: [
       {
         title: 'Login',
@@ -32,5 +32,46 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/auth/reset-password',
       },
     ],
+  },
+  {
+    title: 'Инфографика',
+    icon: 'bar-chart-outline',
+  },
+  {
+    title: 'Взаимодействие',
+    icon: 'people-outline',
+  },
+  {
+    title: 'Файлы',
+    icon: 'folder-outline',
+  },
+  {
+    title: 'Активность',
+    icon: 'activity-outline',
+  },
+  {
+    title: 'USB носители',
+    icon: 'hard-drive-outline',
+  },
+  {
+    title: 'Приложения',
+    icon: 'layers-outline',
+  },
+  {
+    title: 'Утечки и угрозы',
+    icon: 'shield-off-outline',
+  },
+  {
+    title: 'Система и сеть',
+    icon: 'globe-outline',
+  },
+  {
+    title: 'Календарь',
+    icon: 'calendar-outline',
+  },
+  // Нужно вниз последний блок с настройками
+  {
+    title: 'Настройки',
+    icon: 'settings-2-outline',
   },
 ];

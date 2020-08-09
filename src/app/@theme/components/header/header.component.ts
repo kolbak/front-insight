@@ -13,6 +13,8 @@ import { RippleService } from '../../../@core/utils/ripple.service';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  isClicked = false;
+
 
   private destroy$: Subject<void> = new Subject<void>();
   public readonly materialTheme$: Observable<boolean>;
@@ -71,7 +73,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this.userService.getUsers()
       .pipe(takeUntil(this.destroy$))
-      .subscribe((users: any) => this.user = users.nick);
+      .subscribe((users: any) => this.user = users.alan);
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
@@ -111,5 +113,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   navigateHome() {
     this.menuService.navigateHome();
     return false;
+  }
+  CalendarLayout(event)
+  {
+console.log('event :>> ', event);
   }
 }

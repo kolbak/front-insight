@@ -10,9 +10,36 @@
     >
       <nb-icon [icon]="(materialTheme$ | async) ? 'menu-outline' : 'menu-2-outline'"></nb-icon>
     </a>
-    <a class="logo" href="#" (click)="navigateHome()">ngx-<span>admin</span></a>
+    <div class="styles_logoContainer__2IbFS">
+      <svg width="55" height="55" viewBox="0 0 55 55" class="styles_logo__wFtBf">
+        <g id="prefix__Group_877" data-name="Group 877" transform="translate(-253.054 -1259.867)">
+          <g id="prefix__Group_31530" data-name="Group 31530" transform="translate(-2.5)">
+            <path id="prefix__Rectangle_434" d="M0 0H55V55H0z" data-name="Rectangle 434" transform="translate(255.554 1259.867)" style="fill: none;"></path></g>
+          <g id="prefix__Group_31538" data-name="Group 31538" transform="translate(0 3)"><g id="prefix__Ellipse_111" data-name="Ellipse 111">
+            <circle id="prefix__Ellipse_109" cx="8.411" cy="8.411" r="8.411" data-name="Ellipse 109" transform="translate(274.348 1284.915)" style="stroke: rgb(93, 155, 238); stroke-width: 0.714px; fill: rgb(167, 213, 245);"></circle></g><g id="prefix__Ellipse_109-2" data-name="Ellipse 109">
+            <circle id="prefix__Ellipse_110" cx="10.386" cy="10.386" r="10.386" data-name="Ellipse 110" transform="translate(262.697 1275.118)" style="fill: rgb(21, 205, 192); stroke: rgb(93, 155, 238); stroke-width: 0.714px;"></circle></g><g id="prefix__Ellipse_110-2" data-name="Ellipse 110">
+            <circle id="prefix__Ellipse_111-2" cx="12.664" cy="12.664" r="12.664" data-name="Ellipse 111" transform="translate(273.083 1267.997)" style="fill: rgb(4, 77, 140);"></circle></g><text id="prefix__ui" transform="translate(278.054 1285.867)" style="fill: rgb(255, 255, 255); font-size: 15px; font-family: OpenSans-Bold, quot; font-weight: 700;">
+              <tspan x="0" y="0">ui</tspan></text></g></g>
+          </svg>
+            <p class="styles_logoTitle__1Kvzk">Universal Insight</p>
+    </div>
+    <!-- <a class="logo" href="#" (click)="navigateHome()"><span>ui</span></a> -->
   </div>
-  <nb-select
+  <nb-tabset  class="header-container">
+ <nb-tab tabTitle="отдел">
+ </nb-tab>
+ <nb-tab tabTitle="компания">
+ </nb-tab>
+</nb-tabset>
+<nb-tabset  class="header-container">
+  <nb-tab tabTitle="1 день">
+  </nb-tab>
+  <nb-tab tabTitle="1 неделя">
+  </nb-tab>
+  <nb-tab tabTitle="1 месяц">
+  </nb-tab>
+ </nb-tabset>
+  <!-- <nb-select
     status="primary"
     matRipple
     [selected]="currentTheme"
@@ -24,19 +51,17 @@
       matRipple
     >{{ theme.name }}</nb-option>
   </nb-select>
-  <ngx-layout-direction-switcher class="direction-switcher"></ngx-layout-direction-switcher>
+  <ngx-layout-direction-switcher class="direction-switcher"></ngx-layout-direction-switcher> -->
 </div>
 
 <div class="header-container">
   <nb-actions size="small">
-
-    <nb-action class="control-item">
-      <nb-search
-        type="rotate-layout"
-        matRipple
-        [matRippleUnbounded]="true"
-        [matRippleCentered]="true"
-      ></nb-search></nb-action>
+  <nb-action>
+    
+      <button  nbButton outline status="primary"><nb-icon status='primary'  icon = "calendar-outline"></nb-icon> Aug 4, 2020 - Aug 28, 2020</button>
+      
+    </nb-action>
+  
     <nb-action
       class="control-item"
       icon="email-outline"
@@ -63,5 +88,17 @@
                [picture]="user?.picture">
       </nb-user>
     </nb-action>
+
+    <nb-action
+    class="control-item"
+    icon="log-out-outline"
+    matRipple
+    [matRippleUnbounded]="true"
+    [matRippleCentered]="true"
+  >
+  </nb-action>
+    
   </nb-actions>
+
+
 </div>

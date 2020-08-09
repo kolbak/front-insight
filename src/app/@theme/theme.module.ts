@@ -13,6 +13,9 @@ import {
   NbSelectModule,
   NbIconModule,
   NbThemeModule,
+  NbTabsetModule,
+  NbCalendarModule,
+  NbCalendarRangeModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';
@@ -55,6 +58,8 @@ const NB_MODULES = [
   NbSelectModule,
   NbIconModule,
   NbEvaIconsModule,
+  NbTabsetModule,
+  NbCalendarModule,NbCalendarRangeModule
 ];
 const COMPONENTS = [
   SwitcherComponent,
