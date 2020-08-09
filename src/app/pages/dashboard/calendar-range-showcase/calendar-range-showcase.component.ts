@@ -25,4 +25,15 @@ export class CalendarRangeShowcaseComponent {
   get monthEnd(): Date {
     return this.dateService.getMonthEnd(new Date());
   }
+
+
+  
+  // <nb-card>
+  //   <nb-card-header>
+  //     <h1 class="h5">Selected range: {{ range.start | date }} - {{ range.end | date }}</h1>
+  //   </nb-card-header>
+  //   <nb-card-body>
+  //     <nb-calendar-range [(range)]="range"></nb-calendar-range>
+  //   </nb-card-body>
+  // </nb-card>
 }

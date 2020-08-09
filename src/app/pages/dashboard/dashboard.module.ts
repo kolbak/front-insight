@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { NbCardModule } from '@nebular/theme';
+import { NbCardModule  } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { DashboardComponent } from './dashboard.component';
@@ -15,13 +16,15 @@ import { CalendarRangeShowcaseComponent } from './calendar-range-showcase/calend
     ChartModule, 
     NbThemeModule, 
     NbLayoutModule, 
-    NbCalendarRangeModule
+    NbCalendarRangeModule,
+    NbEvaIconsModule 
   ],
   declarations: [
     DashboardComponent,
     ChartjsBarComponent,
     CalendarRangeShowcaseComponent
   ],
+  exports: [CalendarRangeShowcaseComponent]
 })
 export class DashboardModule {
   constructor() {}

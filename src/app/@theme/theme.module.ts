@@ -20,6 +20,7 @@ import {
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';
 
+
 import {
   HeaderComponent,
   LayoutDirectionSwitcherComponent,
@@ -68,7 +69,7 @@ const COMPONENTS = [
   SearchInputComponent,
   OneColumnLayoutComponent,
   ThreeColumnsLayoutComponent,
-  TwoColumnsLayoutComponent,
+  TwoColumnsLayoutComponent
 ];
 const PIPES = [
   CapitalizePipe,

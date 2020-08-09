@@ -44,6 +44,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbThemeModule, NbLayoutModule, NbCardModule, NbCalendarRangeModule,NbEvaIconsModule
   ],
   bootstrap: [AppComponent],
+
 })
 export class AppModule {
 }

@@ -116,6 +116,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   CalendarLayout(event)
   {
-console.log('event :>> ', event);
+    document.querySelector('#wholePage').classList.add('pageTurnCalendar');
+    document.querySelector('#content-start').insertAdjacentHTML('afterbegin', `
+    
+    <nb-layout>
+    <div id="calendar" style="width: 100%; height: 100px; background-color: black">
+      <h1>WTF???</h1>
+        <nb-calendar-range-showcase></nb-calendar-range-showcase>
+    </div>
+  </nb-layout>
+    `)
   }
+  // <nb-calendar [date]="date" (dateChange)="handleDateChange($event)"></nb-calendar>
 }
