@@ -36,6 +36,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Инфографика',
     icon: 'bar-chart-outline',
+    link: '/pages/files',
   },
   {
     title: 'Взаимодействие',

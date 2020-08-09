@@ -20,10 +20,12 @@ import {
 // import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbCardModule, NbCalendarRangeModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { FilesComponent } from './pages/files/files.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FilesComponent],
   imports: [
     BrowserModule,
     NbRouteTabsetModule,
@@ -41,7 +43,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
     CoreModule.forRoot(),
-    NbThemeModule, NbLayoutModule, NbCardModule, NbCalendarRangeModule,NbEvaIconsModule
+    NbThemeModule, NbLayoutModule, NbCardModule, NbCalendarRangeModule,NbEvaIconsModule, DragDropModule
   ],
   bootstrap: [AppComponent],
 
