@@ -32,6 +32,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    NbDatepickerModule,
     ThemeModule.forRoot(),
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),

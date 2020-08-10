@@ -39,7 +39,7 @@
   <nb-tab tabTitle="1 месяц">
   </nb-tab>
  </nb-tabset>
-  <!-- <nb-select
+ <nb-select
     status="primary"
     matRipple
     [selected]="currentTheme"
@@ -51,16 +51,18 @@
       matRipple
     >{{ theme.name }}</nb-option>
   </nb-select>
-  <ngx-layout-direction-switcher class="direction-switcher"></ngx-layout-direction-switcher> -->
+  <!-- <ngx-layout-direction-switcher class="direction-switcher"></ngx-layout-direction-switcher>  -->
 </div>
 
 <div class="header-container">
+  <nb-rangepicker-showcase></nb-rangepicker-showcase>
   <nb-actions size="small">
-  <nb-action>
-    
-    <!-- <nb-calendar-range-showcase></nb-calendar-range-showcase> -->
-      <button (click)="CalendarLayout($event)" nbButton outline status="primary"><nb-icon status='primary'  icon = "calendar-outline"></nb-icon> Aug 4, 2020 - Aug 28, 2020</button>
+    <nb-action>
+      <!-- <button (click)="CalendarLayout($event)" nbButton outline status="primary"><nb-icon status='primary'  icon = "calendar-outline"></nb-icon> Aug 4, 2020 - Aug 28, 2020</button> -->
+      <!-- <input [nbDatepicker]="rangepicker">
+      <nb-rangepicker #rangepicker></nb-rangepicker> -->
       
+
     </nb-action>
   
     <nb-action

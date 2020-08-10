@@ -14,8 +14,10 @@ import {
   NbIconModule,
   NbThemeModule,
   NbTabsetModule,
-  NbCalendarModule,
-  NbCalendarRangeModule
+
+  NbInputModule,
+  NbCalendarModule, NbCalendarRangeModule,
+  NbCardModule, NbDatepickerModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';
@@ -26,6 +28,8 @@ import {
   LayoutDirectionSwitcherComponent,
   SearchInputComponent,
   SwitcherComponent,
+  RangepickerShowcaseComponent
+
 } from './components';
 import {
   CapitalizePipe,
@@ -60,7 +64,10 @@ const NB_MODULES = [
   NbIconModule,
   NbEvaIconsModule,
   NbTabsetModule,
-  NbCalendarModule,NbCalendarRangeModule
+  
+  NbInputModule,
+  NbCalendarModule,NbCalendarRangeModule,
+  NbCardModule, NbDatepickerModule
 ];
 const COMPONENTS = [
   SwitcherComponent,
@@ -69,7 +76,8 @@ const COMPONENTS = [
   SearchInputComponent,
   OneColumnLayoutComponent,
   ThreeColumnsLayoutComponent,
-  TwoColumnsLayoutComponent
+  TwoColumnsLayoutComponent,
+  RangepickerShowcaseComponent
 ];
 const PIPES = [
   CapitalizePipe,
