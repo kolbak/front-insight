@@ -4,14 +4,14 @@
             <nb-card-header>
                 <nb-form-field>
                     <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
-                    <input status="primary" fieldSize="large" placeholder="Large" fullWidth type="text" nbInput
+                    <input fieldSize="large" placeholder="Large" fullWidth type="text" nbInput
                         shape="round" placeholder="Поиск">
                 </nb-form-field>
             </nb-card-header>
 
             <nb-card-body>
 
-                <nb-select nbPrefix icon="search-outline" fullWidth placeholder="Специальность">
+                <nb-select size='tiny' nbPrefix icon="search-outline" fullWidth placeholder="Специальность">
                     <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
                     <nb-option-group title="Group 1">
                         <nb-option value="1">Option 1</nb-option>
@@ -41,28 +41,49 @@
                             [name]="user.name" [title]="user.title" [picture]="user.picture">
                         </nb-user>
                         <div style="justify-content: center;">
-                        <nb-icon status='warning' icon="star" pack="eva"></nb-icon>
-                        <nb-icon icon="arrow-ios-forward-outline" pack="eva"></nb-icon>
+                            <nb-icon status='warning' icon="star" pack="eva"></nb-icon>
+                            <nb-icon icon="arrow-ios-forward-outline" pack="eva"></nb-icon>
                         </div>
                     </nb-list-item>
                 </nb-list>
             </nb-card-body>
-
-
             <nb-card-footer>
             </nb-card-footer>
         </nb-card>
         <nb-card class="col-9">
             <nb-card-body>
-               <div class="row" style="justify-content:stretch;">
-                <nb-card> <nb-icon status='warning' icon="star" pack="eva"></nb-icon></nb-card>
-                <nb-card> <nb-icon status='warning' icon="star" pack="eva"></nb-icon></nb-card>
-                <nb-card> <nb-icon status='warning' icon="star" pack="eva"></nb-icon></nb-card>
-                <nb-card> <nb-icon status='warning' icon="star" pack="eva"></nb-icon></nb-card>
-                <nb-card> <nb-icon status='warning' icon="star" pack="eva"></nb-icon></nb-card>
-                <nb-card> <nb-icon status='warning' icon="star" pack="eva"></nb-icon></nb-card>
-                <nb-card> <nb-icon status='warning' icon="star" pack="eva"></nb-icon></nb-card>
-               </div>
+                <div style="display: grid;
+               grid-template-columns: repeat(7, 1fr);
+               justify-items: center;">
+                    <nb-card style="width:60px;height:60px;">
+                        <nb-icon status='warning' icon="star" pack="eva"></nb-icon>
+                    </nb-card>
+                    <nb-card style="width:60px;height:60px">
+                        <nb-icon status='warning' icon="star" pack="eva"></nb-icon>
+                    </nb-card>
+                    <nb-card style="width:60px;height:60px">
+                        <nb-icon status='warning' icon="star" pack="eva"></nb-icon>
+                    </nb-card>
+                    <nb-card style="width:60px;height:60px">
+                        <nb-icon status='warning' icon="star" pack="eva"></nb-icon>
+                    </nb-card>
+                    <nb-card style="width:60px;height:60px">
+                        <nb-icon status='warning' icon="star" pack="eva"></nb-icon>
+                    </nb-card>
+                    <nb-card style="width:60px;height:60px">
+                        <nb-icon status='warning' icon="star" pack="eva"></nb-icon>
+                    </nb-card>
+                    <nb-card style="width:60px;height:60px">
+                        <nb-icon status='warning' icon="star" pack="eva"></nb-icon>
+                    </nb-card>
+                </div>
+                <div style="padding-top:1.25rem;display: grid;
+               grid-template-columns: repeat(2, 1fr);
+               justify-items: space-between;">
+                    <div>
+                        
+                    </div>
+                </div>
             </nb-card-body>
 
         </nb-card>
