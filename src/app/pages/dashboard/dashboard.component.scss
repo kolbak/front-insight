@@ -38,4 +38,37 @@
     flex: 1 0 calc(25% - 1rem);
     margin: 0 0.5rem;
   }
+  // изменение высоты карт
+  nb-card {
+    margin-bottom: 3vh;
+  }
+
+  .template-left-top-card {
+    height: 60vh;
+  }
+  .template-left-bottom-card {
+    height: 20vh;
+  }
+
+  .template-right-top-card {
+    height: 30vh;
+  }
+
+  .template-right-medium-card {
+    height: 37vh;
+  }
+  
+  .template-right-bottom-card {
+    height: 10vh;
+  }
+
+  .template-left-top-card,
+  .template-left-bottom-card,
+  .template-right-top-card,
+  .template-right-medium-card,
+  .template-right-bottom-card
+  {
+    max-width: 100%;
+  }
+
 }
