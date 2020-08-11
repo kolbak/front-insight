@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   template: `
   
     <nb-layout windowScroll>
-      <nb-layout-header fixed>
+      <nb-layout-header fixed >
         <ngx-header></ngx-header>
       </nb-layout-header>
       <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive start>

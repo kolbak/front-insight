@@ -27,7 +27,15 @@
   }
   
   .card-col {
+    flex: 1 0 calc(33% - 1rem);
+    margin: 0 0.5rem;
+  }
+  .card-col-50 {
     flex: 1 0 calc(50% - 1rem);
+    margin: 0 0.5rem;
+  }
+  .card-col-25 {
+    flex: 1 0 calc(25% - 1rem);
     margin: 0 0.5rem;
   }
 }
