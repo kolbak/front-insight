@@ -1,0 +1,11 @@
+version: '3.6'
+
+services:
+  front_insight:
+    build: .
+    container_name: front_insight
+    restart: always
+    environment:
+      NODE_ENV: production
+    ports:
+      - 4020:80
