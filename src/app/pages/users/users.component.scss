@@ -1,0 +1,8 @@
+@import '../../@theme/styles/themes';
+
+@include nb-install-component() {
+    nb-layout{
+        height: 90 vh;
+        background-color: blue($color: #000000);
+        
+  }}

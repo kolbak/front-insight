@@ -14,6 +14,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Пользователи',
     icon: 'person-outline',
+    link: '/pages/users',
   },
   {
     title: 'Инфографика',

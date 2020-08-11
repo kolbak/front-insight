@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FilesComponent} from './files/files.component'
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {UsersComponent} from './users/users.component'
 
 const routes: Routes = [{
   path: '',
@@ -15,6 +16,10 @@ const routes: Routes = [{
     {
       path: 'files',
       component:  FilesComponent ,
+    },
+    {
+      path: 'users',
+      component:  UsersComponent ,
     },
     {
       path: '',

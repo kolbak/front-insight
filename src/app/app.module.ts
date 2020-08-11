@@ -22,10 +22,11 @@ import { NbThemeModule, NbLayoutModule, NbCardModule, NbCalendarRangeModule } fr
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { FilesComponent } from './pages/files/files.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { UsersComponent } from './pages/users/users.component';
 
 
 @NgModule({
-  declarations: [AppComponent, FilesComponent],
+  declarations: [AppComponent, FilesComponent, UsersComponent],
   imports: [
     BrowserModule,
     NbRouteTabsetModule,
