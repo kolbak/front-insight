@@ -12,11 +12,14 @@
         <!-- Место для кнопки: Добавить раздел -->
 
       </nb-card-body>
- 
-      <nb-card-footer style="justify-content: center;">
-        <button size='medium' nbButton hero status="info">+ Добавить раздел</button>
-        <h6>Объём данных</h6>
-      </nb-card-footer>
+      <div style="margin: auto;">
+      <button style='margin-bottom:10%'size='medium' nbButton hero status="info">+ Добавить раздел</button>
+      <h6 >Объём данных</h6>
+      <div>
+        <nb-progress-bar [value]="50" status="info">info</nb-progress-bar>
+      <button style='margin-bottom:20%' nbButton size='giant'><nb-icon icon="hard-drive-outline"></nb-icon></button>
+    </div>
+    </div>
     </nb-card>
   </div>
   <div class="card-col-75">
