@@ -19,7 +19,7 @@ import {
 } from '@nebular/theme';
 
 // import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule,NbButtonModule,  NbLayoutModule,NbActionsModule, NbCardModule,NbSelectModule, NbCalendarRangeModule,NbInputModule,  NbListModule,NbIconModule,NbFormFieldModule } from '@nebular/theme';
+import { NbThemeModule,  NbLayoutModule,NbActionsModule, NbCardModule,NbSelectModule, NbCalendarRangeModule,NbInputModule,  NbListModule,NbIconModule,NbFormFieldModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { FilesComponent } from './pages/files/files.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -32,11 +32,11 @@ import { UsersComponent} from './pages/users/users.component';
     BrowserModule,
     NbListModule,
     NbUserModule,
+   
     NbIconModule,
     NbRouteTabsetModule,
     NbInputModule,
     NbSelectModule,
-    NbButtonModule,
     BrowserAnimationsModule,
     HttpClientModule,
     NbFormFieldModule,

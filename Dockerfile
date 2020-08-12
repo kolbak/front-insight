@@ -10,7 +10,7 @@ ENV PATH="./node_modules/.bin:$PATH"
 
 COPY . ./
 
-RUN ng build --prod
+RUN npm start
 
 FROM nginx:alpine
 COPY --from=compile-image /opt/ng/dist/. /usr/share/nginx/html

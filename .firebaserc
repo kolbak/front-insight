@@ -1,0 +1,16 @@
+{
+  "targets": {
+   
+   
+    "meww-d4c38": {
+      "hosting": {
+        "universal_insight-demo": [
+          "meww-d4c38"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "meww"
+  }
+}
