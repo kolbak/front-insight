@@ -33,6 +33,9 @@ export class FilesComponent {
   { title: 'Важные', icon: 'star-outline', link: '/pages/dashboard', },
   { title: 'Удалённое', icon: 'trash-2-outline', link: '/pages/dashboard', }]
 
+  // Для отображения "Объём данных"
+  dataContains = 155;
+  dataTotal    = 256; 
 
   customColumn = 'name';
   defaultColumns = [ 'size', 'kind', 'items' ];

@@ -10,18 +10,22 @@
         <!-- список из разделов -->
         <nb-menu [items]="menu"></nb-menu>
         <!-- Место для кнопки: Добавить раздел -->
-
-      </nb-card-body>
-      <div style="margin: auto;">
         <button style='margin-bottom:5%' size='medium' nbButton hero status="info">+ Добавить раздел</button>
-        <p class=".paragraph-2">Объём данных</p>
-        <div style="flex-direction: row;justify-content: center;">
-          <nb-progress-bar [value]="50" status="info">155/256 гб</nb-progress-bar>
-          <button style='margin-bottom:20%' nbButton size='giant'>
-            <nb-icon icon="hard-drive-outline"></nb-icon>
-          </button>
+        <!-- Размер диска -->
+        <div class="card-row" style="margin: auto;">
+          <div class="card-col-25">
+            <button style='margin-bottom:20%' nbButton size='giant'>
+              <nb-icon icon="hard-drive-outline"></nb-icon>
+            </button>
+          </div>
+          <div class="card-col-75" style="margin-left: 1rem;">
+            <p class="paragraph-2">Объём данных</p>
+            <nb-progress-bar [value]="dataContains/dataTotal*100" status="info" style="white-space: nowrap;">
+              {{dataContains}}/{{dataTotal}} гб
+            </nb-progress-bar>
+          </div>
         </div>
-      </div>
+      </nb-card-body>
     </nb-card>
   </div>
   <div class="card-col-75">

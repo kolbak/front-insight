@@ -89,6 +89,9 @@ width: 100%;
   .card-col-10 {
     flex: 1 0 calc(10% - 1rem);
   }
+  .card-col-25 {
+    flex: 1 0 calc(25% - 1rem);
+  }
   .card-col-75 {
     flex: 1 0 calc(75% - 1rem);
   }
@@ -124,8 +127,13 @@ width: 100%;
     text-align: center;
     margin-top: 0.5rem;
   }
+  p.paragraph-2 {
+   margin-bottom: 0.3rem; 
+  }
   img {
     text-align: center; 
     box-shadow: 0 0 5px 0px lightgrey;
   }
+
+
 }
