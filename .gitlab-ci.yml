@@ -1,11 +1,16 @@
-version: '3.6'
+FROM node:13.12.0-alpine AS compile-image
 
-services:
-  front_insight:
-    build: .
-    container_name: front_insight
-    restart: always
-    environment:
-      NODE_ENV: production
-    ports:
-      - 4020:80
+WORKDIR /opt/ng
+
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
+
+ENV PATH="./node_modules/.bin:$PATH" 
+
+COPY . ./
+
+RUN npm build:prod
+
+FROM nginx:alpine
+COPY --from=compile-image /opt/ng/dist/. /usr/share/nginx/html
