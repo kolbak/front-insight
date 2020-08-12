@@ -21,17 +21,17 @@ interface FSEntry {
 })
 export class FilesComponent {
   // Для поиска
-  menu = [{ title: 'Все файлы', icon: 'grid-outline', link: '/pages/dashboard', },
-  { title: 'Документы', icon: 'grid-outline', link: '/pages/dashboard', },
+  menu = [{ title: 'Все файлы', icon: 'folder-outline', link: '/pages/dashboard', },
+  { title: 'Документы', icon: 'file-outline', link: '/pages/dashboard', },
   { title: 'Архивы', icon: 'grid-outline', link: '/pages/dashboard', },
   { title: 'Рабочий стол', icon: 'grid-outline', link: '/pages/dashboard', },
-  { title: 'Фото', icon: 'grid-outline', link: '/pages/dashboard', },
-  { title: 'Видео', icon: 'grid-outline', link: '/pages/dashboard', },
+  { title: 'Фото', icon: 'image-outline', link: '/pages/dashboard', },
+  { title: 'Видео', icon: 'video-outline', link: '/pages/dashboard', },
   { title: 'Аудио', icon: 'grid-outline', link: '/pages/dashboard', },
   { title: 'Браузер', icon: 'grid-outline', link: '/pages/dashboard', },
-  { title: 'Недавние', icon: 'grid-outline', link: '/pages/dashboard', },
-  { title: 'Важные', icon: 'grid-outline', link: '/pages/dashboard', },
-  { title: 'Удалённое', icon: 'grid-outline', link: '/pages/dashboard', }]
+  { title: 'Недавние', icon: 'clock-outline', link: '/pages/dashboard', },
+  { title: 'Важные', icon: 'star-outline', link: '/pages/dashboard', },
+  { title: 'Удалённое', icon: 'trash-2-outline', link: '/pages/dashboard', }]
 
 
   customColumn = 'name';
