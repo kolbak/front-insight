@@ -1,0 +1,41 @@
+.chart-5-cont{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border: solid 4px orange; 
+}
+.chart-5-svg{
+    position: relative;
+    
+    width: 100%;
+    height: 100%;
+    border: dashed 4px rebeccapurple;
+}
+.chart-5-cont *{ transition: .9s; }
+.chart-5-legend{
+    position: relative;
+
+    margin: 0;
+    font-size: 1.5em;
+    width: 160px;
+    text-align: center;
+}
+.chart-5-ul{
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    list-style-type: none;
+
+    border: dotted 2px green;
+}
+i{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+i.chart-5-i1{ background-color: #5A8DEE; }
+i.chart-5-i2{ background-color: #00CFDD; }
+i.chart-5-i3{ background-color: #FDAC41; }
