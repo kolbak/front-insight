@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65">
+    <g id="Сгруппировать_32001" data-name="Сгруппировать 32001" transform="translate(-40 -20)">
+        <g id="Сгруппировать_31994" data-name="Сгруппировать 31994" transform="translate(-590 -14)">
+            <g id="Сгруппировать_31994-2" data-name="Сгруппировать 31994" transform="translate(-33 -51)">
+                <g id="Прямоугольник_5859" fill="#f6f6f6" stroke="#828d99" data-name="Прямоугольник 5859" opacity="0.2" transform="translate(663 85)">
+                    <rect width="65" height="65" stroke="none" rx="4"/>
+                    <rect width="64" height="64" x=".5" y=".5" fill="none" rx="3.5"/>
+                </g>
+                <g id="Сгруппировать_31481" data-name="Сгруппировать 31481">
+                    <g id="Сгруппировать_31406" data-name="Сгруппировать 31406" transform="translate(-4 -56)">
+                        <g id="Сгруппировать_31397" data-name="Сгруппировать 31397" transform="translate(89 56)">
+                            <rect id="Прямоугольник_521" width="30" height="30" fill="#e233b3" data-name="Прямоугольник 521" rx="4" transform="translate(596 103)"/>
+                        </g>
+                    </g>
+                    <g id="Сгруппировать_31779" data-name="Сгруппировать 31779" transform="translate(689.143 113.35)">
+                        <path id="Контур_14364" fill="#fff" stroke="#fff" d="M20.331 88.023a2.273 2.273 0 0 0-1 0l-5 3v-2a1.92 1.92 0 0 0-2-2h-10a1.92 1.92 0 0 0-2 2v8c0 1.173.827 3 2 3h10c1.173 0 2-1.827 2-3v-1l5 3a2.274 2.274 0 0 0 1 0c.129-.077 0-.85 0-1v-10c0-.15.129.077 0 0zm-6 9a2.868 2.868 0 0 1-2 2h-10c-.7 0-1-1.3-1-2v-8c0-.7.3-1 1-1h10c.7 0 2 .3 2 1zm5 0l-5-2v-3l5-3z" data-name="Контур 14364" transform="translate(-2.974 -88.874)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,6 +1,7 @@
-<nb-card size='giant'>
-    <nb-card-body class="row">
-        <nb-card class="col-3">
+<div class="card-row" >
+
+    <div class="card-col-25 search">
+        <nb-card class="search-card">
             <nb-card-header>
                 <nb-form-field>
                     <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
@@ -8,7 +9,6 @@
                         shape="round" placeholder="Поиск">
                 </nb-form-field>
             </nb-card-header>
-
             <nb-card-body>
 
                 <nb-select size='tiny' nbPrefix icon="search-outline" fullWidth placeholder="Специальность">
@@ -48,44 +48,54 @@
                 </nb-list>
             </nb-card-body>
             <nb-card-footer>
+                <p class="styles_logoTitle__1Kvzk">+ добавить избранных пользователей</p>
             </nb-card-footer>
         </nb-card>
-        <nb-card class="col-9">
-            <nb-card-body>
-                <div style="display: grid;
-               grid-template-columns: repeat(7, 1fr);
-               justify-items: center;">
-                    <nb-card style="width:60px;height:60px;">
-                        <nb-icon status='warning' icon="star" pack="eva"></nb-icon>
-                    </nb-card>
-                    <nb-card style="width:60px;height:60px">
-                        <nb-icon status='warning' icon="star" pack="eva"></nb-icon>
-                    </nb-card>
-                    <nb-card style="width:60px;height:60px">
-                        <nb-icon status='warning' icon="star" pack="eva"></nb-icon>
-                    </nb-card>
-                    <nb-card style="width:60px;height:60px">
-                        <nb-icon status='warning' icon="star" pack="eva"></nb-icon>
-                    </nb-card>
-                    <nb-card style="width:60px;height:60px">
-                        <nb-icon status='warning' icon="star" pack="eva"></nb-icon>
-                    </nb-card>
-                    <nb-card style="width:60px;height:60px">
-                        <nb-icon status='warning' icon="star" pack="eva"></nb-icon>
-                    </nb-card>
-                    <nb-card style="width:60px;height:60px">
-                        <nb-icon status='warning' icon="star" pack="eva"></nb-icon>
-                    </nb-card>
+    </div>
+    <div class="card-col-75 content">
+        <nb-card class="content-card">
+            <nb-card-header fixed>
+                <div style="display: grid; grid-template-columns: repeat(7, 1fr); justify-items: center;">
+                    <div><img src="../../../assets/images/user-actions/31996.svg"> <p>Загрузки</p></div>
+                    <div><img src="../../../assets/images/user-actions/31997.svg"> <p>Скриншоты</p></div>
+                    <div><img src="../../../assets/images/user-actions/32001.svg"> <p>Видео</p></div>
+                    <div><img src="../../../assets/images/user-actions/31995.svg"> <p>Кейлоггер</p></div>
+                    <div><img src="../../../assets/images/user-actions/31998.svg"> <p>Документы</p></div>
+                    <div><img src="../../../assets/images/user-actions/31999.svg"> <p>Прокси-сервер</p></div>
+                    <div><img src="../../../assets/images/user-actions/32000.svg"> <p>Терминал</p></div>
                 </div>
-                <div style="padding-top:1.25rem;display: grid;
-               grid-template-columns: repeat(2, 1fr);
-               justify-items: space-between;">
-                    <div>
-                        
+            </nb-card-header>
+            <nb-card-body>
+
+
+
+                <h1>Cтатистика</h1>
+                <div class="card-row" style="width: 100%;">
+                    <div class="card-col-60" >
+                        <nb-card class="has-card-distance has-card-border" style="height: 40vh;">
+                        </nb-card>
+                    </div>
+                    
+                    <div class="card-col-40">
+                        <nb-card class="has-card-distance has-card-border" style="height: 40vh;">
+                        </nb-card>
                     </div>
                 </div>
-            </nb-card-body>
 
+                <div class="card-row" style="width: 100%;">
+                    <div class="card-col-25">
+                        <nb-card class="has-card-distance has-card-border" style="height: 27.5vh;">
+                        </nb-card>
+                    </div>
+                    
+                    <div class="card-col-75">
+                        <nb-card class="has-card-distance has-card-border" style="height: 27.5vh;">
+                        </nb-card>
+                    </div>
+                </div>
+
+            </nb-card-body>
         </nb-card>
-    </nb-card-body>
-</nb-card>
+    </div>
+
+</div>

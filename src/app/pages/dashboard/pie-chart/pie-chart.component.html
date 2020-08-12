@@ -1,0 +1,199 @@
+<style>
+  *{box-sizing: border-box;}
+  body{
+    padding: 0;
+    margin : 0;
+  }
+  .container{
+    /* position: absolute; */
+    /* top: 50px;
+    left: 80px; */
+    padding: 0;
+    border: solid 1px lightgrey;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 lightgrey;
+  }
+  svg{
+    /* position: relative;
+    top: 0;
+    left: 0; */
+    width: 500px;
+    height: 300px;
+  }
+  svg *{
+    transition: 1s;
+  }
+  .description{
+    /* position: absolute; */
+    width: 100px;
+    margin: 0;
+    text-align: center;
+  }
+  .legend{
+    margin: auto;
+    padding: 5px 0;
+    /* position: relative; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    list-style-type: none;
+  }
+  i{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+  }
+  i.i1{ background-color: #39DA8A; }
+  i.i2{ background-color: #00CFDD; }
+  i.i3{ background-color: #C27AEB; }
+</style>
+
+<div class="container">
+    <svg id="pie-chart"></svg>
+    <p class="description">Общее
+      <br>время
+      <br>
+      <strong><span>128</span> минут</strong>
+    </p>
+    <ul class="legend">
+      <li><i class="i1"></i> Поисковые системы</li>
+      <li><i class="i2"></i> Социальные сети</li>
+      <li><i class="i3"></i> Загрузка файлов</li>
+    </ul>
+</div>
+
+<script>
+  // (function () {
+    
+  
+  let svg = document.querySelector('svg#pie-chart');
+  let x = svg.clientWidth  / 2
+    , y = svg.clientHeight / 2;
+
+  // выравнивание описания (центр)
+  // let des  = document.querySelector('.description');
+  // let desRect = des.getBoundingClientRect();
+  // des.style.left = `${x - desRect.width  / 2}px`;
+  // des.style.top  = `${y - desRect.height / 2}px`;
+
+  let bgCircles = [{
+    r: 100, // радиус
+    b: 'lightgrey', // b - border - цвет границы
+    w: 12 // w - width - ширина границы
+  },{
+    r: 80,
+    b: 'lightgrey',
+    w: 12
+  },{
+    r: 60,
+    b: 'lightgrey',
+    w: 12
+  }];    
+  let displayCircles = [{
+    r: 100,
+    b: '#39DA8A',
+    w: 10,
+    rEnd: 5, // радиус конечных точек (скругление)
+  },{
+    r: 80,
+    b: '#00CFDD',
+    w: 10,
+    rEnd: 5,
+  },{
+    r: 60,
+    b: '#C27AEB',
+    w: 10,
+    rEnd: 5,
+  }];
+  
+  let data = new Map([
+    ['#39DA8A', 25],
+    ['#00CFDD', 30],
+    ['#C27AEB', 20]
+  ])
+  setInterval(() => { console.log('I draw()'); draw() }, 1200)
+
+  function draw() {
+    if(!svg.children.length){
+      d3.select('svg#pie-chart')
+        .selectAll('.bgCircles')
+        .data(bgCircles)
+        .enter()
+        .append('circle')
+          .attr('class', 'bgCircles')
+          .attr('cx', '50%')
+          .attr('cy', '50%')
+          .attr('r', d => d.r)
+          .attr('stroke', d => d.b)
+          .attr('stroke-width', '10')
+          .attr('fill', 'none');
+
+      d3.select('svg#pie-chart')
+        .selectAll('.display')
+        .data(displayCircles)
+        .enter()
+        .append('circle')
+          .attr('class', 'display')
+          .attr('cx', '50%')
+          .attr('cy', '50%')
+          .attr('r', d => d.r)
+          .attr('stroke', d => d.b)
+          .attr('stroke-width', d => d.w)
+          .attr('fill', 'none')
+          .attr('stroke-dasharray' , d => {
+            // let disp = Math.floor(Math.random() * getC(d.r));
+            let disp = getC(d.r) / 100 * data.get(d.b);
+            let alpha = (disp * 360) / (2 * Math.PI * d.r);
+
+            d3.select('svg#pie-chart')
+              .append('circle')
+                .attr('class', 'bRadEnd')
+                .attr('cx', x)
+                .attr('cy', y - d.r)
+                .attr('r', d.rEnd)
+                .attr('fill', d.b)
+                .style('transform-origin', `${x}px ${y}px`)
+                .style('transform', `rotate(${alpha}deg)`);
+
+            return `${disp} ${getC(d.r) - disp}`
+          })
+          .attr('stroke-dashoffset', d => getC(d.r) / 4)
+      
+      // скругление углов - начальные точки
+      d3.select('svg#pie-chart')
+        .selectAll('.bRad')
+        .data(displayCircles)
+        .enter()
+        .append('circle')
+          .attr('class', 'bRad')
+          .attr('cx', x)
+          .attr('cy', d => y - d.r)
+          .attr('r', d => d.rEnd)
+          .attr('fill', d => d.b);
+    } else {
+      let angles = [];
+      d3.selectAll('.display')
+        .data(displayCircles)
+          .attr('stroke-dasharray' , d => {
+            let disp = Math.floor(Math.random() * getC(d.r));
+            // let disp = getC(d.r) / 100 * data.get(d.b);
+            let alpha = (disp * 360) / (2 * Math.PI * d.r);
+            angles.push(alpha);
+            return `${disp} ${getC(d.r) - disp}`
+          });
+      
+      d3.selectAll('.bRadEnd')
+        .data(displayCircles)
+        .attr('cx', x)
+        .attr('cy', d => y - d.r)
+        .style('transform-origin', `${x}px ${y}px`)
+        .style('transform', (d, i) => `rotate(${angles[i]}deg)`);
+    }
+  }
+
+  function getC(r) {
+    return 2 * Math.PI * r;
+  }
+// })();
+</script>

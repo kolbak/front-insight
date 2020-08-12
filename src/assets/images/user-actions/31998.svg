@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65">
+    <defs>
+        <style>
+            .cls-3{fill:none;stroke:#fff;stroke-linecap:round;stroke-width:2px}
+        </style>
+    </defs>
+    <g id="Сгруппировать_31998" data-name="Сгруппировать 31998" transform="translate(-577 -85)">
+        <g id="Контур_14410" fill="#f6f6f6" stroke="none" data-name="Контур 14410" opacity="0.2">
+            <path d="M61 64.5H4C2.07 64.5.5 62.93.5 61V4C.5 2.07 2.07.5 4 .5h57c1.93 0 3.5 1.57 3.5 3.5v57c0 1.93-1.57 3.5-3.5 3.5z" transform="translate(577 85)"/>
+            <path fill="#828d99" d="M4 1C2.346 1 1 2.346 1 4v57c0 1.654 1.346 3 3 3h57c1.654 0 3-1.346 3-3V4c0-1.654-1.346-3-3-3H4m0-1h57c2.21 0 4 1.79 4 4v57c0 2.21-1.79 4-4 4H4c-2.21 0-4-1.79-4-4V4c0-2.21 1.79-4 4-4z" transform="translate(577 85)"/>
+        </g>
+        <g id="Сгруппировать_31396" data-name="Сгруппировать 31396" transform="translate(-1)">
+            <rect id="Прямоугольник_521" width="30" height="30" fill="#f8b539" data-name="Прямоугольник 521" rx="4" transform="translate(596 103)"/>
+            <g id="Сгруппировать_31395" data-name="Сгруппировать 31395" transform="translate(1.5 .5)">
+                <path id="Линия_199" d="M0 0L15 0" class="cls-3" data-name="Линия 199" transform="translate(602.5 111.5)"/>
+                <path id="Линия_200" d="M0 0L15 0" class="cls-3" data-name="Линия 200" transform="translate(602.5 117.5)"/>
+                <path id="Линия_201" d="M0 0L8 0" class="cls-3" data-name="Линия 201" transform="translate(602.5 123.5)"/>
+            </g>
+        </g>
+    </g>
+</svg>
