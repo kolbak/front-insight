@@ -25,6 +25,11 @@
     display: flex;
     margin: 0 -0.5rem;
   }
+  @media (max-width: 1280px) {
+    .card-row{
+      flex-direction: column;
+    }
+  }
   
   .card-col {
     flex: 1 0 calc(33% - 1rem);
