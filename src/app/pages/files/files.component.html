@@ -1,17 +1,53 @@
-<div class="container">
-  <h2>To do</h2>
+<div class="card-row" >
 
-  <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
-      [cdkDropListConnectedTo]="doneList" class="list" (cdkDropListDropped)="drop($event)">
-    <div class="list-item" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+  <!-- тип файлов -->
+  <div class="card-col-10">
+    <nb-card class="search-card">
+      <nb-card-header><h6>Содержание</h6></nb-card-header>
+      <nb-card-body>
+        <!-- список из разделов -->
+        <nb-menu [items] = "menu"></nb-menu>
+        <!-- Место для кнопки: Добавить раздел -->
+      </nb-card-body>
+      <nb-card-footer><h6>Объём данных</h6></nb-card-footer>
+    </nb-card>
   </div>
-</div>
+  <div class="card-col-75">
+    <!-- таблица -->
+    <nb-card class="content-card">
+      <nb-card-header>
+        <label class="search-label" for="search">Search:</label>
+        <input nbInput [nbFilterInput]="dataSource" id="search" class="search-input">
+      </nb-card-header>
+      <nb-card-body>
 
-<div class="container">
-  <h2>Done</h2>
+        <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
 
-  <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
-      [cdkDropListConnectedTo]="todoList" class="list" (cdkDropListDropped)="drop($event)">
-    <div class="list-item" *ngFor="let item of done" cdkDrag>{{item}}</div>
+          <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+          <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+          <ng-container [nbTreeGridColumnDef]="customColumn">
+            <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(customColumn)" *nbTreeGridHeaderCellDef>
+              {{customColumn}}
+            </th>
+            <td nbTreeGridCell *nbTreeGridCellDef="let row">
+              <nb-fs-icon [kind]="row.data.kind" [expanded]="row.expanded"></nb-fs-icon>
+              {{row.data[customColumn]}}
+            </td>
+          </ng-container>
+
+          <ng-container *ngFor="let column of defaultColumns; let index = index"
+                        [nbTreeGridColumnDef]="column"
+                        [showOn]="getShowOn(index)">
+            <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
+              {{column}}
+            </th>
+            <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column] || '-'}}</td>
+          </ng-container>
+
+        </table>
+
+      </nb-card-body>
+    </nb-card>
   </div>
 </div>

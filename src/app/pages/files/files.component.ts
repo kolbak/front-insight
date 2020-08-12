@@ -1,35 +1,130 @@
-import { Component } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Component, Input } from '@angular/core';
+import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
+
+interface TreeNode<T> {
+  data: T;
+  children?: TreeNode<T>[];
+  expanded?: boolean;
+}
+
+interface FSEntry {
+  name: string;
+  size: string;
+  kind: string;
+  items?: number;
+}
 
 @Component({
   selector: 'files',
-  templateUrl: './files.component.html',
-  styleUrls: ['./files.component.css'],
+  templateUrl: 'files.component.html',
+  styleUrls: ['files.component.scss'],
 })
 export class FilesComponent {
-  todo = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
-  ];
+  // Для поиска
+  menu = [{ title: 'Все файлы', icon: 'grid-outline', link: '/pages/dashboard', },
+  { title: 'Документы', icon: 'grid-outline', link: '/pages/dashboard', },
+  { title: 'Архивы', icon: 'grid-outline', link: '/pages/dashboard', },
+  { title: 'Рабочий стол', icon: 'grid-outline', link: '/pages/dashboard', },
+  { title: 'Фото', icon: 'grid-outline', link: '/pages/dashboard', },
+  { title: 'Видео', icon: 'grid-outline', link: '/pages/dashboard', },
+  { title: 'Аудио', icon: 'grid-outline', link: '/pages/dashboard', },
+  { title: 'Браузер', icon: 'grid-outline', link: '/pages/dashboard', },
+  { title: 'Недавние', icon: 'grid-outline', link: '/pages/dashboard', },
+  { title: 'Важные', icon: 'grid-outline', link: '/pages/dashboard', },
+  { title: 'Удалённое', icon: 'grid-outline', link: '/pages/dashboard', }]
 
-  done = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
-  ];
 
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-          event.container.data,
-          event.previousIndex,
-          event.currentIndex);
+  customColumn = 'name';
+  defaultColumns = [ 'size', 'kind', 'items' ];
+  allColumns = [ this.customColumn, ...this.defaultColumns ];
+
+  dataSource: NbTreeGridDataSource<FSEntry>;
+
+  sortColumn: string;
+  sortDirection: NbSortDirection = NbSortDirection.NONE;
+
+  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>) {
+    this.dataSource = this.dataSourceBuilder.create(this.data);
+  }
+
+  updateSort(sortRequest: NbSortRequest): void {
+    this.sortColumn = sortRequest.column;
+    this.sortDirection = sortRequest.direction;
+  }
+
+  getSortDirection(column: string): NbSortDirection {
+    if (this.sortColumn === column) {
+      return this.sortDirection;
     }
+    return NbSortDirection.NONE;
+  }
+
+  private data: TreeNode<FSEntry>[] = [
+    {
+      data: { name: 'Projects', size: '1.8 MB', items: 5, kind: 'dir' },
+      children: [
+        { data: { name: 'project-1.doc', kind: 'doc', size: '240 KB' } },
+        { data: { name: 'project-2.doc', kind: 'doc', size: '290 KB' } },
+        {
+          data: { name: 'project-3', kind: 'dir', size: '466 KB', items: 3 },
+          children: [
+            { data: { name: 'project-3A.doc', kind: 'doc', size: '200 KB' } },
+            { data: { name: 'project-3B.doc', kind: 'doc', size: '266 KB' } },
+            { data: { name: 'project-3C.doc', kind: 'doc', size: '0' } },
+          ],
+        },
+        { data: { name: 'project-4.docx', kind: 'docx', size: '900 KB' } },
+      ],
+    },
+    {
+      data: { name: 'Reports', kind: 'dir', size: '400 KB', items: 2 },
+      children: [
+        {
+          data: { name: 'Report 1', kind: 'dir', size: '100 KB', items: 1 },
+          children: [
+            { data: { name: 'report-1.doc', kind: 'doc', size: '100 KB' } },
+          ],
+        },
+        {
+          data: { name: 'Report 2', kind: 'dir', size: '300 KB', items: 2 },
+          children: [
+            { data: { name: 'report-2.doc', kind: 'doc', size: '290 KB' } },
+            { data: { name: 'report-2-note.txt', kind: 'txt', size: '10 KB' } },
+          ],
+        },
+      ],
+    },
+    {
+      data: { name: 'Other', kind: 'dir', size: '109 MB', items: 2 },
+      children: [
+        { data: { name: 'backup.bkp', kind: 'bkp', size: '107 MB' } },
+        { data: { name: 'secret-note.txt', kind: 'txt', size: '2 MB' } },
+      ],
+    },
+  ];
+
+  getShowOn(index: number) {
+    const minWithForMultipleColumns = 400;
+    const nextColumnStep = 100;
+    return minWithForMultipleColumns + (nextColumnStep * index);
+  }
+}
+
+@Component({
+  selector: 'nb-fs-icon',
+  template: `
+    <nb-tree-grid-row-toggle [expanded]="expanded" *ngIf="isDir(); else fileIcon">
+    </nb-tree-grid-row-toggle>
+    <ng-template #fileIcon>
+      <nb-icon icon="file-text-outline"></nb-icon>
+    </ng-template>
+  `,
+})
+export class FsIconComponent {
+  @Input() kind: string;
+  @Input() expanded: boolean;
+
+  isDir(): boolean {
+    return this.kind === 'dir';
   }
 }

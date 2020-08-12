@@ -15,18 +15,17 @@ import {
   NbToastrModule,
   NbWindowModule,
   NbRouteTabsetModule,
-  NbUserModule
+  NbUserModule,
 } from '@nebular/theme';
 
 // import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule,  NbLayoutModule,NbActionsModule, NbCardModule,NbSelectModule, NbCalendarRangeModule,NbInputModule,  NbListModule,NbIconModule,NbFormFieldModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { FilesComponent } from './pages/files/files.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { UsersComponent} from './pages/users/users.component';
 
 @NgModule({
-  declarations: [AppComponent, FilesComponent, UsersComponent],
+  declarations: [AppComponent, UsersComponent],
   imports: [
     NbActionsModule,
     BrowserModule,
@@ -53,7 +52,7 @@ import { UsersComponent} from './pages/users/users.component';
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
     CoreModule.forRoot(),
-    NbThemeModule, NbLayoutModule, NbCardModule, NbCalendarRangeModule,NbEvaIconsModule, DragDropModule
+    NbThemeModule, NbLayoutModule, NbCardModule, NbCalendarRangeModule,NbEvaIconsModule, DragDropModule,
   ],
   bootstrap: [AppComponent],
 
