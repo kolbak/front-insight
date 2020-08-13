@@ -11,7 +11,7 @@
     height: 100%;
     border: dashed 4px rebeccapurple;
 }
-.chart-5-cont *{ transition: .9s; }
+// .displayCircles{ transition: 1.1s ; }
 .chart-5-legend{
     position: relative;
 
@@ -29,6 +29,9 @@
     list-style-type: none;
 
     border: dotted 2px green;
+}
+.chart-5-ul li{
+    font-size: .8em;
 }
 i{
     display: inline-block;
