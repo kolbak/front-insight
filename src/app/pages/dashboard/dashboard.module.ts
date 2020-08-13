@@ -22,6 +22,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 
+//charts
+import { Chart5Component } from './charts/chart-5/chart-5.component';
 
 @NgModule({
   imports: [
@@ -45,7 +47,8 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     D3AreaStackComponent,
     D3PolarComponent,
     D3AdvancedPieComponent,D3Component,
-    PieChartComponent
+    PieChartComponent,
+    Chart5Component
   ],
   exports: [CalendarRangeShowcaseComponent]
 })
