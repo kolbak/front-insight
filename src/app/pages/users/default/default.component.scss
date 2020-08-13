@@ -1,0 +1,109 @@
+  
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+
+  .small {
+    font-size: 80%;
+    font-weight: 400;
+  }
+
+  .card-row {
+    display: flex;
+    margin: 0 -0.5rem;
+  }
+  .has-flex {
+    display: flex;
+  }
+
+  :host {
+    display: block;
+    max-height: 25rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  // ширина колонок
+  .card-col-25, .card-col-75 {
+    margin: 0rem;
+  }
+  .search-card, .content-card {
+      height: 100%;
+  }
+
+  .card-col-25 {
+    flex: 1 0 calc(25% - 1rem);
+  }
+  .card-col-40 {
+    flex: 1 0 calc(40% - 1rem);
+  }
+  .card-col-50 {
+    flex: 1 0 calc(50% - 1rem);
+  }
+  .card-col-60 {
+    flex: 1 0 calc(60% - 1rem);
+  }
+  .card-col-75 {
+    flex: 1 0 calc(75% - 1rem);
+  }
+  // @media (max-width: 1280px) { 
+  //   .card-col-25,
+  //   .card-col-40 {
+  //     flex: none;
+  //     width: 100vw;
+  //   }
+  //   .card-col-50,
+  //   .card-col-60,
+  //   .card-col-75 {
+  //     flex: none;
+  //     width: 100vw;
+  //   }
+  //   .content-card {
+  //     width: 140vw;
+  //     height: 140vh;
+  //   }
+  //   .search-card {
+  //     height: 140vh;
+  //   }
+  //   .card-row {
+  //     flex: none;
+  //     margin: 0 -0.5rem;
+  //   }
+  // }
+
+
+  .has-card-distance {
+    margin: 1rem;
+    margin-top: 0.75rem;
+  }
+  .has-card-border {
+    // border: 0.1625rem solid;
+    border: outset;
+  }
+
+  // изменение высоты карт
+  nb-card {
+    margin-bottom: 0vh ;
+  } 
+
+  .search {
+    max-height: 87.5vh;
+    max-width: 20vw;
+    min-width: 10vw;
+  }
+  .content {
+    max-height: 87.5vh;
+  }
+
+  p {
+    color: gray;
+    font-size: 1rem;
+    font-family: 'Rubik', sans-serif;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+  img {
+    text-align: center; 
+    box-shadow: 0 0 5px 0px lightgrey;
+  }
+}

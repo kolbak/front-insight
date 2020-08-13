@@ -15,11 +15,13 @@ const routes: Routes = [{
     },
     {
       path: 'files',
-      component:  FilesComponent ,
+      loadChildren: () => import('./files/files.module')
+        .then(m => m.FilesModule),
     },
     {
       path: 'users',
-      component:  UsersComponent ,
+      loadChildren: () => import('./users/users.module')
+        .then(m => m.UsersModule),
     },
     {
       path: '',
@@ -27,7 +29,7 @@ const routes: Routes = [{
       pathMatch: 'full',
     },
   ],
-}];
+},];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -1,12 +1,12 @@
-<div class="card-row" >
+<div class="card-row">
 
     <div class="card-col-25 search">
         <nb-card class="search-card">
             <nb-card-header>
                 <nb-form-field>
                     <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
-                    <input fieldSize="large" placeholder="Large" fullWidth type="text" nbInput
-                        shape="round" placeholder="Поиск">
+                    <input fieldSize="large" placeholder="Large" fullWidth type="text" nbInput shape="round"
+                        placeholder="Поиск">
                 </nb-form-field>
             </nb-card-header>
             <nb-card-body>
@@ -56,41 +56,45 @@
         <nb-card class="content-card">
             <nb-card-header fixed>
                 <div style="display: grid; grid-template-columns: repeat(7, 1fr); justify-items: center;">
-                    <a style="text-decoration: none;" href="#"><div><img src="../../../assets/images/user-actions/31996.svg"><p>Загрузки</p></div></a> 
-                    <a style="text-decoration: none;" href="#"><div><img src="../../../assets/images/user-actions/31997.svg"> <p>Скриншоты</p></div></a>
-                    <a style="text-decoration: none;" href="#"><div><img src="../../../assets/images/user-actions/32001.svg"> <p>Видео</p></div></a>
-                    <a style="text-decoration: none;" href="#"><div><img src="../../../assets/images/user-actions/31995.svg"> <p>Кейлоггер</p></div></a>
-                    <a style="text-decoration: none;" href="#"><div><img src="../../../assets/images/user-actions/31998.svg"> <p>Документы</p></div></a>
-                    <a style="text-decoration: none;" href="#"><div><img src="../../../assets/images/user-actions/31999.svg"> <p>Proxy<br>сервер</p></div></a>
-                    <a style="text-decoration: none;" href="#"><div><img src="../../../assets/images/user-actions/32000.svg"> <p>Терминал</p></div></a>
+                    <a style="text-decoration: none;" routerLink="/pages/users/downloads">
+                        <div><img src="../../../assets/images/user-actions/31996.svg">
+                            <p>Загрузки</p>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" routerLink="/pages/users/screenshots">
+                        <div><img src="../../../assets/images/user-actions/31997.svg">
+                            <p>Скриншоты</p>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" routerLink="/pages/users/videos">
+                        <div><img src="../../../assets/images/user-actions/32001.svg">
+                            <p>Видео</p>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" routerLink="/pages/users/keylog">
+                        <div><img src="../../../assets/images/user-actions/31995.svg">
+                            <p>Кейлоггер</p>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" routerLink="/pages/users/documents">
+                        <div><img src="../../../assets/images/user-actions/31998.svg">
+                            <p>Документы</p>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" routerLink="/pages/users/proxy">
+                        <div><img src="../../../assets/images/user-actions/31999.svg">
+                            <p>Proxy<br>сервер</p>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" routerLink="/pages/users/terminal">
+                        <div><img src="../../../assets/images/user-actions/32000.svg">
+                            <p>Терминал</p>
+                        </div>
+                    </a>
                 </div>
             </nb-card-header>
             <nb-card-body>
-
-                <div class="card-row has-flex" style="width: 100%;">
-                    <div class="card-col-60" >
-                        <nb-card class="has-card-distance has-card-border" style="height: 40vh;">
-                        </nb-card>
-                    </div>
-                    
-                    <div class="card-col-40">
-                        <nb-card class="has-card-distance has-card-border" style="height: 40vh;">
-                        </nb-card>
-                    </div>
-                </div>
-
-                <div class="card-row" style="width: 100%;">
-                    <div class="card-col-25">
-                        <nb-card class="has-card-distance has-card-border" style="height: 27.5vh;">
-                        </nb-card>
-                    </div>
-                    
-                    <div class="card-col-75">
-                        <nb-card class="has-card-distance has-card-border" style="height: 27.5vh;">
-                        </nb-card>
-                    </div>
-                </div>
-
+                <router-outlet></router-outlet>
             </nb-card-body>
         </nb-card>
     </div>

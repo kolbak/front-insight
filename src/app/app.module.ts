@@ -22,16 +22,15 @@ import {
 import { NbThemeModule,  NbLayoutModule,NbActionsModule, NbCardModule,NbSelectModule, NbCalendarRangeModule,NbInputModule,  NbListModule,NbIconModule,NbFormFieldModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { UsersComponent} from './pages/users/users.component';
+
 
 @NgModule({
-  declarations: [AppComponent, UsersComponent],
+  declarations: [AppComponent],
   imports: [
     NbActionsModule,
     BrowserModule,
     NbListModule,
     NbUserModule,
-   
     NbIconModule,
     NbRouteTabsetModule,
     NbInputModule,
