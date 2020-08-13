@@ -5,7 +5,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { FilesComponent, FsIconComponent } from './files/files.component';
-import { NbIconModule, NbCardModule } from '@nebular/theme';
+import { NbIconModule, NbCardModule, NbCheckboxModule } from '@nebular/theme';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { NbIconModule, NbCardModule } from '@nebular/theme';
     NbButtonModule,
     DashboardModule, 
     
-    NbTreeGridModule, NbIconModule, NbCardModule
+    NbTreeGridModule, NbIconModule, NbCardModule, NbCheckboxModule
   ],
   declarations: [
     PagesComponent, FilesComponent, FsIconComponent
