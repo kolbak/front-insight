@@ -18,9 +18,15 @@ export class Chart5Component implements OnInit{
         svg.style.top  = `-${desRect.height}px`
         des.style.top  = `${svgRect.height / 2 - desRect.height / 2}px`;
         des.style.left = `${svgRect.width  / 2 - desRect.width  / 2}px`;
-        // console.log(ul);
-        ul.style.top   = `-${90}px`;
+        ul.style.top   = `-${110}px`;
 
+        window.addEventListener('resize', () => {
+            svgRect = svg.getBoundingClientRect();
+            desRect = des.getBoundingClientRect();
+            svg.style.top  = `-${desRect.height}px`
+            des.style.top  = `${svgRect.height / 2 - desRect.height / 2}px`;
+            des.style.left = `${svgRect.width  / 2 - desRect.width  / 2}px`;
+        });
         
         let params = {
             r: 70,
@@ -73,7 +79,7 @@ export class Chart5Component implements OnInit{
                         s += percDisp[i];
                         return s + _getC(d.r) / 4;
                     })
-                    .style('transition', '0.9s')
+                    .style('transition', '1s')
             } else {
                 selectAll('.displayCircles')
                   .data([params, params, params])
