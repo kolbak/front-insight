@@ -79,7 +79,7 @@ export class Chart5Component implements OnInit{
                         s += percDisp[i];
                         return s + _getC(d.r) / 4;
                     })
-                    .style('transition', '0.9s')
+                    .style('transition', '1s')
             } else {
                 selectAll('.displayCircles')
                   .data([params, params, params])
