@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select, selectAll } from 'd3-selection';
+import * as shape from 'd3-shape';
 
 @Component({
   selector: 'chart-1',
@@ -8,144 +9,114 @@ import { select, selectAll } from 'd3-selection';
 })
 export class Chart1Component implements OnInit{
     ngOnInit() {
-        let _getC = this.getC;
+        let _degToRad = this.degToRad;
+
         let svg = document.querySelector('.chart-1-svg') as HTMLElement;
-        let des = document.querySelector('.chart-1-legend') as HTMLElement;
+        let leg = document.querySelector('.chart-1-legend') as HTMLElement;
         let ul  = document.querySelector('.chart-1-ul') as HTMLElement;
         let svgRect = svg.getBoundingClientRect();
-        let desRect = des.getBoundingClientRect();
-        let x = svgRect.width  / 2
-          , y = svgRect.height / 2;
-        des.style.left = `${x - desRect.width / 2}px`;
-        des.style.top  = `-${y + desRect.height / 2}px`;
+        let legRect = leg.getBoundingClientRect();
+        let x = svg.clientWidth  / 2
+          , y = svg.clientHeight / 2;
+        
+        leg.style.left = `${x - legRect.width / 2}px`;
+        leg.style.top  = `-${y + legRect.height / 2}px`;
         ul.style.top  = `-${125}px`;
+
+        select(svg).append('g')
+            .attr('class', 'chart-1-svg-g')
+            .style('transform', `translate(${x}px, ${y}px)`);
+        let group = document.querySelector('.chart-1-svg-g') as HTMLElement;
 
         window.addEventListener('resize', () => {
             svgRect = svg.getBoundingClientRect();
-            desRect = des.getBoundingClientRect();
+            legRect = leg.getBoundingClientRect();
             x = svgRect.width  / 2
           , y = svgRect.height / 2;
-            des.style.left = `${x - desRect.width / 2}px`;
-            des.style.top  = `-${y + desRect.height / 2}px`;
-            ul.style.top  = `-${125}px`;
+            leg.style.left = `${x - legRect.width / 2}px`;
+            leg.style.top  = `-${y + legRect.height / 2}px`;
+            group.style.transform = `translate(${x}px, ${y}px)`;
         });
-
-        let bgCircles = [{
-            r: 100, // радиус
-        },{
-            r: 80
-        },{
-            r: 60
-        }];    
-        let displayCircles = [{
-            r: 100,
-            b: '#39DA8A',
-            w: 10,
-            rEnd: 5, // радиус конечных точек (скругление)
-        },{
-            r: 80,
-            b: '#00CFDD',
-            w: 10,
-            rEnd: 5,
-        },{
-            r: 60,
-            b: '#C27AEB',
-            w: 10,
-            rEnd: 5,
-        }];
         
         // dummy data
-        let data = new Map([
-        ['#39DA8A', 25],
-        ['#00CFDD', 30],
-        ['#C27AEB', 20]
-        ])
-        setInterval(() => { draw() }, 1300)
-
+        let data = [25, 25, 50];
+        
+        let params = {
+            r: [100, 80, 60],
+            cols: ['#39DA8A', '#00CFDD', '#C27AEB'],
+            totalNum: 0,
+            partBg: 0
+        }
+        data.forEach(item => params.totalNum += item);
+        
+        
+        let pieDisp: any, pieBg: any;
+        let arc = shape.arc()
+                    .padAngle(.04)
+                    .cornerRadius(15);
+        draw();
+        
         function draw() {
-            if(!svg.children.length){
-                select('.chart-1-svg')
-                .selectAll('.bgCircles')
-                .data(bgCircles)
-                .enter()
-                .append('circle')
-                    .attr('class', 'bgCircles')
-                    .attr('cx', '50%')
-                    .attr('cy', '50%')
-                    .attr('r', (d: any) => d.r)
-                    .attr('stroke', 'lightgrey')
-                    .attr('stroke-width', 10)
-                    .attr('fill', 'none');
+            for(let i = 0, l = data.length; i < l; i++){
+                if(group.children.length < l * 2) {
+                    params.partBg = params.totalNum - data[i];
+                    pieBg = shape.pie()
+                        .sort(null)        
+                        .value((d: number) => d)
+                        .startAngle(_degToRad(0))
+                        .endAngle(_degToRad(360))([params.partBg + data[i]]);
+            
+                    pieDisp = shape.pie()
+                        .sort(null)        
+                        .value((d: number) => d)
+                        .startAngle(_degToRad(0))
+                        .endAngle(_degToRad(360))([data[i], params.partBg]);
 
-                select('.chart-1-svg')
-                .selectAll('.display')
-                .data(displayCircles)
-                .enter()
-                .append('circle')
-                    .attr('class', 'display')
-                    .attr('cx', '50%')
-                    .attr('cy', '50%')
-                    .attr('r', (d: any) => d.r)
-                    .attr('stroke', (d: any) => d.b)
-                    .attr('stroke-width', (d: any) => d.w)
-                    .attr('fill', 'none')
-                    .attr('stroke-dasharray' , (d: any) => {
-                    // let disp = Math.floor(Math.random() * getC(d.r));
-                    let disp = _getC(d.r) / 100 * data.get(d.b);
-                    let alpha = (disp * 360) / (2 * Math.PI * d.r);
-
-                    select('.chart-1-svg')
-                        .append('circle')
-                        .attr('class', 'bRadEnd')
-                        .attr('cx', x)
-                        .attr('cy', y - d.r)
-                        .attr('r', d.rEnd)
-                        .attr('fill', d.b)
-                        .style('transform-origin', `${x}px ${y}px`)
-                        .style('transform', `rotate(${alpha}deg)`)
-                        .style('transition', '1s');
-
-                    return `${disp} ${_getC(d.r) - disp}`
-                    })
-                    .attr('stroke-dashoffset', (d: any) => _getC(d.r) / 4)
-                    .style('transition', '1s')
-                
-                // скругление углов - начальные точки
-                select('.chart-1-svg')
-                .selectAll('.bRad')
-                .data(displayCircles)
-                .enter()
-                .append('circle')
-                    .attr('class', 'bRad')
-                    .attr('cx', x)
-                    .attr('cy', (d: any) => y - d.r)
-                    .attr('r', (d: any) => d.rEnd)
-                    .attr('fill', (d: any) => d.b)
-            } else {
-                let angles = [];
-                selectAll('.display')
-                .data(displayCircles)
-                    .attr('stroke-dasharray' , (d: any) => {
-                        let disp = Math.floor(Math.random() * _getC(d.r));
-                        // let disp = getC(d.r) / 100 * data.get(d.b);
-                        let alpha = (disp * 360) / (2 * Math.PI * d.r);
-                        angles.push(alpha);
-                        return `${disp} ${_getC(d.r) - disp}`
-                    });
-                
-                selectAll('.bRad')
-                .data(displayCircles)
-                .attr('cx', x)
-                .attr('cy', (d: any) => y - d.r)
-
-                selectAll('.bRadEnd')
-                .data(displayCircles)
-                .attr('cx', x)
-                .attr('cy', (d: any) => y - d.r)
-                .style('transform-origin', `${x}px ${y}px`)
-                .style('transform', (d: any, i:number) => `rotate(${angles[i]}deg)`);
+                    arc.innerRadius(params.r[i] - 11)
+                        .outerRadius(params.r[i] + 1)
+            
+                    select(`.chart-1-svg-g`)
+                    .data(pieBg)
+                    .append('path')
+                        .attr('class', () => `chart-1-bg-${i}`)
+                        .attr('d', arc)
+                        .attr('stroke', '#EDEFF1')
+                        .attr('stroke-width', 2)
+                        .attr('fill', '#F2F4F4');
+            
+                    arc.innerRadius(params.r[i] - 10)
+                        .outerRadius(params.r[i]);
+            
+                    select(`.chart-1-svg-g`)
+                    .data(pieDisp)
+                    .append('path')
+                        .attr('class', () => `chart-1-disp-${i}`)
+                        .attr('d', arc)
+                        .attr('stroke', 'none')
+                        .attr('stroke-width', 2)
+                        .attr('fill', () => `${params.cols[i]}`)
+                } else {
+                    params.partBg = params.totalNum - data[i];
+        
+                    pieDisp = shape.pie()
+                        .sort(null)        
+                        .value((d: number) => d)
+                        .startAngle(_degToRad(0))
+                        .endAngle(_degToRad(360))([data[i], params.partBg]);
+            
+                    arc.innerRadius(params.r[i] - 10)
+                        .outerRadius(params.r[i]);
+            
+                    select(`.chart-1-disp-${i}`)
+                        .data(pieDisp)
+                        .attr('d', arc)
+                }
             }
         }
+    }
+
+    degToRad(deg: number){
+        return deg * Math.PI / 180;
     }
 
     getC(r: number) {
