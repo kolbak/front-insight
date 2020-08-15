@@ -71,6 +71,7 @@ export const DEFAULT_THEME = {
       areaGradTo: baseThemeVariables.bg2,
       shadowLineDarkBg: 'rgba(0, 0, 0, 0)',
     },
+    
 
     bubbleMap: {
       titleColor: baseThemeVariables.fgText,

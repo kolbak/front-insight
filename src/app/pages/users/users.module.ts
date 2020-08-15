@@ -3,7 +3,7 @@ import {DefaultComponent} from './default/default.component'
 import {ThemeModule} from '../../@theme/theme.module'
 import { UsersComponent } from './users.component';
 import {UsersRoutingModule} from './users-routing.module'
-import {   NbThemeModule, NbLayoutModule,NbSidebarModule, NbSelectModule, NbInputModule, NbUserModule, NbListModule, NbOptionModule, NbFormFieldModule, NbMenuModule,NbIconModule, NbCardModule, NbButtonModule, NbTreeGridModule } from '@nebular/theme';
+import {NbAccordionModule,NbStepperModule, NbThemeModule, NbLayoutModule,NbSidebarModule, NbSelectModule, NbInputModule, NbUserModule, NbListModule, NbOptionModule, NbFormFieldModule, NbMenuModule,NbIconModule, NbCardModule, NbButtonModule, NbTreeGridModule } from '@nebular/theme';
 import { DownloadsComponent } from './downloads/downloads.component';
 import { ScreenshotsComponent } from './screenshots/screenshots.component';
 import { VideosComponent } from './videos/videos.component';
@@ -13,8 +13,9 @@ import { TerminalComponent } from './terminal/terminal.component';
 import { KeylogComponent } from './keylog/keylog.component';
 @NgModule({
   imports: [
-
+    NbAccordionModule,
     NbListModule,
+    NbStepperModule,
     NbUserModule,
     NbIconModule,
     NbInputModule,
@@ -30,8 +31,8 @@ import { KeylogComponent } from './keylog/keylog.component';
     NbButtonModule,
     NbOptionModule,
     NbUserModule,
-    NbTreeGridModule, 
-    
+    NbTreeGridModule,
+
   ],
   declarations: [
     DefaultComponent,
@@ -46,4 +47,5 @@ import { KeylogComponent } from './keylog/keylog.component';
   ],
 })
 export class UsersModule {
+
 }
