@@ -15,11 +15,13 @@ const routes: Routes = [{
     },
     {
       path: 'files',
-      component:  FilesComponent ,
+      loadChildren: () => import('./files/files.component')
+        .then(m => m.FilesComponent),
     },
     {
       path: 'users',
-      component:  UsersComponent ,
+      loadChildren: () => import('./users/users.module')
+        .then(m => m.UsersModule),
     },
     {
       path: '',
