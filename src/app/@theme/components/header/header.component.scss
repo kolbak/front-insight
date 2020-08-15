@@ -2,19 +2,29 @@
 @import '~@nebular/theme/styles/global/breakpoints';
 @import '../../styles/themes';
 
+
+.padding-top{
+  padding-top: 1rem;
+}
+
+.header-container {
+  margin-bottom: 1rem;
+}
+
+
 @include nb-install-component() {
   display: flex;
   justify-content: space-between;
   width: 100%;
 
-  .logo-container {
-    display: flex;
-    align-items: center;
-    width: calc(#{nb-theme(sidebar-width)} - #{nb-theme(header-padding)});
-  }
-  nb-search {
 
+  .nb-theme-default nb-tabset,
+  .nb-theme-corporate a.tab-link,
+  .nb-theme-material-light a.tab-link
+  {
+    background-color: white;
   }
+
   nb-action {
     height: auto;
     display: flex;
@@ -23,6 +33,38 @@
 
   nb-user {
     cursor: pointer;
+  }
+
+  .active {
+    white-space: nowrap;
+    border-radius: 100px;
+  }
+  // ::ng-deep a.tab-link { 
+  //   // border-radius: 10px;
+  //   // overflow: hidden;
+  // }
+  ::ng-deep a.tab-link::before { 
+    background-color: none !important;
+  }
+  ::ng-deep.active a.tab-link {
+    background-color: gainsboro !important;
+    // color: #8f9bb3;
+    color: black;
+  }
+  ::ng-deep.active a.tab-link::before {
+    background-color: transparent;
+  }
+  ::ng-deep.active a.tab-link::hover {
+    background-color: gainsboro !important;
+  }
+
+  .border-left-radius {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  .border-right-radius {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
 
   ::ng-deep nb-search button {
