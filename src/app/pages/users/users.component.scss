@@ -108,9 +108,10 @@
     margin-top: 0.5rem;
   }
   img {
+    display: block;
+    margin: 0 auto;
     text-align: center;
     box-shadow: 0 0 5px 0px lightgrey;
-
   }
 
 }

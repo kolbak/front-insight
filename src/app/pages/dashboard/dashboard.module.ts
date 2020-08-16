@@ -22,11 +22,17 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgApexchartsModule } from "ng-apexcharts";
 //charts
 import { Chart1Component } from './charts/chart-1/chart-1.component';
 import { Chart5Component } from './charts/chart-5/chart-5.component';
-
-// export { Chart1Component, Chart5Component };
+import { Chart2Component } from './charts/chart2/chart2.component';
+import { Chart3Component } from './charts/chart3/chart3.component';
+import { Chart4Component } from './charts/chart4/chart4.component';
+import { Chart6Component } from './charts/chart6/chart6.component';
+import { Chart7Component } from './charts/chart7/chart7.component';
+import { Chart8Component } from './charts/chart8/chart8.component';
 
 @NgModule({
   imports: [
@@ -38,7 +44,10 @@ import { Chart5Component } from './charts/chart-5/chart-5.component';
     NbCalendarRangeModule,
     NbEvaIconsModule,
     NgxEchartsModule,
-    NgxChartsModule
+    NgxChartsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgApexchartsModule,
   ],
   declarations: [
     DashboardComponent,
@@ -52,7 +61,13 @@ import { Chart5Component } from './charts/chart-5/chart-5.component';
     D3AdvancedPieComponent,D3Component,
     PieChartComponent,
     Chart1Component,
-    Chart5Component
+    Chart5Component,
+    Chart2Component,
+    Chart3Component,
+    Chart4Component,
+    Chart6Component,
+    Chart7Component,
+    Chart8Component
   ],
   exports: [CalendarRangeShowcaseComponent, 
     Chart1Component,
