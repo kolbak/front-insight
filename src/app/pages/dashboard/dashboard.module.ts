@@ -26,6 +26,8 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { Chart1Component } from './charts/chart-1/chart-1.component';
 import { Chart5Component } from './charts/chart-5/chart-5.component';
 
+// export { Chart1Component, Chart5Component };
+
 @NgModule({
   imports: [
     NbCardModule,
@@ -52,7 +54,9 @@ import { Chart5Component } from './charts/chart-5/chart-5.component';
     Chart1Component,
     Chart5Component
   ],
-  exports: [CalendarRangeShowcaseComponent]
+  exports: [CalendarRangeShowcaseComponent, 
+    Chart1Component,
+    Chart5Component]
 })
 export class DashboardModule {
   constructor() {}

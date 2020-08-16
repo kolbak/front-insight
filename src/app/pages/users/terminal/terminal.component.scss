@@ -1,0 +1,18 @@
+#terminal {
+    background-color: black;
+    border-radius: 10px;
+    height: 60vh;
+    width: 100%;
+    overflow-y: scroll;
+    color: white;
+    font-size: 1.15rem;
+    padding: 1rem;
+}
+span, p, input {
+    background-color: black !important;
+    border: none;
+    outline: none;
+    width: 90%;
+    font-size: 1.15rem;
+    color: white;
+}

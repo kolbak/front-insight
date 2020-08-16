@@ -11,6 +11,11 @@ import { DocumentsComponent } from './documents/documents.component';
 import { ProxyComponent } from './proxy/proxy.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { KeylogComponent } from './keylog/keylog.component';
+
+// import { Chart1Component } from '../dashboard/dashboard.module';
+// import { Chart5Component } from '../dashboard/dashboard.module';
+
+
 @NgModule({
   imports: [
     NbAccordionModule,
@@ -33,6 +38,8 @@ import { KeylogComponent } from './keylog/keylog.component';
     NbUserModule,
     NbTreeGridModule,
 
+    //     Chart1Component,
+    // Chart5Component
   ],
   declarations: [
     DefaultComponent,
@@ -43,7 +50,7 @@ import { KeylogComponent } from './keylog/keylog.component';
     DocumentsComponent,
     ProxyComponent,
     TerminalComponent,
-    KeylogComponent
+    KeylogComponent,
   ],
 })
 export class UsersModule {
