@@ -8,11 +8,17 @@
     font-size: 1.15rem;
     padding: 1rem;
 }
-span, p, input {
+span, p, input, li {
     background-color: black !important;
     border: none;
     outline: none;
     width: 90%;
     font-size: 1.15rem;
     color: white;
+}
+li {
+    list-style-type: none;
+}
+ul {
+    padding-left: 0px;
 }

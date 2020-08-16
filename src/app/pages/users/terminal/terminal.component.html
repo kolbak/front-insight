@@ -1,4 +1,12 @@
 <div id="terminal">
     <p>Используйте любые команды для Windows</p>
+    <!-- История сообщений -->
+    <ul>
+        <li *ngFor="let command of cmdHistory">
+            {{command}}
+        </li>
+    </ul>
+    <!-- Поле для ввода -->
     <span>{{current_path}}</span><input type="text" (keypress)="onChange($event)" autofocus>
+
 </div>
