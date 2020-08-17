@@ -1,6 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { FilesComponent} from './files/files.component'
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {UsersComponent} from './users/users.component'
@@ -15,8 +14,8 @@ const routes: Routes = [{
     },
     {
       path: 'files',
-      loadChildren: () => import('./files/files.component')
-        .then(m => m.FilesComponent),
+      loadChildren: () => import('./files/files.module')
+        .then(m => m.FilesModule),
     },
     {
       path: 'users',
