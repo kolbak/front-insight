@@ -1,6 +1,6 @@
 import { Input, Component, OnInit } from '@angular/core';
 
-import { FileInfo } from '../documents.component';
+import { FileInfo } from '../documents/documents.component';
 
 @Component({
   selector: 'documents-cards',

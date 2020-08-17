@@ -17,8 +17,8 @@ import { KeylogComponent } from './keylog/keylog.component';
 // import { Chart1Component } from '../dashboard/dashboard.module';
 // import { Chart5Component } from '../dashboard/dashboard.module';
 
-import { DocumentsTableComponent } from './documents/table/documents.table.component';
-import { DocumentsCardsComponent } from './documents/cards/documents.cards.component';
+import { DocumentsTableComponent } from './table/documents.table.component';
+import { DocumentsCardsComponent } from './cards/documents.cards.component';
 
 @NgModule({
   imports: [

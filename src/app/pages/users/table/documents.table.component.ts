@@ -1,6 +1,6 @@
 import { Input, Component } from '@angular/core';
 
-import { FileInfo } from '../documents.component';
+import { FileInfo } from '../documents/documents.component';
 
 @Component({
   selector: 'documents-table',

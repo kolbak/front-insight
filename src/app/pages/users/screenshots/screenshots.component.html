@@ -1,1 +1,16 @@
-<p>screenshots works!</p>
+<div>
+    <button (click)="switchViewApproach()">Изменение отображения</button>
+
+    <div *ngIf="viewTable;else viewCard">
+        <h1>Тут таблица</h1>
+        <documents-table [dataArr]="data"></documents-table>
+    </div>
+
+    <ng-template #viewCard>  
+        <div>
+            <h1>Тут карты</h1>
+            <documents-cards [dataArr]="data"></documents-cards>
+        </div>
+    </ng-template>
+
+</div>
