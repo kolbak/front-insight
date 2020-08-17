@@ -1,0 +1,22 @@
+
+<!-- Нужно генерировать вот такую конструцию -->
+<!-- 
+    <div class="row" *ngFor="let dataCards of dataArrBy4">
+        <nb-card class="col-sm-3" *ngFor="let card of dataCards">
+            <h2>{{card.name}}</h2>
+            <p>{{card.date}}</p>
+            <p>{{card.size}}</p>
+
+        </nb-card>
+    
+    </div> 
+Это вариант с разбиенимем массива
+-->
+
+<div class="row grid-show">
+    <nb-card *ngFor="let card of dataArr">
+        <h2>{{card.name}}</h2>
+        <p>{{card.date}}</p>
+        <p>{{card.size}}</p>
+    </nb-card>
+</div>

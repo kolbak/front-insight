@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
-import {DefaultComponent} from './default/default.component'
 import {ThemeModule} from '../../@theme/theme.module'
+import {NbAccordionModule,NbStepperModule, NbThemeModule, NbLayoutModule,NbSidebarModule, NbSelectModule, NbInputModule, NbUserModule, NbListModule, NbOptionModule, NbFormFieldModule, NbMenuModule,NbIconModule, NbCardModule, NbButtonModule, NbTreeGridModule } from '@nebular/theme';
+
+import {DefaultComponent} from './default/default.component'
 import { UsersComponent } from './users.component';
 import {UsersRoutingModule} from './users-routing.module'
-import {NbAccordionModule,NbStepperModule, NbThemeModule, NbLayoutModule,NbSidebarModule, NbSelectModule, NbInputModule, NbUserModule, NbListModule, NbOptionModule, NbFormFieldModule, NbMenuModule,NbIconModule, NbCardModule, NbButtonModule, NbTreeGridModule } from '@nebular/theme';
+
 import { DownloadsComponent } from './downloads/downloads.component';
 import { ScreenshotsComponent } from './screenshots/screenshots.component';
 import { VideosComponent } from './videos/videos.component';
@@ -15,6 +17,8 @@ import { KeylogComponent } from './keylog/keylog.component';
 // import { Chart1Component } from '../dashboard/dashboard.module';
 // import { Chart5Component } from '../dashboard/dashboard.module';
 
+import { DocumentsTableComponent } from './documents/table/documents.table.component';
+import { DocumentsCardsComponent } from './documents/cards/documents.cards.component';
 
 @NgModule({
   imports: [
@@ -51,7 +55,10 @@ import { KeylogComponent } from './keylog/keylog.component';
     ProxyComponent,
     TerminalComponent,
     KeylogComponent,
+
+    DocumentsTableComponent, DocumentsCardsComponent
   ],
+  bootstrap: [DocumentsComponent]
 })
 export class UsersModule {
 

@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KeylogComponent implements OnInit {
 
+  keyLogger: string[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
+    for (let i = 0; i < 10; i++) {
+      this.keyLogger.push(`${i}`);
+    }
+    // Здесь должна быть логика запроса на сервер
   }
 
 }

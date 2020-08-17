@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
 
 import { UserData } from '../../../@core/data/users';
-import { LayoutService } from '../../../@core/utils';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject, Observable } from 'rxjs';
 import { RippleService } from '../../../@core/utils/ripple.service';
@@ -67,14 +66,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
       title: 'Reset Password',
       link: '/auth/reset-password',
     },
-];
+  ];
 
   public constructor(
-    private sidebarService: NbSidebarService,
     private menuService: NbMenuService,
     private themeService: NbThemeService,
     private userService: UserData,
-    private layoutService: LayoutService,
     private breakpointService: NbMediaBreakpointsService,
     private rippleService: RippleService,
   ) {
@@ -120,12 +117,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.themeService.changeTheme(themeName);
   }
 
-  toggleSidebar(): boolean {
-    this.sidebarService.toggle(true, 'menu-sidebar');
-    this.layoutService.changeLayoutSize();
 
-    return false;
-  }
 
   navigateHome() {
     this.menuService.navigateHome();

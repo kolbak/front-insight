@@ -1,18 +1,24 @@
 <nb-layout windowScroll>
-    <!-- <nb-layout-header fixed >
-      <ngx-header></ngx-header>
-    </nb-layout-header> -->
-    <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive start>
+
+  <nb-sidebar 
+    class="menu-sidebar" 
+    tag="menu-sidebar" 
+    responsive start>
+
+    <!-- Для анимации. 
+    (pointerenter)="toggleSidebar()"
+    (pointerleave)="toggleSidebar()" -->
+
     <div class="logo-container">
-      <!-- <a href="#"
+      <a href="#"
         class="sidebar-toggle"
         matRipple
         [matRippleUnbounded]="true"
         [matRippleCentered]="true"
         (click)="toggleSidebar()"
       >
-        <nb-icon [icon]="(materialTheme$ | async) ? 'menu-outline' : 'menu-2-outline'"></nb-icon>
-      </a> -->
+        <nb-icon [icon]="'menu-outline'"></nb-icon>
+      </a>
       <div class="styles_logoContainer__2IbFS"> 
         <a href="./pages/dashboard">
           <svg width="70" height="70" viewBox="0 0 55 55" class="styles_logo__wFtBf">
@@ -28,14 +34,16 @@
           </svg>
         </a>
     </div>
-    <p id="logoText"><a style='text-decoration:none; color: #8f9bb3' href="./pages/dashboard"><b>Universal Insight</b></a></p>
-      <!-- <a class="logo" href="#" (click)="navigateHome()"><span>ui</span></a> -->
-    </div>
-    <hr>
-      <ng-content select="nb-menu"></ng-content>
-    </nb-sidebar>
-    <nb-layout-column>
-      <ngx-header></ngx-header>
-      <ng-content select="router-outlet"></ng-content>
-    </nb-layout-column>
-  </nb-layout>
+  <p id="logoText"><a style='text-decoration:none; color: #8f9bb3' href="./pages/dashboard"><b>Universal Insight</b></a></p>
+    <!-- <a class="logo" href="#" (click)="navigateHome()"><span>ui</span></a> -->
+  </div>
+  <hr>
+    <ng-content select="nb-menu"></ng-content>
+  </nb-sidebar>
+
+  <nb-layout-column>
+    <ngx-header></ngx-header>
+    <ng-content select="router-outlet"></ng-content>
+  </nb-layout-column>
+
+</nb-layout>
