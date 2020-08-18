@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { FileInfo } from '../documents/documents.component';
+import { FileInfo } from '../viewData/data&query/data';
+import { DataGenerator } from '../viewData/generateData';
 
 
 @Component({
@@ -9,29 +10,11 @@ import { FileInfo } from '../documents/documents.component';
   styleUrls: ['./videos.component.scss']
 })
 export class VideosComponent {
-  makeName() {
-    var text = "file_";
-    var possible = "abcdefghijklmnopqrstuvwxyz";
 
-    for( var i = 0; i < 7; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    return text;
-  }
-  randomDate(start:Date, end:Date) {
-    return new Date(start.getTime() 
-            + Math.random() * (end.getTime() - start.getTime()));
-  }
   data: FileInfo[] = [];
   constructor() { 
-    for (let i = 0; i < 10; i++) {
-      this.data.push(new FileInfo(
-        this.makeName(), 
-        this.randomDate(new Date(2012, 0, 1), new Date()), 
-        `${Math.random()*100}mb`));
-    }
+    this.data.push(...DataGenerator.createFileInfo(30, "video_", ["mp4"]));
   }
-
 
 
   viewTable: boolean = true;

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {ThemeModule} from '../../@theme/theme.module'
-import {NbAccordionModule,NbStepperModule, NbThemeModule, NbLayoutModule,NbSidebarModule, NbSelectModule, NbInputModule, NbUserModule, NbListModule, NbOptionModule, NbFormFieldModule, NbMenuModule,NbIconModule, NbCardModule, NbButtonModule, NbTreeGridModule } from '@nebular/theme';
+import {NbAccordionModule,NbStepperModule, NbThemeModule, NbLayoutModule,NbSidebarModule, NbSelectModule, NbInputModule, NbUserModule, NbListModule, NbOptionModule, NbFormFieldModule, NbMenuModule,NbIconModule, NbCardModule, NbButtonModule, NbTreeGridModule, NbCheckboxModule } from '@nebular/theme';
 
 import {DefaultComponent} from './default/default.component'
 import { UsersComponent } from './users.component';
@@ -17,8 +17,8 @@ import { KeylogComponent } from './keylog/keylog.component';
 // import { Chart1Component } from '../dashboard/dashboard.module';
 // import { Chart5Component } from '../dashboard/dashboard.module';
 
-import { DocumentsTableComponent } from './table/documents.table.component';
-import { DocumentsCardsComponent } from './cards/documents.cards.component';
+import { DocumentsTableComponent, FsIcon1Component } from './viewData/table/documents.table.component';
+import { DocumentsCardsComponent } from './viewData/cards/documents.cards.component';
 
 @NgModule({
   imports: [
@@ -42,6 +42,7 @@ import { DocumentsCardsComponent } from './cards/documents.cards.component';
     NbUserModule,
     NbTreeGridModule,
 
+    NbCheckboxModule,
     //     Chart1Component,
     // Chart5Component
   ],
@@ -56,7 +57,7 @@ import { DocumentsCardsComponent } from './cards/documents.cards.component';
     TerminalComponent,
     KeylogComponent,
 
-    DocumentsTableComponent, DocumentsCardsComponent
+    DocumentsTableComponent, DocumentsCardsComponent, FsIcon1Component
   ],
   bootstrap: [DocumentsComponent]
 })
