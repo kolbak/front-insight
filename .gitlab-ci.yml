@@ -10,7 +10,7 @@ ENV PATH="./node_modules/.bin:$PATH"
 
 COPY . ./
 
-RUN npm build:prod
+RUN npm deploy
 
 FROM nginx:alpine
 COPY --from=compile-image /opt/ng/dist/. /usr/share/nginx/html
