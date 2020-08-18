@@ -25,11 +25,7 @@ import { NbSecurityModule } from '@nebular/security';
 
 import {
   HeaderComponent,
-  LayoutDirectionSwitcherComponent,
-  SearchInputComponent,
-  SwitcherComponent,
   RangepickerShowcaseComponent
-
 } from './components';
 import {
   CapitalizePipe,
@@ -40,8 +36,6 @@ import {
 } from './pipes';
 import {
   OneColumnLayoutComponent,
-  ThreeColumnsLayoutComponent,
-  TwoColumnsLayoutComponent,
 } from './layouts';
 import { DEFAULT_THEME } from './styles/theme.default';
 import { COSMIC_THEME } from './styles/theme.cosmic';
@@ -70,13 +64,8 @@ const NB_MODULES = [
   NbCardModule, NbDatepickerModule
 ];
 const COMPONENTS = [
-  SwitcherComponent,
-  LayoutDirectionSwitcherComponent,
   HeaderComponent,
-  SearchInputComponent,
   OneColumnLayoutComponent,
-  ThreeColumnsLayoutComponent,
-  TwoColumnsLayoutComponent,
   RangepickerShowcaseComponent
 ];
 const PIPES = [

@@ -10,21 +10,20 @@ import { LayoutService } from '../../../@core/utils';
 })
 export class OneColumnLayoutComponent implements AfterViewInit {
 
-  constructor(
-  private sidebarService: NbSidebarService,
-  private layoutService: LayoutService) {
+    constructor(
+    private sidebarService: NbSidebarService,
+    private layoutService: LayoutService) {
 
-}
-ngAfterViewInit() {
-  // this.toggleSidebar();
-  // document.querySelector('.main-container').addEventListener('mouseleave', this.leave);
-}
+  }
+  ngAfterViewInit() {
+    // this.toggleSidebar();
+  }
 
 
-toggleSidebar(): boolean {
-  this.sidebarService.toggle(true, 'menu-sidebar');
-  this.layoutService.changeLayoutSize();
+  toggleSidebar(): boolean {
+    this.sidebarService.toggle(true, 'menu-sidebar');
+    this.layoutService.changeLayoutSize();
 
-  return false;
-}
+    return false;
+  }
 }
