@@ -80,11 +80,6 @@ export class Chart5Component {
         colors: ['#ffca28'],
         type: "gradient",
         gradient: {
-          shade: "light",
-          type: "vertical",
-          shadeIntensity: 0.5,
-          gradientToColors: undefined,
-          inverseColors: false,
           opacityFrom: 1,
           opacityTo: 1,
           stops: [0, 90, 100]

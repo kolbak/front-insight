@@ -24,6 +24,7 @@ import { Chart6Component } from './charts/chart6/chart6.component';
 import { Chart7Component } from './charts/chart7/chart7.component';
 import { Chart8Component } from './charts/chart8/chart8.component';
 import { ChartjsBarComponent } from './charts/chartjs-bar.component';
+import { Chart9Component } from './charts/chart9/chart9.component';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import { ChartjsBarComponent } from './charts/chartjs-bar.component';
     Chart4Component,
     Chart6Component,
     Chart7Component,
-    Chart8Component
+    Chart8Component,
+    Chart9Component
   ],
   exports: [CalendarRangeShowcaseComponent, 
     Chart1Component,
