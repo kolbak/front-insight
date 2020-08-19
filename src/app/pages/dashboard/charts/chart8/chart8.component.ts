@@ -57,6 +57,9 @@ export class Chart8Component{
       fill: {
         colors: ['#5A8DEE', '#00CFDD', '#FDAC41']
       },
+      stroke: {
+        show: false
+      },
       plotOptions: {
         pie: {
           expandOnClick: false,

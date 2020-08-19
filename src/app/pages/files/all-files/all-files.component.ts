@@ -23,11 +23,12 @@ export class AllFilesComponent {
 
 
   // Настройки чек-бокса внутри первой колонки
-  checked = false;
+  // checked: boolean;
 
-  toggle(checked: boolean) {
-    this.checked = checked;
-  }
+  // toggle(checked: boolean) {
+  //   console.log(this.checked);
+  //   this.checked != checked;
+  // }
 
   // Настройки таблицы
   customColumn = 'Название';
@@ -59,7 +60,10 @@ export class AllFilesComponent {
       this.data.push({
         data: {
           Название: this.makeName(),
-          Дата: { date: this.randomDate(new Date(2012, 0, 1), new Date()), toString() { return new Intl.DateTimeFormat('en-GB').format(this.date) } },
+          Дата: { 
+            date: this.randomDate(new Date(2012, 0, 1), new Date()), 
+            toString() { return new Intl.DateTimeFormat('ru').format(this.date) } 
+          },
           Пользователи: {},
           Действия: { toString() { return "..." } }
         },
@@ -151,7 +155,10 @@ export class FsIconComponent {
     return false;
   }
   
-  toggle($event) {
-    console.log('ТЫК');
+  toggle(e: any) {
+    console.log();
+    // console.log('1 ',e);
+    // e = !e;
+    // console.log('2 ',e);
   }
 }
