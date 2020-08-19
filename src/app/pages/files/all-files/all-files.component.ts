@@ -1,6 +1,12 @@
 
 import { Component, Input } from '@angular/core';
-import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
+import { 
+  NbSortDirection, 
+  NbSortRequest, 
+  NbTreeGridDataSource, 
+  NbTreeGridDataSourceBuilder,
+  NbTreeGridSortService } from '@nebular/theme';
+
 interface TreeNode<T> {
   data: T;
   children?: TreeNode<T>[];
@@ -53,7 +59,9 @@ export class AllFilesComponent {
       + Math.random() * (end.getTime() - start.getTime()));
   }
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>) {
+  constructor(
+    private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>, 
+    private sortService: NbTreeGridSortService<FSEntry>) {
     // Создадим рандомные данные для таблицы
     for (let i = 0; i < 100; i++) {
       this.data.push({
@@ -66,9 +74,11 @@ export class AllFilesComponent {
       });
 
     }
-
     this.dataSource = this.dataSourceBuilder.create(this.data);
   }
+
+  // sortService.comparator(){}
+
 
   updateSort(sortRequest: NbSortRequest): void {
     this.sortColumn = sortRequest.column;
@@ -151,7 +161,11 @@ export class FsIconComponent {
     return false;
   }
   
-  toggle($event) {
+  checked = false;
+
+  toggle(checked: boolean) {
     console.log('ТЫК');
+    this.checked = checked;
   }
+
 }
