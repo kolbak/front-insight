@@ -7,22 +7,17 @@ const routes: Routes = [{
   path: '',
   component: FilesComponent,
   children: [
-    {
+      {
         path: 'allfiles',
         component: AllFilesComponent,
       }, {
         path: 'documents',
         component: DocumentsComponent,
-      },
-    {
+      }, {
         path: '',
         redirectTo: 'allfiles',
         pathMatch: 'full',
       },
-
-
-
-
   ],
 },];
 

@@ -5,7 +5,7 @@ import { NbIconModule, NbCardModule, NbCheckboxModule } from '@nebular/theme';
 import { DocumentsComponent } from './documents/documents.component';
 import { FilesRoutingModule } from './files-routing.module';
 import {FilesComponent} from './files.component'
-import {AllFilesComponent,FsIconComponent} from './all-files/all-files.component'
+import {AllFilesComponent } from './all-files/all-files.component'
 @NgModule({
     imports: [
         FilesRoutingModule,
@@ -19,7 +19,6 @@ import {AllFilesComponent,FsIconComponent} from './all-files/all-files.component
         NbCheckboxModule,
     ],
     declarations: [
-        FsIconComponent,
         DocumentsComponent,
         FilesComponent,
         AllFilesComponent

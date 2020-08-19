@@ -1,0 +1,142 @@
+::ng-deep {
+    body {
+      min-height: 20rem;
+    }
+  
+    .nb-tree-grid-header-cell,
+    .nb-tree-grid-header-cell button {
+      text-transform: capitalize;
+    }
+}
+
+button[nbTreeGridRowToggle] {
+background: transparent;
+border: none;
+padding: 0;
+}
+
+.search-label {
+display: block;
+}
+.search-input {
+margin-bottom: 1rem;
+}
+
+.nb-column-name {
+width: 100%;
+}
+
+@media screen and (min-width: 400px) {
+.nb-column-name,
+.nb-column-size {
+    width: 50%;
+}
+}
+
+@media screen and (min-width: 500px) {
+.nb-column-name,
+.nb-column-size,
+.nb-column-kind {
+    width: 33.333%;
+}
+}
+
+@media screen and (min-width: 600px) {
+    .nb-column-name {
+        width: 31%;
+    }
+    .nb-column-size,
+    .nb-column-kind,
+    .nb-column-items {
+        width: 23%;
+    }
+}
+
+  
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+
+  .small {
+    font-size: 80%;
+    font-weight: 400;
+  }
+
+  .card-row {
+    display: flex;
+    margin: 0 -0.5rem;
+  }
+  .has-flex {
+    display: flex;
+  }
+
+  :host {
+    display: block;
+    max-height: 25rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  // ширина колонок
+  .card-col-25, .card-col-75 {
+    margin: 0rem;
+  }
+  .search-card, .content-card {
+      height: 100%;
+      height: 85vh;
+  }
+
+  .card-col-10 {
+    flex: 1 0 calc(10% - 1rem);
+  }
+  .card-col-25 {
+    flex: 1 0 calc(25% - 1rem);
+  }
+  .card-col-75 {
+    flex: 1 0 calc(75% - 1rem);
+  }
+
+
+  .has-card-distance {
+    margin: 1rem;
+    margin-top: 0.75rem;
+  }
+  .has-card-border {
+    // border: 0.1625rem solid;
+    border: outset;
+  }
+
+  // изменение высоты карт
+  nb-card {
+    margin-bottom: 0vh ;
+  } 
+
+  .search {
+    max-height: 87.5vh;
+    max-width: 20vw;
+    min-width: 10vw;
+  }
+  .content {
+    max-height: 87.5vh;
+  }
+
+  p {
+    color: gray;
+    font-size: 1rem;
+    font-family: 'Rubik', sans-serif;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+  p.paragraph-2 {
+   margin-bottom: 0.3rem; 
+  }
+  img {
+    text-align: center; 
+    box-shadow: 0 0 5px 0px lightgrey;
+  }
+
+
+  nb-checkbox:not(:only-child) {
+    margin-right: 1.5rem;
+  }
+}
