@@ -20,7 +20,7 @@ export class VideosComponent {
   viewTable: boolean = true;
   // Изменение отображения
   // Карточки VS таблица
-  switchViewApproach() {
-    this.viewTable = !this.viewTable;
+  switchViewApproach(viewTable: boolean) {
+    this.viewTable = viewTable;
   }
 }
