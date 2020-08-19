@@ -6,9 +6,21 @@
     <h2>Графическое представление</h2>
   </div>
   <div class="col-sm-6 right">
-    <h2>Статистика по папкам</h2>
-    <div>
-      <nb-icon icon="star"></nb-icon>
+    <h2 style="text-align: right;">Статистика по папкам</h2>
+    <div class="folders">
+      <nb-card class="showFolder" *ngFor="let item of files">
+        <nb-card-header>
+          <nb-icon icon="folder-outline"></nb-icon>
+          {{item.folderName}}
+        </nb-card-header>
+        <nb-card-body>
+          Файлов: {{item.amount}} ; Размер: {{item.totalVolume}}мб  
+        </nb-card-body>
+        <nb-card-footer>
+          <span class="extensions" *ngFor="let ext of item.extensions">
+            .{{ext}}</span>
+        </nb-card-footer>
+      </nb-card>
     </div>
   </div>
 </div>
