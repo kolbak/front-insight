@@ -6,7 +6,7 @@ import { LayoutService } from '../../../@core/utils';
 @Component({
   selector: 'ngx-one-column-layout',
   styleUrls: ['./one-column.layout.scss'],
-  templateUrl: 'one-column.layout.html',
+  templateUrl: './one-column.layout.html',
 })
 export class OneColumnLayoutComponent implements AfterViewInit {
 

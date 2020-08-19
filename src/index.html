@@ -60,14 +60,22 @@
     {
       background-color: white !important;
     }
-    .nb-theme-default a.tab-link,
-    .nb-theme-corporate a.tab-link,
+    .nb-theme-default        a.tab-link,
+    .nb-theme-corporate      a.tab-link,
     .nb-theme-material-light a.tab-link {
       background-color: white !important;
     }
 
     .nb-theme-default  nb-layout-column {
       background-color: #F2F4EE !important;
+    }
+
+    .nb-theme-default nb-layout .layout .layout-container nb-sidebar.fixed, 
+    .nb-theme-default nb-layout .layout .layout-container nb-sidebar .main-container-fixed {
+      box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, 0.25);
+    }
+    .nb-theme-default nb-sidebar.compacted nb-menu .menu-items > .menu-item {
+      transform: scale(1.25);
     }
 
   </style>
