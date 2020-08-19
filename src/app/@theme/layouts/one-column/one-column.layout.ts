@@ -6,7 +6,7 @@ import { LayoutService } from '../../../@core/utils';
 @Component({
   selector: 'ngx-one-column-layout',
   styleUrls: ['./one-column.layout.scss'],
-  templateUrl: './one-column.layout.html',
+  templateUrl: 'one-column.layout.html',
 })
 export class OneColumnLayoutComponent implements AfterViewInit {
 
@@ -19,8 +19,12 @@ export class OneColumnLayoutComponent implements AfterViewInit {
     // this.toggleSidebar();
   }
 
-
+  booToggleSideIcon: boolean = true;
   toggleSidebar(): boolean {
+    // let logoCont = document.querySelector('.styles_logoContainer__2IbFS') as HTMLElement;
+    // logoCont.style.visibility = 'hidden';
+    this.booToggleSideIcon = !this.booToggleSideIcon;
+
     this.sidebarService.toggle(true, 'menu-sidebar');
     this.layoutService.changeLayoutSize();
 
