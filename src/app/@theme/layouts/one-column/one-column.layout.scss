@@ -20,13 +20,24 @@
   }
   #logoText {
     margin-bottom: 1px;
-    font-size: 20px;
+    font-size: 17px;
     white-space: nowrap;
     color: #222b90;
   }
 
-  nb-sidebar { 
+  nb-sidebar {
     transition: 0.3s;
   }
+  .logo-cont-hidden{
+    visibility: hidden;
+  }
+  .logo-cont-expanded{
+    visibility: visible;
+  }
+
+  .iconToggleSidebar{
+    margin-left: 15px
+  }
+
 
 }
