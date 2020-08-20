@@ -20,12 +20,7 @@ export class OneColumnLayoutComponent implements AfterViewInit {
   }
 
 
-  booToggleSideIcon: boolean = true;
   toggleSidebar(): boolean {
-    // let logoCont = document.querySelector('.styles_logoContainer__2IbFS') as HTMLElement;
-    // logoCont.style.visibility = 'hidden';
-    this.booToggleSideIcon = !this.booToggleSideIcon;
-
     this.sidebarService.toggle(true, 'menu-sidebar');
     this.layoutService.changeLayoutSize();
 
