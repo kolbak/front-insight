@@ -83,13 +83,14 @@
     margin-top: 0.75rem;
   }
   .has-card-border {
-    // border: 0.1625rem solid;
-    border: outset;
+    border: 0.1625rem solid #F2F4EE;
+    // border: outset;
   }
 
   // изменение высоты карт
   nb-card {
-    margin-bottom: 0vh ;
+    margin-bottom: 0vh;
+    // box-shadow: -4px 4px 10px 0 rgba(25,42,70,.13);
   } 
 
   .search {

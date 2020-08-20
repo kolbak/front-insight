@@ -1,19 +1,13 @@
 <section style="display:flex;justify-content: space-between;">
   <div    style="justify-items: center;">
     <nb-form-field>
+
       <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
-      <input
-        nbInput
-        placeholder="Поиск"
-        [nbFilterInput]="dataSource"
-        id="search"
-        class="search-input"
-      />
+      <input nbInput [nbFilterInput]="dataSource" class="search-input" type="text"
+      placeholder="Поиск"/>
+
+      
     </nb-form-field>
-  </div>
-  <div style="justify-items: end;">
-    <button nbButton ghost size='large' status="danger"><nb-icon icon="grid-outline"></nb-icon></button>
-    <button nbButton ghost size='large' status="danger"><nb-icon icon="menu-outline"></nb-icon></button>
   </div>
 </section>
 
