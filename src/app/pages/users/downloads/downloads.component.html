@@ -1,8 +1,5 @@
 <div>
-    <div style="float: right;">
-        <button nbButton ghost size='large' status="primary" (click)="switchViewApproach(true)" [disabled]="viewTable"><nb-icon icon="menu-outline"></nb-icon></button>
-        <button nbButton ghost size='large' status="primary" (click)="switchViewApproach(false)" [disabled]="!viewTable"><nb-icon icon="grid-outline"></nb-icon></button>
-    </div>
+    <button nbButton (click)="switchViewApproach()">Изменение отображения</button>
 
     <div *ngIf="viewTable;else viewCard">
 

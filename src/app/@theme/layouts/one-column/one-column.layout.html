@@ -11,16 +11,15 @@
 
     <div class="logo-container">
       <a href="#"
+        class="sidebar-toggle"
+        matRipple
+        [matRippleUnbounded]="true"
+        [matRippleCentered]="true"
         (click)="toggleSidebar()"
-        class="iconToggleSidebar"
       >
         <nb-icon [icon]="'menu-outline'"></nb-icon>
       </a>
-      <div class="styles_logoContainer__2IbFS" 
-          [ngClass]="{
-            'logo-cont-hidden' : booToggleSideIcon == false,
-            'logo-cont-expanded' : booToggleSideIcon == true
-          }"> 
+      <div class="styles_logoContainer__2IbFS"> 
         <a href="./pages/dashboard">
           <svg width="70" height="70" viewBox="0 0 55 55" class="styles_logo__wFtBf">
             <g id="prefix__Group_877" data-name="Group 877" transform="translate(-253.054 -1259.867)">

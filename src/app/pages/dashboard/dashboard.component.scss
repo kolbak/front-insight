@@ -55,30 +55,27 @@
   } 
 
   .template-left-top-card {
-    height: 60vh;
+    height: 553px;
+    width: auto;
   }
   .template-left-bottom-card {
-    height: 20vh;
+    height: 194px; 
+    width: auto;
   }
 
   .template-right-top-card {
-    height: 30vh;
+    height: 285px;
+    width: auto;
   }
 
   .template-right-medium-card {
-    height: 37vh;
+    height: 335px;
+    width: auto;
   }
   
   .template-right-bottom-card {
-    height: 10vh;
-  }
-
-  .template-left-top-card,
-  .template-left-bottom-card,
-  .template-right-top-card,
-  .template-right-medium-card,
-  .template-right-bottom-card {
-    max-width: 100%;
+    height: 95px;
+    width: auto;
   }
 
 }

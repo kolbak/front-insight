@@ -20,7 +20,8 @@ export class ScreenshotsComponent {
   viewTable: boolean = true;
   // Изменение отображения
   // Карточки VS таблица
-  switchViewApproach(viewTable: boolean) {
-    this.viewTable = viewTable;
+  switchViewApproach() {
+    this.viewTable = !this.viewTable;
   }
+
 }
