@@ -15,7 +15,7 @@
   <style>
     /* Глобальные изменения основных тем */
     .nb-theme-default   nb-layout .layout .layout-container .content .columns nb-layout-column,
-    .nb-theme-dark      nb-layout .layout .layout-container .content .columns nb-layout-column, 
+    .nb-theme-dark      nb-layout .layout .layout-container .content .columns nb-layout-column,
     .nb-theme-cosmic    nb-layout .layout .layout-container .content .columns nb-layout-column,
     .nb-theme-corporate nb-layout .layout .layout-container .content .columns nb-layout-column,
     .nb-theme-material-light nb-layout .layout .layout-container .content .columns nb-layout-column,
@@ -24,22 +24,22 @@
       padding-top: 0rem !important;
     }
 
-    .nb-theme-default nb-layout .layout .layout-container nb-sidebar.fixed, 
+    .nb-theme-default nb-layout .layout .layout-container nb-sidebar.fixed,
     .nb-theme-default nb-layout .layout .layout-container nb-sidebar .main-container-fixed,
-    .nb-theme-dark nb-layout .layout .layout-container nb-sidebar.fixed, 
+    .nb-theme-dark nb-layout .layout .layout-container nb-sidebar.fixed,
     .nb-theme-dark nb-layout .layout .layout-container nb-sidebar .main-container-fixed,
-    .nb-theme-cosmic nb-layout .layout .layout-container nb-sidebar.fixed, 
+    .nb-theme-cosmic nb-layout .layout .layout-container nb-sidebar.fixed,
     .nb-theme-cosmic nb-layout .layout .layout-container nb-sidebar .main-container-fixed,
-    .nb-theme-corporate nb-layout .layout .layout-container nb-sidebar.fixed, 
+    .nb-theme-corporate nb-layout .layout .layout-container nb-sidebar.fixed,
     .nb-theme-corporate nb-layout .layout .layout-container nb-sidebar .main-container-fixed,
-    .nb-theme-material-light nb-layout .layout .layout-container nb-sidebar.fixed, 
+    .nb-theme-material-light nb-layout .layout .layout-container nb-sidebar.fixed,
     .nb-theme-material-light nb-layout .layout .layout-container nb-sidebar .main-container-fixed,
-    .nb-theme-material-dark nb-layout .layout .layout-container nb-sidebar.fixed, 
-    .nb-theme-material-dark nb-layout .layout .layout-container nb-sidebar .main-container-fixed 
+    .nb-theme-material-dark nb-layout .layout .layout-container nb-sidebar.fixed,
+    .nb-theme-material-dark nb-layout .layout .layout-container nb-sidebar .main-container-fixed
     {
       top: 0rem !important;
     }
-    
+
     /* обеспечивает смещение слоя календаря*/
     .pageTurnCalendar {
       transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
@@ -69,6 +69,14 @@
     .nb-theme-default  nb-layout-column {
       background-color: #F2F4EE !important;
     }
+    .nb-theme-default nb-layout .layout .layout-container nb-sidebar.fixed,
+    .nb-theme-default nb-layout .layout .layout-container nb-sidebar .main-container-fixed {
+      box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, 0.25);
+    }
+    .nb-theme-default nb-sidebar.compacted nb-menu .menu-items > .menu-item {
+      transform: scale(1.25);
+    }
+
 
   </style>
 
@@ -78,7 +86,7 @@
 
 
 <!-- <ng-layout id="content-start">   -->
-  <div id="wholePage">  
+  <div id="wholePage">
     <ngx-app></ngx-app>
   </div>
 <!-- </ng-layout> -->
