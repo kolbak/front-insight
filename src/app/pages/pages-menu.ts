@@ -5,7 +5,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Главная страница',
     icon: 'grid-outline',
     link: '/pages/dashboard',
-    home: true,
   },
   {
     title: 'Сервисы',
