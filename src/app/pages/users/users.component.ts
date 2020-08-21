@@ -31,4 +31,9 @@ export class UsersComponent implements OnInit {
 
   }
 
+
+  GetUserToRoute(uuid:string){
+    
+  }
+
 }

@@ -30,20 +30,20 @@
 
 
           <nb-accordion *ngIf="server.allusers" multi>
-            <nb-accordion-item id="user" *ngFor="let user of server.allusers">
+            <nb-accordion-item  *ngFor="let user of server.allusers">
                 <nb-accordion-item-header style="justify-content: space-between;">
                   <nb-user
+                  (click)="GetUserToRoute(user.uuid)"
                     badgeText="○"
                     size="giant"
                     badgeStatus="success"
                     badgePosition="bottom right"
                     [name]="user.first_name"
                     [title]="user.role"
-                    [picture]= "server.HOST+user.photo"
+                    [picture]= " server.HOST + user.photo"
 
                   >
                   </nb-user>
-                  <p id="uuid" hidden>{{user.uuid}}</p>
                   <div style="padding-right: 20px;">
                     <nb-icon   status="warning" icon="star" pack="eva"></nb-icon>
                   </div>
