@@ -1,5 +1,6 @@
 import { ServerService } from './../../server.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'ngx-users',
@@ -26,8 +27,8 @@ export class UsersComponent implements OnInit {
   constructor(public server: ServerService) {
      server.getAllUsers();
    }
-
   ngOnInit(): void {
+
   }
 
 }

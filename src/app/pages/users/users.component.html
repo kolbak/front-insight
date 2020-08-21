@@ -24,13 +24,13 @@
           placeholder="Специальность"
         >
           <nb-icon  *ngIf="server.allusers" nbPrefix icon="search-outline" pack="eva"></nb-icon>
-            <nb-option  *ngFor="let user of server.allusers;let index = index" value="index">{{user.role}}</nb-option>
+            <nb-option  *ngFor="let user of server.allusers;let index = index " value="index">{{user.role}}</nb-option>
 
         </nb-select>
 
 
           <nb-accordion *ngIf="server.allusers" multi>
-            <nb-accordion-item  *ngFor="let user of server.allusers">
+            <nb-accordion-item id="user" *ngFor="let user of server.allusers">
                 <nb-accordion-item-header style="justify-content: space-between;">
                   <nb-user
                     badgeText="○"
@@ -40,8 +40,10 @@
                     [name]="user.first_name"
                     [title]="user.role"
                     [picture]= "server.HOST+user.photo"
+
                   >
                   </nb-user>
+                  <p id="uuid" hidden>{{user.uuid}}</p>
                   <div style="padding-right: 20px;">
                     <nb-icon   status="warning" icon="star" pack="eva"></nb-icon>
                   </div>
