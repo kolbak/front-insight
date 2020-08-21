@@ -1,6 +1,11 @@
 import { FileInfo } from './data&query/data';
+import { User } from '../../../@core/data/users';
 
 export class DataGenerator {
+
+    // private names: string[] = [
+    //     'Александр', 'Сергей', 'Дмитрий', 'Андрей', 'Алексей', 'Максим', 'Евгений', 'Владимир', 'Иван', ''
+    // ];
 
     static makeSize(): string {
         return `${Math.random()*100}mb`;
@@ -18,6 +23,10 @@ export class DataGenerator {
       return new Date(start.getTime() 
               + Math.random() * (end.getTime() - start.getTime()));
     }
+    static randomArrayPos(arr: Array<string>): string { 
+        return arr[Math.floor(Math.random() * arr.length)]
+    }
+
 
     static createFileInfo(amount: Number = 10, prefix: string = "_", type: string[] = [""]): FileInfo[] {
         let data: FileInfo[] = [];
@@ -29,4 +38,13 @@ export class DataGenerator {
         }
         return data;
     }
+
+    // static createUsers(amount: Number): User[] 
+    // {
+    //     let users: User[] = [];
+    //     for (let i = 0; i < amount; i++) {
+    //         users.push(new User(makeName("Carla ")))
+    //     }
+    //     return users;
+    // }
 }

@@ -1,3 +1,4 @@
+import { ServerService, User } from './../../../server.service';
 import { Component } from '@angular/core';
 import { 
   NbSortDirection, 
@@ -6,6 +7,30 @@ import {
   NbTreeGridDataSourceBuilder,
   NbTreeGridSortService } from '@nebular/theme';
 
+// import { User } from '../../../@core/data/users';
+// import { ServerService } from '../../../'
+
+class showDate {
+  constructor() {
+    this.date = this.randomDate(new Date(2012, 0, 1), new Date());
+  }
+  date: Date;
+
+  randomDate(start: Date, end: Date) {
+    return new Date(start.getTime()
+      + Math.random() * (end.getTime() - start.getTime()));
+  }
+  sort() {
+
+  }
+
+  compare(d2: showDate) {
+    return this.date > d2.date ? 1 : this.date < d2.date ? -1 : 0;
+  }
+
+  toString() { return new Intl.DateTimeFormat('ru').format(this.date) }
+}
+
 interface TreeNode<T> {
   data: T;
   children?: TreeNode<T>[];
@@ -13,9 +38,11 @@ interface TreeNode<T> {
 }
 
 interface FSEntry {
+  id: Number;
+  Номер: Number;
   Название: string;
-  Дата: Object;
-  Пользователи: Object;
+  Дата: showDate;
+  Пользователи: User[];
   Действия: Object;
 }
 
@@ -35,8 +62,10 @@ export class DocumentsComponent  {
 
   // Настройки таблицы
   customColumn = 'Название';
-  defaultColumns = ['Дата', 'Пользователи', 'Действия'];
-  allColumns = [this.customColumn, ...this.defaultColumns];
+  dateColumn = 'Дата';
+  usersColumn = 'Пользователи';
+  defaultColumn = 'Действия';
+  allColumns = [this.customColumn, this.dateColumn, this.usersColumn, this.defaultColumn];
 
   dataSource: NbTreeGridDataSource<FSEntry>;
 
@@ -52,24 +81,22 @@ export class DocumentsComponent  {
 
     return text;
   }
-  randomDate(start: Date, end: Date) {
-    return new Date(start.getTime()
-      + Math.random() * (end.getTime() - start.getTime()));
-  }
 
   constructor( 
     private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>, 
-    private sortService: NbTreeGridSortService<FSEntry>) { 
-       // Создадим рандомные данные для таблицы
-    for (let i = 0; i < 100; i++) {
+    private sortService: NbTreeGridSortService<FSEntry>, 
+    private server: ServerService) {
+      server.getAllUsers();
+
+      // Создадим рандомные данные для таблицы
+    for (let i = 0; i < 30; i++) {
       this.data.push({
         data: {
+          id: i,
+          Номер: i,
           Название: this.makeName(),
-          Дата: { 
-            date: this.randomDate(new Date(2012, 0, 1), new Date()), 
-            toString() { return new Intl.DateTimeFormat('ru').format(this.date) } 
-          },
-          Пользователи: {},
+          Дата: new showDate(),
+          Пользователи: server.allusers,
           Действия: { toString() { return "..." } }
         },
       });
@@ -93,49 +120,7 @@ export class DocumentsComponent  {
     return NbSortDirection.NONE;
   }
 
-  private data: TreeNode<FSEntry>[] = [
-    // {
-    //   data: { name: 'Projects', size: '1.8 MB', items: 5, kind: 'dir' },
-    //   children: [
-    //     { data: { name: 'project-1.doc', kind: 'doc', size: '240 KB' } },
-    //     { data: { name: 'project-2.doc', kind: 'doc', size: '290 KB' } },
-    //     {
-    //       data: { name: 'project-3', kind: 'dir', size: '466 KB', items: 3 },
-    //       children: [
-    //         { data: { name: 'project-3A.doc', kind: 'doc', size: '200 KB' } },
-    //         { data: { name: 'project-3B.doc', kind: 'doc', size: '266 KB' } },
-    //         { data: { name: 'project-3C.doc', kind: 'doc', size: '0' } },
-    //       ],
-    //     },
-    //     { data: { name: 'project-4.docx', kind: 'docx', size: '900 KB' } },
-    //   ],
-    // },
-    // {
-    //   data: { name: 'Reports', kind: 'dir', size: '400 KB', items: 2 },
-    //   children: [
-    //     {
-    //       data: { name: 'Report 1', kind: 'dir', size: '100 KB', items: 1 },
-    //       children: [
-    //         { data: { name: 'report-1.doc', kind: 'doc', size: '100 KB' } },
-    //       ],
-    //     },
-    //     {
-    //       data: { name: 'Report 2', kind: 'dir', size: '300 KB', items: 2 },
-    //       children: [
-    //         { data: { name: 'report-2.doc', kind: 'doc', size: '290 KB' } },
-    //         { data: { name: 'report-2-note.txt', kind: 'txt', size: '10 KB' } },
-    //       ],
-    //     },
-    //   ],
-    // },
-    // {
-    //   data: { name: 'Other', kind: 'dir', size: '109 MB', items: 2 },
-    //   children: [
-    //     { data: { name: 'backup.bkp', kind: 'bkp', size: '107 MB' } },
-    //     { data: { name: 'secret-note.txt', kind: 'txt', size: '2 MB' } },
-    //   ],
-    // },
-  ];
+  private data: TreeNode<FSEntry>[] = [];
 
   getShowOn(index: number) {
     const minWithForMultipleColumns = 400;
