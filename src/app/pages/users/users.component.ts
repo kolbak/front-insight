@@ -1,3 +1,4 @@
+import { ServerService } from './../../server.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -22,7 +23,9 @@ export class UsersComponent implements OnInit {
     { name: 'Janitor', title: 'Janitor',picture:'https://ih1.redbubble.net/image.846505055.7003/flat,750x1000,075,f.u3.jpg' },
     { name: 'Perry Cox', title: 'Doctor of Medicine' ,picture:'https://i.imgur.com/2epwyls.jpg'},
   ];
-  constructor() { }
+  constructor(public server: ServerService) {
+     server.getAllUsers();
+   }
 
   ngOnInit(): void {
   }

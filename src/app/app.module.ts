@@ -1,3 +1,5 @@
+import { ServerService } from './server.service';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -26,12 +28,13 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [AppComponent], // , UsersComponent
+
   imports: [
     NbActionsModule,
     BrowserModule,
     NbListModule,
     NbUserModule,
-   
+    FormsModule,
     NbIconModule,
     NbRouteTabsetModule,
     NbInputModule,
@@ -54,6 +57,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     CoreModule.forRoot(),
     NbThemeModule, NbLayoutModule, NbCardModule, NbCalendarRangeModule,NbEvaIconsModule, DragDropModule,
   ],
+providers:[ServerService],
   bootstrap: [AppComponent],
 
 })
