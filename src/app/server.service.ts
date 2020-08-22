@@ -23,13 +23,14 @@ export class User {
   providedIn: "root",
 })
 export class ServerService {
-  allusers: [User];
+  allusers: User[];
   public HOST = "http://localhost:4200/api";
   static HOST: string = "http://localhost:4200/api";
   constructor(private http: HttpClient) {}
 
   getAllUsers() {
-    this.http.get(this.HOST + "/users").subscribe((response: [User]) => {
+    this.http.get(this.HOST + "/users").subscribe((response: User[]) => {
+      console.log(response);
       this.allusers = response;
     });
   }

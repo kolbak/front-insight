@@ -5,7 +5,8 @@ import {
   NbSortRequest,
   NbTreeGridDataSource,
   NbTreeGridDataSourceBuilder,
-  NbTreeGridSortService
+  NbTreeGridSortService,
+  NbDialogService
 } from '@nebular/theme';
 
 // import { User } from '../../../@core/data/users';
@@ -43,7 +44,7 @@ interface FSEntry {
   Номер: Number;
   Название: string;
   Дата: showDate;
-  Пользователи: [User];
+  Пользователи: User[];
   Действия: Object;
 }
 
@@ -86,7 +87,8 @@ export class DocumentsComponent {
   constructor(
     private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>,
     private sortService: NbTreeGridSortService<FSEntry>,
-    public server: ServerService) {
+    public server: ServerService, 
+    private dialogService: NbDialogService) {
     server.getAllUsers();
 
     // Создадим рандомные данные для таблицы
@@ -128,8 +130,25 @@ export class DocumentsComponent {
     const nextColumnStep = 100;
     return minWithForMultipleColumns + (nextColumnStep * index);
   }
+
+  open() {
+    this.dialogService.open(DialogShowcaseComponent, {
+      context: {
+        title: 'This is a title passed to the dialog component',
+      },
+    });
+  }
+
 }
 
+@Component({
+  selector: 'nb-dialog-showcase',
+  template: '<h1 style="color: white">Я здесь</h1>'
+})
+export class DialogShowcaseComponent {
+  constructor(private dialogService: NbDialogService) {
+  }
+}
 // class TableUser {
 //   constructor(user: User) {
 //     this.user = user;

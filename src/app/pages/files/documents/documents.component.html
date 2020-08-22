@@ -1,5 +1,7 @@
 <!-- <label class="search-label" for="search">Поиск файлов</label> -->
 
+<button nbButton (click)="open()">Open Dialog</button>
+
 <nb-form-field>
 
     <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
@@ -50,9 +52,7 @@
             <nb-user *ngFor="let user of server.allusers" size="large" [name]="user.first_name" [title]="user.role" [picture]=" server.HOST + user.photo " onlyPicture>
             </nb-user>
 
-
-
-            <!-- {{row.data[usersColumn] || '-'}} -->
+            <!-- {{row.data[usersColumn] || '-'}}-->
         </td>
     </ng-container>
 
