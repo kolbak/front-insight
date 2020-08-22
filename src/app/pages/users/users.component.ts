@@ -26,10 +26,6 @@ export class UsersComponent implements OnInit {
   ];
   constructor(public server: ServerService) {
      server.getAllUsers();
-     console.log(server.allusers.length);
-     for (let index = 0; index < server.allusers.length; index++) {
-       console.log(server.allusers[index]); 
-     }
 
    }
   ngOnInit(): void {
@@ -38,7 +34,7 @@ export class UsersComponent implements OnInit {
 
 
   GetUserToRoute(uuid:string){
-    
+
   }
 
 }
