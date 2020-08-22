@@ -32,8 +32,7 @@ export class AllFilesComponent {
     ["mp3", "wav"] 
   ];
   folderNames: string[] = ["Архивы", "Word файлы", "Excel файлы", "Pdf файлы", "Фото", "Музыка",
-  "Архивы", "Word файлы", "Excel файлы", "Pdf файлы", "Фото", "Музыка",
-]
+  "Архивы", "Word файлы", "Excel файлы", "Pdf файлы", "Фото", "Музыка"]
 
   constructor() { 
     for (let i = 0; i < this.folderNames.length; i++) {

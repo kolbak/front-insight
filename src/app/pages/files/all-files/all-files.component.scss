@@ -1,57 +1,47 @@
 @import '../../../@theme/styles/themes';
-
 @include nb-install-component() {
-
-  nb-card-header {
-    padding-bottom: 3px;
-    text-align: justify;
-  }
-  nb-card-body {
-    font-size: 0.9375rem;
-  }
-  nb-card-footer {
-    padding-top: 3px;
-    padding-bottom: 3px;
-    font-size: 0.9375rem;
-  }
-  nb-card {
-    box-shadow: -4px 4px 10px 0 rgba(25,42,70,.13);
-  }
+    nb-card-header {
+        padding-bottom: 3px;
+        text-align: justify;
+    }
+    nb-card-body {
+        font-size: 0.9375rem;
+    }
+    nb-card-footer {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        font-size: 0.9375rem;
+    }
+    nb-card {
+        box-shadow: -4px 4px 10px 0 rgba(25, 42, 70, .13);
+    }
 }
-
 
 .right {
-  border-left: 3px #edf1f7 solid;
-}
-.left, .right {
-  min-height: 70vh;
+    border-left: 3px #edf1f7 solid;
 }
 
-
-// .col-sm-6 {
-//   max-height: 70vh;
-// }
+.left,
+.right {
+    min-height: 70vh;
+}
 
 .folders {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
 }
+
 .showFolder {
-  min-width: 14vw;
+    min-width: 14vw;
 }
 
 .extensions {
-  // border-right: 1px dashed black;
-  // border-left:  1px dashed black;
-  // padding-left: 4px;
-  // padding-right: 4px;
-  margin-left: 3px;
-  margin-right: 3px;
-  justify-items: center;
+    margin-left: 3px;
+    margin-right: 3px;
+    justify-items: center;
 }
 
 h2 {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
-

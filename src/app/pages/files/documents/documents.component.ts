@@ -1,11 +1,12 @@
 import { ServerService, User } from './../../../server.service';
 import { Component } from '@angular/core';
-import { 
-  NbSortDirection, 
-  NbSortRequest, 
-  NbTreeGridDataSource, 
+import {
+  NbSortDirection,
+  NbSortRequest,
+  NbTreeGridDataSource,
   NbTreeGridDataSourceBuilder,
-  NbTreeGridSortService } from '@nebular/theme';
+  NbTreeGridSortService
+} from '@nebular/theme';
 
 // import { User } from '../../../@core/data/users';
 // import { ServerService } from '../../../'
@@ -51,10 +52,10 @@ interface FSEntry {
   templateUrl: './documents.component.html',
   styleUrls: ['./documents.component.scss']
 })
-export class DocumentsComponent  {
+export class DocumentsComponent {
 
   // Настройки чек-бокса внутри первой колонки
-  checked:boolean = false;
+  checked: boolean = false;
   setCheckedStatus(checked) {
     this.checked = checked.target.checked;
   }
@@ -82,13 +83,13 @@ export class DocumentsComponent  {
     return text;
   }
 
-  constructor( 
-    private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>, 
-    private sortService: NbTreeGridSortService<FSEntry>, 
+  constructor(
+    private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>,
+    private sortService: NbTreeGridSortService<FSEntry>,
     private server: ServerService) {
-      server.getAllUsers();
+    server.getAllUsers();
 
-      // Создадим рандомные данные для таблицы
+    // Создадим рандомные данные для таблицы
     for (let i = 0; i < 30; i++) {
       this.data.push({
         data: {
@@ -105,10 +106,10 @@ export class DocumentsComponent  {
     this.dataSource = this.dataSourceBuilder.create(this.data);
   }
 
-   // sortService.comparator(){}
+  // sortService.comparator(){}
 
 
-   updateSort(sortRequest: NbSortRequest): void {
+  updateSort(sortRequest: NbSortRequest): void {
     this.sortColumn = sortRequest.column;
     this.sortDirection = sortRequest.direction;
   }
@@ -128,3 +129,13 @@ export class DocumentsComponent  {
     return minWithForMultipleColumns + (nextColumnStep * index);
   }
 }
+
+// class TableUser {
+//   constructor(user: User) {
+//     this.user = user;
+//   }
+//   user: User;
+//   toString() {
+//     return `${this.user.first_name} ${this.user.last_name}`
+//   }
+// }

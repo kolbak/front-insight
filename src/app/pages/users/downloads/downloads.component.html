@@ -1,17 +1,39 @@
 <div>
+
+    <div *ngIf="viewTable">
+        <h2>Папки</h2>
+        <div class="folders row">
+            <nb-card class="showFolder" *ngFor="let item of files">
+                <nb-card-header>
+                    <nb-icon icon="folder-outline"></nb-icon>
+                    {{item.folderName}}
+                </nb-card-header>
+                <nb-card-body>
+                    Файлов: {{item.amount}} ; Размер: {{item.totalVolume}}мб
+                </nb-card-body>
+                <nb-card-footer>
+                    <span class="extensions" *ngFor="let ext of item.extensions">
+                        .{{ext}}
+                    </span>
+                </nb-card-footer>
+            </nb-card>
+        </div>
+    </div>
+
     <div style="float: right;">
         <button nbButton ghost size='large' status="primary" (click)="switchViewApproach(true)" [disabled]="viewTable"><nb-icon icon="menu-outline"></nb-icon></button>
         <button nbButton ghost size='large' status="primary" (click)="switchViewApproach(false)" [disabled]="!viewTable"><nb-icon icon="grid-outline"></nb-icon></button>
     </div>
 
     <div *ngIf="viewTable;else viewCard">
-
-        <documents-table [dataArr]="data"></documents-table>
+        <h2>Недавно добавленные</h2>
+        <div class="row">
+            <documents-table [dataArr]="data"></documents-table>
+        </div>
     </div>
-
     <ng-template #viewCard>
         <div>
-    
+
             <documents-cards [dataArr]="data"></documents-cards>
         </div>
     </ng-template>
