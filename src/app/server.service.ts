@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 
 export class User {
   uuid: string;
@@ -23,16 +23,29 @@ export class User {
   providedIn: "root",
 })
 export class ServerService {
-  allusers: [User];
+  allusers: User[];
   public HOST = "http://localhost:4200/api";
   static HOST: string = "http://localhost:4200/api";
+  public firstUser: User;
   constructor(private http: HttpClient) {}
 
-  getAllUsers() {
-    this.http.get(this.HOST + "/users").subscribe((response: [User]) => {
+getAllUsers() {
+     const got = this.http.get(this.HOST + "/users");
+    got.subscribe((response: User[]) => {
       this.allusers = response;
     });
+    return got;
   }
 
+  async getFisrtUser(force: false = false) {
+    if (this.allusers && !force) {
+      return this.allusers[0]
+    } else {
+    this.http.get(this.HOST + "/users").subscribe((response: User[]) => {
+        this.firstUser = response[0];
+        return this.firstUser;
+      });
+    }
 
+  }
 }

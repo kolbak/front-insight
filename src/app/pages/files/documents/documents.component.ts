@@ -43,7 +43,7 @@ interface FSEntry {
   Номер: Number;
   Название: string;
   Дата: showDate;
-  Пользователи: [User];
+  Пользователи: User[];
   Действия: Object;
 }
 
