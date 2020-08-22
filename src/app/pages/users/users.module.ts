@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {ThemeModule} from '../../@theme/theme.module'
-import {NbAccordionModule,NbStepperModule, NbThemeModule, NbLayoutModule,NbSidebarModule, NbSelectModule, NbInputModule, NbUserModule, NbListModule, NbOptionModule, NbFormFieldModule, NbMenuModule,NbIconModule, NbCardModule, NbButtonModule, NbTreeGridModule, NbCheckboxModule } from '@nebular/theme';
+import {NbAccordionModule,NbStepperModule, NbThemeModule, NbLayoutModule,NbSidebarModule, NbSelectModule, NbUserModule, NbListModule, NbOptionModule, NbFormFieldModule, NbMenuModule,NbIconModule, NbCardModule, NbButtonModule, NbTreeGridModule, NbInputModule, NbCheckboxModule } from '@nebular/theme';
 
 import {DefaultComponent} from './default/default.component'
 import { UsersComponent } from './users.component';
@@ -41,7 +41,6 @@ import { DocumentsCardsComponent } from './viewData/cards/documents.cards.compon
     NbOptionModule,
     NbUserModule,
     NbTreeGridModule,
-
     NbCheckboxModule,
     //     Chart1Component,
     // Chart5Component

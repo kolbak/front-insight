@@ -1,5 +1,19 @@
-<label class="search-label" for="search">Search:</label>
-<input nbInput [nbFilterInput]="dataSource" id="search" class="search-input" />
+<!-- <label class="search-label" for="search">Поиск файлов</label> -->
+
+<nb-form-field>
+
+    <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
+    <input nbInput [nbFilterInput]="dataSource" class="search-input" type="text" placeholder="Поиск" />
+    <!--вставить здесь то, что будет справа-->
+
+    <!-- <div class="actions" style="float: right;">
+        <nb-icon icon="person-add-outline" pack="eva"></nb-icon>
+        <nb-icon icon="trash-2-outline" pack="eva"></nb-icon>
+        <nb-icon icon="more-vertical-outline" pack="eva"></nb-icon>
+    </div> -->
+</nb-form-field>
+
+<!-- <input placeholder="Поиск файлов" nbInput [nbFilterInput]="dataSource" id="search" class="search-input" /> -->
 
 <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
     <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
@@ -28,14 +42,17 @@
         <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(usersColumn)" *nbTreeGridHeaderCellDef>
             {{ usersColumn }}
         </th>
-        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center;">
 
-            <nb-user class="user" [nbPopover]="templateRef" *ngFor="let user of row.data[usersColumn] " size="large" name="{{user}}" title="Engineer " onlyPicture>
-                <ng-template #templateRef>
-                    <span>Hello, Popover!</span>
-                </ng-template>
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" class="users" style="align-items: center;">
+
+            <!-- <nb-user class="user" *ngFor="let user of row.data[usersColumn] " size="large" name="Это юзер" title="Юзер" onlyPicture>
+            </nb-user> -->
+            <nb-user *ngFor="let user of server.allusers" size="large" [name]="user.first_name" [title]="user.role" [picture]=" server.HOST + user.photo " onlyPicture>
             </nb-user>
-            {{row.data[usersColumn] || '-'}}
+
+
+
+            <!-- {{row.data[usersColumn] || '-'}} -->
         </td>
     </ng-container>
 
@@ -44,7 +61,8 @@
             {{ defaultColumn }}
         </th>
         <td nbTreeGridCell *nbTreeGridCellDef="let row " style="align-items: center; ">
-            {{ row.data[defaultColumn] || "- " }}
+            <!-- {{ row.data[defaultColumn] || "- " }} -->
+            <nb-icon icon="more-horizontal-outline" pack="eva"></nb-icon>
         </td>
     </ng-container>
 

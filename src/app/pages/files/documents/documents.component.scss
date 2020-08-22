@@ -54,11 +54,47 @@ button[nbTreeGridRowToggle] {
 
 @import "../../../@theme/styles/themes";
 @include nb-install-component() {
-    // div.user {
-    //     display: grid;
-    //     grid-template-columns: repeat(5, 1fr);
-    //     justify-items: center;
-    // }
+    div.users {
+        // display: grid;
+        // grid-template-columns: repeat(5, 1fr);
+        // justify-items: center;
+        display: flex;
+        flex-direction: row;
+    }
+    div.user-container {
+        width: min-content;
+    }
+    div.user-container,
+    nb-user {
+        flex-direction: row;
+    }
+    div.actions nb-icon {
+        // padding: 1rem 0rem;
+        // margin-right: 1rem;
+    }
+    input.search-input {
+        font-size: 1.125rem;
+        padding: 1rem 0rem;
+        margin-bottom: 0%;
+        border: none;
+        width: 20vw;
+    }
+    th {
+        font-size: 1.125rem;
+        color: #8f9bb3;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    td,
+    th {
+        border-right: none;
+        border-left: none;
+        border-top: lightgray 1.5px solid;
+        border-bottom: lightgray 1.5px solid;
+    }
+    td {
+        font-size: 1rem;
+    }
     .small {
         font-size: 80%;
         font-weight: 400;
@@ -104,9 +140,11 @@ button[nbTreeGridRowToggle] {
         border: outset;
     }
     // изменение высоты карт
-    nb-card {
-        margin-bottom: 0vh;
-    }
+    // nb-card,
+    // nb-card-body {
+    //     margin-bottom: 0vh;
+    //     padding: 0%;
+    // }
     .search {
         max-height: 87.5vh;
         max-width: 20vw;
