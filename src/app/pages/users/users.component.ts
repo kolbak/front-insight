@@ -1,6 +1,7 @@
 import { ServerService } from './../../server.service';
 import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import { of } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-users',
@@ -24,17 +25,20 @@ export class UsersComponent implements OnInit {
     { name: 'Janitor', title: 'Janitor',picture:'https://ih1.redbubble.net/image.846505055.7003/flat,750x1000,075,f.u3.jpg' },
     { name: 'Perry Cox', title: 'Doctor of Medicine' ,picture:'https://i.imgur.com/2epwyls.jpg'},
   ];
-  constructor(public server: ServerService) {
+  public MAINUSER:string;
+  constructor(public server: ServerService,public router: Router) {
      server.getAllUsers();
 
-   }
-  ngOnInit(): void {
+     //this.MAINUSER = server.allusers..uuid;
 
+   }
+  async ngOnInit(){
   }
 
 
   GetUserToRoute(uuid:string){
-
+    this.MAINUSER = uuid;
+    this.router.navigate(['/pages/users/default']);
   }
 
 }
