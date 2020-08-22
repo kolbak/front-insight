@@ -1,5 +1,5 @@
 import { ServerService, User } from './../../../server.service';
-import { Component } from '@angular/core';
+import { Component, TemplateRef  } from '@angular/core';
 import {
   NbSortDirection,
   NbSortRequest,
@@ -89,8 +89,10 @@ export class DocumentsComponent {
     private sortService: NbTreeGridSortService<FSEntry>,
     public server: ServerService, 
     private dialogService: NbDialogService) {
-    server.getAllUsers();
 
+    let userArr;
+    server.getAllUsers().subscribe(users => userArr = users);
+    console.log('userArr :>> ', userArr);
     // Создадим рандомные данные для таблицы
     for (let i = 0; i < 30; i++) {
       this.data.push({
@@ -99,7 +101,7 @@ export class DocumentsComponent {
           Номер: i,
           Название: this.makeName(),
           Дата: new showDate(),
-          Пользователи: server.allusers,
+          Пользователи: userArr,
           Действия: { toString() { return "..." } }
         },
       });
@@ -131,30 +133,34 @@ export class DocumentsComponent {
     return minWithForMultipleColumns + (nextColumnStep * index);
   }
 
-  open() {
-    this.dialogService.open(DialogShowcaseComponent, {
-      context: {
-        title: 'This is a title passed to the dialog component',
-      },
-    });
+  open(user) {
+    this.dialogService.open(ShowUserDataComponent, { context: { user: user, }, });
   }
 
 }
 
 @Component({
-  selector: 'nb-dialog-showcase',
-  template: '<h1 style="color: white">Я здесь</h1>'
+  selector: 'show-user',
+  template: `
+  <nb-card style="width: 20vw; height: 50vh">
+    <nb-card-header>
+    <!-- <img [src]="server.HOST + user.photo" alt="Работник"> -->
+
+      <nb-user size="giant" [name]="user.last_name + ' ' + user.first_name + ' ' + user.middle_name" [title]="user.role" [picture]="server.HOST + user.photo">
+      </nb-user>
+    </nb-card-header>
+    <nb-card-body>
+      Компания: {{user.company}}<br>
+      Сектор: {{user.sector}}<br>
+    </nb-card-body>
+    <nb-card-footer>
+      <a href="/pages/users/default">Подробнее</a>
+    </nb-card-footer>
+</nb-card>
+  `
 })
-export class DialogShowcaseComponent {
-  constructor(private dialogService: NbDialogService) {
+export class ShowUserDataComponent {
+  constructor(public server: ServerService) {
   }
+  user: User;
 }
-// class TableUser {
-//   constructor(user: User) {
-//     this.user = user;
-//   }
-//   user: User;
-//   toString() {
-//     return `${this.user.first_name} ${this.user.last_name}`
-//   }
-// }

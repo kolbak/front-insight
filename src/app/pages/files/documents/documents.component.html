@@ -1,21 +1,17 @@
 <!-- <label class="search-label" for="search">Поиск файлов</label> -->
-
-<button nbButton (click)="open()">Open Dialog</button>
-
 <nb-form-field>
-
     <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
     <input nbInput [nbFilterInput]="dataSource" class="search-input" type="text" placeholder="Поиск" />
     <!--вставить здесь то, что будет справа-->
 
-    <!-- <div class="actions" style="float: right;">
-        <nb-icon icon="person-add-outline" pack="eva"></nb-icon>
-        <nb-icon icon="trash-2-outline" pack="eva"></nb-icon>
-        <nb-icon icon="more-vertical-outline" pack="eva"></nb-icon>
+    <!-- <div class="actions " style="float: right; ">
+        <nb-icon icon="person-add-outline " pack="eva "></nb-icon>
+        <nb-icon icon="trash-2-outline " pack="eva "></nb-icon>
+        <nb-icon icon="more-vertical-outline " pack="eva "></nb-icon>
     </div> -->
 </nb-form-field>
 
-<!-- <input placeholder="Поиск файлов" nbInput [nbFilterInput]="dataSource" id="search" class="search-input" /> -->
+<!-- <input placeholder="Поиск файлов " nbInput [nbFilterInput]="dataSource " id="search " class="search-input " /> -->
 
 <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
     <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
@@ -26,7 +22,7 @@
             {{ customColumn }}
         </th>
         <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center;">
-            <nb-checkbox status="primary" [value]="checked" (change)="setCheckedStatus($event)"></nb-checkbox>
+            <nb-checkbox status="primary " [value]="checked" (change)="setCheckedStatus($event)"></nb-checkbox>
             {{ row.data[customColumn] }}
         </td>
     </ng-container>
@@ -36,7 +32,7 @@
             {{ dateColumn }}
         </th>
         <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center;">
-            {{ row.data[dateColumn] || "-" }}
+            {{ row.data[dateColumn] || "- " }}
         </td>
     </ng-container>
 
@@ -46,21 +42,20 @@
         </th>
 
         <td nbTreeGridCell *nbTreeGridCellDef="let row" class="users" style="align-items: center;">
-
-            <!-- <nb-user class="user" *ngFor="let user of row.data[usersColumn] " size="large" name="Это юзер" title="Юзер" onlyPicture>
+            <!-- <nb-user class="user " *ngFor="let user of row.data[usersColumn] " size="large " name="Это юзер " title="Юзер " onlyPicture>
             </nb-user> -->
-            <nb-user *ngFor="let user of server.allusers" size="large" [name]="user.first_name" [title]="user.role" [picture]=" server.HOST + user.photo " onlyPicture>
+            <nb-user *ngFor="let user of server.allusers" (click)="open(user)" size="large" [name]="user.first_name" [title]="user.role" [picture]="server.HOST + user.photo" onlyPicture>
             </nb-user>
 
-            <!-- {{row.data[usersColumn] || '-'}}-->
+            <!-- {{row.data[usersColumn] || '-'}} -->
         </td>
     </ng-container>
 
-    <ng-container [nbTreeGridColumnDef]="defaultColumn ">
-        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(defaultColumn) " *nbTreeGridHeaderCellDef>
+    <ng-container [nbTreeGridColumnDef]="defaultColumn">
+        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(defaultColumn)" *nbTreeGridHeaderCellDef>
             {{ defaultColumn }}
         </th>
-        <td nbTreeGridCell *nbTreeGridCellDef="let row " style="align-items: center; ">
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center;">
             <!-- {{ row.data[defaultColumn] || "- " }} -->
             <nb-icon icon="more-horizontal-outline" pack="eva"></nb-icon>
         </td>
