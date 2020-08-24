@@ -19,23 +19,24 @@
 
     <ng-container [nbTreeGridColumnDef]="fileNameColumn" style="width: 50vw !important;">
         <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(fileNameColumn)" *nbTreeGridHeaderCellDef style="width: 35vw !important;">
-            <nb-checkbox status="primary" [value]="checkBoxsetAll" (change)="checkAll($event)"></nb-checkbox>
+            <nb-checkbox status="primary" [checked]="checkBoxsetAll" (change)="checkAll($event)"></nb-checkbox>
 
             {{ fileNameColumn }}
         </th>
         <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center;">
-            <nb-checkbox status="primary " [value]="row.data['checkbox']" (change)="setCheckedStatus(row, $event)"></nb-checkbox>
+            <nb-checkbox status="primary " [checked]="row.data['checkbox']" (change)="setCheckedStatus(row, $event)"></nb-checkbox>
 
-            <img [src]="row.data[fileNameColumn][0]" alt="Избранное" style="margin-right: 5px;"> {{ row.data[fileNameColumn][1] }}
+            <nb-icon [icon]="row.data['favStar'] ? 'star' : 'star-outline' " [status]="row.data['favStar'] ? 'warning' : 'basic' " (click)="setStarStatus(row, $event) "></nb-icon>
+            <img [src]="row.data[fileNameColumn][0]" alt="Избранное" style="margin-right: 5px;" /> {{ row.data[fileNameColumn][1] }}
         </td>
     </ng-container>
 
     <!-- Невидимая дата для сортировки -->
-    <ng-container [nbTreeGridColumnDef]="dateColumn" style="width: 0px; padding: 0px !important">
-        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef style="width: 0px; padding: 0px !important">
+    <ng-container [nbTreeGridColumnDef]="dateColumn" style="width: 0px; padding: 0px !important;">
+        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef style="width: 0px; padding: 0px !important;">
             <!-- {{ dateColumn }} -->
         </th>
-        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center; width: 0px; padding: 0px !important">
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center; width: 0px; padding: 0px !important;">
             <!-- {{ row.data[dateColumn] || "-" }} -->
         </td>
     </ng-container>
@@ -49,14 +50,12 @@
         </td>
     </ng-container>
 
-
-
     <ng-container [nbTreeGridColumnDef]="usersColumn">
-        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(usersColumn)" *nbTreeGridHeaderCellDef>
+        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>
             {{ usersColumn }}
         </th>
-
-        <td nbTreeGridCell *nbTreeGridCellDef="let row" class="users" style="align-items: center;">
+        <!-- border-bottom: 1.5px solid lightgrey; border-top: 0px solid lightgrey; -->
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" class="users" style=" display: flex; flex-direction:row  ;height: 100%;">
             <!-- <nb-user class="user " *ngFor="let user of row.data[usersColumn] " size="large " name="Это юзер " title="Юзер " onlyPicture>
             </nb-user> -->
             <nb-user *ngFor="let user of server.allusers" (click)="open(user)" size="large" [name]="user.first_name" [title]="user.role" [picture]="server.HOST + user.photo" onlyPicture>

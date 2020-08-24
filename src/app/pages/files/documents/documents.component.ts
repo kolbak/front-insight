@@ -11,37 +11,36 @@ import {
 } from '@nebular/theme';
 import { filter, map } from 'rxjs/operators';
 
-// import {   } from '';
+import { DataGenerator } from '../../users/viewData/generateData';
 // import { User } from '../../../@core/data/users';
 // import { ServerService } from '../../../'
 
-class showDate {
-  constructor() {
-    this.date = this.randomDate(new Date(2012, 0, 1), new Date());
-  }
-  date: Date;
+// class showDate {
+//   constructor() {
+//     this.date = this.randomDate(new Date(2012, 0, 1), new Date());
+//   }
+//   date: Date;
 
-  randomDate(start: Date, end: Date) {
-    return new Date(start.getTime()
-      + Math.random() * (end.getTime() - start.getTime()));
-  }
+//   randomDate(start: Date, end: Date) {
+//     return new Date(start.getTime()
+//       + Math.random() * (end.getTime() - start.getTime()));
+//   }
 
-  compare(d2: showDate) {
-    return this.date > d2.date ? 1 : this.date < d2.date ? -1 : 0;
-  }
+//   compare(d2: showDate) {
+//     return this.date > d2.date ? 1 : this.date < d2.date ? -1 : 0;
+//   }
 
-  toString() { return new Intl.DateTimeFormat('ru').format(this.date) }
-}
+//   toString() { return new Intl.DateTimeFormat('ru').format(this.date) }
+// }
 
 interface TreeNode<T> {
   data: T;
-  children?: TreeNode<T>[];
-  expanded?: boolean;
 }
 
 interface FSEntry {
   id: Number;
   checkbox: boolean;
+  favStar: boolean;
   Номер: Number;
   Название: [string, string];
   Дата: Date;
@@ -57,8 +56,7 @@ interface FSEntry {
 })
 export class DocumentsComponent implements OnInit {
 
-  // Настройки чек-бокса внутри первой колонки
-  //checked: boolean = false;
+  //-----------------------------------Чекбокс
   setCheckedStatus(row, $checked) {
     //this.checked = checked.target.checked;
     row.data['checkbox'] = $checked.target.checked;
@@ -74,7 +72,10 @@ export class DocumentsComponent implements OnInit {
     this.checkBoxsetAll = $checked.target.checked;
     this.dataSource.setData(this.data);
   }
-
+  //-----------------------------------Звёздочка
+  setStarStatus(row, $checked) {
+    row.data['favStar'] = !row.data['favStar'];
+  }
 
   // Настройки таблицы
   fileNameColumn = 'Название';
@@ -89,20 +90,15 @@ export class DocumentsComponent implements OnInit {
   sortColumn: string;
   sortDirection: NbSortDirection = NbSortDirection.NONE;
 
-  makeName() {
-    var text = "file_";
-    var possible = "abcdefghijklmnopqrstuvwxyz";
+  // makeName() {
+  //   var text = "file_";
+  //   var possible = "abcdefghijklmnopqrstuvwxyz";
 
-    for (var i = 0; i < 7; i++)
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
+  //   for (var i = 0; i < 7; i++)
+  //     text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-    return text;
-  }
-
-  randomDate(start: Date, end: Date) {
-    return new Date(start.getTime()
-      + Math.random() * (end.getTime() - start.getTime()));
-  }
+  //   return text;
+  // }
 
 
   constructor(
@@ -116,8 +112,8 @@ export class DocumentsComponent implements OnInit {
     console.log('userArr :>> ', userArr);
     // Создадим рандомные данные для таблицы
     for (let i = 0; i < 30; i++) {
-      tableDate = this.randomDate(new Date(2012, 0, 1), new Date());
-      fileName = this.makeName() + '.pdf';
+      tableDate = DataGenerator.randomDate(new Date(2012, 0, 1), new Date());
+      fileName = DataGenerator.makeName('file_', ['pdf', 'ppt', 'psd', 'doc', 'py', 'json']);
       fileIconSrc = '../../../../assets/images/ext_icons/ext_icon_';
 
       if (fileName.split('.').length > 0 && extensions.includes(fileName.split('.')[fileName.split('.').length - 1].toLocaleUpperCase())) {
@@ -130,6 +126,7 @@ export class DocumentsComponent implements OnInit {
         data: {
           id: i,
           checkbox: false,
+          favStar: false,
           Номер: i,
           Название: [fileIconSrc, fileName],
           Дата: tableDate,
@@ -189,7 +186,9 @@ export class DocumentsComponent implements OnInit {
         filter(({ tag }) => tag === 'my-context-menu'),
         map(({ item: { title } }) => title),
       )
-      .subscribe(title => {console.log(title); this.window.alert(`${title} was clicked!`)});
+      .subscribe(title => {
+        this.window.alert(`${title} was clicked!`)
+      });
   }
 
 }
