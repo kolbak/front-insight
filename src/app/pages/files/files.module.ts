@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NbMenuModule, NbButtonModule, NbTreeGridModule, NbProgressBarModule, NbUserModule, NbIconModule, NbCardModule, NbCheckboxModule, NbInputModule, NbFormFieldModule } from '@nebular/theme';
+import { NbContextMenuModule, NbMenuModule, NbButtonModule, NbTreeGridModule, NbProgressBarModule, NbUserModule, NbIconModule, NbCardModule, NbCheckboxModule, NbInputModule, NbFormFieldModule } from '@nebular/theme';
 import { ThemeModule } from '../../@theme/theme.module';
 
 import { DocumentsComponent, ShowUserDataComponent } from './documents/documents.component';
@@ -20,7 +20,8 @@ import { AllFilesComponent } from './all-files/all-files.component'
         NbCheckboxModule,
         NbUserModule,
         NbInputModule, 
-        NbFormFieldModule
+        NbFormFieldModule,
+        NbContextMenuModule
     ],
     declarations: [
         DocumentsComponent,

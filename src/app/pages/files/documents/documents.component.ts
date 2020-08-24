@@ -1,14 +1,17 @@
 import { ServerService, User } from './../../../server.service';
-import { Component, TemplateRef  } from '@angular/core';
+import { Component, Inject, OnInit  } from '@angular/core';
 import {
   NbSortDirection,
   NbSortRequest,
   NbTreeGridDataSource,
   NbTreeGridDataSourceBuilder,
-  NbTreeGridSortService,
-  NbDialogService
+  NbDialogService,
+  NB_WINDOW,
+  NbMenuService
 } from '@nebular/theme';
+import { filter, map } from 'rxjs/operators';
 
+// import {   } from '';
 // import { User } from '../../../@core/data/users';
 // import { ServerService } from '../../../'
 
@@ -21,9 +24,6 @@ class showDate {
   randomDate(start: Date, end: Date) {
     return new Date(start.getTime()
       + Math.random() * (end.getTime() - start.getTime()));
-  }
-  sort() {
-
   }
 
   compare(d2: showDate) {
@@ -41,11 +41,13 @@ interface TreeNode<T> {
 
 interface FSEntry {
   id: Number;
+  checkbox: boolean;
   Номер: Number;
-  Название: string;
-  Дата: showDate;
+  Название: [string, string];
+  Дата: Date;
+  tableDate: string;
   Пользователи: User[];
-  Действия: Object;
+  Действия: string;
 }
 
 @Component({
@@ -53,21 +55,34 @@ interface FSEntry {
   templateUrl: './documents.component.html',
   styleUrls: ['./documents.component.scss']
 })
-export class DocumentsComponent {
+export class DocumentsComponent implements OnInit {
 
   // Настройки чек-бокса внутри первой колонки
-  checked: boolean = false;
-  setCheckedStatus(checked) {
-    this.checked = checked.target.checked;
+  //checked: boolean = false;
+  setCheckedStatus(row, $checked) {
+    //this.checked = checked.target.checked;
+    row.data['checkbox'] = $checked.target.checked;
+    this.checkBoxsetAll = false;
+  }
+  // Настройка чекбокса для выделения всего
+  checkBoxsetAll: boolean = false;
+  checkAll($checked) 
+  {
+    for (const iterator of this.data) {
+      iterator.data.checkbox = $checked.target.checked;
+    }
+    this.checkBoxsetAll = $checked.target.checked;
+    this.dataSource.setData(this.data);
   }
 
 
   // Настройки таблицы
-  customColumn = 'Название';
-  dateColumn = 'Дата';
+  fileNameColumn = 'Название';
+  dateColumn = 'tableDate';
+  visibleDateColumn = 'Дата';
   usersColumn = 'Пользователи';
-  defaultColumn = 'Действия';
-  allColumns = [this.customColumn, this.dateColumn, this.usersColumn, this.defaultColumn];
+  actionColumn = 'Действия';
+  allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.usersColumn, this.actionColumn];
 
   dataSource: NbTreeGridDataSource<FSEntry>;
 
@@ -84,34 +99,49 @@ export class DocumentsComponent {
     return text;
   }
 
+  randomDate(start: Date, end: Date) {
+    return new Date(start.getTime()
+      + Math.random() * (end.getTime() - start.getTime()));
+  }
+
+
   constructor(
     private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>,
-    private sortService: NbTreeGridSortService<FSEntry>,
     public server: ServerService, 
-    private dialogService: NbDialogService) {
+    private dialogService: NbDialogService, 
+    private nbMenuService: NbMenuService, @Inject(NB_WINDOW) private window) {
 
-    let userArr;
+    let userArr, tableDate: Date, fileName: string, fileIconSrc: string, ext:string, extensions: string = ['PDF', 'PPT', 'PSD'].join('');
     server.getAllUsers().subscribe(users => userArr = users);
     console.log('userArr :>> ', userArr);
     // Создадим рандомные данные для таблицы
     for (let i = 0; i < 30; i++) {
+      tableDate = this.randomDate(new Date(2012, 0, 1), new Date());
+      fileName = this.makeName() + '.pdf';
+      fileIconSrc = '../../../../assets/images/ext_icons/ext_icon_';
+
+      if (fileName.split('.').length > 0 && extensions.includes(fileName.split('.')[fileName.split('.').length - 1].toLocaleUpperCase())) {
+        fileIconSrc += fileName.split('.')[fileName.split('.').length - 1].toLocaleUpperCase() + '.svg';
+      } else {
+        fileIconSrc += 'unknown.svg';
+      }
+
       this.data.push({
         data: {
           id: i,
+          checkbox: false,
           Номер: i,
-          Название: this.makeName(),
-          Дата: new showDate(),
+          Название: [fileIconSrc, fileName],
+          Дата: tableDate,
+          tableDate: new Intl.DateTimeFormat('ru').format(tableDate),
           Пользователи: userArr,
-          Действия: { toString() { return "..." } }
+          Действия: ""
         },
       });
 
     }
     this.dataSource = this.dataSourceBuilder.create(this.data);
   }
-
-  // sortService.comparator(){}
-
 
   updateSort(sortRequest: NbSortRequest): void {
     this.sortColumn = sortRequest.column;
@@ -127,6 +157,8 @@ export class DocumentsComponent {
 
   private data: TreeNode<FSEntry>[] = [];
 
+
+
   getShowOn(index: number) {
     const minWithForMultipleColumns = 400;
     const nextColumnStep = 100;
@@ -135,6 +167,29 @@ export class DocumentsComponent {
 
   open(user) {
     this.dialogService.open(ShowUserDataComponent, { context: { user: user, }, });
+  }
+
+  deleteHighlightFiles()
+  {
+    this.data = this.data.filter(d => !d.data.checkbox);
+    this.dataSource.setData(this.data);
+    this.checkBoxsetAll = false;
+  }
+
+  //----------------------------------------Меню действий
+  items = [
+    { title: 'Скачать' },
+    { title: 'Удалить' }
+  ];
+  // Здесь какая-то менюха с файлами
+  // + надо разобарться, как удалять.
+  ngOnInit() {
+    this.nbMenuService.onItemClick()
+      .pipe(
+        filter(({ tag }) => tag === 'my-context-menu'),
+        map(({ item: { title } }) => title),
+      )
+      .subscribe(title => {console.log(title); this.window.alert(`${title} was clicked!`)});
   }
 
 }
