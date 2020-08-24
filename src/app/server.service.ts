@@ -1,6 +1,16 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
 
+export class Screenshot {
+  link: string;
+  name: string;
+  size: number;
+  timestamp: string;
+}
+export class Screenshots {
+  files: Screenshot[];
+}
 export class User {
   uuid: string;
   company: string;
@@ -23,29 +33,27 @@ export class User {
   providedIn: "root",
 })
 export class ServerService {
+  private msg = new BehaviorSubject<string>(
+    "a865b9ef-f553-48e3-8eb3-b7f76c6a8d4f"
+  );
+  telecast = this.msg.asObservable();
   allusers: User[];
   public HOST = "http://localhost:4200/api";
   static HOST: string = "http://localhost:4200/api";
-  public firstUser: User;
   constructor(private http: HttpClient) {}
 
-getAllUsers() {
-     const got = this.http.get(this.HOST + "/users");
+  getAllUsers() {
+    const got = this.http.get(this.HOST + "/users");
     got.subscribe((response: User[]) => {
       this.allusers = response;
     });
     return got;
   }
+  editUuid(uuid) {
+    this.msg.next(uuid);
+  }
 
-  async getFisrtUser(force: false = false) {
-    if (this.allusers && !force) {
-      return this.allusers[0]
-    } else {
-    this.http.get(this.HOST + "/users").subscribe((response: User[]) => {
-        this.firstUser = response[0];
-        return this.firstUser;
-      });
-    }
-
+  getScreenShotsForUser(uuid: string) : Observable<Screenshots> {
+    return this.http.get<Screenshots>(this.HOST + "/user/screenshots?uuid=" + uuid);
   }
 }

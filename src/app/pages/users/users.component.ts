@@ -32,12 +32,13 @@ export class UsersComponent implements OnInit {
      //this.MAINUSER = server.allusers..uuid;
 
    }
-  async ngOnInit(){
+  ngOnInit(){
   }
 
 
   GetUserToRoute(uuid:string){
     this.MAINUSER = uuid;
+    this.server.editUuid(uuid);
     this.router.navigate(['/pages/users/default']);
   }
 
