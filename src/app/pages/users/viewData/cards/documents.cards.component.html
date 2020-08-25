@@ -5,9 +5,15 @@
             {{card.name}}
         </nb-card-header>
         <nb-card-body>
-            <p>{{card.timestamp}}</p>
-            <p>{{card.size}}</p>
+          <a target="_blank"  [href]="server.HOST+card.link">
+          <img  style="border-radius: 8px;height: 200px;width: auto;" [src]="server.HOST+card.link">
+        </a>
+
         </nb-card-body>
+        <nb-card-footer>
+          <p>Дата: {{card.timestamp}}</p>
+          <p>Размер: {{card.size}} Кб</p>
+        </nb-card-footer>
     </nb-card>
     <!-- Сгенерированная данные -->
     <nb-card *ngFor="let card of dataArr">

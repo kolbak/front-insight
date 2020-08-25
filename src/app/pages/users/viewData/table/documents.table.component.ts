@@ -56,7 +56,7 @@ export class DocumentsTableComponent implements OnInit{
   visibleDateColumn = 'Дата';
   usersColumn = 'Владелец';
   actionColumn = 'Действия';
-  
+
   allColumns = [this.fileNameColumn, this.dateColumn, this.volumeColumn, this.visibleDateColumn, this.usersColumn, this.viewedColumn, this.actionColumn];
 
 
@@ -77,7 +77,7 @@ export class DocumentsTableComponent implements OnInit{
         this.data.push({
           data:{
             checkbox: false,
-            Название: this.dataArr[i].name, 
+            Название: this.dataArr[i].name,
             Размер:   this.dataArr[i].size,
             Дата:     this.dataArr[i].date,
             tableDate: new Intl.DateTimeFormat('ru').format(this.dataArr[i].date),
@@ -93,7 +93,7 @@ export class DocumentsTableComponent implements OnInit{
           this.data.push({
             data:{
               checkbox: false,
-              Название: screens.files[i].name, 
+              Название: screens.files[i].name,
               Размер:   `${screens.files[i].size}кб`,
               Дата:   new Date(screens.files[i].timestamp),
               tableDate: screens.files[i].timestamp,
@@ -126,5 +126,5 @@ export class DocumentsTableComponent implements OnInit{
     const nextColumnStep = 100;
     return minWithForMultipleColumns + (nextColumnStep * index);
   }
-  
+
 }

@@ -1,6 +1,6 @@
 import { Input, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Screenshot, Screenshots } from '../../../../server.service';
+import { ServerService, Screenshot, Screenshots } from '../../../../server.service';
 
 
 import { FileInfo } from '../data&query/data';
@@ -12,6 +12,8 @@ import { FileInfo } from '../data&query/data';
 })
 export class DocumentsCardsComponent implements OnInit {
 
+  constructor(public server : ServerService){
+  }
   @Input() dataArr: FileInfo[];
   @Input() screenArr: Observable<Screenshots>;
   screens: Screenshot[] = [];
