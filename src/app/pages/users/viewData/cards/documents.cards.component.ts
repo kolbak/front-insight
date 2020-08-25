@@ -1,4 +1,7 @@
 import { Input, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ServerService, Screenshot, Screenshots } from '../../../../server.service';
+
 
 import { FileInfo } from '../data&query/data';
 
@@ -9,22 +12,15 @@ import { FileInfo } from '../data&query/data';
 })
 export class DocumentsCardsComponent implements OnInit {
 
+  constructor(public server : ServerService){
+  }
   @Input() dataArr: FileInfo[];
+  @Input() screenArr: Observable<Screenshots>;
+  screens: Screenshot[] = [];
 
-  dataArrBy4: FileInfo[][];
-
-  constructor() { }
-
-  // Разделяю dataArr по 4
-  // При масштабировании по 2
   ngOnInit() {
-    this.dataArrBy4 = [];
-
-    for (let i = 0, j = 0; i < this.dataArr.length; i++) {
-      if (i % 4 == 0) { 
-        this.dataArrBy4[++j] = [];
-      }
-      this.dataArrBy4[j].push(this.dataArr[i]);
-    }
+    this.screenArr.subscribe(files => {
+      this.screens.push(...files.files);
+    })
   }
 }

@@ -14,22 +14,81 @@
     <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
     <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
 
-    <ng-container [nbTreeGridColumnDef]="customColumn">
-        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(customColumn)" *nbTreeGridHeaderCellDef>
-            {{ customColumn }}
+    <ng-container [nbTreeGridColumnDef]="fileNameColumn">
+        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(fileNameColumn)" *nbTreeGridHeaderCellDef style="width: 20vw !important;">
+            <nb-checkbox status="primary" [checked]="checkBoxsetAll" (change)="checkAll($event)"></nb-checkbox>
+
+            {{ fileNameColumn }}
         </th>
         <td nbTreeGridCell *nbTreeGridCellDef="let row">
-            <nb-fs-icon-1 [kind]="row.data.kind" [expanded]="row.expanded"></nb-fs-icon-1>
-            {{ row.data[customColumn] }}
+            <nb-checkbox status="primary " [checked]="row.data['checkbox']" (change)="setCheckedStatus(row, $event)"></nb-checkbox>
+
+            {{ row.data[fileNameColumn] }}
         </td>
     </ng-container>
 
-    <ng-container *ngFor="let column of defaultColumns; let index = index" [nbTreeGridColumnDef]="column" [showOn]="getShowOn(index)">
-        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
-            {{ column }}
+    <!-- Невидимая дата для сортировки -->
+    <ng-container [nbTreeGridColumnDef]="dateColumn" style="width: 0px; padding: 0px !important;">
+        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef style="width: 0px; padding: 0px !important;">
+            <!-- {{ dateColumn }} -->
+        </th>
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center; width: 0px; padding: 0px !important;">
+            <!-- {{ row.data[dateColumn] || "-" }} -->
+        </td>
+    </ng-container>
+
+    <ng-container [nbTreeGridColumnDef]="volumeColumn">
+        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(volumeColumn)" *nbTreeGridHeaderCellDef>
+
+            {{ volumeColumn }}
         </th>
         <td nbTreeGridCell *nbTreeGridCellDef="let row">
-            {{ row.data[column] || "-" }}
+
+            {{ row.data[volumeColumn] }}
+        </td>
+    </ng-container>
+
+    <ng-container [nbTreeGridColumnDef]="visibleDateColumn">
+        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(visibleDateColumn)" *nbTreeGridHeaderCellDef>
+
+            {{ visibleDateColumn }}
+        </th>
+        <td nbTreeGridCell *nbTreeGridCellDef="let row">
+
+            {{ row.data[dateColumn] }}
+        </td>
+    </ng-container>
+
+    <ng-container [nbTreeGridColumnDef]="usersColumn">
+        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(usersColumn)" *nbTreeGridHeaderCellDef>
+            {{ usersColumn }}
+        </th>
+        <td nbTreeGridCell *nbTreeGridCellDef="let row">
+        </td>
+    </ng-container>
+
+    <ng-container [nbTreeGridColumnDef]="viewedColumn">
+        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(viewedColumn)" *nbTreeGridHeaderCellDef>
+
+            {{ viewedColumn }}
+        </th>
+        <td nbTreeGridCell *nbTreeGridCellDef="let row">
+
+            <nb-icon [icon]="'eye-outline'" [status]="row.data[viewedColumn] ? 'info' : 'basic' "></nb-icon>
+
+            <!-- {{ row.data[viewedColumn] }} -->
+        </td>
+    </ng-container>
+
+    <ng-container [nbTreeGridColumnDef]="actionColumn">
+        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef style="text-align: center;">
+            {{ actionColumn }}
+        </th>
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="text-align: center;">
+            <!-- {{ row.data[actionColumn] || "- " }} -->
+
+            <nb-icon icon="edit-outline" pack="eva" nbContextMenuTrigger="hover" nbContextMenuTag="my-context-menu"></nb-icon>
+            <!-- [nbContextMenu]="items" -->
         </td>
     </ng-container>
 </table>

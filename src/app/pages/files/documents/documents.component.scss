@@ -55,9 +55,6 @@ button[nbTreeGridRowToggle] {
 @import "../../../@theme/styles/themes";
 @include nb-install-component() {
     div.users {
-        // display: grid;
-        // grid-template-columns: repeat(5, 1fr);
-        // justify-items: center;
         display: flex;
         flex-direction: row;
     }

@@ -14,7 +14,9 @@ import { ProxyComponent } from './proxy/proxy.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { KeylogComponent } from './keylog/keylog.component';
 import { NgApexchartsModule } from "ng-apexcharts";
-import { DocumentsTableComponent, FsIcon1Component } from './viewData/table/documents.table.component';
+
+import { DocumentsTableComponent } from './viewData/table/documents.table.component';
+
 import { DocumentsCardsComponent } from './viewData/cards/documents.cards.component';
 import { Chart10Component } from './default/charts/chart10/chart10.component';
 import { Chart11Component } from './default/charts/chart11/chart11.component';
