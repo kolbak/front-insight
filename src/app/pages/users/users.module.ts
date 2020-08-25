@@ -13,15 +13,15 @@ import { DocumentsComponent } from './documents/documents.component';
 import { ProxyComponent } from './proxy/proxy.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { KeylogComponent } from './keylog/keylog.component';
-
-// import { Chart1Component } from '../dashboard/dashboard.module';
-// import { Chart5Component } from '../dashboard/dashboard.module';
-
+import { NgApexchartsModule } from "ng-apexcharts";
 import { DocumentsTableComponent, FsIcon1Component } from './viewData/table/documents.table.component';
 import { DocumentsCardsComponent } from './viewData/cards/documents.cards.component';
+import { Chart10Component } from './default/charts/chart10/chart10.component';
+import { Chart11Component } from './default/charts/chart11/chart11.component';
 
 @NgModule({
   imports: [
+    NgApexchartsModule,
     NbAccordionModule,
     NbListModule,
     NbStepperModule,
@@ -42,9 +42,8 @@ import { DocumentsCardsComponent } from './viewData/cards/documents.cards.compon
     NbUserModule,
     NbTreeGridModule,
     NbCheckboxModule,
-    //     Chart1Component,
-    // Chart5Component
   ],
+
   declarations: [
     DefaultComponent,
     UsersComponent,
@@ -55,8 +54,9 @@ import { DocumentsCardsComponent } from './viewData/cards/documents.cards.compon
     ProxyComponent,
     TerminalComponent,
     KeylogComponent,
-
-    DocumentsTableComponent, DocumentsCardsComponent, FsIcon1Component
+    Chart10Component,
+    Chart11Component,
+    DocumentsTableComponent, DocumentsCardsComponent,
   ],
   bootstrap: [DocumentsComponent]
 })
