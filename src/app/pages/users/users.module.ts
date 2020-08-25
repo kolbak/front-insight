@@ -17,7 +17,7 @@ import { KeylogComponent } from './keylog/keylog.component';
 // import { Chart1Component } from '../dashboard/dashboard.module';
 // import { Chart5Component } from '../dashboard/dashboard.module';
 
-import { DocumentsTableComponent, FsIcon1Component } from './viewData/table/documents.table.component';
+import { DocumentsTableComponent } from './viewData/table/documents.table.component';
 import { DocumentsCardsComponent } from './viewData/cards/documents.cards.component';
 
 @NgModule({
@@ -56,7 +56,7 @@ import { DocumentsCardsComponent } from './viewData/cards/documents.cards.compon
     TerminalComponent,
     KeylogComponent,
 
-    DocumentsTableComponent, DocumentsCardsComponent, FsIcon1Component
+    DocumentsTableComponent, DocumentsCardsComponent
   ],
   bootstrap: [DocumentsComponent]
 })

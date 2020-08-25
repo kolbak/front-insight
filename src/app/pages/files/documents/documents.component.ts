@@ -12,26 +12,7 @@ import {
 import { filter, map } from 'rxjs/operators';
 
 import { DataGenerator } from '../../users/viewData/generateData';
-// import { User } from '../../../@core/data/users';
-// import { ServerService } from '../../../'
 
-// class showDate {
-//   constructor() {
-//     this.date = this.randomDate(new Date(2012, 0, 1), new Date());
-//   }
-//   date: Date;
-
-//   randomDate(start: Date, end: Date) {
-//     return new Date(start.getTime()
-//       + Math.random() * (end.getTime() - start.getTime()));
-//   }
-
-//   compare(d2: showDate) {
-//     return this.date > d2.date ? 1 : this.date < d2.date ? -1 : 0;
-//   }
-
-//   toString() { return new Intl.DateTimeFormat('ru').format(this.date) }
-// }
 
 interface TreeNode<T> {
   data: T;
@@ -89,16 +70,6 @@ export class DocumentsComponent implements OnInit {
 
   sortColumn: string;
   sortDirection: NbSortDirection = NbSortDirection.NONE;
-
-  // makeName() {
-  //   var text = "file_";
-  //   var possible = "abcdefghijklmnopqrstuvwxyz";
-
-  //   for (var i = 0; i < 7; i++)
-  //     text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-  //   return text;
-  // }
 
 
   constructor(

@@ -18,12 +18,18 @@ export class ScreenshotsComponent implements OnInit {
 
   screenshots : Observable<Screenshots>;
   data: FileInfo[] = [];
+  // screens: Screenshots;
+
   constructor(private server: ServerService) {
     this.data.push(...DataGenerator.createFileInfo(40, "screen_", ["png", "jpeg", "bmp", "gif"]));
   }
 
 ngOnInit(){
-this.server.telecast.subscribe((resp )=>{console.log('resp :>> ', resp); this.screenshots= this.server.getScreenShotsForUser(resp)})
+  this.server.telecast.subscribe((resp )=>{
+    this.screenshots = this.server.getScreenShotsForUser(resp);
+    // this.screenshots.subscribe(files => this.screens = files);
+    // console.log(this.screens);
+  })
 }
   viewTable: boolean = true;
   // Изменение отображения

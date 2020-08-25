@@ -5,14 +5,14 @@
     </div>
     <div *ngIf="viewTable;else viewCard">
 
-   {{screenshots |async | json}}
-        <documents-table [dataArr]="data"></documents-table>
+        <!-- {{screenshots |async | json}} -->
+        <documents-table [dataArr]="[]" [screenArr]="screenshots"></documents-table>
     </div>
 
     <ng-template #viewCard>
         <div>
 
-            <documents-cards [dataArr]="data"></documents-cards>
+            <documents-cards [dataArr]="[]" [screenArr]="screenshots"></documents-cards>
         </div>
     </ng-template>
 

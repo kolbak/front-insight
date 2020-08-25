@@ -1,19 +1,15 @@
-
-<!-- Нужно генерировать вот такую конструцию -->
-<!-- 
-    <div class="row" *ngFor="let dataCards of dataArrBy4">
-        <nb-card class="col-sm-3" *ngFor="let card of dataCards">
-            <h2>{{card.name}}</h2>
-            <p>{{card.date}}</p>
-            <p>{{card.size}}</p>
-
-        </nb-card>
-    
-    </div> 
-Это вариант с разбиенимем массива
--->
-
 <div class="row grid-show">
+    <!-- Данные с сервера -->
+    <nb-card *ngFor="let card of screens">
+        <nb-card-header>
+            {{card.name}}
+        </nb-card-header>
+        <nb-card-body>
+            <p>{{card.timestamp}}</p>
+            <p>{{card.size}}</p>
+        </nb-card-body>
+    </nb-card>
+    <!-- Сгенерированная данные -->
     <nb-card *ngFor="let card of dataArr">
         <nb-card-header>
             {{card.name}}
