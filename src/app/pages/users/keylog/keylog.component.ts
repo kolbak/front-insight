@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ServerService, Keylog } from './../../../server.service';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 
+import { from } from 'rxjs';
 @Component({
   selector: 'ngx-keylog',
   templateUrl: './keylog.component.html',
@@ -8,14 +11,15 @@ import { Component, OnInit } from '@angular/core';
 export class KeylogComponent implements OnInit {
 
   keyLogger: string[] = [];
+  media;
 
-  constructor() { }
-
-  ngOnInit(): void {
-    for (let i = 0; i < 10; i++) {
-      this.keyLogger.push(`${i}`);
-    }
-    // Здесь должна быть логика запроса на сервер
+  constructor(private server : ServerService) { }
+  ngOnInit(){
+    this.server.telecast.subscribe((resp )=>{
+      this.media = this.server.getKeylogForUser(resp).pipe(this.server.decodefrom64());
+      // this.screenshots.subscribe(files => this.screens = files);
+      // console.log(this.screens);
+    })
   }
 
 }

@@ -1,6 +1,6 @@
 import { Input, Component, OnInit, Inject } from '@angular/core';
 
-import { Screenshots } from '../../../../server.service';
+import { Media } from '../../../../server.service';
 import { FileInfo } from '../data&query/data';
 
 import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NB_WINDOW, NbMenuService } from '@nebular/theme';
@@ -46,7 +46,7 @@ export class DocumentsTableComponent implements OnInit{
 
 
   @Input() dataArr: FileInfo[];
-  @Input() screenArr: Observable<Screenshots>;
+  @Input() screenArr: Observable<Media>;
 
   // Настройки таблицы
   fileNameColumn = 'Название';

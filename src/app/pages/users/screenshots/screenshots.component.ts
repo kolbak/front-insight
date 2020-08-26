@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { ServerService, Screenshot, Screenshots } from './../../../server.service';
+import { ServerService, Screenshot, Media } from './../../../server.service';
 import { Server } from 'http';
 import { Component, OnInit } from '@angular/core';
 
@@ -16,7 +16,7 @@ import { JsonPipe } from '@angular/common';
 })
 export class ScreenshotsComponent implements OnInit {
 
-  screenshots : Observable<Screenshots>;
+  media : Observable<Media>;
   data: FileInfo[] = [];
   // screens: Screenshots;
 
@@ -26,7 +26,7 @@ export class ScreenshotsComponent implements OnInit {
 
 ngOnInit(){
   this.server.telecast.subscribe((resp )=>{
-    this.screenshots = this.server.getScreenShotsForUser(resp);
+    this.media = this.server.getScreenShotsForUser(resp);
     // this.screenshots.subscribe(files => this.screens = files);
     // console.log(this.screens);
   })

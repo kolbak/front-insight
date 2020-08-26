@@ -1,6 +1,6 @@
 import { Input, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ServerService, Screenshot, Screenshots } from '../../../../server.service';
+import { ServerService, Screenshot, Media } from '../../../../server.service';
 
 
 import { FileInfo } from '../data&query/data';
@@ -15,7 +15,7 @@ export class DocumentsCardsComponent implements OnInit {
   constructor(public server : ServerService){
   }
   @Input() dataArr: FileInfo[];
-  @Input() screenArr: Observable<Screenshots>;
+  @Input() screenArr: Observable<Media>;
   screens: Screenshot[] = [];
 
   ngOnInit() {

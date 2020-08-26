@@ -6,13 +6,13 @@
 
     <div *ngIf="viewTable;else viewCard">
 
-        <documents-table [dataArr]="data"></documents-table>
+        <documents-table [dataArr]="[]" [screenArr]="media"></documents-table>
     </div>
 
     <ng-template #viewCard>
         <div>
 
-            <documents-cards [dataArr]="data"></documents-cards>
+            <documents-cards [dataArr]="[]" [screenArr]="media"></documents-cards>
         </div>
     </ng-template>
 
