@@ -5,14 +5,14 @@
             {{card.name}}
         </nb-card-header>
         <nb-card-body>
-          <a target="_blank"  [href]="server.HOST+card.link">
-          <img  style="border-radius: 8px;height: 200px;width: auto;" [src]="server.HOST+card.link">
-        </a>
+            <!-- <a target="_blank"  [href]="server.HOST+card.link"> -->
+            <img (click)="viewCloser(card.link)" style="border-radius: 8px;height: 200px;width: auto;" [src]="server.HOST+card.link">
+            <!-- </a> -->
 
         </nb-card-body>
         <nb-card-footer>
-          <p>Дата: {{card.timestamp}}</p>
-          <p>Размер: {{card.size}} Кб</p>
+            <p>Дата: {{card.timestamp}}</p>
+            <p>Размер: {{card.size}} Кб</p>
         </nb-card-footer>
     </nb-card>
     <!-- Сгенерированная данные -->

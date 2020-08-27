@@ -17,7 +17,7 @@ import { NgApexchartsModule } from "ng-apexcharts";
 
 import { DocumentsTableComponent } from './viewData/table/documents.table.component';
 
-import { DocumentsCardsComponent } from './viewData/cards/documents.cards.component';
+import { DocumentsCardsComponent, ShowPicture } from './viewData/cards/documents.cards.component';
 import { Chart10Component } from './default/charts/chart10/chart10.component';
 import { Chart11Component } from './default/charts/chart11/chart11.component';
 
@@ -59,6 +59,7 @@ import { Chart11Component } from './default/charts/chart11/chart11.component';
     Chart10Component,
     Chart11Component,
     DocumentsTableComponent, DocumentsCardsComponent,
+    ShowPicture
   ],
   bootstrap: [DocumentsComponent]
 })

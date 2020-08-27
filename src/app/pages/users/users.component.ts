@@ -40,13 +40,8 @@ export class UsersComponent implements OnInit {
   public MAINUSER:string;
   constructor(public server: ServerService,public router: Router) {
      server.getAllUsers();
-
-    //  this.MAINUSER = server.allusers[0].uuid;
    }
-  ngOnInit(){
-    // this.MAINUSER = this.server.allusers[0].uuid;
-    // console.log('this.MAINUSER :>> ', this.MAINUSER);
-  }
+  ngOnInit(){}
 
   GetUserToRoute(uuid:string){
     if (this.firstTime && uuid == this.server.allusers[0].uuid) {
@@ -56,6 +51,9 @@ export class UsersComponent implements OnInit {
     this.MAINUSER = uuid;
     this.server.editUuid(uuid);
     this.router.navigate(['/pages/users/default']);
+    this.menu.forEach(element => {
+      element.active = false;
+    });
   }
 
   sectionClick(section)

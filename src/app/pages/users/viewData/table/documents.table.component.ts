@@ -3,14 +3,16 @@ import { Input, Component, OnInit, Inject } from '@angular/core';
 import { Media } from '../../../../server.service';
 import { FileInfo } from '../data&query/data';
 
-import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NB_WINDOW, NbMenuService } from '@nebular/theme';
+import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NB_WINDOW, NbMenuService, NbDialogService } from '@nebular/theme';
 import { Observable } from 'rxjs';
+import { ShowPicture } from '../cards/documents.cards.component';
 
 interface TreeNode<T> {
   data: T;
 }
 
 interface FSEntry {
+  link: string;
   checkbox: boolean;
   Название: string;
   Размер: string;
@@ -68,7 +70,7 @@ export class DocumentsTableComponent implements OnInit{
   private data: TreeNode<FSEntry>[] = [];
 
   constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>,
-    private nbMenuService: NbMenuService, @Inject(NB_WINDOW) private window) {  }
+    private nbMenuService: NbMenuService, @Inject(NB_WINDOW) private window, private dialogService: NbDialogService) {  }
 
   // Получаем данные
   ngOnInit() {
@@ -76,12 +78,13 @@ export class DocumentsTableComponent implements OnInit{
       for (let i = 0; i < this.dataArr.length; i++) {
         this.data.push({
           data:{
+            link: '',
             checkbox: false,
             Название: this.dataArr[i].name,
             Размер:   this.dataArr[i].size,
             Дата:     this.dataArr[i].date,
             tableDate: new Intl.DateTimeFormat('ru').format(this.dataArr[i].date),
-            Просмотренные: Math.random()*2 > 1 ? true : false,
+            Просмотренные: false, //Math.random()*2 > 1 ? true : false,
             Владелец: '',
             Действия: ''
         }});
@@ -92,12 +95,13 @@ export class DocumentsTableComponent implements OnInit{
         for (let i = 0; i < screens.files.length; i++) {
           this.data.push({
             data:{
+              link: screens.files[i].link,
               checkbox: false,
               Название: screens.files[i].name,
               Размер:   `${screens.files[i].size}кб`,
               Дата:   new Date(screens.files[i].timestamp),
               tableDate: screens.files[i].timestamp,
-              Просмотренные: Math.random()*2 > 1 ? true : false,
+              Просмотренные: false,//Math.random()*2 > 1 ? true : false,
               Владелец: '',
               Действия: ''
           }});
@@ -127,4 +131,7 @@ export class DocumentsTableComponent implements OnInit{
     return minWithForMultipleColumns + (nextColumnStep * index);
   }
 
+  viewCloser(link) {
+    this.dialogService.open(ShowPicture, { context: { link: link, }, });
+  }
 }

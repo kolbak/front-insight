@@ -17,7 +17,7 @@ import {
 
   NbInputModule,
   NbCalendarModule, NbCalendarRangeModule,
-  NbCardModule, NbDatepickerModule
+  NbCardModule, NbDatepickerModule, NbFormFieldModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';
@@ -61,7 +61,7 @@ const NB_MODULES = [
   
   NbInputModule,
   NbCalendarModule,NbCalendarRangeModule,
-  NbCardModule, NbDatepickerModule
+  NbCardModule, NbDatepickerModule, NbFormFieldModule
 ];
 const COMPONENTS = [
   HeaderComponent,

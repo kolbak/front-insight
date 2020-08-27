@@ -1,10 +1,20 @@
-#formpicker {
-    font-family: 'Rubik', sans-serif;
-}
-input {
-    width: 15rem;
-    height: 3rem;
-}
-::placeholder {
-    font-family: 'Rubik', sans-serif;
-}
+    // #formpicker {
+    //     font-family: 'Rubik', sans-serif;
+    // }
+    input {
+        width: 16rem;
+        height: 3rem;
+        border-radius: 5px !important;
+        margin-bottom: 1rem;
+    }
+    
+    @import '../../styles/themes';
+    @include nb-install-component() {
+        nb-icon {
+            margin-bottom: 1rem;
+        }
+    }
+    
+    // ::placeholder {
+    //     font-family: 'Rubik', sans-serif;
+    // }

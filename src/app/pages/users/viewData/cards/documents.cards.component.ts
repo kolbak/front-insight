@@ -1,6 +1,7 @@
 import { Input, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ServerService, Screenshot, Media } from '../../../../server.service';
+import { NbDialogService } from '@nebular/theme';
 
 
 import { FileInfo } from '../data&query/data';
@@ -12,8 +13,7 @@ import { FileInfo } from '../data&query/data';
 })
 export class DocumentsCardsComponent implements OnInit {
 
-  constructor(public server : ServerService){
-  }
+  constructor(public server : ServerService, private dialogService: NbDialogService){}
   @Input() dataArr: FileInfo[];
   @Input() screenArr: Observable<Media>;
   screens: Screenshot[] = [];
@@ -23,4 +23,26 @@ export class DocumentsCardsComponent implements OnInit {
       this.screens.push(...files.files);
     })
   }
+
+  viewCloser(link) {
+    this.dialogService.open(ShowPicture, { context: { link: link, }, });
+  }
+}
+
+
+@Component({
+  selector: 'show-picture',
+  template: `<h3 style="color: white; text-align: center;">{{fileName}}</h3>
+  <img [src]="server.HOST + link">
+  `
+})
+export class ShowPicture implements OnInit{
+  constructor(public server : ServerService){
+  }
+
+  ngOnInit(): void {
+    this.fileName = this.link.split('/')[this.link.split('/').length - 1] 
+  }
+  fileName: string;
+  link: string;
 }
