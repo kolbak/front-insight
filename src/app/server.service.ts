@@ -44,8 +44,8 @@ export class ServerService {
   );
   telecast = this.msg.asObservable();
   allusers: User[];
-  public HOST = "http://77.37.136.144:8383/";
-  static HOST: string = "http://77.37.136.144:8383/";
+  public HOST = "http://77.37.136.144:8383";
+  static HOST: string = "http://77.37.136.144:8383";
   constructor(private http: HttpClient) {}
 
   getAllUsers() {
