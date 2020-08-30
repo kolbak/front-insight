@@ -44,8 +44,8 @@ export class ServerService {
   );
   telecast = this.msg.asObservable();
   allusers: User[];
-  public HOST = "http://localhost:4200/api";
-  static HOST: string = "http://localhost:4200/api";
+  public HOST = "http://77.37.136.144:8383/";
+  static HOST: string = "http://77.37.136.144:8383/";
   constructor(private http: HttpClient) {}
 
   getAllUsers() {
