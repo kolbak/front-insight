@@ -48,10 +48,10 @@ export class Chart11Component {
       labels: ["Поисковые системы", "Социальные сети", "Загрузка файлов"],
       chart: {
         type: "radialBar",
-        height: 350,
+        height: 400,
       },
       title: {
-        text: "Статистика интернет - соеденения",
+        text: "Статистика интернет - соеденения | Chart 11",
       },
       fill: {
         colors: ["#32CD32", "#20B2AA", "#9400D3"],
@@ -71,30 +71,26 @@ export class Chart11Component {
               opacity: 0.5
             },
           },
-          size: "85%",
-          labels: {
-            show: false,
+          dataLabels: {
+            show: true,
             name: {
               show: true,
             },
             value: {
-              show: true,
+              show: true
             },
             total: {
               show: true,
               label: "Общее время",
               fontSize: '16px',
               color: "black",
-              formatter: function (w) 
-              {
+              formatter: function (w) {
                 return w.globals.seriesTotals.reduce((a, b, c) => 
-                {return a + b + c}, 0) },
-            },
+                {return a + b + c}, 0) 
+              },
+            }
           },
         },
-      },
-      dataLabels: {
-        enabled: true,
       },
       legend: {
         show: true,

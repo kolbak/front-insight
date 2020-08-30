@@ -20,6 +20,8 @@ import { DocumentsTableComponent } from './viewData/table/documents.table.compon
 import { DocumentsCardsComponent, ShowPicture } from './viewData/cards/documents.cards.component';
 import { Chart10Component } from './default/charts/chart10/chart10.component';
 import { Chart11Component } from './default/charts/chart11/chart11.component';
+import { Chart12Component } from './default/charts/chart12/chart12.component';
+import { Chart13Component } from './default/charts/chart13/chart13.component';
 
 @NgModule({
   imports: [
@@ -59,7 +61,9 @@ import { Chart11Component } from './default/charts/chart11/chart11.component';
     Chart10Component,
     Chart11Component,
     DocumentsTableComponent, DocumentsCardsComponent,
-    ShowPicture
+    ShowPicture,
+    Chart12Component,
+    Chart13Component,
   ],
   bootstrap: [DocumentsComponent]
 })

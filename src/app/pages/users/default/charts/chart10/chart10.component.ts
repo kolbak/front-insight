@@ -44,14 +44,14 @@ export class Chart10Component {
 
   constructor() {
     this.chartOptions = {
-      series: [70, 80, 90],
+      series: [45, 30, 25],
       labels: ["Копирование", "Удаление", "Отправка"],
       chart: {
         type: "radialBar",
         height: 300,
       },
       title: {
-        text: "Статистика по работе с файлами",
+        text: "Статистика по работе с файлами | Chart 10",
       },
       fill: {
         colors: ["#4169E1", "#FFD700", "#DC143C"],
@@ -67,30 +67,31 @@ export class Chart10Component {
               enabled: false,
             },
           },
-          size: "85%",
-          labels: {
-            show: false,
+          dataLabels: {
+            show: true,
             name: {
               show: true,
             },
             value: {
-              show: true,
+              show: true
             },
             total: {
               show: true,
-              label: "Активность",
+              label: "Общее время",
+              fontSize: '16px',
               color: "black",
+              formatter: function (w) {
+                return w.globals.seriesTotals.reduce((a, b, c) => 
+                {return a + b + c}, 0) 
+              },
             },
           },
         },
       },
-      dataLabels: {
-        enabled: true,
-      },
       legend: {
         show: true,
         position: "bottom",
-        offsetY: -5,
+        offsetY: -20,
         markers: {
           fillColors: ["#4169E1", "#FFD700", "#DC143C"],
         },
