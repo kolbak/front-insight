@@ -25,7 +25,7 @@
     color: #222b90;
   }
 
-  nb-sidebar { 
+  nb-sidebar {
     transition: 0.3s;
   }
   .logo-cont-hidden{
@@ -38,4 +38,12 @@
   .iconToggleSidebar{
     margin-left: 15px
   }
+  .bottomleft {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    font-size: 7px;
+    color:rgba(77, 82, 85, 0.199);
+  }
 }
+

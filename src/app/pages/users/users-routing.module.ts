@@ -10,6 +10,7 @@ import { ProxyComponent } from './proxy/proxy.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { KeylogComponent } from './keylog/keylog.component';
 const routes: Routes = [{
+
   path: '',
   component: UsersComponent,
   children: [
@@ -51,7 +52,9 @@ const routes: Routes = [{
       pathMatch: 'full',
     },
   ],
-},];
+},
+
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

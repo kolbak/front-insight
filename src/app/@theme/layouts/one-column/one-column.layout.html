@@ -1,11 +1,11 @@
 <nb-layout windowScroll>
 
-  <nb-sidebar 
-    class="menu-sidebar" 
-    tag="menu-sidebar" 
+  <nb-sidebar
+    class="menu-sidebar"
+    tag="menu-sidebar"
     responsive start>
 
-    <!-- Для анимации. 
+    <!-- Для анимации.
     (pointerenter)="toggleSidebar()"
     (pointerleave)="toggleSidebar()" -->
 
@@ -16,11 +16,11 @@
       >
         <nb-icon [icon]="'menu-outline'"></nb-icon>
       </a>
-      <div class="styles_logoContainer__2IbFS" 
+      <div class="styles_logoContainer__2IbFS"
           [ngClass]="{
             'logo-cont-hidden' : booToggleSideIcon == false,
             'logo-cont-expanded' : booToggleSideIcon == true
-          }"> 
+          }">
         <a href="./pages/dashboard">
           <svg width="70" height="70" viewBox="0 0 55 55" class="styles_logo__wFtBf">
             <g id="prefix__Group_877" data-name="Group 877" transform="translate(-253.054 -1259.867)">
@@ -40,11 +40,13 @@
   </div>
   <hr>
     <ng-content select="nb-menu"></ng-content>
+    <h6 (click)="KonamiCode()" class="bottomleft">version 1.1</h6>
   </nb-sidebar>
 
   <nb-layout-column>
     <ngx-header></ngx-header>
     <ng-content select="router-outlet"></ng-content>
+
   </nb-layout-column>
 
 </nb-layout>

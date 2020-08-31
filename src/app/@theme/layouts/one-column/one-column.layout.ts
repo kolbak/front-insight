@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, AfterViewInit } from '@angular/core';
 
 import { NbSidebarService } from '@nebular/theme';
@@ -11,6 +12,7 @@ import { LayoutService } from '../../../@core/utils';
 export class OneColumnLayoutComponent implements AfterViewInit {
 
     constructor(
+      private router: Router,
     private sidebarService: NbSidebarService,
     private layoutService: LayoutService) {
 
@@ -29,5 +31,8 @@ export class OneColumnLayoutComponent implements AfterViewInit {
     this.layoutService.changeLayoutSize();
 
     return false;
+  }
+  KonamiCode(){
+    this.router.navigate(['/mew']);
   }
 }
