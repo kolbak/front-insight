@@ -4,6 +4,14 @@
 .padding-top {
     padding-top: 1rem;
 }
+// #E1ECFE гол #8F96A0 сер #598DFF син
+// Списки
+.select-button, nb-option, .selected{
+    color: #8F96A0 !important;
+}
+.select-button, .selected{
+    background-color: #E1ECFE !important;
+}
 
 .header-container {
     margin-bottom: 1rem;

@@ -105,8 +105,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe(themeName => {
         this.currentTheme = themeName;
         this.rippleService.toggle(themeName?.startsWith('material'));
-      });
+    });
+
+    if(this.screenWidth <= 1740) {
+      this.adaptHeader = true;
+    }
+    window.addEventListener('resize', () => {
+      if(document.documentElement.clientWidth <= 1740) {
+        this.adaptHeader = true;
+      } else {
+        this.adaptHeader = false;
+      }
+    })
   }
+  screenWidth: number  = screen.width;
+  adaptHeader: boolean = false;
+  //
+  selectedItem_1 = 'company';
+  selectedItem_2 = '1-day';
 
   ngOnDestroy() {
     this.destroy$.next();
