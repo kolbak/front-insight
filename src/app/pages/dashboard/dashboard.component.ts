@@ -1,26 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ngx-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
-
-  screenWidth: number  = screen.width;
-  adaptCharts: boolean = false;
-
-  public constructor() {
+export class DashboardComponent implements OnInit{
+  constructor() {
+    
+  }
+  
+  ngOnInit() {
     if(this.screenWidth <= 1740) {
       this.adaptCharts = true;
     }
     window.addEventListener('resize', () => {
       this.adaptCharts = document.documentElement.clientWidth <= 1740; 
     });
-
     window.addEventListener('load', () => {
       this.adaptCharts = document.documentElement.clientWidth <= 1740;
     });
   }
-
+  screenWidth: number  = screen.width;
+  adaptCharts: boolean = false;
 }

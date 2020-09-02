@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { NbSidebarService } from '@nebular/theme';
 import { LayoutService } from '../../../@core/utils';
@@ -9,7 +9,7 @@ import { LayoutService } from '../../../@core/utils';
   styleUrls: ['./one-column.layout.scss'],
   templateUrl: 'one-column.layout.html',
 })
-export class OneColumnLayoutComponent implements AfterViewInit {
+export class OneColumnLayoutComponent {
 
     constructor(
       private router: Router,
@@ -17,14 +17,9 @@ export class OneColumnLayoutComponent implements AfterViewInit {
     private layoutService: LayoutService) {
 
   }
-  ngAfterViewInit() {
-    // this.toggleSidebar();
-  }
 
   booToggleSideIcon: boolean = true;
   toggleSidebar(): boolean {
-    // let logoCont = document.querySelector('.styles_logoContainer__2IbFS') as HTMLElement;
-    // logoCont.style.visibility = 'hidden';
     this.booToggleSideIcon = !this.booToggleSideIcon;
 
     this.sidebarService.toggle(true, 'menu-sidebar');
@@ -34,5 +29,9 @@ export class OneColumnLayoutComponent implements AfterViewInit {
   }
   KonamiCode(){
     this.router.navigate(['/mew']);
+  }
+
+  dispatchResize() {
+
   }
 }
