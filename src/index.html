@@ -14,7 +14,7 @@
 
     <style>
         /* Глобальные изменения основных тем */
-
+        
         .nb-theme-default nb-layout .layout .layout-container .content .columns nb-layout-column,
         .nb-theme-dark nb-layout .layout .layout-container .content .columns nb-layout-column,
         .nb-theme-cosmic nb-layout .layout .layout-container .content .columns nb-layout-column,
@@ -23,7 +23,7 @@
         .nb-theme-material-dark nb-layout .layout .layout-container .content .columns nb-layout-column {
             padding-top: 0rem !important;
         }
-
+        
         .nb-theme-default nb-layout .layout .layout-container nb-sidebar.fixed,
         .nb-theme-default nb-layout .layout .layout-container nb-sidebar .main-container-fixed,
         .nb-theme-dark nb-layout .layout .layout-container nb-sidebar.fixed,
@@ -39,56 +39,62 @@
             top: 0rem !important;
         }
         /* обеспечивает смещение слоя календаря*/
-
+        
         .pageTurnCalendar {
             transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
             transform-origin: 50vw 50vh;
             transform: perspective(1000px) translate3d(0, 50vh, 0) rotate3d(1, 0, 0, 30deg);
             pointer-events: none;
         }
-
+        
         * {
             font-family: 'Rubik', sans-serif !important;
             /* cursor: url('cursor.png'), default; */
         }
-
+        
         .nb-theme-material-light nb-layout {
             background-color: thistle;
         }
-
+        
         .nb-theme-default input,
         .nb-theme-corporate input,
         .nb-theme-material-light input {
             background-color: white !important;
         }
-
+        
         .nb-theme-default a.tab-link,
         .nb-theme-corporate a.tab-link,
         .nb-theme-material-light a.tab-link {
             background-color: white !important;
         }
-
+        
         .nb-theme-default nb-layout-column {
             background-color: #f6f6f6 !important;
             /* background-color: #F2F4EE !important; */
         }
-
+        
         .nb-theme-default nb-layout .layout .layout-container nb-sidebar.fixed,
         .nb-theme-default nb-layout .layout .layout-container nb-sidebar .main-container-fixed {
             box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, 0.25);
         }
-
+        
         .nb-theme-default nb-sidebar.compacted nb-menu .menu-items>.menu-item {
             transform: scale(1.25);
         }
-
+        
         .nb-theme-default nb-layout .layout .layout-container nb-sidebar.fixed,
         .nb-theme-default nb-layout .layout .layout-container nb-sidebar .main-container-fixed {
             box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, 0.25);
         }
-
+        
         .nb-theme-default nb-sidebar.compacted nb-menu .menu-items>.menu-item {
             transform: scale(1.25);
+        }
+        
+        .nb-theme-default nb-select.appearance-outline.status-basic .select-button,
+        .nb-theme-corporate nb-select.appearance-outline.status-basic .select-button {
+            color: #8f96a0 !important;
+            background-color: white !important;
         }
     </style>
 

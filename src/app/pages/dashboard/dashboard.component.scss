@@ -1,81 +1,72 @@
-
 @import '../../@theme/styles/themes';
-
 @include nb-install-component() {
-  ngx-chartjs-bar {
-    display: block;
-    height: nb-theme(card-height-medium);
-    width: 100%;
-
-    ::ng-deep chart {
-      display: block;
-      height: 100%;
-      width: 100%;
+    ngx-chartjs-bar {
+        display: block;
+        height: nb-theme(card-height-medium);
+        width: 100%;
+         ::ng-deep chart {
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
     }
-  }
-
-  :host {
-    display: block;
-    max-height: 25rem;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-
-  .card-row {
-    display: flex;
-    margin: 0 -0.5rem;
-  }
-  @media (max-width: 1280px) {
-    .card-row{
-      flex-direction: column;
+     :host {
+        display: block;
+        max-height: 25rem;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
-  }
-  
-  .card-col {
-    flex: 1 0 calc(33% - 1rem);
-    margin: 0 0.5rem;
-  }
-  // изменение ширины колонок
-  .card-col-50 {
-    flex: 1 0 calc(50% - 1rem);
-    margin: 0 0.5rem;
-  }
-  .card-col-25 {
-    flex: 1 0 calc(25% - 1rem);
-    margin: 0 0.5rem;
-  }
-
-  // .col-sm-6, .col-sm-3 {
-  //   padding: 0 0.5rem;
-  // }
-  // изменение высоты карт
-  nb-card {
-    margin-bottom: 3vh;
-    box-shadow: -8px 12px 18px 0 rgba(25,42,70,.13);
-  } 
-
-  .template-left-top-card {
-    height: 553px;
-    width: auto;
-  }
-  .template-left-bottom-card {
-    height: 194px; 
-    width: auto;
-  }
-
-  .template-right-top-card {
-    height: 285px;
-    width: auto;
-  }
-
-  .template-right-medium-card {
-    height: 335px;
-    width: auto;
-  }
-  
-  .template-right-bottom-card {
-    height: 95px;
-    width: auto;
-  }
-
+    .card-row {
+        display: flex;
+        margin: 0 -0.5rem;
+    }
+    @media (max-width: 1280px) {
+        .card-row {
+            flex-direction: column;
+        }
+    }
+    .card-col {
+        flex: 1 0 calc(33% - 1rem);
+        margin: 0 0.5rem;
+    }
+    // изменение ширины колонок
+    .card-col-50 {
+        flex: 1 0 calc(50% - 1rem);
+        margin: 0 0.5rem;
+    }
+    .card-col-25 {
+        flex: 1 0 calc(25% - 1rem);
+        margin: 0 0.5rem;
+    }
+    // .col-sm-6, .col-sm-3 {
+    //   padding: 0 0.5rem;
+    // }
+    // изменение высоты карт
+    nb-card {
+        // margin-bottom: 3vh;
+        margin-bottom: 1.875rem;
+        box-shadow: -8px 12px 18px 0 rgba(25, 42, 70, .13);
+        border: none;
+        border-radius: 0.35rem;
+    }
+    .template-left-top-card {
+        height: 553px;
+        width: auto;
+    }
+    .template-left-bottom-card {
+        height: 194px;
+        width: auto;
+    }
+    .template-right-top-card {
+        height: 285px;
+        width: auto;
+    }
+    .template-right-medium-card {
+        height: 335px;
+        width: auto;
+    }
+    .template-right-bottom-card {
+        height: 95px;
+        width: auto;
+    }
 }

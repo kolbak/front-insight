@@ -111,12 +111,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.adaptHeader = true;
     }
     window.addEventListener('resize', () => {
-      if(document.documentElement.clientWidth <= 1740) {
-        this.adaptHeader = true;
-      } else {
-        this.adaptHeader = false;
-      }
-    })
+      this.adaptHeader = document.documentElement.clientWidth <= 1740;
+    });
+
+    window.addEventListener('load', () => {
+      this.adaptHeader = document.documentElement.clientWidth <= 1740;
+    });
   }
   screenWidth: number  = screen.width;
   adaptHeader: boolean = false;

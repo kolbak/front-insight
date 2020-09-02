@@ -1,115 +1,125 @@
-@import '~bootstrap/scss/mixins/breakpoints';
-@import '~@nebular/theme/styles/global/breakpoints';
-@import '../../styles/themes';
-.padding-top {
-    padding-top: 1rem;
-}
-// #E1ECFE гол #8F96A0 сер #598DFF син
-// Списки
-.select-button, nb-option, .selected{
-    color: #8F96A0 !important;
-}
-.select-button, .selected{
-    background-color: #E1ECFE !important;
-}
-
-.header-container {
-    margin-bottom: 1rem;
-}
-
-@include nb-install-component() {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    .nb-theme-default nb-tabset,
-    .nb-theme-corporate a.tab-link,
-    .nb-theme-material-light a.tab-link {
+    @import '~bootstrap/scss/mixins/breakpoints';
+    @import '~@nebular/theme/styles/global/breakpoints';
+    @import '../../styles/themes';
+    .padding-top {
+        padding-top: 1rem;
+    }
+    
+    // #E1ECFE гол #8F96A0 сер #598DFF син
+    // Списки
+    .select-button,
+    nb-option,
+    .selected {
+        color: #8F96A0 !important;
+    }
+    
+    .select-button,
+    .selected {
+        background-color: #E1ECFE !important;
+    }
+    
+    .header-container {
+        margin-bottom: 1rem;
+    }
+    
+    button.select-button {
+        color: #8f96a0;
         background-color: white;
     }
-    nb-action {
-        height: auto;
+    
+    @include nb-install-component() {
         display: flex;
-        align-content: center;
-    }
-    nb-user {
-        cursor: pointer;
-    }
-    .active {
-        white-space: nowrap;
-        border-radius: 100px;
-    }
-     ::ng-deep a.tab-link {
-        border-radius: 3px;
-        // overflow: hidden;
-        margin-left: 0.125rem;
-    }
-     ::ng-deep a.tab-link::before {
-        background-color: none !important;
-    }
-     ::ng-deep.active a.tab-link {
-        background-color: #e1ecfe !important;
-        // color: black;
-        color: #8f96a0;
-    }
-     ::ng-deep.active a.tab-link::before {
-        background-color: transparent;
-    }
-     ::ng-deep.active a.tab-link::hover {
-        background-color: #e1ecfe !important;
-    }
-    .border-left-radius {
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-    }
-    .border-right-radius {
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-    }
-     ::ng-deep nb-search button {
-        padding: 0!important;
-        nb-icon {
-            src: nb-theme(calendar-outline);
+        justify-content: space-between;
+        width: 100%;
+        .nb-theme-default nb-tabset,
+        .nb-theme-corporate a.tab-link,
+        .nb-theme-material-light a.tab-link {
+            background-color: white;
         }
-    }
-    .header-container {
-        display: flex;
-        align-items: center;
-        width: auto;
-        .sidebar-toggle {
-            @include nb-ltr(margin-right, 1.25rem);
-            @include nb-rtl(margin-left, 1.25rem);
-            text-decoration: none;
-            color: nb-theme(text-hint-color);
+        nb-action {
+            height: auto;
+            display: flex;
+            align-content: center;
+        }
+        nb-user {
+            cursor: pointer;
+        }
+        .active {
+            white-space: nowrap;
+            border-radius: 100px;
+        }
+         ::ng-deep a.tab-link {
+            border-radius: 3px;
+            // overflow: hidden;
+            margin-left: 0.125rem;
+        }
+         ::ng-deep a.tab-link::before {
+            background-color: none !important;
+        }
+         ::ng-deep.active a.tab-link {
+            background-color: #e1ecfe !important;
+            // color: black;
+            color: #8f96a0;
+        }
+         ::ng-deep.active a.tab-link::before {
+            background-color: transparent;
+        }
+         ::ng-deep.active a.tab-link::hover {
+            background-color: #e1ecfe !important;
+        }
+        .border-left-radius {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        .border-right-radius {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+         ::ng-deep nb-search button {
+            padding: 0!important;
             nb-icon {
-                font-size: 1.75rem;
+                src: nb-theme(calendar-outline);
             }
         }
-        .logo {
-            padding: 0 1.25rem;
-            font-size: 1.75rem;
-            @include nb-ltr(border-left, 1px solid nb-theme(divider-color));
-            @include nb-rtl(border-right, 1px solid nb-theme(divider-color));
-            white-space: nowrap;
-            text-decoration: none;
+        .header-container {
+            display: flex;
+            align-items: center;
+            width: auto;
+            .sidebar-toggle {
+                @include nb-ltr(margin-right, 1.25rem);
+                @include nb-rtl(margin-left, 1.25rem);
+                text-decoration: none;
+                color: nb-theme(text-hint-color);
+                nb-icon {
+                    font-size: 1.75rem;
+                }
+            }
+            .logo {
+                padding: 0 1.25rem;
+                font-size: 1.75rem;
+                @include nb-ltr(border-left, 1px solid nb-theme(divider-color));
+                @include nb-rtl(border-right, 1px solid nb-theme(divider-color));
+                white-space: nowrap;
+                text-decoration: none;
+            }
         }
-    }
-    .direction-switcher {
-        @include nb-ltr(margin-left, 2rem);
-        @include nb-rtl(margin-right, 2rem);
-    }
-    @include media-breakpoint-down(sm) {
-        .control-item {
-            display: none;
-        }
-        .user-action {
-            border: none;
-            padding: 0;
-        }
-    }
-    @include media-breakpoint-down(is) {
-        nb-select,
         .direction-switcher {
-            display: none;
+            @include nb-ltr(margin-left, 2rem);
+            @include nb-rtl(margin-right, 2rem);
+        }
+        @include media-breakpoint-down(sm) {
+            .control-item {
+                display: none;
+            }
+            .user-action {
+                border: none;
+                padding: 0;
+            }
+        }
+        @include media-breakpoint-down(is) {
+            nb-select,
+            .direction-switcher {
+                display: none;
+            }
         }
     }
-}

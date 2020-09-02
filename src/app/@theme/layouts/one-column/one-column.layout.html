@@ -1,28 +1,21 @@
 <nb-layout windowScroll>
 
-  <nb-sidebar
-    class="menu-sidebar"
-    tag="menu-sidebar"
-    responsive start>
+    <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive start>
 
-    <!-- Для анимации.
+        <!-- Для анимации.
     (pointerenter)="toggleSidebar()"
     (pointerleave)="toggleSidebar()" -->
 
-    <div class="logo-container">
-      <a href="#"
-        (click)="toggleSidebar()"
-        class="iconToggleSidebar"
-      >
-        <nb-icon [icon]="'menu-outline'"></nb-icon>
-      </a>
-      <div class="styles_logoContainer__2IbFS"
-          [ngClass]="{
+        <div class="logo-container">
+            <a href="#" (click)="toggleSidebar()" class="iconToggleSidebar">
+                <nb-icon [icon]="'menu-outline'"></nb-icon>
+            </a>
+            <div class="styles_logoContainer__2IbFS" [ngClass]="{
             'logo-cont-hidden' : booToggleSideIcon == false,
             'logo-cont-expanded' : booToggleSideIcon == true
           }">
-        <a href="./pages/dashboard">
-          <svg width="70" height="70" viewBox="0 0 55 55" class="styles_logo__wFtBf">
+                <a href="./pages/dashboard">
+                    <svg width="70" height="70" viewBox="0 0 55 55" class="styles_logo__wFtBf">
             <g id="prefix__Group_877" data-name="Group 877" transform="translate(-253.054 -1259.867)">
               <g id="prefix__Group_31530" data-name="Group 31530" transform="translate(-2.5)">
                 <path id="prefix__Rectangle_434" d="M0 0H55V55H0z" data-name="Rectangle 434" transform="translate(255.554 1259.867)" style="fill: none;"></path></g>
@@ -33,20 +26,20 @@
                 <text style="font-size: medium;" id="prefix__ui" transform="translate(278.054 1285.867)" style="fill: rgb(255, 255, 255); font-size: 15px; font-family: OpenSans-Bold, quot; font-weight: 700;">
                   <tspan x="0" y="0">ui</tspan></text></g></g>
           </svg>
-        </a>
-    </div>
-  <p id="logoText"><a style='text-decoration:none; color: #8f9bb3' href="./pages/dashboard"><b>Universal Insight</b></a></p>
-    <!-- <a class="logo" href="#" (click)="navigateHome()"><span>ui</span></a> -->
-  </div>
-  <hr>
-    <ng-content select="nb-menu"></ng-content>
-    <h6 (click)="KonamiCode()" class="bottomleft">version 1.1</h6>
-  </nb-sidebar>
+                </a>
+            </div>
+            <p id="logoText"><a style='text-decoration:none; color: #8f9bb3' href="./pages/dashboard"><b>Universal Insight</b></a></p>
+            <!-- <a class="logo" href="#" (click)="navigateHome()"><span>ui</span></a> -->
+        </div>
+        <hr>
+        <ng-content select="nb-menu"></ng-content>
+        <h6 (click)="KonamiCode()" class="bottomleft">version 1.1</h6>
+    </nb-sidebar>
 
-  <nb-layout-column>
-    <ngx-header></ngx-header>
-    <ng-content select="router-outlet"></ng-content>
+    <nb-layout-column>
+        <ngx-header></ngx-header>
+        <ng-content select="router-outlet"></ng-content>
 
-  </nb-layout-column>
+    </nb-layout-column>
 
 </nb-layout>
