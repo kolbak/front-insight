@@ -113,14 +113,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
     window.addEventListener('resize', () => {
       this.adaptHeader = document.documentElement.clientWidth <= 1740;
     });
+
     window.addEventListener('load', () => {
       this.adaptHeader = document.documentElement.clientWidth <= 1740;
     });
   }
   screenWidth: number  = screen.width;
   adaptHeader: boolean = false;
-  selectedItem_1: string = 'company';
-  selectedItem_2: string = '1-day';
+  //
+  selectedItem_1 = 'company';
+  selectedItem_2 = '1-day';
 
   ngOnDestroy() {
     this.destroy$.next();

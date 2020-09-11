@@ -82,12 +82,7 @@ export class Chart11Component {
             total: {
               show: true,
               label: "Общее время",
-              fontSize: '16px',
               color: "black",
-              formatter: function (w) {
-                return w.globals.seriesTotals.reduce((a, b, c) => 
-                {return a + b + c}, 0) 
-              },
             }
           },
         },

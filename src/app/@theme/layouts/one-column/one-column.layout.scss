@@ -14,6 +14,16 @@
     margin-top: -1.25rem;
     margin-bottom: 0rem;
   }
+
+  // .styles_logoContainer__2IbFS, #logoText{
+  //   position: relative;
+  //   left: 15px;
+  // }
+  .styles_logoContainer__2IbFS{
+    transform: scale(.8);
+    position: relative;
+    left: 10px;
+  }
   hr {
     margin: 0 -1.25rem -1.25rem;
     margin-bottom: 0rem;
@@ -25,9 +35,6 @@
     color: #222b90;
   }
 
-  nb-sidebar {
-    transition: 0.3s;
-  }
   .logo-cont-hidden{
     visibility: hidden;
   }
@@ -36,7 +43,7 @@
   }
 
   .iconToggleSidebar{
-    margin-left: 15px
+    margin-left: 13px
   }
   .bottomleft {
     position: absolute;

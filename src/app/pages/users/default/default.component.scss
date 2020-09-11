@@ -1,10 +1,18 @@
-  
-@import '../../../@theme/styles/themes';
+@import "../../../@theme/styles/themes";
 
 @include nb-install-component() {
-
-  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
-  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+  .col-1,
+  .col-2,
+  .col-3,
+  .col-4,
+  .col-5,
+  .col-6,
+  .col-7,
+  .col-8,
+  .col-9,
+  .col-10,
+  .col-11,
+  .col-12 {
     padding-left: 0px;
     padding-right: 0px;
   }
@@ -30,29 +38,31 @@
   }
 
   // ширина колонок
-  .card-col-25, .card-col-75 {
-    margin: 0rem;
-  }
-  .search-card, .content-card {
-      height: 100%;
-  }
+  // .card-col-25,
+  // .card-col-75 {
+  //   margin: 0rem;
+  // }
+  // .search-card,
+  // .content-card {
+  //   height: 100%;
+  // }
 
-  .card-col-25 {
-    flex: 1 0 calc(25% - 1rem);
-  }
-  .card-col-40 {
-    flex: 1 0 calc(40% - 1rem);
-  }
-  .card-col-50 {
-    flex: 1 0 calc(50% - 1rem);
-  }
-  .card-col-60 {
-    flex: 1 0 calc(60% - 1rem);
-  }
-  .card-col-75 {
-    flex: 1 0 calc(75% - 1rem);
-  }
-  // @media (max-width: 1280px) { 
+  // .card-col-25 {
+  //   flex: 1 0 calc(25% - 1rem);
+  // }
+  // .card-col-40 {
+  //   flex: 1 0 calc(40% - 1rem);
+  // }
+  // .card-col-50 {
+  //   flex: 1 0 calc(50% - 1rem);
+  // }
+  // .card-col-60 {
+  //   flex: 1 0 calc(60% - 1rem);
+  // }
+  // .card-col-75 {
+  //   flex: 1 0 calc(75% - 1rem);
+  // }
+  // @media (max-width: 1280px) {
   //   .card-col-25,
   //   .card-col-40 {
   //     flex: none;
@@ -77,40 +87,60 @@
   //   }
   // }
 
-
   .has-card-distance {
     margin: 1rem;
     margin-top: 0.75rem;
   }
   .has-card-border {
-    border: 0.1625rem solid #F2F4EE;
+    border: 0.1625rem solid #f2f4ee;
     // border: outset;
   }
 
   // изменение высоты карт
-  nb-card {
-    margin-bottom: 0vh;
-    // box-shadow: -4px 4px 10px 0 rgba(25,42,70,.13);
-  } 
+  // nb-card {
+  //   margin-bottom: 0vh;
+  //   // box-shadow: -4px 4px 10px 0 rgba(25,42,70,.13);
+  // }
 
   .search {
     max-height: 87.5vh;
     max-width: 20vw;
     min-width: 10vw;
   }
-  .content {
-    max-height: 87.5vh;
+  // .content {
+  //   max-height: 87.5vh;
+  // }
+  nb-card {
+    margin-bottom: 1.875rem;
+    border: none;
+    border-radius: 0.35rem;
+  }
+  .card1 {
+    height: 320px;
+    width: auto;
+  }
+  .card2 {
+    height: 320px;
+    width: auto;
+  }
+  .card3 {
+    height: 285px;
+    width: auto;
+  }
+  .card4 {
+    height: 285px;
+    width: auto;
   }
 
   p {
     color: gray;
     font-size: 1rem;
-    font-family: 'Rubik', sans-serif;
+    font-family: "Rubik", sans-serif;
     text-align: center;
     margin-top: 0.5rem;
   }
   img {
-    text-align: center; 
+    text-align: center;
     box-shadow: 0 0 5px 0px lightgrey;
   }
 }

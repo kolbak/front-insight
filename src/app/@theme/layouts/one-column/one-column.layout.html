@@ -1,3 +1,8 @@
+<!-- [ngClass]="{
+    'logo-cont-hidden' : booToggleSideIcon == false,
+    'logo-cont-expanded' : booToggleSideIcon == true
+}" -->
+
 <nb-layout windowScroll>
 
     <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive start>
@@ -10,22 +15,22 @@
             <a href="#" (click)="toggleSidebar()" class="iconToggleSidebar">
                 <nb-icon [icon]="'menu-outline'"></nb-icon>
             </a>
-            <div class="styles_logoContainer__2IbFS" [ngClass]="{
-            'logo-cont-hidden' : booToggleSideIcon == false,
-            'logo-cont-expanded' : booToggleSideIcon == true
-          }">
+            <div class="styles_logoContainer__2IbFS">
                 <a href="./pages/dashboard">
                     <svg width="70" height="70" viewBox="0 0 55 55" class="styles_logo__wFtBf">
-            <g id="prefix__Group_877" data-name="Group 877" transform="translate(-253.054 -1259.867)">
-              <g id="prefix__Group_31530" data-name="Group 31530" transform="translate(-2.5)">
-                <path id="prefix__Rectangle_434" d="M0 0H55V55H0z" data-name="Rectangle 434" transform="translate(255.554 1259.867)" style="fill: none;"></path></g>
-              <g id="prefix__Group_31538" data-name="Group 31538" transform="translate(0 3)"><g id="prefix__Ellipse_111" data-name="Ellipse 111">
-                <circle id="prefix__Ellipse_109" cx="8.411" cy="8.411" r="8.411" data-name="Ellipse 109" transform="translate(274.348 1284.915)" style="stroke: rgb(93, 155, 238); stroke-width: 0.714px; fill: rgb(167, 213, 245);"></circle></g><g id="prefix__Ellipse_109-2" data-name="Ellipse 109">
-                <circle id="prefix__Ellipse_110" cx="10.386" cy="10.386" r="10.386" data-name="Ellipse 110" transform="translate(262.697 1275.118)" style="fill: rgb(21, 205, 192); stroke: rgb(93, 155, 238); stroke-width: 0.714px;"></circle></g><g id="prefix__Ellipse_110-2" data-name="Ellipse 110">
-                <circle id="prefix__Ellipse_111-2" cx="12.664" cy="12.664" r="12.664" data-name="Ellipse 111" transform="translate(273.083 1267.997)" style="fill: rgb(4, 77, 140);"></circle></g>
-                <text style="font-size: medium;" id="prefix__ui" transform="translate(278.054 1285.867)" style="fill: rgb(255, 255, 255); font-size: 15px; font-family: OpenSans-Bold, quot; font-weight: 700;">
-                  <tspan x="0" y="0">ui</tspan></text></g></g>
-          </svg>
+                        <g id="prefix__Group_877" data-name="Group 877" transform="translate(-253.054 -1259.867)">
+                            <g id="prefix__Group_31530" data-name="Group 31530" transform="translate(-2.5)">
+                                <path id="prefix__Rectangle_434" d="M0 0H55V55H0z" data-name="Rectangle 434" transform="translate(255.554 1259.867)" style="fill: none;"></path></g>
+                                <g id="prefix__Group_31538" data-name="Group 31538" transform="translate(0 3)"><g id="prefix__Ellipse_111" data-name="Ellipse 111">
+                                <circle id="prefix__Ellipse_109" cx="8.411" cy="8.411" r="8.411" data-name="Ellipse 109" transform="translate(274.348 1284.915)" style="stroke: rgb(93, 155, 238); stroke-width: 0.714px; fill: rgb(167, 213, 245);"></circle></g><g id="prefix__Ellipse_109-2" data-name="Ellipse 109">
+                                <circle id="prefix__Ellipse_110" cx="10.386" cy="10.386" r="10.386" data-name="Ellipse 110" transform="translate(262.697 1275.118)" style="fill: rgb(21, 205, 192); stroke: rgb(93, 155, 238); stroke-width: 0.714px;"></circle></g><g id="prefix__Ellipse_110-2" data-name="Ellipse 110">
+                                <circle id="prefix__Ellipse_111-2" cx="12.664" cy="12.664" r="12.664" data-name="Ellipse 111" transform="translate(273.083 1267.997)" style="fill: rgb(4, 77, 140);"></circle></g>
+                                <text style="font-size: medium;" id="prefix__ui" transform="translate(278.054 1285.867)" style="fill: rgb(255, 255, 255); font-size: 15px; font-family: OpenSans-Bold, quot; font-weight: 700;">
+                                    <tspan x="0" y="0">ui</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </svg>
                 </a>
             </div>
             <p id="logoText"><a style='text-decoration:none; color: #8f9bb3' href="./pages/dashboard"><b>Universal Insight</b></a></p>

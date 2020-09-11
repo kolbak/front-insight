@@ -16,7 +16,6 @@ import {
   ApexLegend,
   ApexFill
 } from "ng-apexcharts";
-import { count } from 'console';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;

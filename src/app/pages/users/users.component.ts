@@ -1,6 +1,5 @@
 import { ServerService } from './../../server.service';
-import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
-import { of } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({

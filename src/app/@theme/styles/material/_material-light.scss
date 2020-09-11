@@ -7,6 +7,14 @@
 @import '~@nebular/theme/styles/core/functions';
 @import '~@nebular/theme/styles/core/mixins';
 
+nb-sidebar {
+  transition: width 0.3s;
+
+  .main-container {
+    transition: width 0.3s;
+  }
+}
+
 $theme: (
   color-primary-100: #e8cbfe,
   color-primary-200: #ce97fd,

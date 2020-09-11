@@ -18,10 +18,7 @@ export class OneColumnLayoutComponent {
 
   }
 
-  booToggleSideIcon: boolean = true;
   toggleSidebar(): boolean {
-    this.booToggleSideIcon = !this.booToggleSideIcon;
-
     this.sidebarService.toggle(true, 'menu-sidebar');
     this.layoutService.changeLayoutSize();
 

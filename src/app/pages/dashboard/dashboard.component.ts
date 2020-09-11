@@ -1,16 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'ngx-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit{
-  constructor() {
-    
-  }
-  
-  ngOnInit() {
+export class DashboardComponent {
+
+  screenWidth: number  = screen.width;
+  adaptCharts: boolean = false;
+  public constructor() {
     if(this.screenWidth <= 1740) {
       this.adaptCharts = true;
     }
@@ -21,6 +20,4 @@ export class DashboardComponent implements OnInit{
       this.adaptCharts = document.documentElement.clientWidth <= 1740;
     });
   }
-  screenWidth: number  = screen.width;
-  adaptCharts: boolean = false;
 }

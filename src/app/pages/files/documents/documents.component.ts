@@ -13,6 +13,13 @@ import { filter, map } from 'rxjs/operators';
 
 import { DataGenerator } from '../../users/viewData/generateData';
 
+export interface folderInfo {
+  folderName: string;
+  extensions: string[];
+  amount: string;
+  totalVolume: string; 
+}
+
 
 interface TreeNode<T> {
   data: T;
@@ -36,6 +43,19 @@ interface FSEntry {
   styleUrls: ['./documents.component.scss']
 })
 export class DocumentsComponent implements OnInit {
+  files: folderInfo[] = [];
+  filesChart = [];
+  extensions: string[][] = [
+    ["zip", "rar"], 
+    ["doc"], 
+    ["xlsx"],
+    ["pdf"],
+    ["png", "jpeg", "bmp", "gif"],
+    ["mp3", "wav"] ,
+  ];
+  folderNames: string[] = ["Архивы", "Word файлы", "Excel файлы", "Pdf файлы", "Фото", "Музыка"]
+
+
 
   //-----------------------------------Чекбокс
   setCheckedStatus(row, $checked) {
@@ -109,6 +129,30 @@ export class DocumentsComponent implements OnInit {
 
     }
     this.dataSource = this.dataSourceBuilder.create(this.data);
+
+    // Создаём рандомные данные для папок
+    for (let i = 0; i < this.folderNames.length; i++) {
+      let amount =      Math.floor(Math.random()*1000), 
+          totalVolume = Math.floor(Math.random()*1000);
+
+      this.files.push({
+        folderName: this.folderNames[i],
+        extensions: this.extensions[i],
+        amount: `${amount}`, 
+        totalVolume:`${totalVolume}`
+      })
+      // Добавляем данные на график
+      this.filesChart.push({
+        "name": this.folderNames[i],
+        "series": [{
+            "name": "Количество файлов",
+            "value": amount
+          }, {
+            "name": "Объём",
+            "value": totalVolume
+          }]
+      });
+    }
   }
 
   updateSort(sortRequest: NbSortRequest): void {

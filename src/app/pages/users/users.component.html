@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" style="width: 100%; box-shadow: -4px 4px 10px 0 rgba(25, 42, 70, .13);">
     <div class="col-3 search">
         <nb-card class="search-card">
             <nb-card-header>
@@ -11,9 +11,7 @@
                 <nb-select size="tiny" nbPrefix icon="search-outline" fullWidth placeholder="Специальность" style="font-size: 1rem">
                     <nb-icon *ngIf="server.allusers" nbPrefix icon="search-outline" pack="eva"></nb-icon>
                     <nb-option *ngFor="let user of server.allusers;let index = index " value="index" style="font-size: 1rem">{{user.role}}</nb-option>
-
                 </nb-select>
-
 
                 <nb-accordion *ngIf="server.allusers">
                     <nb-accordion-item *ngFor="let user of server.allusers">
@@ -50,7 +48,6 @@
                           </li>
                         </ul>
                         </nb-accordion-item-body>
-
                     </nb-accordion-item>
                 </nb-accordion>
 

@@ -6,9 +6,12 @@ import { DocumentsComponent, ShowUserDataComponent } from './documents/documents
 import { FilesRoutingModule } from './files-routing.module';
 import { FilesComponent, AddSectionComponent } from './files.component'
 import { AllFilesComponent } from './all-files/all-files.component'
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 
 @NgModule({
     imports: [
+        NgxChartsModule, 
         FilesRoutingModule,
         ThemeModule,
         NbProgressBarModule,
