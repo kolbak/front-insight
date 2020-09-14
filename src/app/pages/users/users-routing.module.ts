@@ -9,48 +9,45 @@ import { DocumentsComponent } from './documents/documents.component';
 import { ProxyComponent } from './proxy/proxy.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { KeylogComponent } from './keylog/keylog.component';
+import { PasswordsComponent } from './passwords/passwords.component';
+
 const routes: Routes = [{
 
   path: '',
   component: UsersComponent,
   children: [
-    {
+      {
+        path: 'passwords',
+        component: PasswordsComponent,
+      }, {
         path: 'keylog',
         component: KeylogComponent,
-      },
-    {
+      }, {
         path: 'videos',
         component: VideosComponent,
-      },
-    {
+      }, {
         path: 'terminal',
         component: TerminalComponent,
-      },
-    {
+      }, {
         path: 'screenshots',
         component: ScreenshotsComponent,
-      },
-    {
+      }, {
         path: 'proxy',
         component: ProxyComponent,
-      },
-    {
+      }, {
         path: 'downloads',
         component: DownloadsComponent,
-      },
-    {
+      }, {
         path: 'documents',
         component: DocumentsComponent,
+      }, {
+        path: 'default',
+        component: DefaultComponent,
+      }, {
+        path: '',
+        redirectTo: 'default',
+        pathMatch: 'full',
       },
-    {
-      path: 'default',
-      component: DefaultComponent,
-    },
-    {
-      path: '',
-      redirectTo: 'default',
-      pathMatch: 'full',
-    },
   ],
 },
 

@@ -6,6 +6,7 @@ import {DefaultComponent} from './default/default.component'
 import { UsersComponent } from './users.component';
 import {UsersRoutingModule} from './users-routing.module'
 
+import { PasswordsComponent } from './passwords/passwords.component';
 import { DownloadsComponent } from './downloads/downloads.component';
 import { ScreenshotsComponent } from './screenshots/screenshots.component';
 import { VideosComponent } from './videos/videos.component';
@@ -23,8 +24,12 @@ import { Chart11Component } from './default/charts/chart11/chart11.component';
 import { Chart12Component } from './default/charts/chart12/chart12.component';
 import { Chart13Component } from './default/charts/chart13/chart13.component';
 
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
+
 @NgModule({
   imports: [
+    NgxChartsModule,
     NgApexchartsModule,
     NbAccordionModule,
     NbListModule,
@@ -49,6 +54,7 @@ import { Chart13Component } from './default/charts/chart13/chart13.component';
   ],
 
   declarations: [
+    PasswordsComponent,
     DefaultComponent,
     UsersComponent,
     DownloadsComponent,

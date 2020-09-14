@@ -144,4 +144,18 @@ button[nbTreeGridRowToggle] {
     nb-checkbox:not(:only-child) {
         margin-right: 1.5rem;
     }
+    .active {
+        color: #598BFF !important;
+        border-left: #598BFF 3px solid;
+    }
+    nb-icon {
+        color: grey; 
+        margin-right: 1rem;
+        min-height: 20px;
+    }
+
+    nb-select {
+        align-items: center;
+    }
+
 }

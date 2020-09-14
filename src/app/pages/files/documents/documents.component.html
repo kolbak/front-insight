@@ -5,7 +5,6 @@
     <div class="row" style="max-height: 70vh;">
         <div class="col-sm-6 left" style="max-height: 50vh;">
             <h4 style="text-align: center;">Графическое представление</h4>
-            <!-- Добавить сюда график -->
             <ngx-charts-bar-vertical-2d
                 [scheme]="{ domain: ['rgb(4, 77, 140)', 'rgb(21, 205, 192)', 'rgb(167, 213, 245)'] }"
                 [results]="filesChart"
@@ -52,91 +51,97 @@
     </div> -->
 </div>
 
-        <!-- <label class="search-label" for="search">Поиск файлов</label> -->
-        <nb-form-field>
-            <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
-            <input nbInput [nbFilterInput]="dataSource" class="search-input" type="text" placeholder="Поиск" />
-            <!--вставить здесь то, что будет справа-->
-        
-            <div class="actions" style="float: right;">
-                <nb-icon icon="person-add-outline" pack="eva"></nb-icon>
-                <nb-icon icon="trash-2-outline" (click)="deleteHighlightFiles()" [options]="{ animation: { type: 'shake' } }" pack="eva"></nb-icon>
-                <nb-icon icon="more-vertical-outline" pack="eva"></nb-icon>
-            </div>
-        </nb-form-field>
-        
-        <!-- <input placeholder="Поиск файлов " nbInput [nbFilterInput]="dataSource " id="search " class="search-input " /> -->
-        
-        <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
-            <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
-            <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
-        
-            <ng-container [nbTreeGridColumnDef]="fileNameColumn" style="width: 50vw !important;">
-                <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(fileNameColumn)" *nbTreeGridHeaderCellDef style="width: 35vw !important;">
-                    <nb-checkbox status="primary" [checked]="checkBoxsetAll" (change)="checkAll($event)"></nb-checkbox>
-        
-                    {{ fileNameColumn }}
-                </th>
-                <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center;">
-                    <nb-checkbox status="primary " [checked]="row.data['checkbox']" (change)="setCheckedStatus(row, $event)"></nb-checkbox>
-        
-                    <nb-icon class="tableIcon" [icon]="row.data['favStar'] ? 'star' : 'star-outline' " [status]="row.data['favStar'] ? 'warning' : 'basic' " (click)="setStarStatus(row, $event) "></nb-icon>
-                    <img [src]="row.data[fileNameColumn][0]" alt="Избранное" style="margin-right: 5px;" /> {{ row.data[fileNameColumn][1] }}
-                </td>
-            </ng-container>
-        
-            <!-- Невидимая дата для сортировки -->
-            <ng-container [nbTreeGridColumnDef]="dateColumn" style="width: 0px; padding: 0px !important;">
-                <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef style="width: 0px; padding: 0px !important;">
-                    <!-- {{ dateColumn }} -->
-                </th>
-                <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center; width: 0px; padding: 0px !important;">
-                    <!-- {{ row.data[dateColumn] || "-" }} -->
-                </td>
-            </ng-container>
-        
-            <ng-container [nbTreeGridColumnDef]="visibleDateColumn">
-                <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(visibleDateColumn)" *nbTreeGridHeaderCellDef>
-                    {{ visibleDateColumn }}
-                </th>
-                <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center;">
-                    {{ row.data[dateColumn] || "-" }}
-                </td>
-            </ng-container>
-        
-            <ng-container [nbTreeGridColumnDef]="usersColumn">
-                <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>
-                    {{ usersColumn }}
-                </th>
-                <!-- border-bottom: 1.5px solid lightgrey; border-top: 0px solid lightgrey; -->
-                <td nbTreeGridCell *nbTreeGridCellDef="let row" class="users" style=" display: flex; flex-direction:row  ;height: 100%;">
-                    <!-- <nb-user class="user " *ngFor="let user of row.data[usersColumn] " size="large " name="Это юзер " title="Юзер " onlyPicture>
-                    </nb-user> -->
-                    <nb-user *ngFor="let user of server.allusers" (click)="open(user)" size="large" [name]="user.first_name" [title]="user.role" [picture]="server.HOST + user.photo" onlyPicture>
-                    </nb-user>
-        
-                    <!-- {{row.data[usersColumn] || '-'}} -->
-                </td>
-            </ng-container>
-        
-            <ng-container [nbTreeGridColumnDef]="actionColumn">
-                <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef style="text-align: center;">
-                    {{ actionColumn }}
-                </th>
-                <td nbTreeGridCell *nbTreeGridCellDef="let row" style="text-align: center;">
-                    <!-- {{ row.data[actionColumn] || "- " }} -->
-        
-                    <nb-icon icon="more-horizontal-outline" pack="eva" [nbContextMenu]="items" nbContextMenuTrigger="hover" nbContextMenuTag="my-context-menu"></nb-icon>
-                </td>
-            </ng-container>
-        
-            <!-- <ng-container *ngFor="let column of actionColumn; let index=i ndex " [nbTreeGridColumnDef]="column "
-          [showOn]="getShowOn(index) ">
-            <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column) " *nbTreeGridHeaderCellDef>
-              {{column}}
-            </th>
-            <td nbTreeGridCell *nbTreeGridCellDef="let row ">
-              {{row.data[column] || '-'}}
-            </td>
-          </ng-container> -->
-        </table>
+<!-- <label class="search-label" for="search">Поиск файлов</label> -->
+<nb-form-field>
+    <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
+    <input id="filesSearch" nbInput [nbFilterInput]="dataSource" class="search-input" type="text" placeholder="Поиск" />
+
+    <div class="actions" style="float: right;">
+        <nb-icon icon="person-add-outline" pack="eva"></nb-icon>
+        <nb-icon icon="trash-2-outline" (click)="deleteHighlightFiles()" [options]="{ animation: { type: 'shake' } }" pack="eva"></nb-icon>
+        <nb-icon icon="more-vertical-outline" pack="eva"></nb-icon>
+    </div>
+</nb-form-field>
+
+<!-- <input placeholder="Поиск файлов " nbInput [nbFilterInput]="dataSource " id="search " class="search-input " /> -->
+
+<table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
+    <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+    <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+    <ng-container [nbTreeGridColumnDef]="fileNameColumn" style="width: 50vw !important;">
+        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(fileNameColumn)" *nbTreeGridHeaderCellDef style="width: 35vw !important;">
+            <nb-checkbox status="primary" [checked]="checkBoxsetAll" (change)="checkAll($event)"></nb-checkbox>
+
+           <span style="margin-left: 1.5rem;">{{ fileNameColumn }}</span>
+        </th>
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center;">
+            <nb-checkbox status="primary" [checked]="row.data['checkbox']" (change)="setCheckedStatus(row, $event)"></nb-checkbox>
+
+            <nb-icon class="tableIcon" [icon]="row.data['favStar'] ? 'star' : 'star-outline' " [status]="row.data['favStar'] ? 'warning' : 'basic' " (click)="setStarStatus(row, $event) "></nb-icon>
+            <img [src]="row.data[fileNameColumn][0]" alt="Избранное" /> {{ row.data[fileNameColumn][1] }}
+        </td>
+    </ng-container>
+
+    <!-- Невидимая дата для сортировки -->
+    <ng-container [nbTreeGridColumnDef]="dateColumn" style="width: 0px; padding: 0px !important;">
+        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef style="width: 0px; padding: 0px !important;">
+            <!-- {{ dateColumn }} -->
+        </th>
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center; width: 0px; padding: 0px !important;">
+            <!-- {{ row.data[dateColumn] || "-" }} -->
+        </td>
+    </ng-container>
+
+    <ng-container [nbTreeGridColumnDef]="visibleDateColumn">
+        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(visibleDateColumn)" *nbTreeGridHeaderCellDef>
+            {{ visibleDateColumn }}
+        </th>
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center;">
+            {{ row.data[dateColumn] || "-" }}
+        </td>
+    </ng-container>
+
+    <ng-container [nbTreeGridColumnDef]="usersColumn">
+        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>
+            {{ usersColumn }}
+        </th>
+        <!-- border-bottom: 1.5px solid lightgrey; border-top: 0px solid lightgrey; -->
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" class="users">
+            <!-- <nb-user class="user " *ngFor="let user of row.data[usersColumn] " size="large " name="Это юзер " title="Юзер " onlyPicture>
+            </nb-user> -->
+            <img width="50px" height="50px" 
+             *ngFor="let user of row.data['Пользователи']"
+             src="{{server.HOST + userArrCell[user].photo}}" 
+             alt="{{userArrCell[user].full_name}}"
+              (click)="open(userArrCell[user])"
+              style="border-radius: 25px; outline: none;"
+             >
+            <!-- <nb-user *ngFor="let user of server.allusers" (click)="open(user)" size="large" [name]="user.first_name" [title]="user.role" [picture]="server.HOST + user.photo" onlyPicture>
+            </nb-user> -->
+
+            <!-- {{row.data['Пользователи'] || '-'}} -->
+        </td>
+    </ng-container>
+
+    <ng-container [nbTreeGridColumnDef]="actionColumn">
+        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef style="text-align: center;">
+            {{ actionColumn }}
+        </th>
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="text-align: center;">
+            <!-- {{ row.data[actionColumn] || "- " }} -->
+
+            <nb-icon icon="more-horizontal-outline" pack="eva" [nbContextMenu]="items" nbContextMenuTrigger="hover" nbContextMenuTag="my-context-menu"></nb-icon>
+        </td>
+    </ng-container>
+
+    <!-- <ng-container *ngFor="let column of actionColumn; let index=i ndex " [nbTreeGridColumnDef]="column "
+    [showOn]="getShowOn(index) ">
+    <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column) " *nbTreeGridHeaderCellDef>
+        {{column}}
+    </th>
+    <td nbTreeGridCell *nbTreeGridCellDef="let row ">
+        {{row.data[column] || '-'}}
+    </td>
+    </ng-container> -->
+</table>

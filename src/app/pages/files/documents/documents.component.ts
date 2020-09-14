@@ -1,5 +1,5 @@
 import { ServerService, User } from './../../../server.service';
-import { Component, Inject, OnInit  } from '@angular/core';
+import { Component, Inject, OnInit, Input  } from '@angular/core';
 import {
   NbSortDirection,
   NbSortRequest,
@@ -30,19 +30,41 @@ interface FSEntry {
   checkbox: boolean;
   favStar: boolean;
   Номер: Number;
-  Название: [string, string];
+  Название: [string, string, string];
   Дата: Date;
   tableDate: string;
-  Пользователи: User[];
+  Пользователи: number[];
   Действия: string;
 }
 
 @Component({
-  selector: 'ngx-documents',
+  selector: 'documents',
   templateUrl: './documents.component.html',
   styleUrls: ['./documents.component.scss']
 })
 export class DocumentsComponent implements OnInit {
+
+  filterTableBySection(section) : void {
+    console.log(section);
+    document.location.href = 'pages/files#filesSearch'
+
+    if (section.extension == '*') { 
+      this.dataSource.setData(this.data);
+    }
+    else if (section.extension == 'deleted')
+      this.dataSource.setData(this.deleted);
+    else if (section.extension == 'favorite')
+      this.dataSource.setData(this.data.filter(d => d.data.favStar ));
+    else 
+      this.dataSource.setData(this.data.filter(d => { 
+        for (let i = 0; i < section.extension.length; i++) {
+          if (d.data.Название[2] == section.extension[i])
+            return true;
+        }
+        return false; 
+      } ));
+  }
+
   files: folderInfo[] = [];
   filesChart = [];
   extensions: string[][] = [
@@ -91,6 +113,7 @@ export class DocumentsComponent implements OnInit {
   sortColumn: string;
   sortDirection: NbSortDirection = NbSortDirection.NONE;
 
+  userArrCell: any;
 
   constructor(
     private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>,
@@ -98,37 +121,37 @@ export class DocumentsComponent implements OnInit {
     private dialogService: NbDialogService, 
     private nbMenuService: NbMenuService, @Inject(NB_WINDOW) private window) {
 
-    let userArr, tableDate: Date, fileName: string, fileIconSrc: string, ext:string, extensions: string = ['PDF', 'PPT', 'PSD'].join('');
-    server.getAllUsers().subscribe(users => userArr = users);
-    console.log('userArr :>> ', userArr);
+    let tableDate: Date, fileName: string, fileIconSrc: string, ext:string, extensions: string = ['PDF', 'PPT', 'PSD'].join('');
+    server.getAllUsers().subscribe(users => { this.userArrCell = users; console.log(this.userArrCell)
     // Создадим рандомные данные для таблицы
-    for (let i = 0; i < 30; i++) {
-      tableDate = DataGenerator.randomDate(new Date(2012, 0, 1), new Date());
-      fileName = DataGenerator.makeName('file_', ['pdf', 'ppt', 'psd', 'doc', 'py', 'json']);
-      fileIconSrc = '../../../../assets/images/ext_icons/ext_icon_';
+      for (let i = 0; i < 100; i++) {
+        tableDate = DataGenerator.randomDate(new Date(2012, 0, 1), new Date());
+        fileName = DataGenerator.makeName('file_', ['pdf', 'ppt', 'psd', 'doc', 'py', 'json', 'zip', 'rar', 'png', 'jpeg', 'mpeg', 'mp3', 'wav' ]);
+        fileIconSrc = '../../../../assets/images/ext_icons/ext_icon_';
 
-      if (fileName.split('.').length > 0 && extensions.includes(fileName.split('.')[fileName.split('.').length - 1].toLocaleUpperCase())) {
-        fileIconSrc += fileName.split('.')[fileName.split('.').length - 1].toLocaleUpperCase() + '.svg';
-      } else {
-        fileIconSrc += 'unknown.svg';
+        if (fileName.split('.').length > 0 && extensions.includes(fileName.split('.')[fileName.split('.').length - 1].toLocaleUpperCase()))
+          fileIconSrc += fileName.split('.')[fileName.split('.').length - 1].toLocaleUpperCase() + '.svg';
+        else
+          fileIconSrc += 'unknown.svg';
+
+        this.data.push({
+          data: {
+            id: i,
+            checkbox: false,
+            favStar: false,
+            Номер: i,
+            Название: [fileIconSrc, fileName, fileName.split('.')[fileName.split('.').length - 1]],
+            Дата: tableDate,
+            tableDate: new Intl.DateTimeFormat('ru').format(tableDate),
+            Пользователи: [Math.floor(Math.random() * 6)],
+            Действия: ""
+          },
+        });
+
       }
-
-      this.data.push({
-        data: {
-          id: i,
-          checkbox: false,
-          favStar: false,
-          Номер: i,
-          Название: [fileIconSrc, fileName],
-          Дата: tableDate,
-          tableDate: new Intl.DateTimeFormat('ru').format(tableDate),
-          Пользователи: userArr,
-          Действия: ""
-        },
-      });
-
-    }
     this.dataSource = this.dataSourceBuilder.create(this.data);
+    });
+
 
     // Создаём рандомные данные для папок
     for (let i = 0; i < this.folderNames.length; i++) {
@@ -181,10 +204,12 @@ export class DocumentsComponent implements OnInit {
     this.dialogService.open(ShowUserDataComponent, { context: { user: user, }, });
   }
 
+  deleted: any;
   deleteHighlightFiles()
   {
-    this.data = this.data.filter(d => !d.data.checkbox);
-    this.dataSource.setData(this.data);
+    this.data = this.data.filter(d => !d.data.checkbox); 
+    this.deleted = this.data.filter(d => d.data.checkbox)
+    this.dataSource.setData(this.data.filter(d => !d.data.checkbox));
     this.checkBoxsetAll = false;
   }
 

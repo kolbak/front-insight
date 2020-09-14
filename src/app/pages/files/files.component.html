@@ -8,7 +8,22 @@
             </nb-card-header>
             <nb-card-body>
                 <!-- список из разделов -->
-                <nb-menu [items]="menu"></nb-menu>
+                <!-- <nb-menu [items]="menu"></nb-menu> -->
+                <nb-list>
+                    <nb-list-item style="cursor: pointer;" 
+                    *ngFor="let section of sections" 
+                    [ngClass]="{active: section.title == active}" 
+                    (click)="documents.filterTableBySection(section)"
+                    (click)="filterTable(section)">
+
+                        <nb-icon 
+                            [ngClass]="{active: section.title == active}"
+                            style="border: none !important; color: #8f9bb3"
+                            icon="{{section.icon }}"></nb-icon>
+                           <span>{{ section.title }}</span>
+
+                    </nb-list-item>
+                  </nb-list>
             </nb-card-body>
             <nb-card-footer style="padding: 1rem 1.5rem;">
                 <!-- Место для кнопки: Добавить раздел -->
@@ -33,7 +48,7 @@
         <!-- таблица -->
         <nb-card class="content-card">
             <nb-card-body>
-                <router-outlet></router-outlet>
+                <documents #documents></documents>
             </nb-card-body>
 
         </nb-card>

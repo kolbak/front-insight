@@ -20,7 +20,7 @@
 
             {{ fileNameColumn }}
         </th>
-        <td (click)="viewCloser(row.data['link'])" nbTreeGridCell *nbTreeGridCellDef="let row" nowrap>
+        <td (click)="viewCloser(row.data)" nbTreeGridCell *nbTreeGridCellDef="let row" nowrap>
             <nb-checkbox status="primary " [checked]="row.data['checkbox']" (change)="setCheckedStatus(row, $event)"></nb-checkbox>
 
             {{ row.data[fileNameColumn] }}

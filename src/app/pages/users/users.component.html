@@ -4,7 +4,7 @@
             <nb-card-header>
                 <nb-form-field>
                     <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
-                    <input fieldSize="large" placeholder="Large" fullWidth type="text" nbInput shape="round" placeholder="Поиск" />
+                    <input id="searchUsers" (input)="filterUsers()" fieldSize="large" placeholder="Large" fullWidth type="text" nbInput shape="round" placeholder="Поиск" />
                 </nb-form-field>
             </nb-card-header>
             <nb-card-body style="padding: 1rem 0rem">
@@ -13,10 +13,48 @@
                     <nb-option *ngFor="let user of server.allusers;let index = index " value="index" style="font-size: 1rem">{{user.role}}</nb-option>
                 </nb-select>
 
-                <nb-accordion *ngIf="server.allusers">
+                <nb-accordion *ngIf="server.allusers && !users">
                     <nb-accordion-item *ngFor="let user of server.allusers">
                         <nb-accordion-item-header (click)="GetUserToRoute(user.uuid)" style="justify-content: space-between;" [ngClass]="{activeUser: user.uuid == MAINUSER || (server.allusers[0].uuid == user.uuid && firstTime)}">
-                            <nb-user badgeText="▢" size="giant" badgeStatus="success" badgePosition="bottom right" [name]="user.first_name" [title]="user.role" [picture]=" server.HOST + user.photo">
+                            <nb-user badgeText="▢" size="giant" badgeStatus="success" badgePosition="bottom right" [name]="user.full_name" [title]="user.role" [picture]=" server.HOST + user.photo">
+                            </nb-user>
+                            <div style="padding-right: 20px;">
+                                <nb-icon status="warning" icon="star" pack="eva"></nb-icon>
+                            </div>
+
+                        </nb-accordion-item-header>
+                        <nb-accordion-item-body>
+                          <ul class="widget-timeline mb-0">
+                            <li class="timeline-items timeline-icon-primary active">
+                                <div class="timeline-time">2 часа назад</div>
+                                <h6 class="timeline-title">Добавлен файл</h6>
+                                <div class="timeline-content">
+                                    <nb-icon status="primary" style="margin-right: 2px;" icon="file-text-outline"></nb-icon> Order.pdf
+                                </div>
+                            </li>
+                            <li class="timeline-items timeline-icon-primary active">
+                                <div class="timeline-time">3 часа назад</div>
+                                <h6 class="timeline-title">Удален файл</h6>
+                                <div class="timeline-content">
+                                  <nb-icon status="danger" style="margin-right: 2px;" icon="file-text-outline"></nb-icon>Invoices.pdf
+                                </div>
+                            </li>
+                            <li class="timeline-items timeline-icon-primary active">
+                              <div class="timeline-time">12 часов назад</div>
+                              <h6 class="timeline-title">Отключена сеть</h6>
+                              <div class="timeline-content">
+                                <nb-icon status="danger"style="margin-right: 2px;" icon="flash-off-outline"></nb-icon> корпоративный пк
+                              </div>
+                          </li>
+                        </ul>
+                        </nb-accordion-item-body>
+                    </nb-accordion-item>
+                </nb-accordion>
+
+                <nb-accordion *ngIf="users">
+                    <nb-accordion-item *ngFor="let user of users">
+                        <nb-accordion-item-header (click)="GetUserToRoute(user.uuid)" style="justify-content: space-between;" [ngClass]="{activeUser: user.uuid == MAINUSER || (server.allusers[0].uuid == user.uuid && firstTime)}">
+                            <nb-user badgeText="▢" size="giant" badgeStatus="success" badgePosition="bottom right" [name]="user.full_name" [title]="user.role" [picture]=" server.HOST + user.photo">
                             </nb-user>
                             <div style="padding-right: 20px;">
                                 <nb-icon status="warning" icon="star" pack="eva"></nb-icon>
@@ -62,7 +100,7 @@
     <div class="col-9 content">
         <nb-card class="content-card">
             <nb-card-header fixed>
-                <div style="display: grid; grid-template-columns: repeat(7, 1fr); justify-items: center;">
+                <div style="display: grid; grid-template-columns: repeat(8, 1fr); justify-items: center;">
                     <div *ngFor="let section of menu">
                         <a style="text-decoration: none;" [routerLink]="section.routerLink" (click)='sectionClick(section)'>
                             <img [src]="section.url" [ngClass]="{activeUser: section.active}" />

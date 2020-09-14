@@ -132,6 +132,10 @@ export class DocumentsTableComponent implements OnInit{
   }
 
   viewCloser(link) {
-    this.dialogService.open(ShowPicture, { context: { link: link, }, });
+    console.log('Стоп', link);
+    if (link['link'] == '') {
+      return;
+    }
+    this.dialogService.open(ShowPicture, { context: { link: link['link'], }, });
   }
 }

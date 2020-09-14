@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { FileInfo } from '../viewData/data&query/data';
 import { DataGenerator } from '../viewData/generateData';
-import { folderInfo } from '../../files/all-files/all-files.component';
+import { folderInfo } from '../../files/files.component';
 
 @Component({
   selector: 'ngx-downloads',
