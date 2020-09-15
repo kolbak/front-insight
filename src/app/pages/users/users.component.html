@@ -2,7 +2,7 @@
 <div class="row" style="width: 100%; box-shadow: -4px 4px 10px 0 rgba(25, 42, 70, .13);">
 
 
-    <div *ngIf="!(isSmallScreen|| isTabletScreen||isXSmallScreen)" class="col-3 search">
+    <div *ngIf="!(isSmallScreen||  isMediumScreen||isTabletScreen||isXSmallScreen)" class="col-3 search">
 
         <nb-card class="search-card">
             <nb-card-header>
@@ -101,10 +101,10 @@
         </nb-card>
     </div>
 
-    <div [class]="(isSmallScreen|| isTabletScreen||isXSmallScreen)?'col-12 content':'col-9 content'">
+    <div [class]="(isSmallScreen|| isMediumScreen|| isTabletScreen||isXSmallScreen)?'col-12 content':'col-9 content'">
         <nb-card class="content-card">
             <nb-card-header fixed>
-              <ng-template [ngIf]="!(isSmallScreen|| isTabletScreen||isXSmallScreen)" [ngIfElse]="gridPhotoPhone">
+              <ng-template [ngIf]="!( isMediumScreen||isSmallScreen|| isTabletScreen||isXSmallScreen)" [ngIfElse]="gridPhotoPhone">
                 <div style="display: grid; grid-template-columns: repeat(8, 1fr); justify-items: center;">
                     <div *ngFor="let section of menu">
                         <a style="text-decoration: none;" [routerLink]="section.routerLink" (click)='sectionClick(section)'>

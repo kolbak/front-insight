@@ -15,12 +15,16 @@ export class UsersComponent implements OnInit {
   isTabletScreen;
   isSmallScreen;
   isXSmallScreen;
+  isMediumScreen;
 ngOnInit(){
   this.breakpointObserver
   .observe(Breakpoints.Small)
   .subscribe((resp) => (this.isSmallScreen = resp.matches));
-this.breakpointObserver
+  this.breakpointObserver
   .observe(Breakpoints.Medium)
+  .subscribe((resp) => (this.isMediumScreen = resp.matches));
+this.breakpointObserver
+  .observe(Breakpoints.Tablet)
   .subscribe((resp) => (this.isTabletScreen = resp.matches));
 this.breakpointObserver
   .observe(Breakpoints.XSmall)
