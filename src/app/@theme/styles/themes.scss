@@ -28,7 +28,7 @@ $nb-themes: nb-register-theme((
 ), default, default);
 
 $nb-themes: nb-register-theme((
-  layout-padding-top: 2.25rem,
+
 
   sidebar-background-color: #000,
 
@@ -51,7 +51,7 @@ $nb-themes: nb-register-theme((
 ), cosmic, cosmic);
 
 $nb-themes: nb-register-theme((
-  layout-padding-top: 2.25rem,
+
 
   menu-item-icon-margin: 0 0.5rem 0 0,
 
@@ -72,7 +72,7 @@ $nb-themes: nb-register-theme((
 ), corporate, corporate);
 
 $nb-themes: nb-register-theme((
-  layout-padding-top: 2.25rem,
+
 
   menu-item-icon-margin: 0 0.5rem 0 0,
 
@@ -84,8 +84,6 @@ $nb-themes: nb-register-theme((
   card-margin-bottom: 1.875rem,
   card-header-with-select-padding-top: 0.5rem,
   card-header-with-select-padding-bottom: 0.5rem,
-
-  select-min-width: 6rem,
 
   slide-out-background: linear-gradient(270deg, #222b45 0%, #151a30 100%),
   slide-out-shadow-color: 0 4px 14px 0 #8f9bb3,
@@ -93,7 +91,7 @@ $nb-themes: nb-register-theme((
 ), dark, dark);
 
 $nb-themes: nb-register-theme((
-  layout-padding-top: 2.25rem,
+
 
   menu-item-icon-margin: 0 0.5rem 0 0,
 
@@ -106,7 +104,7 @@ $nb-themes: nb-register-theme((
   card-header-with-select-padding-top: 0.5rem,
   card-header-with-select-padding-bottom: 0.5rem,
 
-  select-min-width: 6rem,
+  
   option-list-border-radius: 0,
 
   slide-out-background: linear-gradient(270deg, #e0e0e0 0%, #ebebeb 100%),
