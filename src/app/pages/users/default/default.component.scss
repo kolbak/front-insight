@@ -101,6 +101,16 @@
   //   margin-bottom: 0vh;
   //   // box-shadow: -4px 4px 10px 0 rgba(25,42,70,.13);
   // }
+  .chart-label{
+    position: relative;
+    top: 0;
+    left: .5rem;
+    text-align: start;
+  }
+  ngx-chart13, ngx-chart12, 
+  ngx-chart11, ngx-chart10{
+    height: 100%;
+  }
 
   .search {
     max-height: 87.5vh;

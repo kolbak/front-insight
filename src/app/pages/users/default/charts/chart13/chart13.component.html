@@ -1,4 +1,27 @@
-<apx-chart
+<ngx-charts-heat-map
+  [innerPadding]="2"
+  [scheme]="colorScheme"
+  [legend]="false"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="false"
+  [xAxis]="xAxis"
+  [yAxis]="yAxis"
+  [xAxisLabel]="xAxisLabel"
+  [results]="multi"
+  (select)="onSelect($event)"
+  (activate)="onActivate($event)"
+  (deactivate)="onDeactivate($event)">
+</ngx-charts-heat-map>
+
+
+
+
+
+
+
+
+
+<!-- <apx-chart
     [colors]="chartOptions.colors"
     [series]="chartOptions.series"
     [chart]="chartOptions.chart"
@@ -15,4 +38,4 @@
     [legend]="chartOptions.legend"
     [labels]="chartOptions.labels"
     [fill]="chartOptions.fill"
-></apx-chart>
+></apx-chart> -->
