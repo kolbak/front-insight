@@ -7,10 +7,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/dashboard',
   },
   {
-    title: 'Сервисы',
-    group: true,
-  },
-  {
     title: 'Пользователи',
     icon: 'person-outline',
     link: '/pages/users',
