@@ -69,4 +69,39 @@
         height: 95px;
         width: auto;
     }
+
+    .chart-label{
+        position: relative;
+        top: 0;
+        left: .5rem;
+        text-align: start;
+    }
+    ngx-chart1, ngx-chart8{
+        height: 100%;
+    }
+    .legend ul{
+        &{
+            position: relative;
+            top: -160%;
+            left: 0;
+            padding: 4%;
+            opacity: 0;
+            transition: .2s;
+        }
+        &:hover{
+            opacity: 1;
+        }
+        li{
+            list-style-type: none;
+        }
+        :nth-child(1){
+            border-left: #5A8DEE solid 6px;
+        }
+        :nth-child(2){
+            border-left: #00CFDD solid 6px;
+        }
+        :nth-child(3){
+            border-left: #FDAC41 solid 6px;
+        }
+    }
 }
