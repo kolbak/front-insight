@@ -2,8 +2,7 @@
 <div class="row" style="width: 100%; box-shadow: -4px 4px 10px 0 rgba(25, 42, 70, .13);">
 
 
-    <div *ngIf="!(isSmallScreen||  isMediumScreen||isTabletScreen||isXSmallScreen)" class="col-3 search">
-
+    <div [style]="!IsChangeUsersLayOut?'': 'position: absolute;z-index: 1000;'" *ngIf="!(isSmallScreen||  isMediumScreen||isTabletScreen||isXSmallScreen)||IsChangeUsersLayOut" class="col-3 search">
         <nb-card class="search-card">
             <nb-card-header>
                 <nb-form-field>
@@ -115,15 +114,20 @@
                 </div>
                   </ng-template>
                     <ng-template #gridPhotoPhone>
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Действия
-                        </button>
+                      <div style="display: flex;justify-content: space-between;">
+                        <div class="dropdown ">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Действия
+                          </button>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                           <a style="text-decoration: none;" *ngFor="let section of menu" class="dropdown-item" [routerLink]="section.routerLink">{{section.title}}</a>
                         </div>
                       </div>
+                      <button type="button" (click)="ChangeUsersLayOut()" class="btn btn-primary">Пользователи</button>
+
+
+                    </div>
                     </ng-template>
 
             </nb-card-header>
