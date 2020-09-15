@@ -27,7 +27,7 @@
             </nb-card-body>
             <nb-card-footer style="padding: 1rem 1.5rem;">
                 <!-- Место для кнопки: Добавить раздел -->
-                <button (click)="addSection()" style='margin-bottom:5%' size='medium' nbButton hero status="info">+ Добавить раздел</button>
+                <button (click)="open(dialog)" style='margin-bottom:5%' size='medium' nbButton hero status="info">+ Добавить раздел</button>
                 <!-- Размер диска -->
                 <div class="card-row" style="margin: auto;">
                     <div class="card-col-25">
@@ -54,3 +54,43 @@
         </nb-card>
     </div>
 </div>
+
+<ng-template #dialog>
+    <nb-card style="width: 25vw; height: 50vh">
+        <nb-card-header>
+          <h4>Добавление раздела</h4>
+        </nb-card-header>
+        <nb-card-body>
+            <h6>Скрытые разделы</h6>
+            <nb-list>
+                <nb-list-item 
+                    style="cursor: pointer;" 
+                    *ngFor="let section of sectionsHide"
+                    (click)="addSection(section)">
+
+                    <nb-icon 
+                        style="border: none !important; color: #8f9bb3; margin-right: 1rem;" 
+                        icon="{{ section.icon}}">
+                    </nb-icon>
+                    <span>{{ section.title }}</span>
+
+                </nb-list-item>
+            </nb-list>
+
+            <h6 style="margin-top: 1rem;">Создайте собственный раздел</h6>
+            <nb-select placeholder="эскиз" [(selected)]="selectedIcon">
+                <nb-option *ngFor="let icon of icons" value="">
+                    <nb-icon icon="{{icon}}"></nb-icon>
+                </nb-option>
+            </nb-select>
+            <nb-icon *ngIf="selectedIcon != '0'" icon="{{icons[selectedIcon]}}"></nb-icon>
+            <input nbInput type="text"  placeholder="Название раздела"/>
+            <p style="margin-bottom: 0.3rem; margin-top: 1rem; font-size: 0.9375rem;">Расширения файлов</p>
+            
+            <input *ngFor="let item of extensions; let i = index" id="ext{{i}}" (change)="AddExtenstion(i)" nbInput type="text" placeholder=".расширение">
+                
+            <button (click)="addSection()" style='margin-bottom:5%' size='medium' nbButton hero status="info">Добавить раздел</button>
+                
+        </nb-card-body>
+    </nb-card>
+  </ng-template>
