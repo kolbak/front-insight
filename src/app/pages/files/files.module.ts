@@ -3,7 +3,7 @@ import { NbSelectModule, NbListModule, NbContextMenuModule, NbMenuModule, NbButt
 import { ThemeModule } from '../../@theme/theme.module';
 
 import { DocumentsComponent, ShowUserDataComponent } from './documents/documents.component';
-import { FilesComponent, AddSectionComponent } from './files.component'
+import { FilesComponent } from './files.component'
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
@@ -28,8 +28,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     declarations: [
         DocumentsComponent,
         FilesComponent,
-        ShowUserDataComponent, 
-        AddSectionComponent
+        ShowUserDataComponent,
     ],
 })
 export class FilesModule {

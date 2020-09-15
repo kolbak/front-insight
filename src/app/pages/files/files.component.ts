@@ -1,8 +1,5 @@
-import { Component, ViewChild, NgModule } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
-import { NbMenuItem } from '@nebular/theme';
-import { window } from 'rxjs/operators';
-import { DocumentsComponent } from './documents/documents.component';
 
 export interface folderInfo {
   folderName: string;
@@ -10,7 +7,11 @@ export interface folderInfo {
   amount: string;
   totalVolume: string; 
 }
-
+interface Section { 
+  title: string, 
+  icon: string, 
+  extension: any 
+}
 
 @Component({
   selector: 'files',
@@ -19,24 +20,10 @@ export interface folderInfo {
 })
 export class FilesComponent {
   
-  sections: { title: string, icon: string, extension: any }[] = [
-    { title: 'Все файлы', icon: 'folder-outline',     extension: '*' },
-    { title: 'Документы', icon: 'file-outline',       extension: ['doc', 'pdf'] },
-    { title: 'Архивы',    icon: 'archive-outline',    extension: ['zip', 'rar'] },
-    { title: 'Фото',      icon: 'image-outline',      extension: ['png', 'jpeg'] },
-    { title: 'Недавние',  icon: 'clock-outline',      extension: '*' },
-    { title: 'Важные',    icon: 'star-outline',       extension: 'favorite' },
-    { title: 'Удалённое', icon: 'trash-2-outline',    extension: 'deleted' }];
-  
+  // Смена активного раздела во время сортировки таблицы
   active: string = 'Все файлы';
-  // currentFilter: any = this.sections[0].extension;
-  // @ViewChild(DocumentsComponent, {static: false})
-  //  private filesComponent: DocumentsComponent;
-
   filterTable(section) {
-    // document.location.href = 'pages/files#filesSearch'
     this.active = section.title;
-    // this.currentFilter = section.extension;
   }
 
   constructor(private dialogService: NbDialogService) {}
@@ -45,65 +32,49 @@ export class FilesComponent {
   dataContains = 155;
   dataTotal    = 256; 
 
-  addSection(){
-    this.dialogService.open(AddSectionComponent, { context: { }, });
-  }
 
-}
 
-@Component({
-  selector: 'files-add-section',
-  template: `
-  <nb-card style="width: 20vw; height: 50vh">
-    <nb-card-header>
-      <h4>Добавление раздела</h4>
-    </nb-card-header>
-    <nb-card-body>
-      <h6>Скрытые разделы</h6>
-      <nb-list>
-        <nb-list-item style="cursor: pointer;" 
-          *ngFor="let section of sections">
-
-            <nb-icon 
-                style="border: none !important; color: #8f9bb3; margin-right: 1rem;" 
-                icon="{{ section.icon}}"></nb-icon>
-                <span>{{ section.title }}</span>
-
-        </nb-list-item>
-      </nb-list>
-      <h6>Создайте собственный раздел</h6>
-
-      <nb-select placeholder="эскиз" [(selected)]="selectedIcon">
-        <nb-option *ngFor="let icon of icons" value=""><nb-icon icon="{{icon}}"></nb-icon></nb-option>
-      </nb-select>
-      <input nbInput type="text" id="typeName"  [placeholder]="name"/>
-      <textarea>
-
-      </textarea>
-      <button (click)="addNewSection()" style='margin-bottom:5%' size='medium' nbButton hero status="info">Добавить раздел</button>
-        
-    </nb-card-body>
-</nb-card>
-  `
-})
-export class AddSectionComponent {
-
-  name: string = "Название раздела";
-
-  // Можно сделать взаимодействие между компонентами 
-  // AddSectionComponent и FilesComponent 
+  // __________________ Добавление раздела __________________ \\
   selectedIcon = '0';
-
-  sections: { title: string, icon: string, extension: any }[] = [
+  sectionsHide: Section[] = [
     { title: 'Видео',     icon: 'video-outline',      extension: ['mpeg'] },
     { title: 'Аудио',     icon: 'headphones-outline', extension: ['mp3', 'wav'] },
+  ];
+  sections: Section[] = [
+    { title: 'Все файлы', icon: 'folder-outline',     extension: '*' },
+    { title: 'Документы', icon: 'file-outline',       extension: ['doc', 'pdf'] },
+    { title: 'Архивы',    icon: 'archive-outline',    extension: ['zip', 'rar'] },
+    { title: 'Фото',      icon: 'image-outline',      extension: ['png', 'jpeg'] },
+    { title: 'Недавние',  icon: 'clock-outline',      extension: '*' },
+    { title: 'Важные',    icon: 'star-outline',       extension: 'favorite' },
+    { title: 'Удалённое', icon: 'trash-2-outline',    extension: 'deleted' }
   ];
   icons: string[] = [
     'car-outline', 'camera-outline', 
     'crop-outline', 'edit-2-outline', 
     'phone-outline', 'shopping-cart-outline'
   ];
-  addNewSection() {
+  extensions: string[] = ['']
+  AddExtenstion(id) {
+    console.log((document.querySelector('#ext' + id) as HTMLInputElement).value);
 
+    if (id + 1 == this.extensions.length) {
+      this.extensions.push((document.querySelector('#ext' + id) as HTMLInputElement).value);
+    }
+    else this.extensions[id] = (document.querySelector('#ext' + id) as HTMLInputElement).value;
+    console.log(this.extensions);
+  }
+
+  addSectionDialog: any;
+  addSection(sect: Section) {
+    // Закрываем форму
+    this.addSectionDialog.close();
+    // Удаляем из Hide
+    this.sectionsHide.splice(this.sectionsHide.lastIndexOf(sect), 1);
+    // Добавляем в активные разделы
+    this.sections.push(sect);
+  }
+  open(dialog: TemplateRef<any>) {
+    this.addSectionDialog =  this.dialogService.open(dialog, { context: {} });
   }
 }
