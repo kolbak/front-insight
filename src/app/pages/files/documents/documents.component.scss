@@ -96,6 +96,7 @@ button[nbTreeGridRowToggle] {
     }
     td {
         font-size: 1rem;
+        
     }
     .small {
         font-size: 80%;
@@ -204,10 +205,14 @@ button[nbTreeGridRowToggle] {
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
 }
-
-.showFolder {
-    min-width: 14vw;
+@media screen and (max-width: 1500px) {
+    .folders {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
+// .showFolder {
+//     min-width: 14vw;
+// }
 
 .extensions {
     margin-left: 3px;
