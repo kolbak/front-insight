@@ -3,7 +3,7 @@
   style="width: 100%; box-shadow: -4px 4px 10px 0 rgba(25, 42, 70, 0.13)"
 >
   <div
-    [style]="IsChangeUsersLayOut&&(isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen) ? 'position: absolute;z-index: 1000;':''"
+    [style]="IsChangeUsersLayOut && (isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen) ? 'position: absolute;z-index: 1000;':''"
     *ngIf="
       !(isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen) ||
       IsChangeUsersLayOut
