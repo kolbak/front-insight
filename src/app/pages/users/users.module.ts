@@ -5,7 +5,7 @@ import {NbAccordionModule,NbStepperModule, NbThemeModule, NbLayoutModule,NbSideb
 import {DefaultComponent} from './default/default.component'
 import { UsersComponent } from './users.component';
 import {UsersRoutingModule} from './users-routing.module'
-
+import { MatGridListModule } from '@angular/material/grid-list';
 import { PasswordsComponent } from './passwords/passwords.component';
 import { DownloadsComponent } from './downloads/downloads.component';
 import { ScreenshotsComponent } from './screenshots/screenshots.component';
@@ -15,7 +15,7 @@ import { ProxyComponent } from './proxy/proxy.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { KeylogComponent } from './keylog/keylog.component';
 import { NgApexchartsModule } from "ng-apexcharts";
-
+import {MatCardModule} from '@angular/material/card';
 import { DocumentsTableComponent } from './viewData/table/documents.table.component';
 
 import { DocumentsCardsComponent, ShowPicture } from './viewData/cards/documents.cards.component';
@@ -32,11 +32,13 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     NgxChartsModule,
     NgApexchartsModule,
     NbAccordionModule,
+    MatCardModule,
     NbListModule,
     NbStepperModule,
     NbUserModule,
     NbIconModule,
     NbInputModule,
+    MatGridListModule,
     NbSelectModule,
     NbFormFieldModule,
     ThemeModule,

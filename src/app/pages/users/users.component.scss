@@ -112,7 +112,9 @@
   display: flex;
   align-items: center;
 }
-
+.mat-figure{
+  padding: 0px !important;
+}
 .widget-timeline li .timeline-time {
   float: right;
   color: #828D99;

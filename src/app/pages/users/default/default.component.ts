@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,11 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./default.component.scss']
 })
 export class DefaultComponent implements OnInit {
+  isSmallScreen: boolean;
+  isTabletScreen: boolean;
+  isXSmallScreen: boolean;
 
-  constructor() { }
+  constructor(private breakpointObserver:BreakpointObserver) { }
 
-  ngOnInit(): void {
-
+  ngOnInit(){
+    this.breakpointObserver
+    .observe(Breakpoints.Small)
+    .subscribe((resp) => (this.isSmallScreen = resp.matches));
+  this.breakpointObserver
+    .observe(Breakpoints.Medium)
+    .subscribe((resp) => (this.isTabletScreen = resp.matches));
+  this.breakpointObserver
+    .observe(Breakpoints.XSmall)
+    .subscribe((resp) => (this.isXSmallScreen = resp.matches));
   }
 
 }
