@@ -8,7 +8,6 @@
             </nb-card-header>
             <nb-card-body>
                 <!-- список из разделов -->
-                <!-- <nb-menu [items]="menu"></nb-menu> -->
                 <nb-list>
                     <nb-list-item style="cursor: pointer;" 
                     *ngFor="let section of sections" 
@@ -77,7 +76,7 @@
                 </nb-list-item>
             </nb-list>
 
-            <h6 style="margin-top: 1rem;">Создайте собственный раздел</h6>
+            <!-- <h6 style="margin-top: 1rem;">Создайте собственный раздел</h6>
             <nb-select placeholder="эскиз" [(selected)]="selectedIcon">
                 <nb-option *ngFor="let icon of icons" value="">
                     <nb-icon icon="{{icon}}"></nb-icon>
@@ -90,7 +89,7 @@
             <input *ngFor="let item of extensions; let i = index" id="ext{{i}}" (change)="AddExtenstion(i)" nbInput type="text" placeholder=".расширение">
                 
             <button (click)="addSection()" style='margin-bottom:5%' size='medium' nbButton hero status="info">Добавить раздел</button>
-                
+                 -->
         </nb-card-body>
     </nb-card>
   </ng-template>

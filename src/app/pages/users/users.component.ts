@@ -9,6 +9,13 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class UsersComponent implements OnInit {
 
+  IsChangeUsersLayOut:boolean = false;
+  // сайд-панель юзеров переход на телефон
+  ChangeUsersLayOut(){
+    this.IsChangeUsersLayOut = !this.IsChangeUsersLayOut;
+  }
+
+
   users: any;
 
 

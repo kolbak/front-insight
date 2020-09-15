@@ -1,10 +1,10 @@
 <div style="padding: 1rem 1.5rem; margin-bottom: 2rem;">
-    <h3>Аналитика файлов</h3>
+    <h4>Аналитика файлов</h4>
     <hr style="border: 2.5px #edf1f7 dashed;">
 
     <div class="row" style="max-height: 70vh;">
         <div class="col-sm-6 left" style="max-height: 50vh;">
-            <h4 style="text-align: center;">Графическое представление</h4>
+            <h5 style="text-align: center;">Графическое представление</h5>
             <ngx-charts-bar-vertical-2d
                 [scheme]="{ domain: ['rgb(4, 77, 140)', 'rgb(21, 205, 192)', 'rgb(167, 213, 245)'] }"
                 [results]="filesChart"
@@ -23,7 +23,7 @@
         </div>
         <div class="col-sm-6 right" >
             <nb-card style="box-shadow: none; border: none; height: 70vh; overflow-y: scroll;">
-                <h4 style="text-align: center; margin-bottom: 1rem;">Статистика по папкам</h4>
+                <h5 style="text-align: center; margin-bottom: 1rem;">Статистика по папкам</h5>
                 <div class="folders">
                     <nb-card class="showFolder" *ngFor="let item of files">
                         <nb-card-header>
@@ -63,7 +63,6 @@
     </div>
 </nb-form-field>
 
-<!-- <input placeholder="Поиск файлов " nbInput [nbFilterInput]="dataSource " id="search " class="search-input " /> -->
 
 <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
     <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
@@ -79,7 +78,10 @@
             <nb-checkbox status="primary" [checked]="row.data['checkbox']" (change)="setCheckedStatus(row, $event)"></nb-checkbox>
 
             <nb-icon class="tableIcon" [icon]="row.data['favStar'] ? 'star' : 'star-outline' " [status]="row.data['favStar'] ? 'warning' : 'basic' " (click)="setStarStatus(row, $event) "></nb-icon>
-            <img [src]="row.data[fileNameColumn][0]" alt="Избранное" style="margin-right: 1.5rem"/> {{ row.data[fileNameColumn][1] }}
+            
+            <img [src]="row.data[fileNameColumn][0]" alt="Избранное" style="margin-right: 1.5rem"/> 
+            
+            {{ row.data[fileNameColumn][1] }}
         </td>
     </ng-container>
 
