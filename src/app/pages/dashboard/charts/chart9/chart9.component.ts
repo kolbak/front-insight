@@ -79,7 +79,10 @@ export class Chart9Component{
         }
       },
       xaxis: {
-        tickPlacement: 'on'
+        tickPlacement: 'on',
+        tooltip: {
+          enabled: false,
+        }
       },
       markers: {
         colors: ['#7f5af0', '', '#f9bc60'],
@@ -112,7 +115,7 @@ export class Chart9Component{
         enabled: false,
       },
       legend: {
-        show: true,
+        show: false,
         position: 'bottom',
         markers: {
           fillColors: ['#00473e', '#7f5af0', '#f9bc60']
