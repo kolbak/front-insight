@@ -1,4 +1,11 @@
 <div class="header-container padding-top">
+  <!-- Вызываем менюху из небытия -->
+  <button *ngIf="adaptHeader" outline status="info" class="header-container" style="margin-top: 0.5rem; width: 5rem;" size = 'medium' nbButton
+    (click)="showMenu()">
+    <nb-icon icon="menu-2"></nb-icon>
+  </button>
+
+
   <nb-tabset
     *ngIf="!adaptHeader"
     class="header-container"

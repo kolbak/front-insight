@@ -17,15 +17,22 @@ export class OneColumnLayoutComponent {
       private layoutService: LayoutService) {
 
   }
-  // state: string = "expanded";
-  // screenWidth: number  = screen.width;
-
+  state: string = "expanded";
+  screenWidth: number = screen.width;
+  onResize() {
+    this.screenWidth = screen.width;
+    if (this.screenWidth <= 575) {
+      this.state = "compacted";
+      // Вызывает раскрытие меню
+      // this.sidebarService.toggle(true, 'menu-sidebar');      
+    }
+  }
   toggleSidebar(): boolean {
     this.sidebarService.toggle(true, 'menu-sidebar');
     this.layoutService.changeLayoutSize();
-    // if (this.screenWidth < 600) {
-    //   this.state = "compacted"; 
-    // }
+    if (this.screenWidth <= 575) {
+      this.state = "compacted"; 
+    }
     
     return false;
   }

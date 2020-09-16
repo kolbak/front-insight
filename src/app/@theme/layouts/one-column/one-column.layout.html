@@ -5,7 +5,7 @@
 
 <nb-layout windowScroll>
 
-    <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive start>
+    <nb-sidebar [state]="state" (window:resize)="onResize()" class="menu-sidebar" tag="menu-sidebar" responsive start>
 
         <!-- Для анимации.
     (pointerenter)="toggleSidebar()"

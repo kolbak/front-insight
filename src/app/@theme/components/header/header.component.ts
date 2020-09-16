@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NbMediaBreakpointsService, NbMenuService, NbThemeService } from '@nebular/theme';
+import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
 
 import { UserData } from '../../../@core/data/users';
 import { map, takeUntil } from 'rxjs/operators';
@@ -74,6 +74,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private userService: UserData,
     private breakpointService: NbMediaBreakpointsService,
     private rippleService: RippleService,
+    private sidebarService: NbSidebarService
   ) {
     this.materialTheme$ = this.themeService.onThemeChange()
       .pipe(map(theme => {
@@ -118,9 +119,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.adaptHeader = document.documentElement.clientWidth <= 1740;
     });
   }
-  screenWidth: number  = screen.width;
   adaptHeader: boolean = false;
-  //
+  screenWidth: number = screen.width;
+  onResize() {
+      this.screenWidth = screen.width;
+  }
+  showMenu() {
+      // Вызывает раскрытие меню
+      this.sidebarService.toggle(true, 'menu-sidebar');    
+  }
+
+
   selectedItem_1 = 'company';
   selectedItem_2 = '1-day';
 
@@ -134,7 +143,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
 
-
   navigateHome() {
     this.menuService.navigateHome();
     return false;
@@ -146,7 +154,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     
   //   <nb-layout>
   //   <div id="calendar" style="width: 100%; height: 100px; background-color: black">
-  //     <h1>WTF???</h1>
   //       <nb-calendar-range-showcase></nb-calendar-range-showcase>
   //   </div>
   // </nb-layout>
