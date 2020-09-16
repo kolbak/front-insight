@@ -11,7 +11,7 @@ import { MENU_ITEMS } from './pages-menu';
 
   template: `
     <ngx-one-column-layout>
-      <nb-menu tag="menu" [items]="menu"></nb-menu>
+      <nb-menu style="padding-left: 2px;" tag="menu" [items]="menu"></nb-menu>
       <router-outlet></router-outlet>
     </ngx-one-column-layout>
   `,

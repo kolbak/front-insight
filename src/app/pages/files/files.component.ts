@@ -31,9 +31,11 @@ export class FilesComponent {
     private sidebarService: NbSidebarService) {
     for (let i = 0; i < this.sections.length; i++)
       this.deleteMode.push(false);  
-
-    this.sidebarService.compact('menu-sidebar');
-    // this.sidebarService.toggle(false, 'menu-sidebar');
+  
+    // if (this.screenWidth >= 575)
+    //   this.sidebarService.compact('menu-sidebar');
+    // else
+    //   this.sidebarService.toggle(false, 'menu-sidebar');
   }
   
   // Для отображения "Объём данных"
@@ -64,7 +66,7 @@ export class FilesComponent {
   ];
 
   screenWidth: number = screen.width;
-  onResize($event) {
+  onResize() {
     this.screenWidth = screen.width;
   }
   // icons: string[] = [

@@ -5,18 +5,15 @@
 
 <nb-layout windowScroll>
 
-    <nb-sidebar [state]="state" (window:resize)="onResize()" class="menu-sidebar" tag="menu-sidebar" style="
-    padding-right: 0px !important;
-" responsive start>
+    <nb-sidebar (window:resize)="onResize()" (pointerleave)="pointSidebar()" class="menu-sidebar" tag="menu-sidebar" responsive start>
 
         <!-- Для анимации.
-    (pointerenter)="toggleSidebar()"
+    (pointerenter)="pointSidebar()"
     (pointerleave)="toggleSidebar()" -->
 
         <div class="logo-container">
-            <a href="#" (click)="toggleSidebar()" class="iconToggleSidebar">
-                <nb-icon [icon]="'menu-outline'"></nb-icon>
-            </a>
+            <nb-icon (click)="toggleSidebar()" class="iconToggleSidebar" [icon]="'menu-outline'"></nb-icon>
+
             <div class="styles_logoContainer__2IbFS">
                 <a href="./pages/dashboard">
                     <svg width="70" height="70" viewBox="0 0 55 55" class="styles_logo__wFtBf">

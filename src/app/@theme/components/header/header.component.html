@@ -1,7 +1,7 @@
-<div style="width: 100% !important;" class="header-container padding-top ">
+<div style="width: 100% !important;" class="header-container padding-top" (window:resize)="onResize()">
   <!-- Вызываем менюху из небытия -->
   <div  style="width: 100% !important;" class="row">
-  <button *ngIf="adaptHeader" outline status="info" nbButton size="large" class="header-container col"
+  <button *ngIf="screenWidth <= 575" outline status="info" nbButton size="large" class="header-container col"
     (click)="showMenu()">
     <nb-icon icon="menu-2"></nb-icon>
   </button>
@@ -82,7 +82,7 @@
 
 
 <div *ngIf="!adaptHeader" class="header-container">
-  <nb-select
+  <!-- <nb-select
     status="primary"
     matRipple
     [selected]="currentTheme"
@@ -92,7 +92,7 @@
     <nb-option *ngFor="let theme of themes" [value]="theme.value" matRipple>{{
       theme.name
     }}</nb-option>
-  </nb-select>
+  </nb-select> -->
   <nb-actions size="small">
     <nb-action
       class="control-item"
