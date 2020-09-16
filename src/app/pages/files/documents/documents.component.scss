@@ -215,6 +215,11 @@ button[nbTreeGridRowToggle] {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+@media screen and (max-width: 650px) {
+    .folders {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
 // .showFolder {
 //     min-width: 14vw;
 // }
