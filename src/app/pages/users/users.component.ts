@@ -2,6 +2,9 @@ import { ServerService } from './../../server.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { NbSidebarService } from '@nebular/theme';
+
+
 @Component({
   selector: 'ngx-users',
   templateUrl: './users.component.html',
@@ -15,28 +18,27 @@ export class UsersComponent implements OnInit {
     this.IsChangeUsersLayOut = !this.IsChangeUsersLayOut;
   }
 
-
   users: any;
-
 
   isTabletScreen;
   isSmallScreen;
   isXSmallScreen;
   isMediumScreen;
-ngOnInit(){
+
+  ngOnInit(){
+    this.breakpointObserver
+    .observe(Breakpoints.Small)
+    .subscribe((resp) => (this.isSmallScreen = resp.matches));
+    this.breakpointObserver
+    .observe(Breakpoints.Medium)
+    .subscribe((resp) => (this.isMediumScreen = resp.matches));
   this.breakpointObserver
-  .observe(Breakpoints.Small)
-  .subscribe((resp) => (this.isSmallScreen = resp.matches));
+    .observe(Breakpoints.Tablet)
+    .subscribe((resp) => (this.isTabletScreen = resp.matches));
   this.breakpointObserver
-  .observe(Breakpoints.Medium)
-  .subscribe((resp) => (this.isMediumScreen = resp.matches));
-this.breakpointObserver
-  .observe(Breakpoints.Tablet)
-  .subscribe((resp) => (this.isTabletScreen = resp.matches));
-this.breakpointObserver
-  .observe(Breakpoints.XSmall)
-  .subscribe((resp) => (this.isXSmallScreen = resp.matches));
-}
+    .observe(Breakpoints.XSmall)
+    .subscribe((resp) => (this.isXSmallScreen = resp.matches));
+  }
 
   menu: {title: string, url: string, routerLink: string, active: boolean}[] = [
     {title: 'Загрузки',  url: '../../../assets/images/user-actions/31996.svg', routerLink: '/pages/users/downloads',   active: false},
@@ -51,9 +53,14 @@ this.breakpointObserver
 
   firstTime: boolean = true;
   public MAINUSER:string;
-  constructor(public server: ServerService,public router: Router, private breakpointObserver:BreakpointObserver) {
+  constructor(
+    public server: ServerService,
+    public router: Router, 
+    private breakpointObserver:BreakpointObserver,
+    private sidebarService: NbSidebarService) {
      server.getAllUsers();
-   }
+     this.sidebarService.toggle(false, 'menu-sidebar');    
+  }
 
   GetUserToRoute(uuid:string){
     if (this.firstTime && uuid == this.server.allusers[0].uuid) {

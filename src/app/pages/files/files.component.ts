@@ -1,5 +1,5 @@
 import { Component, TemplateRef } from '@angular/core';
-import { NbDialogService } from '@nebular/theme';
+import { NbDialogService, NbSidebarService } from '@nebular/theme';
 
 
 export interface folderInfo {
@@ -27,9 +27,12 @@ export class FilesComponent {
     this.active = section.title;
   }
 
-  constructor(private dialogService: NbDialogService) {
+  constructor(private dialogService: NbDialogService, 
+    private sidebarService: NbSidebarService) {
     for (let i = 0; i < this.sections.length; i++)
       this.deleteMode.push(false);  
+
+    this.sidebarService.toggle(false, 'menu-sidebar');
   }
   
   // Для отображения "Объём данных"
