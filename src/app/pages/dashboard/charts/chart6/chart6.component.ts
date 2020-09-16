@@ -79,7 +79,7 @@ export class Chart6Component implements AfterContentInit{
         dashArray: [5]
       },
       title: {
-        text: "Chart 6",
+        text: "Конверсия",
         offsetY: 15,
       },
       yaxis: {

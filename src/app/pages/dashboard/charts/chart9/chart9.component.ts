@@ -47,17 +47,17 @@ export class Chart9Component{
     this.chartOptions = {
       series: [
         {
-          name: "TEAM A",
+          name: "Оплачено",
           type: "column",
           data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
         },
         {
-          name: "TEAM B",
+          name: "Отменено",
           type: "area",
           data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
         },
         {
-          name: "TEAM C",
+          name: "Выполняются",
           type: "line",
           data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
         }
@@ -106,7 +106,7 @@ export class Chart9Component{
         curve: 'smooth'
       },
       title: {
-        text: 'Chart 9'
+        text: 'Заказы'
       },
       dataLabels: {
         enabled: false,

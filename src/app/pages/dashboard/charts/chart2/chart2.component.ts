@@ -47,7 +47,7 @@ export class Chart2Component {
     this.chartOptions = {
       series: [55],
       title: {
-        text: 'Chart 2',
+        text: 'Нагрузка интернет-соединения',
         offsetY: 35
       },
       chart: {
@@ -61,6 +61,7 @@ export class Chart2Component {
           endAngle: 125,
           dataLabels: {
             name: {
+              show: false,
               fontSize: "16px",
             },
             value: {
@@ -86,7 +87,7 @@ export class Chart2Component {
       stroke: {
         dashArray: 6
       },
-      labels: ["Median Ratio"]
+      // labels: [""]
     };
   }
 }

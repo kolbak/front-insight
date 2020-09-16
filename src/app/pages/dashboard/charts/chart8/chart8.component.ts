@@ -17,7 +17,7 @@ export class Chart8Component {
 
   single = this.genSingleData();
   genSingleData() {
-    let labels = ["Social", "Email", "Search"];
+    let labels = ["Отдел маркетинга", "Отдел разработки", "Отдел поддержки"];
     let arr = [];
     for(let i = 0, l = 3; i < l; i++){
       let obj = {
