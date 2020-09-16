@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="_File_Icon" width="27" height="36" data-name="File Icon" viewBox="0 0 27 36">
+    <g id="Сгруппировать_1242" data-name="Сгруппировать 1242">
+        <path id="File" fill="#f2f4f4" d="M25 36H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h19.722L27 5v29a2 2 0 0 1-2 2zM2 1a1 1 0 0 0-1 1v32a1 1 0 0 0 1 1h23a1 1 0 0 0 1-1V6h-3a2 2 0 0 1-2-2V1zm20 .641V4a1 1 0 0 0 1 1h2.545z"/>
+        <g id="Icon" transform="translate(5.896 11.157)">
+            <g id="Word">
+                <path id="Shape" fill="#ff5b5c" d="M15.4 15.531H0V0h15.4v15.53zM1.48 1.564v12.4h12.443v-12.4zm4.761 10.3H4.378l-2.1-7.217H4.19L5.414 9.31l1.494-4.663h1.455l1.39 4.663 1.333-4.663H13l-2.252 7.216H8.875L7.59 7.681l-1.349 4.183z"/>
+            </g>
+        </g>
+    </g>
+</svg>

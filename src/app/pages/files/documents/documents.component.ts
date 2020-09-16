@@ -113,6 +113,12 @@ export class DocumentsComponent implements OnInit {
   sortColumn: string;
   sortDirection: NbSortDirection = NbSortDirection.NONE;
 
+
+  screenWidth: number = screen.width;
+  onResize($event) {
+    this.screenWidth = screen.width;
+  }
+
   userArrCell: any;
 
   constructor(
@@ -126,7 +132,16 @@ export class DocumentsComponent implements OnInit {
     // Создадим рандомные данные для таблицы
       for (let i = 0; i < 100; i++) {
         tableDate = DataGenerator.randomDate(new Date(2012, 0, 1), new Date());
-        fileName = DataGenerator.makeName('file_', ['pdf', 'ppt', 'psd', 'doc', 'py', 'json', 'zip', 'rar', 'png', 'jpeg', 'mpeg', 'mp3', 'wav' ]);
+        fileName = DataGenerator.makeName('file_', [
+          'mpeg', 'avi', 'mp4',
+          'png', 'jpeg', 'bmp', 'git', 'tif',
+          'mp3', 'wav', 
+          'fb2', 'epub', 'mobi',
+          'doc', 'txt', 'docx', 'pdf','pdf','pdf','pdf','pdf','pdf','pdf',
+          'xls', 'xlsx',
+          'ppt', 'pptx','ppt', 'pptx','ppt', 'pptx','ppt', 'pptx','ppt', 'pptx',
+          'zip', 'rar', '7z', 'gzip'
+         ]);
         fileIconSrc = '../../../../assets/images/ext_icons/ext_icon_';
 
         if (fileName.split('.').length > 0 && extensions.includes(fileName.split('.')[fileName.split('.').length - 1].toLocaleUpperCase()))
@@ -168,7 +183,7 @@ export class DocumentsComponent implements OnInit {
       this.filesChart.push({
         "name": this.folderNames[i],
         "series": [{
-            "name": "Количество файлов",
+            "name": "Кол-во",
             "value": amount
           }, {
             "name": "Объём",

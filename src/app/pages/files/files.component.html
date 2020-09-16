@@ -1,9 +1,9 @@
-<div class="card-row" style="box-shadow: -4px 4px 10px 0 rgba(25, 42, 70, .13);">
+<div class="card-row" (window:resize)="onResize($event)" style="box-shadow: -4px 4px 10px 0 rgba(25, 42, 70, .13);">
 
     <!-- тип файлов -->
     <div class="card-col-10">
         <nb-card class="search-card">
-            <nb-card-header>
+            <nb-card-header *ngIf="screenWidth > 1050">
                 <h6>Содержание</h6>
             </nb-card-header>
             <nb-card-body>
@@ -16,14 +16,15 @@
                         (click)="filterTable(section)"
                         (mouseenter)="deleteMode[i] = true"
                         (mouseleave)="deleteMode[i] = false"
-                        style="padding-right: 0px;">
+                        style="padding-right: 0px;"
+                        >
 
                         <nb-icon 
                             [ngClass]="{active: section.title == active}"
                             style="border: none !important; color: #8f9bb3"
                             icon="{{section.icon }}">
                         </nb-icon>
-                        <span style="font-size: 1rem; font-weight: 500;">{{ section.title }}</span>
+                        <span *ngIf="screenWidth > 1050" style="font-size: 1rem; font-weight: 500;">{{ section.title }}</span>
 
                         <nb-icon *ngIf="section.title == active"
                             icon="close-outline"
@@ -40,13 +41,13 @@
                     (click)="open(dialog)" 
                     style='margin-bottom:5%' 
                     size='medium' nbButton hero status="info"
-                    [disabled]="sectionsHide.length == 0">+ Добавить раздел</button>
+                    [disabled]="sectionsHide.length == 0">+ <span *ngIf="screenWidth > 1050">Добавить раздел</span></button>
                 <!-- Размер диска -->
-                <div class="card-row" style="margin: auto;">
+                <div *ngIf="screenWidth > 1050" class="card-row" style="margin: auto;">
                     <div class="card-col-25">
                         <nb-icon icon="hard-drive-outline" style="width: 40px; height: 40px; object-fit: contain; margin-top: 1rem; margin-bottom:1.5rem"></nb-icon>
                     </div>
-                    <div class="card-col-75" style="margin-left: 1rem;">
+                    <div class="card-col-75">
                         <p class="paragraph-2">Объём данных</p>
                         <nb-progress-bar [value]="dataContains/dataTotal*100" status="info" style="white-space: nowrap; align-items: center;">
                             {{dataContains}}/{{dataTotal}} гб

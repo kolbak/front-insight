@@ -98,6 +98,16 @@ button[nbTreeGridRowToggle] {
         // border: 0.1625rem solid;
         border: outset;
     }
+
+    @media screen and (max-width: 1050px) {
+        .card-col-10 {
+            flex: none;
+        }
+        nb-icon {
+            margin-right: none;
+        }
+    }
+
     // div.card-col-10,
     // nb-card.search-card {
     //     background-color: #F2F4EE;

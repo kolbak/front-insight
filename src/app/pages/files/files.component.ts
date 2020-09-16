@@ -59,13 +59,17 @@ export class FilesComponent {
     { title: 'Удалённое',  icon: 'trash-2-outline',    extension: 'deleted' }
   ];
 
+  screenWidth: number = screen.width;
+  onResize($event) {
+    this.screenWidth = screen.width;
+  }
   // icons: string[] = [
   //   'car-outline', 'camera-outline', 
   //   'crop-outline', 'edit-2-outline', 
   //   'phone-outline', 'shopping-cart-outline',
   //   'email-outline', 'layout-outline'
   // ];
-  extensions: string[] = ['']
+  // extensions: string[] = ['']
 
   // AddExtenstion(id) {
   //   console.log((document.querySelector('#ext' + id) as HTMLInputElement).value);

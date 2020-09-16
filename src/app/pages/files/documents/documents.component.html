@@ -1,9 +1,9 @@
-<div style="padding: 1rem 1.5rem; margin-bottom: 2rem;">
+<div class="chart" (window:resize)="onResize($event)">
     <h4>Аналитика файлов</h4>
     <hr style="border: 2.5px #edf1f7 dashed;">
 
-    <div class="row" style="max-height: 70vh;">
-        <div class="col-sm-6 left" style="max-height: 50vh;">
+    <div *ngIf="screenWidth > 950" class="row" style="max-height: 70vh;">
+        <div class="left" [class]="screenWidth > 1700 ? 'col-sm-6' : 'col-sm-7'" style="max-height: 50vh;">
             <h5 style="text-align: center;">Графическое представление</h5>
             <ngx-charts-bar-vertical-2d
                 [scheme]="{ domain: ['rgb(4, 77, 140)', 'rgb(21, 205, 192)', 'rgb(167, 213, 245)'] }"
@@ -14,6 +14,7 @@
                 [xAxis]="true"
                 [yAxis]="false"
                 [legend]="true"
+                [legendPosition]="screenWidth > 1700 ? 'right' : 'below'"
                 [showXAxisLabel]="false"
                 [showYAxisLabel]="true"
                 [xAxisLabel]="'разделы'"
@@ -21,7 +22,7 @@
             >
             </ngx-charts-bar-vertical-2d>
         </div>
-        <div class="col-sm-6 right" >
+        <div class="right" [class]="screenWidth > 1700 ? 'col-sm-6' : 'col-sm-5'">
             <nb-card style="box-shadow: none; border: none; height: 70vh; overflow-y: scroll;">
                 <h5 style="text-align: center; margin-bottom: 1rem;">Статистика по папкам</h5>
                 <div class="folders">
@@ -31,7 +32,50 @@
                             {{item.folderName}}
                         </nb-card-header>
                         <nb-card-body>
-                            Файлов: {{item.amount}} ; Размер: {{item.totalVolume}}мб
+                            Файлов: {{item.amount}} ; <wbr>Размер: {{item.totalVolume}}мб
+                        </nb-card-body>
+                        <nb-card-footer>
+                            <span class="extensions" *ngFor="let ext of item.extensions">
+                                .{{ext}}
+                            </span>
+                        </nb-card-footer>
+                    </nb-card>
+                </div>
+            </nb-card>
+        </div>
+    </div>
+    
+    <div *ngIf="screenWidth <= 950" class="row" style="max-height: 70vh;">
+        <div class="left" class="col-sm-12" style="max-height: 50vh; margin-bottom: 1.5vh">
+            <h5 style="text-align: center;">Графическое представление</h5>
+            <ngx-charts-bar-vertical-2d
+                [scheme]="{ domain: ['rgb(4, 77, 140)', 'rgb(21, 205, 192)', 'rgb(167, 213, 245)'] }"
+                [results]="filesChart"
+                [barPadding]="5"
+                [groupPadding]="30"
+                [gradient]="true"
+                [xAxis]="true"
+                [yAxis]="false"
+                [legend]="true"
+                [legendPosition]="screenWidth > 1700 ? 'right' : 'below'"
+                [showXAxisLabel]="false"
+                [showYAxisLabel]="true"
+                [xAxisLabel]="'разделы'"
+                [legendTitle]="''"
+            >
+            </ngx-charts-bar-vertical-2d>
+        </div>
+        <div class="right" class="col-sm-12">
+            <nb-card style="box-shadow: none; border: none; height: 30vh; overflow-y: scroll;">
+                <h5 style="text-align: center; margin-bottom: 1rem;">Статистика по папкам</h5>
+                <div class="folders">
+                    <nb-card class="showFolder" *ngFor="let item of files">
+                        <nb-card-header>
+                            <nb-icon icon="folder-outline"></nb-icon>
+                            {{item.folderName}}
+                        </nb-card-header>
+                        <nb-card-body>
+                            Файлов: {{item.amount}} ; <wbr>Размер: {{item.totalVolume}}мб
                         </nb-card-body>
                         <nb-card-footer>
                             <span class="extensions" *ngFor="let ext of item.extensions">
@@ -44,11 +88,6 @@
         </div>
     </div>
 
-    <!-- <hr style="border: 2.5px #edf1f7 dashed;"> -->
-    
-    <!-- <div class="row" style="margin-top: 20vh;">
-
-    </div> -->
 </div>
 
 <!-- <label class="search-label" for="search">Поиск файлов</label> -->
@@ -108,10 +147,8 @@
         <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>
             {{ usersColumn }}
         </th>
-        <!-- border-bottom: 1.5px solid lightgrey; border-top: 0px solid lightgrey; -->
         <td nbTreeGridCell *nbTreeGridCellDef="let row" class="users">
-            <!-- <nb-user class="user " *ngFor="let user of row.data[usersColumn] " size="large " name="Это юзер " title="Юзер " onlyPicture>
-            </nb-user> -->
+
             <img width="50px" height="50px" 
               onerror="
               this.error = null; 
@@ -124,10 +161,6 @@
               (click)="open(userArrCell[user])"
               style="border-radius: 25px; outline: none;"
              >
-            <!-- <nb-user *ngFor="let user of server.allusers" (click)="open(user)" size="large" [name]="user.first_name" [title]="user.role" [picture]="server.HOST + user.photo" onlyPicture>
-            </nb-user> -->
-
-            <!-- {{row.data['Пользователи'] || '-'}} -->
         </td>
     </ng-container>
 

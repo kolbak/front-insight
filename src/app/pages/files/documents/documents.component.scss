@@ -205,14 +205,28 @@ button[nbTreeGridRowToggle] {
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
 }
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1700px) {
     .folders {
         grid-template-columns: repeat(1, 1fr);
+    }
+}
+@media screen and (max-width: 950px) {
+    .folders {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 // .showFolder {
 //     min-width: 14vw;
 // }
+.chart {
+    padding: 1rem 1.5rem; 
+    margin-bottom: 4rem;
+}
+@media screen and (min-width: 1700px) {
+    .chart { 
+        margin-bottom: 2rem;
+    }
+}
 
 .extensions {
     margin-left: 3px;
