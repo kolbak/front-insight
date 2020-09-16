@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit{
   screenWidth: number  = screen.width;
   adaptCharts: boolean = false;
   public constructor(private breakpointObserver:BreakpointObserver) {
-    if(this.screenWidth <= 1740) {
+    if(this.screenWidth <= 1040) {
       this.adaptCharts = true;
     }
     window.addEventListener('resize', () => {

@@ -13,15 +13,20 @@ export class OneColumnLayoutComponent {
 
     constructor(
       private router: Router,
-    private sidebarService: NbSidebarService,
-    private layoutService: LayoutService) {
+      private sidebarService: NbSidebarService,
+      private layoutService: LayoutService) {
 
   }
+  // state: string = "expanded";
+  // screenWidth: number  = screen.width;
 
   toggleSidebar(): boolean {
     this.sidebarService.toggle(true, 'menu-sidebar');
     this.layoutService.changeLayoutSize();
-
+    // if (this.screenWidth < 600) {
+    //   this.state = "compacted"; 
+    // }
+    
     return false;
   }
   KonamiCode(){

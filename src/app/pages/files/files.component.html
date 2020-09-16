@@ -10,23 +10,37 @@
                 <!-- список из разделов -->
                 <nb-list>
                     <nb-list-item style="cursor: pointer;" 
-                    *ngFor="let section of sections" 
-                    [ngClass]="{active: section.title == active}" 
-                    (click)="documents.filterTableBySection(section)"
-                    (click)="filterTable(section)">
+                        *ngFor="let section of sections; let i = index" 
+                        [ngClass]="{active: section.title == active}" 
+                        (click)="documents.filterTableBySection(section)"
+                        (click)="filterTable(section)"
+                        (mouseenter)="deleteMode[i] = true"
+                        (mouseleave)="deleteMode[i] = false"
+                        style="padding-right: 0px;">
 
                         <nb-icon 
                             [ngClass]="{active: section.title == active}"
                             style="border: none !important; color: #8f9bb3"
-                            icon="{{section.icon }}"></nb-icon>
-                           <span>{{ section.title }}</span>
+                            icon="{{section.icon }}">
+                        </nb-icon>
+                        <span style="font-size: 1rem; font-weight: 500;">{{ section.title }}</span>
+
+                        <nb-icon *ngIf="section.title == active"
+                            icon="close-outline"
+                            style="margin-left: auto; color: lightcoral !important;"
+                            (click)="hideSection(i)">
+                        </nb-icon>
 
                     </nb-list-item>
                   </nb-list>
             </nb-card-body>
             <nb-card-footer style="padding: 1rem 1.5rem;">
                 <!-- Место для кнопки: Добавить раздел -->
-                <button (click)="open(dialog)" style='margin-bottom:5%' size='medium' nbButton hero status="info">+ Добавить раздел</button>
+                <button 
+                    (click)="open(dialog)" 
+                    style='margin-bottom:5%' 
+                    size='medium' nbButton hero status="info"
+                    [disabled]="sectionsHide.length == 0">+ Добавить раздел</button>
                 <!-- Размер диска -->
                 <div class="card-row" style="margin: auto;">
                     <div class="card-col-25">
@@ -56,9 +70,9 @@
 
 <ng-template #dialog>
     <nb-card style="width: 25vw; height: 50vh">
-        <nb-card-header>
+        <!-- <nb-card-header>
           <h4>Добавление раздела</h4>
-        </nb-card-header>
+        </nb-card-header> -->
         <nb-card-body>
             <h6>Скрытые разделы</h6>
             <nb-list>
@@ -92,4 +106,4 @@
                  -->
         </nb-card-body>
     </nb-card>
-  </ng-template>
+</ng-template>

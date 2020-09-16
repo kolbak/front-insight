@@ -1,5 +1,5 @@
 import { ServerService, User } from './../../../server.service';
-import { Component, Inject, OnInit, Input  } from '@angular/core';
+import { Component, Inject, OnInit  } from '@angular/core';
 import {
   NbSortDirection,
   NbSortRequest,

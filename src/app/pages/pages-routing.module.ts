@@ -15,9 +15,7 @@ const routes: Routes = [{
     },
     {
       path: 'files',
-      component: FilesComponent
-      // loadChildren: () => import('./files/files.module')
-      //   .then(m => m.FilesModule),
+      component: FilesComponent,
     },
     {
       path: 'users',
