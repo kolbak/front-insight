@@ -113,7 +113,7 @@ export class Chart3Component implements AfterContentInit{
             show: false,
         },
         tooltip: {
-            enabled: true,
+            enabled: false,
         }
       },
       tooltip: {
