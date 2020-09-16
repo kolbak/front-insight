@@ -80,15 +80,14 @@
         height: 100%;
     }
     // Легенд к графикам -- начало
-    nb-reveal-card{
-
-    }
     nb-card-back{
         height: 40%;
     }
+    // .back-c3{
+    //     height: 100%;
+    // }
     .card-leg{
         position: relative;
-        top: 153%;
         box-shadow: none;
         background-color: transparent;
     }
@@ -111,21 +110,38 @@
         }
         li{
             list-style-type: none;
+            i{
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                border-radius: 100%;
+            }
         }
-        :nth-child(1) i, :nth-child(2) i, :nth-child(3) i{
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 100%;
+    }
+    //// LEGEND FOR CHART 8
+    .card-leg-chrt3{
+        top: 210%;
+        .legend ul{
+            :nth-child(1) i{
+                border: #26A0FC solid 6px;
+            }
+            :nth-child(2) i{
+                border: #FEB019 solid 6px;
+            }
         }
-        :nth-child(1) i{
-            border: #5A8DEE solid 6px;
-        }
-        :nth-child(2) i{
-            border: #00CFDD solid 6px;
-        }
-        :nth-child(3) i{
-            border: #FDAC41 solid 6px;
+    }
+    .card-leg-chrt8{
+        top: 153%;
+        .legend ul{
+            :nth-child(1) i{
+                border: #5A8DEE solid 6px;
+            }
+            :nth-child(2) i{
+                border: #00CFDD solid 6px;
+            }
+            :nth-child(3) i{
+                border: #FDAC41 solid 6px;
+            }
         }
     }
     // Легенд к графикам -- конец

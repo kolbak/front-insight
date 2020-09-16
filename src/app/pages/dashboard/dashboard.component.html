@@ -20,7 +20,7 @@
                         </nb-card>
                     </nb-card-front>
                     <nb-card-back>
-                        <nb-card class="card-leg">
+                        <nb-card class="card-leg card-leg-chrt8">
                             <div class="legend">
                                 <ul>
                                     <li><i></i> Отдел маркетинга</li>
@@ -63,9 +63,27 @@
         <nb-card class="template-right-top-card" size="small">
             <ngx-chart2></ngx-chart2>
         </nb-card>
-        <nb-card class="template-right-medium-card" size="small">
+        <nb-reveal-card>
+            <nb-card-front>
+                <nb-card class="template-right-medium-card" size="small">
+                    <!-- <p class="chart-label">Соотношение новых и ушедших клиентов</p> -->
+                    <ngx-chart3></ngx-chart3>
+                </nb-card>
+            </nb-card-front>
+            <nb-card-back>
+                <nb-card class="card-leg card-leg-chrt3">
+                    <div class="legend">
+                        <ul>
+                            <li><i></i> Новые клиенты</li>
+                            <li><i></i> Ушедшие клиенты</li>
+                        </ul>
+                    </div>
+                </nb-card>
+            </nb-card-back>
+        </nb-reveal-card>
+        <!-- <nb-card class="template-right-medium-card" size="small">
             <ngx-chart3></ngx-chart3>
-        </nb-card>
+        </nb-card> -->
         <nb-card class="template-right-bottom-card" size="tiny">
             <ngx-chart4></ngx-chart4>
         </nb-card>
