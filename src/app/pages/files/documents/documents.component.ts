@@ -115,7 +115,7 @@ export class DocumentsComponent implements OnInit {
 
 
   screenWidth: number = screen.width;
-  onResize($event) {
+  onResize() {
     this.screenWidth = screen.width;
   }
 

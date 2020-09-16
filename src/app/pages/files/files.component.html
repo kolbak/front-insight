@@ -1,4 +1,4 @@
-<div class="card-row" (window:resize)="onResize($event)" style="box-shadow: -4px 4px 10px 0 rgba(25, 42, 70, .13);">
+<div class="card-row" (window:resize)="onResize()" style="box-shadow: -4px 4px 10px 0 rgba(25, 42, 70, .13);">
 
     <!-- тип файлов -->
     <div class="card-col-10">
@@ -26,7 +26,7 @@
                         </nb-icon>
                         <span *ngIf="screenWidth > 1050" style="font-size: 1rem; font-weight: 500;">{{ section.title }}</span>
 
-                        <nb-icon *ngIf="section.title == active"
+                        <nb-icon *ngIf="deleteMode[i]"
                             icon="close-outline"
                             style="margin-left: auto; color: lightcoral !important;"
                             (click)="hideSection(i)">
@@ -35,11 +35,11 @@
                     </nb-list-item>
                   </nb-list>
             </nb-card-body>
-            <nb-card-footer style="padding: 1rem 1.5rem;">
+            <nb-card-footer [style]="screenWidth > 1050 ? 'padding: 1rem 1.5rem;' : ''">
                 <!-- Место для кнопки: Добавить раздел -->
                 <button 
                     (click)="open(dialog)" 
-                    style='margin-bottom:5%' 
+                    style="margin-bottom:5%; width: 100%;" 
                     size='medium' nbButton hero status="info"
                     [disabled]="sectionsHide.length == 0">+ <span *ngIf="screenWidth > 1050">Добавить раздел</span></button>
                 <!-- Размер диска -->
@@ -70,7 +70,7 @@
 </div>
 
 <ng-template #dialog>
-    <nb-card style="width: 25vw; height: 50vh">
+    <nb-card [style]="screenWidth > 1050 ? 'width: 25vw; height: 50vh' : 'width: 50vw; height: 70vh'">
         <!-- <nb-card-header>
           <h4>Добавление раздела</h4>
         </nb-card-header> -->

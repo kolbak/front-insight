@@ -53,16 +53,23 @@ export class UsersComponent implements OnInit {
 
   firstTime: boolean = true;
   public MAINUSER:string;
-  constructor(
-    public server: ServerService,
+
+  screenWidth: number = screen.width;
+  onResize() {
+    this.screenWidth = screen.width;
+  }
+
+  constructor(public server: ServerService,
     public router: Router, 
     private breakpointObserver:BreakpointObserver,
     private sidebarService: NbSidebarService) {
      server.getAllUsers();
-     this.sidebarService.compact('menu-sidebar');
 
-    //  this.sidebarService.toggle(false, 'menu-sidebar');    
-  }
+    //  if (this.screenWidth >= 575)
+    //   this.sidebarService.compact('menu-sidebar');
+    //  else
+    //   this.sidebarService.toggle(false, 'menu-sidebar');
+    }
 
   GetUserToRoute(uuid:string){
     if (this.firstTime && uuid == this.server.allusers[0].uuid) {

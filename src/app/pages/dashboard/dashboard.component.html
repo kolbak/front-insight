@@ -1,5 +1,5 @@
 <!-- Создаю макет -->
-<div class="row" style="width: 100%;" *ngIf="!adaptCharts;else fitCharts">
+<div (window:resize)="onResize()" class="row" style="width: 100%;" *ngIf="!adaptCharts;else fitCharts">
 
     <div class="col-sm-6">
         <nb-card class="template-left-top-card" size="large">

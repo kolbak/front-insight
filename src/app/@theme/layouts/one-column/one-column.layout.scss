@@ -43,8 +43,13 @@
   }
 
   .iconToggleSidebar{
-    margin-left: 13px
+    margin-left: 15px;
+    color: #8f9bb3;
   }
+  .iconToggleSidebar:hover {
+    color: #598bff;
+  }
+
   .bottomleft {
     position: absolute;
     bottom: 8px;
