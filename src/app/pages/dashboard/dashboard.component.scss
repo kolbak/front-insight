@@ -79,13 +79,16 @@
     ngx-chart1, ngx-chart8{
         height: 100%;
     }
+    .legend-wrap{
+        border: 2px dashed red
+    }
     .legend ul{
         &{
             position: relative;
             top: -160%;
             left: 0;
             padding: 4%;
-            opacity: 0;
+            opacity: 0.5;
             transition: .2s;
         }
         &:hover{

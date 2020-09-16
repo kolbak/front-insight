@@ -41,7 +41,7 @@
                     (click)="open(dialog)" 
                     style='margin-bottom:5%' 
                     size='medium' nbButton hero status="info"
-                    [disabled]="sectionsHide.length == 0">+ <span *ngIf="screenWidth > 1050">Добавить раздел</span></button>
+                    [disabled]="sectionsHide.length == 0">+ <span *ngIf="screenWidth > 1050"> Добавить раздел</span></button>
                 <!-- Размер диска -->
                 <div *ngIf="screenWidth > 1050" class="card-row" style="margin: auto;">
                     <div class="card-col-25">
@@ -49,9 +49,10 @@
                     </div>
                     <div class="card-col-75">
                         <p class="paragraph-2">Объём данных</p>
-                        <nb-progress-bar [value]="dataContains/dataTotal*100" status="info" style="white-space: nowrap; align-items: center;">
-                            {{dataContains}}/{{dataTotal}} гб
+                        <nb-progress-bar [value]="dataContains/dataTotal*100" status="info" 
+                            style="white-space: nowrap; align-items: center;">
                         </nb-progress-bar>
+                        <p class="paragraph-2 ratio">{{dataContains}} / {{dataTotal}} гб</p>
                     </div>
                 </div>
             </nb-card-footer>

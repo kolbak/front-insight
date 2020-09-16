@@ -145,7 +145,12 @@ button[nbTreeGridRowToggle] {
         margin-top: 0.5rem;
     }
     p.paragraph-2 {
+        text-align: justify;
         margin-bottom: 0.3rem;
+    }
+    p.ratio{
+        font-size: small;
+        font-weight: bold;
     }
     img {
         text-align: center;
