@@ -59,7 +59,9 @@ export class UsersComponent implements OnInit {
     private breakpointObserver:BreakpointObserver,
     private sidebarService: NbSidebarService) {
      server.getAllUsers();
-     this.sidebarService.toggle(false, 'menu-sidebar');    
+     this.sidebarService.compact('menu-sidebar');
+
+    //  this.sidebarService.toggle(false, 'menu-sidebar');    
   }
 
   GetUserToRoute(uuid:string){

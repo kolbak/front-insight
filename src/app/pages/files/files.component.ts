@@ -32,7 +32,8 @@ export class FilesComponent {
     for (let i = 0; i < this.sections.length; i++)
       this.deleteMode.push(false);  
 
-    this.sidebarService.toggle(false, 'menu-sidebar');
+    this.sidebarService.compact('menu-sidebar');
+    // this.sidebarService.toggle(false, 'menu-sidebar');
   }
   
   // Для отображения "Объём данных"
