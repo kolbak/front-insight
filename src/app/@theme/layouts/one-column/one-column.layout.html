@@ -5,7 +5,9 @@
 
 <nb-layout windowScroll>
 
-    <nb-sidebar [state]="state" (window:resize)="onResize()" class="menu-sidebar" tag="menu-sidebar" responsive start>
+    <nb-sidebar [state]="state" (window:resize)="onResize()" class="menu-sidebar" tag="menu-sidebar" style="
+    padding-right: 0px !important;
+" responsive start>
 
         <!-- Для анимации.
     (pointerenter)="toggleSidebar()"
@@ -46,7 +48,7 @@
         <div class="container-fluid" style="position: relative; padding-left: 2%">
           <ngx-header></ngx-header>
         </div>
-        <div style="padding-left: 3rem !important;padding-right: 0.5rem !important;" >
+        <div style="padding-left: 1rem !important;" >
         <ng-content select="router-outlet"></ng-content>
         </div>
 
