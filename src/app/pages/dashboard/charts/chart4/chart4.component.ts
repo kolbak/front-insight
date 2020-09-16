@@ -78,7 +78,7 @@ export class Chart4Component implements AfterContentInit{
         width: 4
       },
       title: {
-        text: "Chart 4",
+        text: "Бюджет",
         offsetY: 25,
       },
       yaxis: {

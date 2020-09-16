@@ -98,7 +98,7 @@ export class Chart5Component {
         },
       },
       title: {
-        text: "Chart 5"
+        text: "Результативность отдела"
       },
       legend: {
         show: false

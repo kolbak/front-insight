@@ -22,12 +22,13 @@ export class Chart1Component {
 
   genSingleData(){
     let arr = [];
-    for(let i = 0, l = 8; i < l; i++) {
+    let monthes = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+    for(let i = 0, l = 7; i < l; i++) {
       let obj = {
         name: '',
         value: 0
       };
-      obj.name  = `${l - i}`;
+      obj.name  = `${monthes[i]}`;
       obj.value = Math.floor(20 + Math.random() * 180)
       arr.push(obj);
     }

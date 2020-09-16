@@ -36,8 +36,8 @@ export class Chart7Component {
   constructor() {
     this.chartOptions = {
       series: [{
-        name: 'Series 1',
-        data: [80, 50, 30, 40, 90, 20, 5, 35, 50, 55],
+        name: 'Кол-во',
+        data: [80, 50, 30, 40, 90, 20, 5, 35, 50],
       }],
       chart: {
         offsetY: -15,
@@ -64,14 +64,14 @@ export class Chart7Component {
       },
       title: {
         offsetY: 15,
-        text: 'Chart 7'
+        text: 'Объём продаж'
       },
       yaxis: {
         show: false,
       },
       xaxis: {
         type: 'category',
-        categories: ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'],
+        categories: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь'],
         labels: {
             show: false,
         },

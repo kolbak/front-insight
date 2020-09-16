@@ -46,10 +46,10 @@ export class Chart3Component implements AfterContentInit{
   constructor() {
     this.chartOptions = {
       series: [{
-          name: "New clients",
+          name: "Новые клиенты",
           data: [75, 150, 225, 200, 35, 50, 150, 180, 50, 150, 240, 140, 75, 35, 60, 120]
         },{
-          name: "Retained clients",
+          name: "Ушедшие клиенты",
           data: [-100, -55, -40, -120, -70, -40, -60, -50, -70, -30, -60, -40, -50, -70, -40, -50]
         }
       ],
@@ -84,7 +84,7 @@ export class Chart3Component implements AfterContentInit{
         }
       },
       title: {
-        text: "Chart 3"
+        text: "Соотношение новых и ушедших клиентов"
       },
       grid: {
         xaxis: {
@@ -113,7 +113,7 @@ export class Chart3Component implements AfterContentInit{
             show: false,
         },
         tooltip: {
-            enabled: true,
+            enabled: false,
         }
       },
       tooltip: {
