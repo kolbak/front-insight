@@ -1,4 +1,25 @@
-<apx-chart
+<ngx-charts-bar-horizontal
+  [showGridLines]="false"
+  [scheme]="colorScheme"
+  [results]="single"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  (select)="onSelect($event)"
+  (activate)="onActivate($event)"
+  (deactivate)="onDeactivate($event)">
+</ngx-charts-bar-horizontal>
+
+
+
+
+
+
+
+
+
+<!-- <apx-chart
     [series]="chartOptions.series"
     [chart]="chartOptions.chart"
     [yaxis]="chartOptions.yaxis"
@@ -14,4 +35,4 @@
     [legend]="chartOptions.legend"
     [labels]="chartOptions.labels"
     [fill]="chartOptions.fill"
-></apx-chart>
+></apx-chart> -->

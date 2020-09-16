@@ -8,17 +8,10 @@ import { MENU_ITEMS } from './pages-menu';
 @Component({
   selector: 'ngx-pages',
   styleUrls: ['pages.component.scss'],
-  
+
   template: `
     <ngx-one-column-layout>
       <nb-menu tag="menu" [items]="menu"></nb-menu>
-      <!-- <a *ngFor="let item of menu">item</a>
-      <nb-list>
-        <nb-list-item *ngFor="let item of menu">
-          <nb-icon [icon]="item.icon"></nb-icon>
-          <a [href]="item.link">{{ item.title }}</a>
-        </nb-list-item>
-      </nb-list> -->
       <router-outlet></router-outlet>
     </ngx-one-column-layout>
   `,
