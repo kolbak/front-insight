@@ -36,6 +36,15 @@
             <!-- <a class="logo" href="#" (click)="navigateHome()"><span>ui</span></a> -->
         </div>
         <hr>
+        <nb-user *ngIf="2000 > 1740"
+            style="margin: 1rem 0rem 1rem -0.8rem;"
+            [nbContextMenu]="userMenu"
+            [name]="user?.name"
+            [picture]="user?.picture"
+          >
+        </nb-user>
+        <hr>
+
         <ng-content select="nb-menu"></ng-content>
         <!-- <h6 (click)="KonamiCode()" class="bottomleft">version 1.1</h6> -->
     </nb-sidebar>

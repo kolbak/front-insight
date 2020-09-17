@@ -65,10 +65,10 @@ export class UsersComponent implements OnInit {
     private sidebarService: NbSidebarService) {
      server.getAllUsers();
 
-    //  if (this.screenWidth >= 575)
-    //   this.sidebarService.compact('menu-sidebar');
-    //  else
-    //   this.sidebarService.toggle(false, 'menu-sidebar');
+     if (this.screenWidth >= 575)
+      this.sidebarService.compact('menu-sidebar');
+     else
+      this.sidebarService.toggle(false, 'menu-sidebar');
     }
 
   GetUserToRoute(uuid:string){

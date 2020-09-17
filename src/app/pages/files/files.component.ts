@@ -32,10 +32,10 @@ export class FilesComponent {
     for (let i = 0; i < this.sections.length; i++)
       this.deleteMode.push(false);  
   
-    // if (this.screenWidth >= 575)
-    //   this.sidebarService.compact('menu-sidebar');
-    // else
-    //   this.sidebarService.toggle(false, 'menu-sidebar');
+    if (this.screenWidth >= 575)
+      this.sidebarService.compact('menu-sidebar');
+    else
+      this.sidebarService.toggle(false, 'menu-sidebar');
   }
   
   // Для отображения "Объём данных"
