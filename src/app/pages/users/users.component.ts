@@ -1,3 +1,4 @@
+import { AfterContentInit } from '@angular/core';
 import { ServerService } from './../../server.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -26,6 +27,7 @@ export class UsersComponent implements OnInit {
   isMediumScreen;
 
   ngOnInit(){
+
     this.breakpointObserver
     .observe(Breakpoints.Small)
     .subscribe((resp) => (this.isSmallScreen = resp.matches));
@@ -55,12 +57,15 @@ export class UsersComponent implements OnInit {
   public MAINUSER:string;
 
   screenWidth: number = screen.width;
+  screenHeight: number = screen.height;
   onResize() {
     this.screenWidth = screen.width;
+    this.screenHeight = screen.height;
+
   }
 
   constructor(public server: ServerService,
-    public router: Router, 
+    public router: Router,
     private breakpointObserver:BreakpointObserver,
     private sidebarService: NbSidebarService) {
      server.getAllUsers();
@@ -69,6 +74,7 @@ export class UsersComponent implements OnInit {
       this.sidebarService.compact('menu-sidebar');
      else
       this.sidebarService.toggle(false, 'menu-sidebar');
+      // window.resizeTo(this.screenWidth,this.screenHeight)
     }
 
   GetUserToRoute(uuid:string){
@@ -101,4 +107,5 @@ export class UsersComponent implements OnInit {
   filterUsers() {
     this.users = this.server.allusers.filter(user => (user.full_name + user.role).toLowerCase().match("^.*" + (document.querySelector('#searchUsers') as HTMLInputElement).value.toLowerCase() + ".*$"));
   }
+
 }

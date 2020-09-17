@@ -5,7 +5,9 @@
     [class]="(isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen) && IsChangeUsersLayOut ?'':'col-3 search'"
   >
     <nb-card class="search-card">
-      <nb-card-header>
+      <nb-card-header style="display: flex; justify-content: space-between;">
+        <button size="large" nbButton *ngIf="(isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen)&& IsChangeUsersLayOut" status="info"><nb-icon icon="arrow-ios-back-outline"></nb-icon></button>
+
         <nb-form-field>
           <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
           <input
