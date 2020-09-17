@@ -2,7 +2,11 @@
 <div (window:resize)="onResize()" class="row" style="width: 100%;" *ngIf="!adaptCharts;else fitCharts">
 
     <div class="col-sm-6">
-        <nb-reveal-card [revealed]="false" [showToggleButton]="true">
+        <nb-reveal-card 
+            (mouseenter)="isRevealed[8] = true"
+            (mouseleave)="isRevealed[8] = false"
+            [revealed]="isRevealed[8]"
+            [showToggleButton]="false">
             <nb-card-front>
                 <nb-card class="template-left-top-card" size="large">
                     <ngx-chart9></ngx-chart9>
@@ -30,7 +34,11 @@
                 </nb-card>
             </div>
             <div class="col-sm-6 small">
-                <nb-reveal-card>
+                <nb-reveal-card
+                    (mouseenter)="isRevealed[7] = true"
+                    (mouseleave)="isRevealed[7] = false"
+                    [revealed]="isRevealed[7]"
+                    [showToggleButton]="false">
                     <nb-card-front>
                         <nb-card class="template-left-bottom-card" size="small">
                             <p class="chart-label">Соотношение расходов по отделам</p>
@@ -81,7 +89,11 @@
         <nb-card class="template-right-top-card" size="small">
             <ngx-chart2></ngx-chart2>
         </nb-card>
-        <nb-reveal-card>
+        <nb-reveal-card
+            (mouseenter)="isRevealed[2] = true"
+            (mouseleave)="isRevealed[2] = false"
+            [revealed]="isRevealed[2]"
+            [showToggleButton]="false">
             <nb-card-front>
                 <nb-card class="template-right-medium-card" size="small">
                     <!-- <p class="chart-label">Соотношение новых и ушедших клиентов</p> -->
@@ -142,7 +154,11 @@
             <nb-card class="template-right-medium-card" size="small">
                 <ngx-chart2></ngx-chart2>
             </nb-card>
-            <nb-reveal-card>
+            <nb-reveal-card 
+                (mouseenter)="isRevealed[7] = true"
+                (mouseleave)="isRevealed[7] = false"
+                [revealed]="isRevealed[7]"
+                [showToggleButton]="false">
                 <nb-card-front>
                     <nb-card class="template-left-bottom-card" size="small">
                         <p class="chart-label">Расходов по отделам</p>
@@ -170,7 +186,11 @@
             <nb-card class="template-right-bottom-card" size="tiny">
                 <ngx-chart4></ngx-chart4>
             </nb-card>
-            <nb-reveal-card>
+            <nb-reveal-card
+                (mouseenter)="isRevealed[2] = true"
+                (mouseleave)="isRevealed[2] = false"
+                [revealed]="isRevealed[2]"
+                [showToggleButton]="false">
                 <nb-card-front>
                     <nb-card class="template-right-medium-card" size="small">
                         <!-- <p class="chart-label">Соотношение новых и ушедших клиентов</p> -->

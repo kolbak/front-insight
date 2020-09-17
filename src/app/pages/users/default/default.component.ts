@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./default.component.scss']
 })
 export class DefaultComponent implements OnInit {
+  isRevealed = [false, false, false];
+
   isSmallScreen: boolean;
   isTabletScreen: boolean;
   isXSmallScreen: boolean;
@@ -15,14 +17,14 @@ export class DefaultComponent implements OnInit {
 
   ngOnInit(){
     this.breakpointObserver
-    .observe(Breakpoints.Small)
-    .subscribe((resp) => (this.isSmallScreen = resp.matches));
-  this.breakpointObserver
-    .observe(Breakpoints.Medium)
-    .subscribe((resp) => (this.isTabletScreen = resp.matches));
-  this.breakpointObserver
-    .observe(Breakpoints.XSmall)
-    .subscribe((resp) => (this.isXSmallScreen = resp.matches));
+      .observe(Breakpoints.Small)
+      .subscribe((resp) => (this.isSmallScreen = resp.matches));
+    this.breakpointObserver
+      .observe(Breakpoints.Medium)
+      .subscribe((resp) => (this.isTabletScreen = resp.matches));
+    this.breakpointObserver
+      .observe(Breakpoints.XSmall)
+      .subscribe((resp) => (this.isXSmallScreen = resp.matches));
   }
 
 }
