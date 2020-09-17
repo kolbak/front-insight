@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class Chart10Component {
   // single: any[];
-  // view: any[] = [500, 400];
+  view: any[] = [300, 300];
   legend: boolean = true;
   legendPosition: string = 'below';
 
@@ -28,7 +28,7 @@ export class Chart10Component {
       "value": 7200000
     }
   ];
-  
+
   constructor() {
     Object.assign(this, this.single);
   }
@@ -144,8 +144,8 @@ export class Chart10Component {
 //               label: "Общее время",
 //               color: "black",
 //               formatter: function (w) {
-//                 return w.globals.seriesTotals.reduce((a, b, c) => 
-//                 {return a + b + c}, 0) 
+//                 return w.globals.seriesTotals.reduce((a, b, c) =>
+//                 {return a + b + c}, 0)
 //               },
 //             },
 //           },
