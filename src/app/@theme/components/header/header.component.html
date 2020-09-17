@@ -1,7 +1,7 @@
 <div style="width: 100% !important;" class="header-container padding-top" (window:resize)="onResize()">
   <!-- Вызываем менюху из небытия -->
   <div  style="width: 100% !important;" class="row">
-  <button *ngIf="screenWidth <= 575" outline status="info" nbButton size="large" class="header-container col"
+  <button *ngIf="screenWidth <= 575" outline status="info" nbButton size="medium" class="header-container col-2"
     (click)="showMenu()">
     <nb-icon icon="menu-2"></nb-icon>
   </button>
@@ -12,7 +12,7 @@
     size="large"
 
     *ngIf="adaptHeader"
-    class="header-container col"
+    class="header-container col-10"
     placeholder="Параметры"
   >
     <nb-option-group title="Сектор">
@@ -27,7 +27,7 @@
     </nb-option-group>
   </nb-select>
 <!-- кнопка календаря свернутая -->
-<button *ngIf="adaptHeader" nbButton outline status="info" size="large"   class="header-container col"  ><nb-icon icon="calendar-outline"></nb-icon></button>
+<button  *ngIf="adaptHeader" nbButton outline status="info"  size="large"  class="header-container col"  > <nb-icon icon="calendar-outline"></nb-icon><input   size="giant" style="width: 100%;padding-right: 1rem;"  nbInput [nbDatepicker]="formpicker"></button> <nb-rangepicker style="position: absolute; margin-left: 3rem !important;" #formpicker></nb-rangepicker>
 
 </div>
   <!-- <nb-card
