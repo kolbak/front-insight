@@ -1,4 +1,5 @@
-<div [class]="'row has-flex'" style="width: 100%;">
+<div [class]="'row has-flex'" style="width: 100%">
+  <div  [class]=" 'row has-flex'" style="width: 100%;">
     <div [class]="(isSmallScreen|| isTabletScreen||isXSmallScreen)?'col-12':'col-5'">
         <nb-reveal-card class="has-card-distance has-card-border card1"
             (mouseenter)="isRevealed[0] = true"
@@ -74,4 +75,32 @@
             <ngx-chart13></ngx-chart13>
         </nb-card>
     </div>
+</div>
+  <!-- <mat-grid-list cols="12" rowHeight="2:1">
+    <mat-grid-tile
+      [colspan]="isSmallScreen || isTabletScreen || isXSmallScreen ? 12 : 4"
+      [rowspan]="isSmallScreen || isTabletScreen || isXSmallScreen ? 16 : 6"
+    >
+      <ngx-chart11></ngx-chart11>
+    </mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="isSmallScreen || isTabletScreen || isXSmallScreen ? 12 : 8"
+      [rowspan]="isSmallScreen || isTabletScreen || isXSmallScreen ? 16 : 6"
+    >
+      <ngx-chart12 style="width: 100%"></ngx-chart12>
+    </mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="isSmallScreen || isTabletScreen || isXSmallScreen ? 12 : 4"
+      [rowspan]="isSmallScreen || isTabletScreen || isXSmallScreen ? 16 : 6"
+      style="padding: auto"
+    >
+      <ngx-chart10 style="width: 70%; height: 70%"></ngx-chart10>
+    </mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="isSmallScreen || isTabletScreen || isXSmallScreen ? 12 : 8"
+      [rowspan]="isSmallScreen || isTabletScreen || isXSmallScreen ? 16 : 6"
+    >
+      <ngx-chart13 style="width: 100%"></ngx-chart13>
+    </mat-grid-tile>
+  </mat-grid-list> -->
 </div>

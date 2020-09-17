@@ -106,17 +106,22 @@ export class DocumentsComponent implements OnInit {
   visibleDateColumn = 'Дата';
   usersColumn = 'Пользователи';
   actionColumn = 'Действия';
-  allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.usersColumn, this.actionColumn];
+  allColumns = [];
 
   dataSource: NbTreeGridDataSource<FSEntry>;
 
   sortColumn: string;
   sortDirection: NbSortDirection = NbSortDirection.NONE;
 
-
+  showOwners: boolean = screen.width > 950;
   screenWidth: number = screen.width;
   onResize() {
     this.screenWidth = screen.width;
+    
+    this.allColumns =                              [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.usersColumn, this.actionColumn];
+    if (this.screenWidth <= 950) this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.actionColumn];  
+
+    this.showOwners = this.screenWidth > 950;
   }
 
   userArrCell: any = null;
@@ -127,9 +132,12 @@ export class DocumentsComponent implements OnInit {
     private dialogService: NbDialogService, 
     private nbMenuService: NbMenuService, @Inject(NB_WINDOW) private window) {
 
-    let tableDate: Date, fileName: string, fileIconSrc: string, ext:string, extensions: string = ['PDF', 'PPT', 'PSD'].join('');
-    // server.getAllUsers().subscribe(users => { this.userArrCell = users; console.log(this.userArrCell)
-    // Создадим рандомные данные для таблицы
+      this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.usersColumn, this.actionColumn]
+      if (this.screenWidth <= 950) this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.actionColumn];    
+
+      let tableDate: Date, fileName: string, fileIconSrc: string, ext:string, extensions: string = ['PDF', 'PPT', 'PSD'].join('');
+      // server.getAllUsers().subscribe(users => { this.userArrCell = users; console.log(this.userArrCell)
+      // Создадим рандомные данные для таблицы
       for (let i = 0; i < 100; i++) {
         tableDate = DataGenerator.randomDate(new Date(2012, 0, 1), new Date());
         fileName = DataGenerator.makeName('file_', [

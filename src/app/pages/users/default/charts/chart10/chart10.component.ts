@@ -22,7 +22,7 @@ export class Chart10Component {
       "value": 72
     }
   ];
-  
+
   constructor() {
     Object.assign(this, this.single);
   }
@@ -138,8 +138,8 @@ export class Chart10Component {
 //               label: "Общее время",
 //               color: "black",
 //               formatter: function (w) {
-//                 return w.globals.seriesTotals.reduce((a, b, c) => 
-//                 {return a + b + c}, 0) 
+//                 return w.globals.seriesTotals.reduce((a, b, c) =>
+//                 {return a + b + c}, 0)
 //               },
 //             },
 //           },

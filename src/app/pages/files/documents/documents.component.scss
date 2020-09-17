@@ -172,6 +172,7 @@ button[nbTreeGridRowToggle] {
     }
     nb-checkbox:not(:only-child) {
         margin-right: 0.75rem;
+        margin-top: 1rem;
     }
 
     nb-card-header {
@@ -230,6 +231,11 @@ button[nbTreeGridRowToggle] {
 @media screen and (min-width: 1700px) {
     .chart { 
         margin-bottom: 2rem;
+    }
+}
+@media screen and (max-width: 950px) {
+    .chart { 
+        margin-bottom: 26rem;
     }
 }
 
