@@ -21,7 +21,11 @@ export class DocumentsCardsComponent implements OnInit {
   ngOnInit() {
     this.screenArr.subscribe(files => {
       this.screens.push(...files.files);
-    })
+    });
+  }
+  DateWithFormat(date: string):string {
+    console.log(date);
+    return new Intl.DateTimeFormat('ru').format(new Date(date));
   }
 
   viewCloser(link) {

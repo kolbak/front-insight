@@ -119,7 +119,7 @@ export class DocumentsComponent implements OnInit {
     this.screenWidth = screen.width;
   }
 
-  userArrCell: any;
+  userArrCell: any = null;
 
   constructor(
     private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>,
@@ -128,7 +128,7 @@ export class DocumentsComponent implements OnInit {
     private nbMenuService: NbMenuService, @Inject(NB_WINDOW) private window) {
 
     let tableDate: Date, fileName: string, fileIconSrc: string, ext:string, extensions: string = ['PDF', 'PPT', 'PSD'].join('');
-    server.getAllUsers().subscribe(users => { this.userArrCell = users; console.log(this.userArrCell)
+    // server.getAllUsers().subscribe(users => { this.userArrCell = users; console.log(this.userArrCell)
     // Создадим рандомные данные для таблицы
       for (let i = 0; i < 100; i++) {
         tableDate = DataGenerator.randomDate(new Date(2012, 0, 1), new Date());
@@ -158,14 +158,15 @@ export class DocumentsComponent implements OnInit {
             Название: [fileIconSrc, fileName, fileName.split('.')[fileName.split('.').length - 1]],
             Дата: tableDate,
             tableDate: new Intl.DateTimeFormat('ru').format(tableDate),
-            Пользователи: [Math.floor(Math.random() * 6)],
+            Пользователи: null,//[Math.floor(Math.random() * 6)],
             Действия: ""
           },
         });
 
       }
     this.dataSource = this.dataSourceBuilder.create(this.data);
-    });
+    console.log(this.data);
+    // });
 
 
     // Создаём рандомные данные для папок

@@ -43,9 +43,9 @@ export class DashboardComponent implements OnInit{
     window.addEventListener('load', () => {
       this.adaptCharts = document.documentElement.clientWidth <= 1740;});
 
-      // if (this.screenWidth >= 575)
-      //   this.sidebarService.compact('menu-sidebar');
-      // else
-      //   this.sidebarService.toggle(false, 'menu-sidebar');
+      if (this.screenWidth >= 575)
+        this.sidebarService.compact('menu-sidebar');
+      else
+        this.sidebarService.toggle(false, 'menu-sidebar');
   }
 }

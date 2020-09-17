@@ -124,8 +124,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onResize() {
       this.screenWidth = screen.width;
   }
-  showMenu() {
-      // Вызывает раскрытие меню
+  showMenu() { // Вызывает раскрытие меню
       this.sidebarService.toggle(true, 'menu-sidebar');    
   }
 

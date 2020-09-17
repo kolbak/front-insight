@@ -39,10 +39,12 @@
                 <!-- Место для кнопки: Добавить раздел -->
                 <button 
                     class="btn-add-section"
-                    (click)="open(dialog)" 
-                    style="margin-bottom:5%; width: 100%;" 
+                    (click)="open(dialog)"
+                    [style]="'width: 100%; margin-bottom:' + (screenWidth > 1050 ? '5%;':'0%;')" 
                     size='medium' nbButton hero status="info"
-                    [disabled]="sectionsHide.length == 0"><span *ngIf="screenWidth > 1050">+ Добавить раздел</span></button>
+                    [disabled]="sectionsHide.length == 0">
+                    + <span *ngIf="screenWidth > 1050">Добавить раздел</span>
+                </button>
                 <!-- Размер диска -->
                 <div *ngIf="screenWidth > 1050" class="card-row" style="margin: auto;">
                     <div class="card-col-25">

@@ -1,7 +1,5 @@
-<div (window:resize)="onResize()"
-  class="row"
-  style="width: 100% ; box-shadow: -4px 4px 10px 0 rgba(25, 42, 70, 0.13)"
->
+<div (window:resize)="onResize()" class="row" style="width: 100% ; box-shadow: -4px 4px 10px 0 rgba(25, 42, 70, 0.13)">
+
   <div [style]="(isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen) && IsChangeUsersLayOut ? 'position: absolute;z-index: 1000;':''"
         *ngIf="!(isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen) || IsChangeUsersLayOut"
     [class]="(isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen) && IsChangeUsersLayOut ?'':'col-3 search'"
@@ -190,33 +188,15 @@
     </nb-card>
   </div>
 
-  <div
-  style="padding: 0rem !important;"
-    [class]="
-      isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen
-        ? 'col-12 content'
-        : 'col-9 content'
-    "
-  >
-    <nb-card >
+  <div style="padding: 0rem !important;"
+    [class]="isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen ? 'col-12 content' : 'col-9 content'">
+    <nb-card class="content-card">
       <nb-card-header fixed>
-        <ng-template
-          [ngIf]="
-            !(
-              isMediumScreen ||
-              isSmallScreen ||
-              isTabletScreen ||
-              isXSmallScreen
-            )
-          "
-          [ngIfElse]="gridPhotoPhone"
-        >
-          <div
-            style="
+        <ng-template [ngIf]="!(isMediumScreen || isSmallScreen || isTabletScreen || isXSmallScreen)" [ngIfElse]="gridPhotoPhone">
+          <div style="
               display: grid;
               grid-template-columns: repeat(8, 1fr);
-              justify-items: center;
-            "
+              justify-items: center;"
           >
             <div *ngFor="let section of menu">
               <a

@@ -1,7 +1,7 @@
 <div>
 
-    <div *ngIf="viewTable">
-        <h2>Папки</h2>
+    <h2>Папки</h2>
+    <nb-card *ngIf="viewTable" style="box-shadow: none; border:none">
         <div class="folders row">
             <nb-card class="showFolder" *ngFor="let item of files">
                 <nb-card-header>
@@ -18,7 +18,7 @@
                 </nb-card-footer>
             </nb-card>
         </div>
-    </div>
+    </nb-card>
 
     <div style="float: right; position: absolute; left: 90%;">
         <button nbButton ghost size='large' status="primary" (click)="switchViewApproach(true)" [disabled]="viewTable"><nb-icon icon="menu-outline"></nb-icon></button>
