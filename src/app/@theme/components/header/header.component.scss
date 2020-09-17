@@ -22,6 +22,16 @@
     .header-container {
         margin-bottom: 1rem;
     }
+    @media screen and (max-height: 750px) { 
+        .header-container {
+            margin-bottom: 0.75rem;
+        }
+    }
+    @media screen and (max-height: 630px) { 
+        .header-container {
+            margin-bottom: 0.5rem;
+        }
+    }
 
     button.select-button {
         color: #8f96a0;

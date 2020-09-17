@@ -50,6 +50,24 @@
     .content {
         max-height: 87.5vh;
     }
+    @media screen and (max-height: 890px) { 
+        .content {
+            max-height: 85.5vh;
+        }
+    }
+    @media screen and (max-height: 750px) { 
+        .content {
+            max-height: 84vh;
+        }
+    }
+    @media screen and (max-height: 630px) { 
+        .content {
+            max-height: 83vh;
+            overflow-y: hidden;
+        }
+    }
+
+
     p {
         color: gray;
         font-size: 1rem;
