@@ -31,7 +31,9 @@ export class OneColumnLayoutComponent {
   onResize() {
     this.screenWidth = screen.width;
     // Сворачиваем меню при клике на сворачивание и при 1500
-    this.userAccordion.close();
+    try {
+      this.userAccordion.close(); 
+    } catch(e) {}
   }
 
 
@@ -41,7 +43,9 @@ export class OneColumnLayoutComponent {
     this.layoutService.changeLayoutSize();
 
     // Сворачиваем меню при клике на сворачивание и при 1500
-    this.userAccordion.close();
+    try {
+      this.userAccordion.close();
+    } catch(e) {}
   }
   pointSidebar() {
     this.sidebarService.expand('menu-sidebar');      

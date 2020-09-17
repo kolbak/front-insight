@@ -62,8 +62,8 @@ export class DocumentsTableComponent implements OnInit{
   allColumns = [this.fileNameColumn, this.dateColumn, this.volumeColumn, this.visibleDateColumn, this.usersColumn, this.viewedColumn, this.actionColumn];
 
   screenWidth: number = screen.width;
-  showViewed: boolean = true;
-  showOwners: boolean = true;
+  showViewed: boolean = screen.width > 925;
+  showOwners: boolean = screen.width > 850;
 
   onResize() {
     this.screenWidth = screen.width;
@@ -83,7 +83,11 @@ export class DocumentsTableComponent implements OnInit{
   private data: TreeNode<FSEntry>[] = [];
 
   constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>,
-    private nbMenuService: NbMenuService, @Inject(NB_WINDOW) private window, private dialogService: NbDialogService) {  }
+    private nbMenuService: NbMenuService, @Inject(NB_WINDOW) private window, private dialogService: NbDialogService) { 
+
+    if (this.screenWidth <= 925) this.allColumns = [this.fileNameColumn, this.dateColumn, this.volumeColumn, this.visibleDateColumn, this.usersColumn, this.actionColumn];  
+    if (this.screenWidth <= 850) this.allColumns = [this.fileNameColumn, this.dateColumn, this.volumeColumn, this.visibleDateColumn, this.actionColumn];   
+  }
 
   // Получаем данные
   ngOnInit() {
