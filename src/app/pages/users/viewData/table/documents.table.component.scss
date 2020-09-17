@@ -77,6 +77,11 @@ button[nbTreeGridRowToggle] {
         border: none;
         width: 60vw;
     }
+    @media screen and (max-width: 480px) {
+        input.search-input {
+            width: 30vw;
+        }
+    }
     th {
         font-size: 1.125rem;
         color: #8f9bb3;

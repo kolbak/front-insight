@@ -70,16 +70,22 @@
         width: auto;
     }
 
+    ngx-chart1{
+        height: 100%;
+    }
+    // Легенд к графикам -- начало
     .chart-label{
         position: relative;
         top: 0;
         left: .5rem;
         text-align: start;
+        
+        z-index: 998;
     }
-    ngx-chart1{
-        height: 100%;
+    ngx-chart3, ngx-chart8, ngx-chart9{
+        position: relative;
+        z-index: 998;
     }
-    // Легенд к графикам -- начало
     nb-card-back{
         height: 40%;
     }
@@ -87,6 +93,8 @@
         position: relative;
         box-shadow: none;
         background-color: transparent;
+
+        z-index: 999;
     }
     .card-leg::before{
         height: 100%;

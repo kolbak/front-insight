@@ -1,37 +1,37 @@
 <div [class]="'row has-flex'" style="width: 100%;">
     <div [class]="(isSmallScreen|| isTabletScreen||isXSmallScreen)?'col-12':'col-5'">
-        <!-- <nb-reveal-card 
+        <nb-reveal-card class="has-card-distance has-card-border card1"
             (mouseenter)="isRevealed[0] = true"
             (mouseleave)="isRevealed[0] = false"
             [revealed]="isRevealed[0]"
             [showToggleButton]="false">
-        <nb-card-front>
-            <nb-card class="template-left-top-card" size="large">
-                <p class="chart-label">Chart 11 | Статистика интернет - соеденения</p>
-                <ngx-chart11></ngx-chart11>
-            </nb-card>
-        </nb-card-front>
-        <nb-card-back>
-            <nb-card class="card-leg card-leg-chrt9">
-                <div class="legend">
-                    <ul>
-                        <li><i></i> Оплачено</li>
-                        <li><i></i> Отменено</li>
-                        <li><i></i> Выполняются</li>
-                    </ul>
-                </div>
-            </nb-card>
-        </nb-card-back>
-    </nb-reveal-card> -->
-        <nb-card class="has-card-distance has-card-border card1">
+            <nb-card-front>
+                <nb-card>
+                    <p class="chart-label">Отзывы клиентов о сотруднике</p>
+                    <ngx-chart11></ngx-chart11>
+                </nb-card>
+            </nb-card-front>
+            <nb-card-back>
+                <nb-card class="card-leg card-leg-chrt11">
+                    <div class="legend">
+                        <ul>
+                            <li><i></i> Положительные | 7 - 10</li>
+                            <li><i></i> Нейтральные | 4 - 7</li>
+                            <li><i></i> Отрицательные | 1 - 4</li>
+                        </ul>
+                    </div>
+                </nb-card>
+            </nb-card-back>
+        </nb-reveal-card>
+        <!-- <nb-card class="has-card-distance has-card-border card1">
             <p class="chart-label">Chart 11 | Статистика интернет - соеденения</p>
             <ngx-chart11></ngx-chart11>
-        </nb-card>
+        </nb-card> -->
     </div>
 
     <div [class]="(isSmallScreen|| isTabletScreen||isXSmallScreen)?'col-12':'col-7'">
         <nb-card class="has-card-distance has-card-border card2">
-            <p class="chart-label">Chart 12 | Статистика по форматам</p>
+            <p class="chart-label">Статистика по форматам</p>
             <ngx-chart12></ngx-chart12>
         </nb-card>
     </div>
@@ -39,15 +39,38 @@
 
 <div class="row" style="width: 100%;">
     <div [class]="(isSmallScreen|| isTabletScreen||isXSmallScreen)?'col-12':'col-5'">
-        <nb-card class="has-card-distance has-card-border card3">
+        <nb-reveal-card class="has-card-distance has-card-border card3"
+            (mouseenter)="isRevealed[1] = true"
+            (mouseleave)="isRevealed[1] = false"
+            [revealed]="isRevealed[1]"
+            [showToggleButton]="false">
+            <nb-card-front>
+                <nb-card>
+                    <p class="chart-label">Оценка безопасности используемых файлов</p>
+                    <ngx-chart10></ngx-chart10>
+                </nb-card>
+            </nb-card-front>
+            <nb-card-back>
+                <nb-card class="card-leg card-leg-chrt10">
+                    <div class="legend">
+                        <ul>
+                            <li><i></i> Безопасные</li>
+                            <li><i></i> Потенциально небезопасные</li>
+                            <li><i></i> Опасные</li>
+                        </ul>
+                    </div>
+                </nb-card>
+            </nb-card-back>
+        </nb-reveal-card>
+        <!-- <nb-card class="has-card-distance has-card-border card3">
             <p class="chart-label">Chart 10 | Статистика по работе с файлами</p>
             <ngx-chart10></ngx-chart10>
-        </nb-card>
+        </nb-card> -->
     </div>
 
     <div [class]="(isSmallScreen|| isTabletScreen||isXSmallScreen)?'col-12':'col-7'">
         <nb-card class="has-card-distance has-card-border card4">
-            <p class="chart-label">Chart 13 | Активность пользователя (курсор) за прошедшую неделю</p>
+            <p class="chart-label">Активность пользователя (курсор) за прошедшую неделю</p>
             <ngx-chart13></ngx-chart13>
         </nb-card>
     </div>

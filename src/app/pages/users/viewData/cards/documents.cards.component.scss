@@ -7,6 +7,8 @@
   }
   
 .grid-show {
+    position: relative;
+    top: 2.5rem;
     padding: 1rem;
     display: grid;
     grid-row-gap: 1rem !important;

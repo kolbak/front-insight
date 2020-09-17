@@ -1,12 +1,9 @@
 import { Observable } from 'rxjs';
-import { ServerService, Screenshot, Media } from './../../../server.service';
-import { Server } from 'http';
+import { ServerService, Media } from './../../../server.service';
 import { Component, OnInit } from '@angular/core';
 
 import { FileInfo } from '../viewData/data&query/data';
 import { DataGenerator } from '../viewData/generateData';
-import { async } from '@angular/core/testing';
-import { JsonPipe } from '@angular/common';
 
 
 @Component({
