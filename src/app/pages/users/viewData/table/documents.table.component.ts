@@ -61,7 +61,20 @@ export class DocumentsTableComponent implements OnInit{
 
   allColumns = [this.fileNameColumn, this.dateColumn, this.volumeColumn, this.visibleDateColumn, this.usersColumn, this.viewedColumn, this.actionColumn];
 
+  screenWidth: number = screen.width;
+  showViewed: boolean = true;
+  showOwners: boolean = true;
 
+  onResize() {
+    this.screenWidth = screen.width;
+    
+    this.allColumns =                              [this.fileNameColumn, this.dateColumn, this.volumeColumn, this.visibleDateColumn, this.usersColumn, this.viewedColumn, this.actionColumn];
+    if (this.screenWidth <= 925) this.allColumns = [this.fileNameColumn, this.dateColumn, this.volumeColumn, this.visibleDateColumn, this.usersColumn, this.actionColumn];  
+    if (this.screenWidth <= 850) this.allColumns = [this.fileNameColumn, this.dateColumn, this.volumeColumn, this.visibleDateColumn, this.actionColumn]; 
+
+    this.showViewed = this.screenWidth > 925;
+    this.showOwners = this.screenWidth > 850;
+  }
   dataSource: NbTreeGridDataSource<FSEntry>;
 
   sortColumn: string;

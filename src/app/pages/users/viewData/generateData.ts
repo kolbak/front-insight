@@ -8,7 +8,7 @@ export class DataGenerator {
     // ];
 
     static makeSize(): string {
-        return `${Math.random()*100}mb`;
+        return `${(Math.random()*100).toFixed(2)}mb`;
     }
     static makeName(prefix: string, type: string[]): string  {
         // var text = "file_";

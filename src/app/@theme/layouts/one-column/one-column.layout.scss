@@ -6,6 +6,33 @@
 //   .menu-sidebar ::ng-deep .scrollable {
 //     padding-top: nb-theme(layout-padding-top);
 //   }
+  nb-accordion {
+    box-shadow: none;
+    background-color: transparent;
+    margin: 0rem -1rem;
+  }
+  nb-accordion-item {
+    margin: 0rem -1rem;
+  }
+  nb-accordion-item-body, nb-list {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  nb-accordion-item-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  nb-list {
+    margin-top: -20px;
+    margin-bottom: -20px;
+  }
+  nb-list-item {
+    padding: 0.75rem 0.8rem;
+  }
+  nb-accordion {
+    border-bottom: 1px solid rgb(237, 241, 247);
+  }
+
   .logo-container {
     display: flex;
     align-items: center;

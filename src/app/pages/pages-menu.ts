@@ -58,11 +58,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   // Нужно вниз последний блок с настройками
-  {
-    title: ' ',
-    icon: ' ',
-    group: true,
-  },
+  // {
+  //   title: ' ',
+  //   icon: ' ',
+  //   group: true,
+  // },
   {
     title: 'Настройки',
     icon: 'settings-2-outline',

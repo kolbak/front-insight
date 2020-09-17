@@ -19,25 +19,34 @@
 
 .folders {
     display: grid;
+    grid-column-gap: 2rem !important;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
+    overflow-y: scroll;
 }
-@media screen and (max-width: 1650px) {
+@media screen and (max-width: 1750px) {
     .folders {
         grid-template-columns: repeat(3, 1fr);
-        overflow-y: scroll;
+    }
+}
+@media screen and (max-width: 1400px) {
+    .folders {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 1280px) {
+    .folders {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 @media screen and (max-width: 900px) {
     .folders {
         grid-template-columns: repeat(2, 1fr);
-        overflow-y: scroll;
     }
 }
 @media screen and (max-width: 650px) {
     .folders {
         grid-template-columns: repeat(1, 1fr);
-        overflow-y: scroll;
         height: 40vh;
     }
 }

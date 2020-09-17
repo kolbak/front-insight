@@ -10,19 +10,17 @@
     </div>
 </section>
 
-<table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
+<table (window:resize)="onResize()" [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
     <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
     <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
 
     <ng-container [nbTreeGridColumnDef]="fileNameColumn">
-        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(fileNameColumn)" *nbTreeGridHeaderCellDef style="width: 20vw !important;">
+        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(fileNameColumn)" *nbTreeGridHeaderCellDef style="width: 25vw !important; white-space: nowrap">
             <nb-checkbox status="primary" [checked]="checkBoxsetAll" (change)="checkAll($event)"></nb-checkbox>
-
             {{ fileNameColumn }}
         </th>
         <td (click)="viewCloser(row.data)" nbTreeGridCell *nbTreeGridCellDef="let row" nowrap>
             <nb-checkbox status="primary " [checked]="row.data['checkbox']" (change)="setCheckedStatus(row, $event)"></nb-checkbox>
-
             {{ row.data[fileNameColumn] }}
         </td>
     </ng-container>
@@ -32,34 +30,30 @@
         <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef style="width: 0px; padding: 0px !important;">
             <!-- {{ dateColumn }} -->
         </th>
-        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center; width: 0px; padding: 0px !important;">
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="width: 0px; padding: 0px !important;">
             <!-- {{ row.data[dateColumn] || "-" }} -->
         </td>
     </ng-container>
 
     <ng-container [nbTreeGridColumnDef]="volumeColumn">
-        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(volumeColumn)" *nbTreeGridHeaderCellDef>
-
+        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(volumeColumn)" *nbTreeGridHeaderCellDef style="padding-right: 0px;">
             {{ volumeColumn }}
         </th>
-        <td nbTreeGridCell *nbTreeGridCellDef="let row">
-
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="width: min-content">
             {{ row.data[volumeColumn] }}
         </td>
     </ng-container>
 
     <ng-container [nbTreeGridColumnDef]="visibleDateColumn">
         <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(visibleDateColumn)" *nbTreeGridHeaderCellDef>
-
             {{ visibleDateColumn }}
         </th>
-        <td nbTreeGridCell *nbTreeGridCellDef="let row">
-
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="width: min-content; padding-right: 0px;">
             {{ row.data[dateColumn] }}
         </td>
     </ng-container>
 
-    <ng-container [nbTreeGridColumnDef]="usersColumn">
+    <ng-container [nbTreeGridColumnDef]="usersColumn" *ngIf="showOwners">
         <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(usersColumn)" *nbTreeGridHeaderCellDef>
             {{ usersColumn }}
         </th>
@@ -67,9 +61,8 @@
         </td>
     </ng-container>
 
-    <ng-container [nbTreeGridColumnDef]="viewedColumn">
+    <ng-container [nbTreeGridColumnDef]="viewedColumn" *ngIf="showViewed">
         <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(viewedColumn)" *nbTreeGridHeaderCellDef>
-
             {{ viewedColumn }}
         </th>
         <td nbTreeGridCell *nbTreeGridCellDef="let row">
@@ -81,10 +74,10 @@
     </ng-container>
 
     <ng-container [nbTreeGridColumnDef]="actionColumn">
-        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef style="text-align: center;">
+        <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef style="text-align: center;padding-left: 0rem; padding-right: 0rem;">
             {{ actionColumn }}
         </th>
-        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="text-align: center;">
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="text-align: center; width: 5vw; padding-left: 0rem; padding-right: 0rem;">
             <!-- {{ row.data[actionColumn] || "- " }} -->
 
             <nb-icon icon="edit-outline" pack="eva" nbContextMenuTrigger="hover" nbContextMenuTag="my-context-menu"></nb-icon>

@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { NbSidebarService } from '@nebular/theme';
 import { LayoutService } from '../../../@core/utils';
@@ -26,22 +26,22 @@ export class OneColumnLayoutComponent {
       this.sidebarService.toggle(false, 'menu-sidebar');
   }
 
-  state: string = "expanded";
+  @ViewChild('userAccord') userAccordion;
   screenWidth: number = screen.width;
   onResize() {
     this.screenWidth = screen.width;
-    if (this.screenWidth <= 575) {
-      this.state = "compacted";
-    }
+    // Сворачиваем меню при клике на сворачивание и при 1500
+    this.userAccordion.close();
   }
+
+
   toggleSidebar() {
 
     this.sidebarService.toggle(true, 'menu-sidebar');      
     this.layoutService.changeLayoutSize();
 
-    // if (this.screenWidth <= 575) {
-    //   this.state = "compacted"; 
-    // }
+    // Сворачиваем меню при клике на сворачивание и при 1500
+    this.userAccordion.close();
   }
   pointSidebar() {
     this.sidebarService.expand('menu-sidebar');      
@@ -66,20 +66,20 @@ export class OneColumnLayoutComponent {
   private destroy$: Subject<void> = new Subject<void>();
 
 
-  userMenu = [ { title: 'Profile' }, { title: 'Log out' },
-  {
-    title: 'Login',
-    link: '/auth/login',
-  }, {
-    title: 'Register',
-    link: '/auth/register',
-  },{
-    title: 'Request Password',
-    link: '/auth/request-password',
-  }, {
-    title: 'Reset Password',
-    link: '/auth/reset-password',
-  },
+  userMenu = [ { title: 'Profile', icon: 'smiling-face-outline' }, { title: 'Log out', icon: 'log-out-outline' },
+  // {
+  //   title: 'Login',
+  //   link: '/auth/login',
+  // }, {
+  //   title: 'Register',
+  //   link: '/auth/register',
+  // },{
+  //   title: 'Request Password',
+  //   link: '/auth/request-password',
+  // }, {
+  //   title: 'Reset Password',
+  //   link: '/auth/reset-password',
+  // },
 ];
 
   ngOnInit() {

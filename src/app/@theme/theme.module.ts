@@ -2,6 +2,8 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatRippleModule } from '@angular/material/core';
 import {
+  NbListModule,
+  NbAccordionModule,
   NbActionsModule,
   NbLayoutModule,
   NbMenuModule,
@@ -45,6 +47,8 @@ import { MATERIAL_LIGHT_THEME } from './styles/material/theme.material-light';
 import { MATERIAL_DARK_THEME } from './styles/material/theme.material-dark';
 
 const NB_MODULES = [
+  NbListModule,
+  NbAccordionModule,
   NbLayoutModule,
   NbMenuModule,
   NbUserModule,
