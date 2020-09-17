@@ -1,12 +1,12 @@
 <div (window:resize)="onResize()" class="row" style="width: 100% ; box-shadow: -4px 4px 10px 0 rgba(25, 42, 70, 0.13)">
 
-  <div [style]="(isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen) && IsChangeUsersLayOut ? 'position: absolute;z-index: 1000;':''"
+  <div [style]="(isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen) && IsChangeUsersLayOut ? 'position: absolute;z-index: 1000;box-shadow:10px 10px 15px 5px lightgrey;':''"
         *ngIf="!(isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen) || IsChangeUsersLayOut"
     [class]="(isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen) && IsChangeUsersLayOut ?'':'col-3 search'"
   >
     <nb-card class="search-card">
       <nb-card-header style="display: flex; justify-content: space-between;">
-        <button size="large" nbButton *ngIf="(isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen)&& IsChangeUsersLayOut" status="info"><nb-icon icon="arrow-ios-back-outline"></nb-icon></button>
+        <button style="margin-right: 1rem;" (click)="ChangeUsersLayOut()" size="large" nbButton *ngIf="(isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen)&& IsChangeUsersLayOut" status="info"><nb-icon icon="arrow-ios-back-outline"></nb-icon></button>
 
         <nb-form-field>
           <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
@@ -240,6 +240,7 @@
               </div>
             </div>
             <button
+            [disabled]="IsChangeUsersLayOut"
               type="button"
               (click)="ChangeUsersLayOut()"
               class="btn btn-primary"
