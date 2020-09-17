@@ -242,3 +242,75 @@ button[nbTreeGridRowToggle] {
 h2 {
     margin-bottom: 2rem;
 }
+
+// Масштабируем по высоте
+.adaptHeight {
+    max-height: 70vh
+}
+@media screen and (max-height: 890px) { 
+    .adaptHeight,
+    .left,
+    .right  {
+        max-height: 69vh;
+        min-height: 69vh
+    }
+}
+@media screen and (max-height: 780px) {
+    .adaptHeight,
+    .left, 
+    .adaptHeight {
+        max-height: 68vh;
+        min-height: 68vh;
+    }
+    hr {
+        margin-top: 0.5rem;
+    }
+}
+@media screen and (max-height: 730px) { 
+    .adaptHeight,
+    .left, 
+    .adaptHeight {
+        max-height: 66vh;
+        min-height: 66vh;
+    }
+    hr {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+}
+@media screen and (max-height: 680px) { 
+    .adaptHeight,
+    .left, 
+    .adaptHeight {
+        max-height: 65vh;
+        min-height: 65vh;
+    }
+    hr {
+        margin-top: 0.3rem;
+        margin-bottom: 0.3rem;
+    }
+}
+@media screen and (max-height: 550px) { 
+    .adaptHeight,
+    .left, 
+    .adaptHeight {
+        max-height: 64vh;
+        min-height: 64vh;
+    }
+    hr {
+        margin-top: 0.3rem;
+        margin-bottom: 0.3rem;
+    }
+}
+@media screen and (max-height: 550px) { 
+    .adaptHeight,
+    .left, 
+    .adaptHeight {
+        max-height: 60vh;
+        min-height: 60vh;
+    }
+    hr {
+        margin-top: 0.2rem;
+        margin-bottom: 0.2rem;
+    }
+}
