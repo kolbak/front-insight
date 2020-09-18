@@ -11,7 +11,7 @@
     <!-- Маленький размер хедера -->
     <nb-select
       size="large"
-      class="header-container col-10"
+      class="header-container col-6"
       placeholder="Параметры">
 
       <nb-option-group title="Сектор">
@@ -20,15 +20,21 @@
       </nb-option-group>
 
       <nb-option-group title="Время">
-        <nb-option>1 день</nb-option>
-        <nb-option>1 неделя</nb-option>
-        <nb-option>1 месяц</nb-option>
+        <nb-option value="1 день">1 день</nb-option>
+        <nb-option value="1 неделя">1 неделя</nb-option>
+        <nb-option value="1 месяц">1 месяц</nb-option>
       </nb-option-group>
     </nb-select>
     <!-- кнопка календаря свернутая -->
-    <nb-form-field class="header-container col">
+    <nb-form-field class="header-container col-4" *ngIf="screenWidth <= 575" style="float: right;">
+      <nb-icon nbPrefix size="giant" style="margin-right: -20px; position: relative; color: #8F96A0" icon="calendar-outline"></nb-icon>
+      <input type="text" nbInput size="giant" style="height: 3rem; width: 40px; color: white;">
+      <input type="text" nbInput size="giant" style="height: 3rem; width: 40px; z-index: 4; opacity: 0; position: absolute; left: 15px;" [nbDatepicker]="formpicker">
+    </nb-form-field>
+
+    <nb-form-field class="header-container col-4" *ngIf="screenWidth > 575">
       <nb-icon nbPrefix icon="calendar-outline"></nb-icon>
-      <input type="text" nbInput size="giant" style="height: 3rem; padding-right  : 1rem;" [nbDatepicker]="formpicker">
+      <input placeholder="Выберите дату" type="text" nbInput size="giant" style="height: 3rem; padding-right: 1rem; width: 16rem" [nbDatepicker]="formpicker">
     </nb-form-field>
 
     <nb-rangepicker style="position: absolute; margin-left: 3rem !important;" #formpicker></nb-rangepicker>
