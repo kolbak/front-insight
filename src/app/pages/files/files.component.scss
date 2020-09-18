@@ -87,6 +87,13 @@ button[nbTreeGridRowToggle] {
     @media screen and (max-height: 890px) { 
         .search-card,
         .content-card {
+            max-height: 88vh;
+            overflow-y: hidden;
+        }
+    }
+    @media screen and (max-height: 800px) { 
+        .search-card,
+        .content-card {
             max-height: 85.5vh;
             overflow-y: hidden;
         }
@@ -94,24 +101,59 @@ button[nbTreeGridRowToggle] {
     @media screen and (max-height: 750px) { 
         .search-card,
         .content-card {
-            max-height: 84vh;
+            max-height: 84.5vh;
             overflow-y: hidden;
         }
     }
-    @media screen and (max-height: 630px) { 
+    @media screen and (max-height: 560px) { 
         .search-card,
         .content-card {
             max-height: 83vh;
             overflow-y: hidden;
         }
     }
-    @media screen and (max-height: 500px) { 
+    @media screen and (max-height: 450px) { 
         .search-card,
         .content-card {
-            max-height: 80vh;
+            max-height: 82vh;
             overflow-y: hidden;
         }
     }
+    @media screen and (max-height: 425px) { 
+        .search-card,
+        .content-card {
+            max-height: 81vh;
+            overflow-y: hidden;
+        }
+    }
+    // @media screen and (max-height: 890px) { 
+    //     .search-card,
+    //     .content-card {
+    //         max-height: 85.5vh;
+    //         overflow-y: hidden;
+    //     }
+    // }
+    // @media screen and (max-height: 750px) { 
+    //     .search-card,
+    //     .content-card {
+    //         max-height: 84vh;
+    //         overflow-y: hidden;
+    //     }
+    // }
+    // @media screen and (max-height: 630px) { 
+    //     .search-card,
+    //     .content-card {
+    //         max-height: 83vh;
+    //         overflow-y: hidden;
+    //     }
+    // }
+    // @media screen and (max-height: 500px) { 
+    //     .search-card,
+    //     .content-card {
+    //         max-height: 80vh;
+    //         overflow-y: hidden;
+    //     }
+    // }
 
 
     .card-col-10 {

@@ -27,17 +27,27 @@
     .header-container {
         margin-bottom: 1rem;
     }
-    @media screen and (max-height: 750px) { 
+    @media screen and (max-height: 900px) { 
         .header-container {
             margin-bottom: 0.75rem;
         }
     }
-    @media screen and (max-height: 630px) { 
+    @media screen and (max-height: 850px) { 
+        .header-container {
+            margin-bottom: 0.65rem;
+        }
+    }
+    @media screen and (max-height: 750px) { 
+        .header-container {
+            margin-bottom: 0.6rem;
+        }
+    }
+    @media screen and (max-height: 680px) { 
         .header-container {
             margin-bottom: 0.5rem;
         }
     }
-    @media screen and (max-height: 450px) { 
+    @media screen and (max-height: 500px) { 
         .header-container {
             margin-bottom: 0.25rem;
         }

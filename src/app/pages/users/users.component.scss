@@ -8,6 +8,43 @@
         display: flex;
         margin: 0 -0.5rem !important;
     }
+    @media screen and (max-height: 890px) { 
+        .row {
+            max-height: 88vh;
+            overflow-y: hidden;
+        }
+    }
+    @media screen and (max-height: 800px) { 
+        .row {
+            max-height: 85.5vh;
+            overflow-y: hidden;
+        }
+    }
+    @media screen and (max-height: 750px) { 
+        .row {
+            max-height: 84.5vh;
+            overflow-y: hidden;
+        }
+    }
+    @media screen and (max-height: 560px) { 
+        .row {
+            max-height: 83vh;
+            overflow-y: hidden;
+        }
+    }
+    @media screen and (max-height: 450px) { 
+        .row {
+            max-height: 82vh;
+            overflow-y: hidden;
+        }
+    }
+    @media screen and (max-height: 425px) { 
+        .row {
+            max-height: 81vh;
+            overflow-y: hidden;
+        }
+    }
+
     .has-flex {
         display: flex;
     }
@@ -49,28 +86,6 @@
     }
     .content {
         max-height: 87.5vh;
-    }
-    @media screen and (max-height: 890px) { 
-        .content {
-            max-height: 85.5vh;
-        }
-    }
-    @media screen and (max-height: 750px) { 
-        .content {
-            max-height: 84vh;
-        }
-    }
-    @media screen and (max-height: 630px) { 
-        .content {
-            max-height: 83vh;
-            overflow-y: hidden;
-        }
-    }
-    @media screen and (max-height: 500px) { 
-        .content {
-            max-height: 80vh;
-            overflow-y: hidden;
-        }
     }
 
     p {
