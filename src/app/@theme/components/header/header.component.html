@@ -1,97 +1,103 @@
-
 <div style="width: 100% !important;" class="header-container padding-top" (window:resize)="onResize()">
-  
-  <!-- Сжато -->
-  <div *ngIf="screenWidth < 1000" style="width: 100% !important;" class="row">
-    <!-- Вызываем менюху из небытия -->
-    <button *ngIf="screenWidth <= 575" outline status="info" nbButton size="large" class="header-container col"
-      (click)="showMenu()">
-      <nb-icon icon="menu-2"></nb-icon>
-    </button>
+  <!-- Вызываем менюху из небытия -->
+  <div  style="width: 100% !important;" class="row">
+  <button *ngIf="screenWidth <= 575" outline status="info" nbButton size="medium" class="header-container col-2"
+    (click)="showMenu()">
+    <nb-icon icon="menu-2"></nb-icon>
+  </button>
 
 
-    <!-- мобильная адаптация табсетов\\ #E1ECFE гол #8F96A0 сер #598DFF син -->
-    <nb-select
-      size="large"
-      class="header-container col"
-      placeholder="Параметры"
-    >
-      <nb-option-group title="Сектор">
-        <nb-option value="company">компания</nb-option>
-        <nb-option value="department">отдел</nb-option>
-      </nb-option-group>
+  <!-- мобильная адаптация табсетов\\ #E1ECFE гол #8F96A0 сер #598DFF син -->
+  <nb-select *ngIf="screenWidth <= 1630"
+    size="large"
+    class="header-container col-10"
+    placeholder="Параметры"
+  >
+    <nb-option-group title="Сектор">
+      <nb-option value="company">компания</nb-option>
+      <nb-option value="department">отдел</nb-option>
+    </nb-option-group>
 
-      <nb-option-group title="Время">
-        <nb-option>1 день</nb-option>
-        <nb-option>1 неделя</nb-option>
-        <nb-option>1 месяц</nb-option>
-      </nb-option-group>
-    </nb-select>
-    <!-- кнопка календаря свернутая -->
-    <button nbButton outline status="info" size="large" class="header-container col">
-      <nb-icon icon="calendar-outline"></nb-icon>
-    </button>
-  </div>
+    <nb-option-group title="Время">
+      <nb-option>1 день</nb-option>
+      <nb-option>1 неделя</nb-option>
+      <nb-option>1 месяц</nb-option>
+    </nb-option-group>
+  </nb-select>
+  <!-- кнопка календаря свернутая -->
+  <!-- <button  *ngIf="screenWidth <= 1630" nbButton outline status="info" size="large" class="header-container col"> -->
+  <nb-form-field *ngIf="screenWidth <= 1630" class="header-container col">
+    <nb-icon nbPrefix icon="calendar-outline"></nb-icon>
+    <input type="text" nbInput size="giant" style="height: 3rem; padding-right  : 1rem;" [nbDatepicker]="formpicker">
+  </nb-form-field>
+  <!-- </button>  -->
 
-  <!-- Среднее состояние -->
-  <div *ngIf="screenWidth >= 1000 && screenWidth <= 1630" style="width: 100% !important;" class="header-container padding-top" (window:resize)="onResize()"> 
-    <nb-card size="small" style="max-width: 110px; max-height: 48px; margin-bottom: 0px;">
-      <select name="" id=""
-          style="
-              width: 100%;
-              height: 100%;
-              border-radius: 10px;
-              border: none;
-              outline: none;
-          ">
-          <option value="company">компания</option>
-          <option value="department">отдел</option>
-      </select>
-    </nb-card>
-    <nb-card size="small" style="max-width: 110px; max-height: 48px; margin-bottom: 0px;">
-      <select name="" id=""
-          style="
-              width: 100%;
-              height: 100%;
-              border-radius: 10px;
-              border: none;
-              outline: none;
-          ">
-          <option value="1-day">1 день</option>
-          <option value="1-week">1 неделя</option>
-          <option value="1-month">1 месяц</option>
-      </select>
-    </nb-card>
-  </div>
+  <nb-rangepicker style="position: absolute; margin-left: 3rem !important;" #formpicker></nb-rangepicker>
 
-  <!-- Развёрнуто -->
-  <nb-tabset *ngIf="!(screenWidth <= 1630)"
+</div>
+  <!-- <nb-card
+
+        size="small"
+        style="
+            max-width: 110px;
+            max-height: 48px;
+            margin-top: 17px;
+        ">
+        <select name="" id=""
+            style="
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+                border: none;
+                outline: none;
+            ">
+            <option value="1-day">1 день</option>
+            <option value="1-week">1 неделя</option>
+            <option value="1-month">1 месяц</option>
+        </select>
+    </nb-card> -->
+
+    <nb-tabset
+    *ngIf="!(screenWidth <= 1630)"
     class="header-container"
-    style="margin-left: 2rem">
+    style="margin-left: 2rem"
+  >
     <nb-tab tabTitle="компания"></nb-tab>
     <nb-tab tabTitle="отдел"></nb-tab>
   </nb-tabset>
-
-  <nb-tabset *ngIf="!(screenWidth <= 1630)"
+  <nb-tabset
+    *ngIf="!(screenWidth <= 1630)"
     class="header-container"
-    style="white-space: nowrap">
+    style="white-space: nowrap"
+  >
     <nb-tab tabTitle="1 день"></nb-tab>
     <nb-tab tabTitle="1 неделя"></nb-tab>
     <nb-tab tabTitle="1 месяц"></nb-tab>
   </nb-tabset>
 
-  <nb-rangepicker-showcase *ngIf="!(screenWidth <= 1000)"
+  <nb-rangepicker-showcase
+    *ngIf="!(screenWidth <= 1630)"
     id="formpicker"
-    style="margin-left: 1rem; margin-right: 1rem">
-  </nb-rangepicker-showcase>
+    style="margin-left: 1rem; margin-right: 1rem"
+  ></nb-rangepicker-showcase>
 
 
 </div>
 
 
 
-<div *ngIf="!(screenWidth <= 1000)" class="header-container">
-  <!-- Тут был выбор темы -->
+<div *ngIf="!(screenWidth <= 1630)" class="header-container">
+  <!-- <nb-select
+    status="primary"
+    matRipple
+    [selected]="currentTheme"
+    (selectedChange)="changeTheme($event)"
+    style="overflow: visible"
+  >
+    <nb-option *ngFor="let theme of themes" [value]="theme.value" matRipple>{{
+      theme.name
+    }}</nb-option>
+  </nb-select> -->
   <nb-actions size="small">
     <nb-action
       class="control-item"
@@ -124,17 +130,3 @@
     </nb-action>
   </nb-actions>
 </div>
-
-
-  <!--Выбор темы 
-    <nb-select
-    status="primary"
-    matRipple
-    [selected]="currentTheme"
-    (selectedChange)="changeTheme($event)"
-    style="overflow: visible"
-  >
-    <nb-option *ngFor="let theme of themes" [value]="theme.value" matRipple>{{
-      theme.name
-    }}</nb-option>
-  </nb-select> -->

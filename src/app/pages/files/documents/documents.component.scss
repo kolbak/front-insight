@@ -30,32 +30,37 @@ button[nbTreeGridRowToggle] {
     width: 100%;
 }
 
-@media screen and (min-width: 400px) {
-    .nb-column-name,
-    .nb-column-size {
-        width: 50%;
-    }
-}
+// @media screen and (min-width: 400px) {
+//     .nb-column-name,
+//     .nb-column-size {
+//         width: 50%;
+//     }
+// }
 
-@media screen and (min-width: 500px) {
-    .nb-column-name,
-    .nb-column-size,
-    .nb-column-kind {
-        width: 33.333%;
-    }
-}
+// @media screen and (min-width: 500px) {
+//     .nb-column-name,
+//     .nb-column-size,
+//     .nb-column-kind {
+//         width: 33.333%;
+//     }
+// }
 
-@media screen and (min-width: 600px) {
-    .nb-column-name {
-        width: 31%;
-    }
-    .nb-column-size,
-    .nb-column-kind,
-    .nb-column-items {
-        width: 23%;
-    }
-}
+// @media screen and (min-width: 600px) {
+//     .nb-column-name {
+//         width: 31%;
+//     }
+//     .nb-column-size,
+//     .nb-column-kind,
+//     .nb-column-items {
+//         width: 23%;
+//     }
+// }
 
+// @media screen and (max-width: 950px) {
+//     table{
+//         // width: 100%;
+//     }
+// }
 @import "../../../@theme/styles/themes";
 @include nb-install-component() {
     div.users {

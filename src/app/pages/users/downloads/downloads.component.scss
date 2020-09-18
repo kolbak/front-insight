@@ -18,11 +18,12 @@
 }
 
 .folders {
+    position: relative;
+    // margin-left: 2%;
     display: grid;
-    grid-column-gap: 2rem !important;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 @media screen and (max-width: 1750px) {
     .folders {

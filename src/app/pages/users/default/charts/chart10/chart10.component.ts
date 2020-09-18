@@ -6,26 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ["./chart10.component.scss"],
 })
 export class Chart10Component {
-  // single: any[];
-  view: any[] = [300, 300];
-  legend: boolean = true;
-  legendPosition: string = 'below';
-
   colorScheme = {
-    domain: ['#5A8DEE', '#FF5B5C', '#FDAC41']
+    // domain: ['#5A8DEE', '#FDAC41', '#FF5B5C']
+    domain: ['#00D68F', '#FF9A00', '#FF3D71']
   };
   single = [
     {
-      "name": "Germany",
-      "value": 8940000
-    },
-    {
-      "name": "USA",
-      "value": 5000000
-    },
-    {
-      "name": "France",
-      "value": 7200000
+      "name": "Безопасные",
+      "value": 89
+    },{
+      "name": "Потенциально небезопасные",
+      "value": 50
+    },{
+      "name": "Опасные",
+      "value": 72
     }
   ];
 
