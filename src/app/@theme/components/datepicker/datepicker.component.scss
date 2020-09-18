@@ -5,15 +5,15 @@
         width: 16rem;
         height: 3rem;
         border-radius: 5px !important;
-        margin-bottom: 1rem;
+        // margin-bottom: 1rem;
     }
     
-    @import '../../styles/themes';
-    @include nb-install-component() {
-        nb-icon {
-            margin-bottom: 1rem;
-        }
-    }
+    // @import '../../styles/themes';
+    // @include nb-install-component() {
+    //     nb-icon {
+    //         margin-bottom: 1rem;
+    //     }
+    // }
     
     // ::placeholder {
     //     font-family: 'Rubik', sans-serif;

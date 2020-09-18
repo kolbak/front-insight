@@ -36,26 +36,25 @@
             <!-- <a class="logo" href="#" (click)="navigateHome()"><span>ui</span></a> -->
         </div>
         <hr>
-        <nb-accordion *ngIf="screenWidth <= 1740">
+        <nb-accordion *ngIf="screenWidth <= 850">
             <nb-accordion-item #userAccord>
-             <nb-accordion-item-header>
-                <nb-user
-                    style="margin: 0rem; z-index: 1; color: #8f9bb3 !important;"
-                    [name]="user?.name"
-                    [picture]="user?.picture"
-                  >
-                </nb-user>
-            </nb-accordion-item-header>
-             <nb-accordion-item-body>
-                <nb-list>
-                    <nb-list-item *ngFor="let item of userMenu">
-                        <nb-icon [icon]="item.icon" style="color: #8F9BB3; margin-right: 0.5rem;"></nb-icon>
-                        <a style="text-decoration: none; color: #8F9BB3;">{{item.title}}</a>
-                        <!-- [href]="item.link" -->
-                    </nb-list-item>
-                  </nb-list>
-            
-            </nb-accordion-item-body>
+                <nb-accordion-item-header>
+                    <nb-user
+                        style="margin: 0rem; z-index: 1; color: #8f9bb3 !important;"
+                        [name]="user?.name"
+                        [picture]="user?.picture">
+                    </nb-user>
+                </nb-accordion-item-header>
+                <nb-accordion-item-body>
+                    <nb-list>
+                        <nb-list-item *ngFor="let item of userMenu">
+                            <nb-icon [icon]="item.icon" style="color: #8F9BB3; margin-right: 0.5rem;"></nb-icon>
+                            <a style="text-decoration: none; color: #8F9BB3;">{{item.title}}</a>
+                            <!-- [href]="item.link" -->
+                        </nb-list-item>
+                    </nb-list>
+                
+                </nb-accordion-item-body>
             </nb-accordion-item>
         </nb-accordion>
         <!-- <hr style="color: rgb(237, 241, 247);"> -->
