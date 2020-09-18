@@ -11,7 +11,7 @@
     <!-- Маленький размер хедера -->
     <nb-select
       size="large"
-      class="header-container col-10"
+      class="header-container col-4"
       placeholder="Параметры">
 
       <nb-option-group title="Сектор">
@@ -48,7 +48,7 @@
       <nb-option value="1-month">1 месяц</nb-option>
     </nb-select>
 
-    <nb-rangepicker-showcase *ngIf="!(screenWidth <= 860)" 
+    <nb-rangepicker-showcase *ngIf="!(screenWidth <= 860)"
       class="header-container"
       id="formpicker"
       style="margin-left: 1rem; margin-right: 1rem;">
@@ -99,7 +99,7 @@
     <nb-tab tabTitle="1 месяц"></nb-tab>
   </nb-tabset>
 
-  <nb-rangepicker-showcase *ngIf="!(screenWidth <= 1630)" 
+  <nb-rangepicker-showcase *ngIf="!(screenWidth <= 1630)"
     class="header-container"
     id="formpicker"
     style="margin-left: 1rem; margin-right: 1rem;">
