@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { NbSidebarService } from '@nebular/theme';
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -61,7 +62,6 @@ export class UsersComponent implements OnInit {
   onResize() {
     this.screenWidth = screen.width;
     this.screenHeight = screen.height;
-
   }
 
   constructor(public server: ServerService,
@@ -107,5 +107,14 @@ export class UsersComponent implements OnInit {
   filterUsers() {
     this.users = this.server.allusers.filter(user => (user.full_name + user.role).toLowerCase().match("^.*" + (document.querySelector('#searchUsers') as HTMLInputElement).value.toLowerCase() + ".*$"));
   }
+  filterUsersBySpecialty(selected) {
+    console.log(selected);
 
+    if (selected == 'любая') 
+      this.users = this.server.allusers;
+    else 
+      this.users = this.server.allusers.filter(user => user.role == selected);
+
+ 
+  }
 }

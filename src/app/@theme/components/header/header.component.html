@@ -2,7 +2,7 @@
 <!-- мобильная адаптация табсетов\\ #E1ECFE гол #8F96A0 сер #598DFF син -->
 <div style="width: 100% !important;" class="header-container padding-top" (window:resize)="onResize()">
   <!-- Вызываем менюху из небытия -->
-  <div *ngIf="screenWidth <= 850" style="width: 100% !important;" class="row">
+  <div *ngIf="screenWidth <= 860" style="width: 100% !important;" class="row">
     <button *ngIf="screenWidth <= 575" outline status="info" nbButton size="medium" class="header-container col-2"
       (click)="showMenu()">
       <nb-icon icon="menu-2"></nb-icon>
@@ -35,7 +35,7 @@
 
   </div>
 
-  <div *ngIf="screenWidth > 850 && screenWidth <= 1630" style="width: 100% !important;" class="row">
+  <div *ngIf="screenWidth > 860 && screenWidth <= 1630" style="width: 100% !important;" class="row">
 
     <nb-select size="large" class="header-container" [(selected)]="selectedItem_1" style="margin-right: 20px;">
       <nb-option value="company">компания</nb-option>
@@ -48,7 +48,7 @@
       <nb-option value="1-month">1 месяц</nb-option>
     </nb-select>
 
-    <nb-rangepicker-showcase *ngIf="!(screenWidth <= 850)" 
+    <nb-rangepicker-showcase *ngIf="!(screenWidth <= 860)" 
       class="header-container"
       id="formpicker"
       style="margin-left: 1rem; margin-right: 1rem;">
@@ -109,7 +109,7 @@
 
 
 
-<div *ngIf="!(screenWidth <= 850)" class="header-container">
+<div *ngIf="!(screenWidth <= 860)" class="header-container">
   <!-- <nb-select
     status="primary"
     matRipple

@@ -6,6 +6,10 @@
 //   .menu-sidebar ::ng-deep .scrollable {
 //     padding-top: nb-theme(layout-padding-top);
 //   }
+  .menu-sidebar {
+    z-index: 1001;
+  }
+
   nb-accordion {
     box-shadow: none;
     background-color: transparent;

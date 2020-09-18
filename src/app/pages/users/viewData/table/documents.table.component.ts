@@ -63,17 +63,17 @@ export class DocumentsTableComponent implements OnInit{
 
   screenWidth: number = screen.width;
   showViewed: boolean = screen.width > 925;
-  showOwners: boolean = screen.width > 850;
+  showOwners: boolean = screen.width > 860;
 
   onResize() {
     this.screenWidth = screen.width;
     
     this.allColumns =                              [this.fileNameColumn, this.dateColumn, this.volumeColumn, this.visibleDateColumn, this.usersColumn, this.viewedColumn, this.actionColumn];
     if (this.screenWidth <= 925) this.allColumns = [this.fileNameColumn, this.dateColumn, this.volumeColumn, this.visibleDateColumn, this.usersColumn, this.actionColumn];  
-    if (this.screenWidth <= 850) this.allColumns = [this.fileNameColumn, this.dateColumn, this.volumeColumn, this.visibleDateColumn, this.actionColumn]; 
+    if (this.screenWidth <= 860) this.allColumns = [this.fileNameColumn, this.dateColumn, this.volumeColumn, this.visibleDateColumn, this.actionColumn]; 
 
     this.showViewed = this.screenWidth > 925;
-    this.showOwners = this.screenWidth > 850;
+    this.showOwners = this.screenWidth > 860;
   }
   dataSource: NbTreeGridDataSource<FSEntry>;
 
@@ -86,7 +86,7 @@ export class DocumentsTableComponent implements OnInit{
     private nbMenuService: NbMenuService, @Inject(NB_WINDOW) private window, private dialogService: NbDialogService) { 
 
     if (this.screenWidth <= 925) this.allColumns = [this.fileNameColumn, this.dateColumn, this.volumeColumn, this.visibleDateColumn, this.usersColumn, this.actionColumn];  
-    if (this.screenWidth <= 850) this.allColumns = [this.fileNameColumn, this.dateColumn, this.volumeColumn, this.visibleDateColumn, this.actionColumn];   
+    if (this.screenWidth <= 860) this.allColumns = [this.fileNameColumn, this.dateColumn, this.volumeColumn, this.visibleDateColumn, this.actionColumn];   
   }
 
   // Получаем данные

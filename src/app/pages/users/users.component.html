@@ -24,26 +24,24 @@
         </nb-form-field>
       </nb-card-header>
       <nb-card-body style="padding: 1rem 0rem;"><!-- max-height: 40vh; -->
-        <nb-select
+        <nb-select 
           size="tiny"
           nbPrefix
           icon="search-outline"
           fullWidth
           placeholder="Специальность"
-          style="font-size: 1rem"
+          value="Специальность"
+          style="font-size: 1rem !important"
         >
-          <nb-icon
-            *ngIf="server.allusers"
-            nbPrefix
-            icon="search-outline"
-            pack="eva"
-          ></nb-icon>
-          <nb-option
+          <nb-option (click)="filterUsersBySpecialty('любая')"
+            value="index"
+            style="font-size: 1rem !important"
+            >любая</nb-option>
+          <nb-option (click)="filterUsersBySpecialty(user.role)"
             *ngFor="let user of server.allusers; let index = index"
             value="index"
-            style="font-size: 1rem"
-            >{{ user.role }}</nb-option
-          >
+            style="font-size: 1rem !important"
+            >{{ user.role }}</nb-option>
         </nb-select>
 
         <nb-accordion *ngIf="server.allusers && !users">
