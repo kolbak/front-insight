@@ -8,10 +8,8 @@
 
 
   <!-- мобильная адаптация табсетов\\ #E1ECFE гол #8F96A0 сер #598DFF син -->
-  <nb-select
+  <nb-select *ngIf="screenWidth <= 1630"
     size="large"
-
-    *ngIf="adaptHeader"
     class="header-container col-10"
     placeholder="Параметры"
   >
@@ -26,8 +24,15 @@
       <nb-option>1 месяц</nb-option>
     </nb-option-group>
   </nb-select>
-<!-- кнопка календаря свернутая -->
-<button  *ngIf="adaptHeader" nbButton outline status="info"  size="large"  class="header-container col"  > <nb-icon icon="calendar-outline"></nb-icon><input   size="giant" style="width: 100%;padding-right: 1rem;"  nbInput [nbDatepicker]="formpicker"></button> <nb-rangepicker style="position: absolute; margin-left: 3rem !important;" #formpicker></nb-rangepicker>
+  <!-- кнопка календаря свернутая -->
+  <!-- <button  *ngIf="screenWidth <= 1630" nbButton outline status="info" size="large" class="header-container col"> -->
+  <nb-form-field *ngIf="screenWidth <= 1630" class="header-container col">
+    <nb-icon nbPrefix icon="calendar-outline"></nb-icon>
+    <input type="text" nbInput size="giant" style="height: 3rem; padding-right  : 1rem;" [nbDatepicker]="formpicker">
+  </nb-form-field>
+  <!-- </button>  -->
+
+  <nb-rangepicker style="position: absolute; margin-left: 3rem !important;" #formpicker></nb-rangepicker>
 
 </div>
   <!-- <nb-card
@@ -53,7 +58,7 @@
     </nb-card> -->
 
     <nb-tabset
-    *ngIf="!adaptHeader"
+    *ngIf="!(screenWidth <= 1630)"
     class="header-container"
     style="margin-left: 2rem"
   >
@@ -61,7 +66,7 @@
     <nb-tab tabTitle="отдел"></nb-tab>
   </nb-tabset>
   <nb-tabset
-    *ngIf="!adaptHeader"
+    *ngIf="!(screenWidth <= 1630)"
     class="header-container"
     style="white-space: nowrap"
   >
@@ -71,7 +76,7 @@
   </nb-tabset>
 
   <nb-rangepicker-showcase
-    *ngIf="!adaptHeader"
+    *ngIf="!(screenWidth <= 1630)"
     id="formpicker"
     style="margin-left: 1rem; margin-right: 1rem"
   ></nb-rangepicker-showcase>
@@ -81,7 +86,7 @@
 
 
 
-<div *ngIf="!adaptHeader" class="header-container">
+<div *ngIf="!(screenWidth <= 1630)" class="header-container">
   <!-- <nb-select
     status="primary"
     matRipple

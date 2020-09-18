@@ -107,19 +107,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.currentTheme = themeName;
         this.rippleService.toggle(themeName?.startsWith('material'));
     });
-
-    if(this.screenWidth <= 1740) {
-      this.adaptHeader = true;
-    }
-    window.addEventListener('resize', () => {
-      this.adaptHeader = document.documentElement.clientWidth <= 1740;
-    });
-
-    window.addEventListener('load', () => {
-      this.adaptHeader = document.documentElement.clientWidth <= 1740;
-    });
   }
-  adaptHeader: boolean = false;
+
   screenWidth: number = screen.width;
   onResize() {
       this.screenWidth = screen.width;
