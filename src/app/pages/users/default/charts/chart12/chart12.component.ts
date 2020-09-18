@@ -13,7 +13,6 @@ export class Chart12Component {
   showXAxis: boolean = true;
   showYAxis: boolean = true;
   gradient: boolean = false;
-  showLegend: boolean = true;
   showXAxisLabel: boolean = false;
   showYAxisLabel: boolean = false;
 

@@ -203,7 +203,7 @@ button[nbTreeGridRowToggle] {
 
 .left,
 .right {
-    min-height: 70vh;
+    min-height: 50vh;
 }
 
 .folders {
@@ -212,37 +212,31 @@ button[nbTreeGridRowToggle] {
     justify-items: center;
 }
 @media screen and (max-width: 1700px) {
-    .folders {
-        grid-template-columns: repeat(1, 1fr);
-    }
+    .folders { grid-template-columns: repeat(1, 1fr); }
 }
 @media screen and (max-width: 950px) {
-    .folders {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .folders { grid-template-columns: repeat(2, 1fr); }
 }
 @media screen and (max-width: 650px) {
-    .folders {
-        grid-template-columns: repeat(1, 1fr);
-    }
+    .folders { grid-template-columns: repeat(1, 1fr); }
 }
 // .showFolder {
 //     min-width: 14vw;
 // }
 .chart {
     padding: 1rem 1.5rem; 
-    margin-bottom: 4rem;
+    // margin-bottom: 4rem;
 }
-@media screen and (min-width: 1700px) {
-    .chart { 
-        margin-bottom: 2rem;
-    }
-}
-@media screen and (max-width: 950px) {
-    .chart { 
-        margin-bottom: 26rem;
-    }
-}
+// @media screen and (min-width: 1700px) {
+//     .chart { 
+//         margin-bottom: 2rem;
+//     }
+// }
+// @media screen and (max-width: 950px) {
+    // .chart { 
+        // margin-bottom: 26rem;
+    // }
+// }
 
 .extensions {
     margin-left: 3px;
@@ -250,69 +244,69 @@ button[nbTreeGridRowToggle] {
     justify-items: center;
 }
 
-h2 {
-    margin-bottom: 2rem;
-}
+// h2 {
+//     margin-bottom: 2rem;
+// }
 
 // Масштабируем по высоте
-.adaptHeight {
-    max-height: 70vh
-}
-@media screen and (max-height: 890px) { 
-    .adaptHeight,
-    .left,
-    .right  {
-        max-height: 69vh;
-        min-height: 69vh
-    }
-}
-@media screen and (max-height: 780px) {
-    .adaptHeight,
-    .left, 
-    .adaptHeight {
-        max-height: 68vh;
-        min-height: 68vh;
-    }
-    hr {
-        margin-top: 0.5rem;
-    }
-}
-@media screen and (max-height: 730px) { 
-    .adaptHeight,
-    .left, 
-    .adaptHeight {
-        max-height: 66vh;
-        min-height: 66vh;
-    }
-    hr {
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-    }
-}
-@media screen and (max-height: 680px) { 
-    .adaptHeight,
-    .left, 
-    .adaptHeight {
-        max-height: 65vh;
-        min-height: 65vh;
-    }
-    hr {
-        margin-top: 0.3rem;
-        margin-bottom: 0.3rem;
-    }
-}
-@media screen and (max-height: 550px) { 
-    .adaptHeight,
-    .left, 
-    .adaptHeight {
-        max-height: 64vh;
-        min-height: 64vh;
-    }
-    hr {
-        margin-top: 0.3rem;
-        margin-bottom: 0.3rem;
-    }
-}
+// .adaptHeight {
+//     max-height: 70vh
+// }
+// @media screen and (max-height: 890px) { 
+//     .adaptHeight,
+//     .left,
+//     .right  {
+//         max-height: 69vh;
+//         min-height: 69vh
+//     }
+// }
+// @media screen and (max-height: 780px) {
+//     .adaptHeight,
+//     .left, 
+//     .adaptHeight {
+//         max-height: 68vh;
+//         min-height: 68vh;
+//     }
+//     hr {
+//         margin-top: 0.5rem;
+//     }
+// }
+// @media screen and (max-height: 730px) { 
+//     .adaptHeight,
+//     .left, 
+//     .adaptHeight {
+//         max-height: 66vh;
+//         min-height: 66vh;
+//     }
+//     hr {
+//         margin-top: 0.5rem;
+//         margin-bottom: 0.5rem;
+//     }
+// }
+// @media screen and (max-height: 680px) { 
+//     .adaptHeight,
+//     .left, 
+//     .adaptHeight {
+//         max-height: 65vh;
+//         min-height: 65vh;
+//     }
+//     hr {
+//         margin-top: 0.3rem;
+//         margin-bottom: 0.3rem;
+//     }
+// }
+// @media screen and (max-height: 550px) { 
+//     .adaptHeight,
+//     .left, 
+//     .adaptHeight {
+//         max-height: 64vh;
+//         min-height: 64vh;
+//     }
+//     hr {
+//         margin-top: 0.3rem;
+//         margin-bottom: 0.3rem;
+//     }
+// }
 @media screen and (max-height: 550px) { 
     .adaptHeight,
     .left, 
