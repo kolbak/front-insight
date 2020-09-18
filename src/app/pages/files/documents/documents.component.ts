@@ -45,7 +45,7 @@ interface FSEntry {
 export class DocumentsComponent implements OnInit {
 
   filterTableBySection(section) : void {
-    console.log(section);
+    // console.log(section);
     document.location.href = 'pages/files#filesSearch'
 
     if (section.extension == '*') { 
@@ -114,14 +114,20 @@ export class DocumentsComponent implements OnInit {
   sortDirection: NbSortDirection = NbSortDirection.NONE;
 
   showOwners: boolean = screen.width > 950;
+  showActions: boolean = screen.width > 950;
   screenWidth: number = screen.width;
   onResize() {
     this.screenWidth = screen.width;
     
     this.allColumns =                              [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.usersColumn, this.actionColumn];
     if (this.screenWidth <= 950) this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.actionColumn];  
+    if (this.screenWidth <= 860) this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn];    
 
     this.showOwners = this.screenWidth > 950;
+    this.showActions = this.screenWidth > 860;
+
+    console.log("onResize()");
+    console.log(this.showActions, this.allColumns);
   }
 
   userArrCell: any = null;
@@ -132,11 +138,12 @@ export class DocumentsComponent implements OnInit {
     private dialogService: NbDialogService, 
     private nbMenuService: NbMenuService, @Inject(NB_WINDOW) private window) {
 
-      this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.usersColumn, this.actionColumn]
+      this.allColumns =                              [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.usersColumn, this.actionColumn]
       if (this.screenWidth <= 950) this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.actionColumn];    
+      if (this.screenWidth <= 860) this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn];    
 
       let tableDate: Date, fileName: string, fileIconSrc: string, ext:string, extensions: string = ['PDF', 'PPT', 'PSD'].join('');
-      // server.getAllUsers().subscribe(users => { this.userArrCell = users; console.log(this.userArrCell)
+      server.getAllUsers().subscribe(users => { this.userArrCell = users;
       // Создадим рандомные данные для таблицы
       for (let i = 0; i < 100; i++) {
         tableDate = DataGenerator.randomDate(new Date(2012, 0, 1), new Date());
@@ -166,15 +173,15 @@ export class DocumentsComponent implements OnInit {
             Название: [fileIconSrc, fileName, fileName.split('.')[fileName.split('.').length - 1]],
             Дата: tableDate,
             tableDate: new Intl.DateTimeFormat('ru').format(tableDate),
-            Пользователи: null,//[Math.floor(Math.random() * 6)],
+            Пользователи: [Math.floor(Math.random() * 6)],
             Действия: ""
           },
         });
 
       }
-    this.dataSource = this.dataSourceBuilder.create(this.data);
-    console.log(this.data);
-    // });
+      this.dataSource = this.dataSourceBuilder.create(this.data);
+    // console.log(this.data);
+      });
 
 
     // Создаём рандомные данные для папок

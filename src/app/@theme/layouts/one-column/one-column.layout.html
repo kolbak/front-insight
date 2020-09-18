@@ -67,7 +67,7 @@
         <div class="container-fluid" style="position: relative; padding-left: 2%">
           <ngx-header></ngx-header>
         </div>
-        <div style="padding-left: 2rem !important; padding-right: 1rem !important;" >
+        <div [class]="screenWidth > 575 ? 'container-main' : ''">
         <ng-content select="router-outlet"></ng-content>
         </div>
 

@@ -6,7 +6,8 @@
     }
     .row {
         display: flex;
-        margin: 0 -0.5rem !important;
+        // margin: 0 -0.5rem !important;
+        margin: 0 !important;
     }
     @media screen and (max-height: 890px) { 
         .row, .search-card {

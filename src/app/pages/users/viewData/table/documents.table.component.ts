@@ -149,8 +149,8 @@ export class DocumentsTableComponent implements OnInit{
   }
 
   viewCloser(link) {
-    console.log('Стоп', link);
-    if (link['link'] == '') {
+    // console.log('Стоп', link);
+    if (link['link'] == '' || screen.width < 1050) {
       return;
     }
     this.dialogService.open(ShowPicture, { context: { link: link['link'], }, });

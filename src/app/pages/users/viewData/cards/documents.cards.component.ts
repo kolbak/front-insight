@@ -24,12 +24,13 @@ export class DocumentsCardsComponent implements OnInit {
     });
   }
   DateWithFormat(date: string):string {
-    console.log(date);
+    // console.log(date);
     return new Intl.DateTimeFormat('ru').format(new Date(date));
   }
 
   viewCloser(link) {
-    this.dialogService.open(ShowPicture, { context: { link: link, }, });
+    if (screen.width > 1050) 
+        this.dialogService.open(ShowPicture, { context: { link: link, }, });
   }
 }
 

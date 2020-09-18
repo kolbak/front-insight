@@ -113,7 +113,7 @@
             <nb-checkbox status="primary" [checked]="checkBoxsetAll" (change)="checkAll($event)"></nb-checkbox>
            <span style="margin-left: 1.5rem;">{{ fileNameColumn }}</span>
         </th>
-        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center;">
+        <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center; white-space: nowrap;">
             <nb-checkbox status="primary" [checked]="row.data['checkbox']" (change)="setCheckedStatus(row, $event)"></nb-checkbox>
             <nb-icon class="tableIcon" [icon]="row.data['favStar'] ? 'star' : 'star-outline' " [status]="row.data['favStar'] ? 'warning' : 'basic' " (click)="setStarStatus(row, $event) "></nb-icon>
             <img *ngIf="screenWidth > 950" [src]="row.data[fileNameColumn][0]" alt="Избранное" style="margin-right: 1.5rem"/> 
@@ -161,7 +161,7 @@
         </td>
     </ng-container>
 
-    <ng-container [nbTreeGridColumnDef]="actionColumn">
+    <ng-container [nbTreeGridColumnDef]="actionColumn" *ngIf="showActions">
         <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef style="text-align: center;">
             {{ actionColumn }}
         </th>

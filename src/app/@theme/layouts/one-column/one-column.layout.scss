@@ -90,3 +90,12 @@
   }
 }
 
+.container-main {
+  padding-left: 2rem !important; padding-right: 1rem !important;
+}
+
+@media screen and (max-height: 575px) { 
+  .container-main {
+    padding-left: 0rem !important; padding-right: 0rem !important;
+  }
+}
