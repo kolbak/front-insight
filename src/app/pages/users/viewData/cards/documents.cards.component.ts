@@ -14,6 +14,8 @@ import { FileInfo } from '../data&query/data';
 export class DocumentsCardsComponent implements OnInit {
 
   constructor(public server : ServerService, private dialogService: NbDialogService){}
+
+  @Input() tag: string;
   @Input() dataArr: FileInfo[];
   @Input() screenArr: Observable<Media>;
   screens: Screenshot[] = [];
@@ -30,7 +32,7 @@ export class DocumentsCardsComponent implements OnInit {
 
   viewCloser(link) {
     if (screen.width > 1050) 
-        this.dialogService.open(ShowPicture, { context: { link: link, }, });
+        this.dialogService.open(ShowPicture, { context: { link: link, tag: this.tag }, });
   }
 }
 
@@ -38,7 +40,8 @@ export class DocumentsCardsComponent implements OnInit {
 @Component({
   selector: 'show-picture',
   template: `<h3 style="color: white; text-align: center;">{{fileName}}</h3>
-  <img [src]="server.HOST + link">
+  <img *ngIf="tag == 'img'" [src]="server.HOST + link">
+  <video *ngIf="tag == 'video'" [src]="server.HOST + link">
   `
 })
 export class ShowPicture implements OnInit{
@@ -50,4 +53,5 @@ export class ShowPicture implements OnInit{
   }
   fileName: string;
   link: string;
+  tag: string;
 }

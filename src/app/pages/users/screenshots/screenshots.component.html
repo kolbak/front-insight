@@ -7,11 +7,11 @@
     </div>
     <div *ngIf="viewTable;else viewCard">
         <!-- {{screenshots |async | json}} -->
-        <documents-table [dataArr]="[]" [screenArr]="media "></documents-table>
+        <documents-table [tag]="'img'" [dataArr]="[]" [screenArr]="media "></documents-table>
     </div>
     <ng-template #viewCard>
         <div>
-            <documents-cards [dataArr]="[]" [screenArr]="media "></documents-cards>
+            <documents-cards [tag]="'img'" [dataArr]="[]" [screenArr]="media "></documents-cards>
         </div>
     </ng-template>
 

@@ -46,7 +46,7 @@ export class DocumentsTableComponent implements OnInit{
       this.dataSource.setData(this.data);
     }
 
-
+  @Input() tag: string;
   @Input() dataArr: FileInfo[];
   @Input() screenArr: Observable<Media>;
 
@@ -153,6 +153,6 @@ export class DocumentsTableComponent implements OnInit{
     if (link['link'] == '' || screen.width < 1050) {
       return;
     }
-    this.dialogService.open(ShowPicture, { context: { link: link['link'], }, });
+    this.dialogService.open(ShowPicture, { context: { link: link['link'], tag: this.tag }, });
   }
 }

@@ -16,7 +16,7 @@ export class ProxyComponent implements OnInit {
 
   ngOnInit(): void {
     for (let i = 0; i < 10; i++) {
-      this.proxyHistory.push(`${i}`);
+      // this.proxyHistory.push(`${i}`);
     }
     this.server.telecast.subscribe((resp )=>{
       this.media = this.server.getKeylogForUser(resp).pipe(this.server.decodefrom64());

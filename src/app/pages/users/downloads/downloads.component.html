@@ -30,12 +30,12 @@
                     (click)="switchViewApproach(false)" [disabled]="!viewTable"><nb-icon icon="grid-outline"></nb-icon></button>
         </div>
         <div class="row">
-            <documents-table [dataArr]="data"></documents-table>
+            <documents-table [tag]="'img'" [dataArr]="data"></documents-table>
         </div>
     </div>
     <ng-template #viewCard>
         <div>
-            <documents-cards [dataArr]="data"></documents-cards>
+            <documents-cards [tag]="'img'" [dataArr]="data"></documents-cards>
         </div>
     </ng-template>
 </div>
