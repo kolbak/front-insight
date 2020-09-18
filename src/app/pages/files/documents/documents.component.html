@@ -3,18 +3,18 @@
     <hr style="border: 2.5px #edf1f7 dashed;">
 
     <div *ngIf="screenWidth > 950" class="row adaptHeight">
-        <div class="left" [class]="screenWidth > 1700 ? 'col-sm-6' : 'col-sm-7'" style="max-height: 50vh;">
+        <div style="max-height: 60vh; padding-left: 0 !important;" class="left" [class]="screenWidth > 1700 ? 'col-sm-6' : 'col-sm-7'">
             <h5 style="text-align: center;">Графическое представление</h5>
             <ngx-charts-bar-vertical-2d
                 [scheme]="{ domain: ['rgb(4, 77, 140)', 'rgb(21, 205, 192)', 'rgb(167, 213, 245)'] }"
                 [results]="filesChart"
                 [barPadding]="5"
-                [groupPadding]="30"
+                [groupPadding]="screenWidth < 1700 ? 15 : 30"
                 [gradient]="true"
                 [xAxis]="true"
                 [yAxis]="false"
                 [legend]="true"
-                [legendPosition]="screenWidth > 1700 ? 'right' : 'below'"
+                [legendPosition]="'below'"
                 [showXAxisLabel]="false"
                 [showYAxisLabel]="true"
                 [xAxisLabel]="'разделы'"
@@ -23,7 +23,7 @@
             </ngx-charts-bar-vertical-2d>
         </div>
         <div class="right" [class]="screenWidth > 1700 ? 'col-sm-6' : 'col-sm-5'">
-            <nb-card style="box-shadow: none; border: none; height: 70vh; overflow-y: scroll;">
+            <nb-card style="padding-left: 0 !important; box-shadow: none; border: none; height: 70vh; overflow-y: scroll; margin-bottom: 0;">
                 <h5 style="text-align: center; margin-bottom: 1rem;">Статистика по папкам</h5>
                 <div class="folders">
                     <nb-card class="showFolder" *ngFor="let item of files">
@@ -46,29 +46,31 @@
     </div>
     
     <div *ngIf="screenWidth <= 950" class="row adaptHeight">
-        <div class="left" class="col-sm-12" style="max-height: 50vh; margin-bottom: 1.5vh">
+        <div class="left" class="col-sm-12">
             <h5 style="text-align: center;">Графическое представление</h5>
-            <ngx-charts-bar-vertical-2d
-                [scheme]="{ domain: ['rgb(4, 77, 140)', 'rgb(21, 205, 192)', 'rgb(167, 213, 245)'] }"
-                [results]="filesChart"
-                [barPadding]="5"
-                [groupPadding]="30"
-                [gradient]="true"
-                [xAxis]="true"
-                [yAxis]="false"
-                [legend]="true"
-                [legendPosition]="screenWidth > 1700 ? 'right' : 'below'"
-                [showXAxisLabel]="false"
-                [showYAxisLabel]="true"
-                [xAxisLabel]="'разделы'"
-                [legendTitle]="''"
-            >
-            </ngx-charts-bar-vertical-2d>
+            <div style="position: relative; padding: 0; max-height: 60vh; max-width: 80vw; margin-bottom: 10vh;">
+                <ngx-charts-bar-vertical-2d
+                    [scheme]="{ domain: ['rgb(4, 77, 140)', 'rgb(21, 205, 192)', 'rgb(167, 213, 245)'] }"
+                    [results]="filesChart"
+                    [barPadding]="5"
+                    [groupPadding]="10"
+                    [gradient]="true"
+                    [xAxis]="true"
+                    [yAxis]="false"
+                    [legend]="true"
+                    [legendPosition]="'below'"
+                    [showXAxisLabel]="false"
+                    [showYAxisLabel]="true"
+                    [xAxisLabel]="'разделы'"
+                    [legendTitle]="''"
+                >
+                </ngx-charts-bar-vertical-2d>
+            </div>
         </div>
         <div class="right" class="col-sm-12" >
-            <nb-card style="box-shadow: none; border: none; height: 30vh;">
+            <nb-card style="box-shadow: none; border: none; height: 100%; margin-bottom: 0;">
                 <h5 style="text-align: center; margin-bottom: 1rem;">Статистика по папкам</h5>
-                <div class="folders">
+                <div class="folders" >
                     <nb-card class="showFolder" *ngFor="let item of files">
                         <nb-card-header>
                             <nb-icon icon="folder-outline"></nb-icon>
@@ -87,7 +89,6 @@
             </nb-card>
         </div>
     </div>
-
 </div>
 
 <!-- <label class="search-label" for="search">Поиск файлов</label> -->
