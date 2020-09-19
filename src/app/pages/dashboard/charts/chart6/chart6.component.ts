@@ -62,19 +62,13 @@ export class Chart6Component implements AfterContentInit{
         },
       },
       fill: {
-        type: "gradient",
-        gradient: {
-          gradientToColors: ["white"],
-          type: "horizontal",
-          opacityFrom: 1,
-          opacityTo: 1,
-          stops: [0, 30, 70, 100]
-        }
+        colors: ['#FF9538'],
+        type: "solid"
       },
       stroke: {
         show: true,
         curve: 'smooth',
-        colors: ['orange'],
+        colors: ['#FF9538'],
         width: 4,
         dashArray: [5]
       },
@@ -114,7 +108,7 @@ export class Chart6Component implements AfterContentInit{
         },
       },
       markers: {
-        colors: 'orange',
+        colors: '#FF9538',
         strokeColors: 'white',
         strokeWidth: 3,
         hover: {

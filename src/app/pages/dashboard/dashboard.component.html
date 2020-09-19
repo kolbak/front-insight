@@ -125,9 +125,31 @@
     <div class="row" style="width: 100%; margin-left:0px; margin-right:0px;">
 
         <div class="col-sm-6">
-            <nb-card class="template-left-top-card" size="large">
+            <nb-reveal-card 
+                (mouseenter)="isRevealed[8] = true"
+                (mouseleave)="isRevealed[8] = false"
+                [revealed]="isRevealed[8]"
+                [showToggleButton]="false">
+                <nb-card-front>
+                    <nb-card class="template-left-top-card" size="large">
+                        <ngx-chart9></ngx-chart9>
+                    </nb-card>
+                </nb-card-front>
+                <nb-card-back>
+                    <nb-card class="card-leg card-leg-chrt9">
+                        <div class="legend">
+                            <ul>
+                                <li><i></i> Оплачено</li>
+                                <li><i></i> Отменено</li>
+                                <li><i></i> Выполняются</li>
+                            </ul>
+                        </div>
+                    </nb-card>
+                </nb-card-back>
+            </nb-reveal-card>
+            <!-- <nb-card class="template-left-top-card" size="large">
                 <ngx-chart9></ngx-chart9>
-            </nb-card>
+            </nb-card> -->
             <!-- <div class="row">
                 <div class="col-sm-6 small"> -->
             <nb-card class="template-left-bottom-card" size="small">
@@ -144,6 +166,7 @@
                 <ngx-chart5></ngx-chart5>
             </nb-card>
             <nb-card class="template-right-medium-card" size="small">
+                <p class="chart-label">Задач выполнено</p>
                 <ngx-chart1></ngx-chart1>
             </nb-card>
             <nb-card class="template-right-bottom-card" size="tiny">
