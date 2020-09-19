@@ -108,6 +108,8 @@ export class DocumentsComponent implements OnInit {
   actionColumn = 'Действия';
   allColumns = [];
 
+  gradient: boolean = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
   dataSource: NbTreeGridDataSource<FSEntry>;
 
   sortColumn: string;

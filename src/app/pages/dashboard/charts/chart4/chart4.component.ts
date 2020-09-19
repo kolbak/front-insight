@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterContentInit, AfterViewInit } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -16,7 +16,6 @@ import {
   ApexLegend,
   ApexFill
 } from "ng-apexcharts";
-import { BehaviorSubject } from 'rxjs';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -39,10 +38,32 @@ export type ChartOptions = {
   templateUrl: './chart4.component.html',
   styleUrls: ['./chart4.component.scss']
 })
-export class Chart4Component implements AfterViewInit{
+export class Chart4Component {
 
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<any>;
+
+  gradientSafari() {
+    let is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    if (is_safari) {
+      return {
+        colors: ['#8D77FE'],
+        type: "solid",
+      }
+    }
+    // Если не сафари
+    return {
+      type: "gradient",
+      gradient: {
+        gradientToColors: ["white"],
+        type: "horizontal",
+        opacityFrom: 1,
+        opacityTo: 1,
+        stops: [0, 30, 70, 100]
+      }
+    }
+  }
 
   constructor() {
     this.chartOptions = {
@@ -62,7 +83,7 @@ export class Chart4Component implements AfterViewInit{
           show: false,
         },
       },
-      fill: this.fill,
+      fill: this.gradientSafari(),
       stroke: {
         show: true,
         curve: 'smooth',
@@ -130,24 +151,6 @@ export class Chart4Component implements AfterViewInit{
         },
       }
     };
-    this.fillListener.subscribe((resp)=>this.fill = resp);
   }
-  fill;
-  fillListener = new BehaviorSubject({});
-
-ngAfterViewInit(){
-this.fillListener.next({
-  type: "gradient",
-  gradient: {
-    gradientToColors: ["white"],
-    type: "horizontal",
-    opacityFrom: 1,
-    opacityTo: 1,
-    stops: [0, 30, 70, 100]
-  }
-});
-console.log('chart4 :>> ');
-}
-
 
 }
