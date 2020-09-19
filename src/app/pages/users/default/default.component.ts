@@ -1,4 +1,4 @@
-import { User } from './../../../server.service';
+import { User, ServerService } from './../../../server.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
@@ -22,14 +22,16 @@ export class DefaultComponent implements OnInit {
   isTabletScreen: boolean;
   isXSmallScreen: boolean;
 
-  constructor(private breakpointObserver:BreakpointObserver) { }
+  constructor(private breakpointObserver:BreakpointObserver,private server: ServerService) { }
 
   user: User;
 
   ngOnInit() {
     this.user = new User();//this.server.allusers[0];
     this.user.full_name = "John Doe";
-    this.user.sector = "Engineer";
+     this.user.sector = "Engineer";
+    this.server.telecastUser.subscribe(resp=>{this.user=resp?resp:this.user;})
+
 
     this.breakpointObserver
       .observe(Breakpoints.Small)

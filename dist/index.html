@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Universal Insight</title>
+<!-- CSS only -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.js"></script> -->
+
+    <style>
+        /* Глобальные изменения основных тем */
+
+        .nb-theme-default nb-layout .layout .layout-container .content .columns nb-layout-column,
+        .nb-theme-dark nb-layout .layout .layout-container .content .columns nb-layout-column,
+        .nb-theme-cosmic nb-layout .layout .layout-container .content .columns nb-layout-column,
+        .nb-theme-corporate nb-layout .layout .layout-container .content .columns nb-layout-column,
+        .nb-theme-material-light nb-layout .layout .layout-container .content .columns nb-layout-column,
+        .nb-theme-material-dark nb-layout .layout .layout-container .content .columns nb-layout-column {
+padding-left:0px !important;
+padding-top: 0px !important;
+padding-right: 0px !important;
+
+        }
+
+        .nb-theme-default nb-layout .layout .layout-container nb-sidebar.fixed,
+        .nb-theme-default nb-layout .layout .layout-container nb-sidebar .main-container-fixed,
+        .nb-theme-dark nb-layout .layout .layout-container nb-sidebar.fixed,
+        .nb-theme-dark nb-layout .layout .layout-container nb-sidebar .main-container-fixed,
+        .nb-theme-cosmic nb-layout .layout .layout-container nb-sidebar.fixed,
+        .nb-theme-cosmic nb-layout .layout .layout-container nb-sidebar .main-container-fixed,
+        .nb-theme-corporate nb-layout .layout .layout-container nb-sidebar.fixed,
+        .nb-theme-corporate nb-layout .layout .layout-container nb-sidebar .main-container-fixed,
+        .nb-theme-material-light nb-layout .layout .layout-container nb-sidebar.fixed,
+        .nb-theme-material-light nb-layout .layout .layout-container nb-sidebar .main-container-fixed,
+        .nb-theme-material-dark nb-layout .layout .layout-container nb-sidebar.fixed,
+        .nb-theme-material-dark nb-layout .layout .layout-container nb-sidebar .main-container-fixed {
+            top: 0rem !important;
+        }
+        /* обеспечивает смещение слоя календаря*/
+
+        .pageTurnCalendar {
+            transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            transform-origin: 50vw 50vh;
+            transform: perspective(1000px) translate3d(0, 50vh, 0) rotate3d(1, 0, 0, 30deg);
+            pointer-events: none;
+        }
+
+        * {
+            font-family: 'Rubik', sans-serif !important;
+            /* cursor: url('cursor.png'), default; */
+        }
+
+        .nb-theme-material-light nb-layout {
+            background-color: thistle;
+        }
+
+        .nb-theme-default input,
+        .nb-theme-corporate input,
+        .nb-theme-material-light input {
+            background-color: white !important;
+        }
+
+        .nb-theme-default a.tab-link,
+        .nb-theme-corporate a.tab-link,
+        .nb-theme-material-light a.tab-link {
+            background-color: white !important;
+        }
+
+        .nb-theme-default nb-layout-column {
+            background-color: #f6f6f6 !important;
+            /* background-color: #F2F4EE !important; */
+        }
+
+        .nb-theme-default nb-layout .layout .layout-container nb-sidebar.fixed,
+        .nb-theme-default nb-layout .layout .layout-container nb-sidebar .main-container-fixed {
+            box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, 0.25);
+        }
+
+        .nb-theme-default nb-sidebar.compacted nb-menu .menu-items>.menu-item {
+            transform: scale(1.25);
+        }
+
+        .nb-theme-default nb-layout .layout .layout-container nb-sidebar.fixed,
+        .nb-theme-default nb-layout .layout .layout-container nb-sidebar .main-container-fixed {
+            box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, 0.25);
+        }
+
+        .nb-theme-default nb-sidebar.compacted nb-menu .menu-items>.menu-item {
+            transform: scale(1.25);
+        }
+
+        .nb-theme-default nb-select.appearance-outline.status-basic .select-button,
+        .nb-theme-corporate nb-select.appearance-outline.status-basic .select-button {
+            color: #8f96a0 !important;
+            background-color: white !important;
+        }
+        .nb-theme-default nb-user.size-medium .user-name {
+            font-size: 13px !important;
+            font-weight:600 !important;
+            color: #8f9bb3;
+        }
+
+        .nb-theme-default nb-select.size-tiny .select-button {
+            font-size: 1rem !important;
+        }
+
+        @media screen and (max-height: 575px) { 
+            .container-main[_ngcontent-reu-c242] {
+                padding: 0px !important 
+            }
+        }
+
+    </style>
+
+<link rel="stylesheet" href="styles.9c628657287c186f1e32.css"></head>
+
+<body>
+
+
+
+    <!-- <ng-layout id="content-start">   -->
+    <div>
+        <ngx-app></ngx-app>
+    </div>
+    <!-- </ng-layout> -->
+
+    <!-- Тут можно прописать анимацию для загрузки -->
+    <!-- <style>@-webkit-keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@-moz-keyframes spin{0%{-moz-transform:rotate(0)}100%{-moz-transform:rotate(360deg)}}@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}.spinner{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1003;background: #000000;overflow:hidden}  .spinner div:first-child{display:block;position:relative;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;box-shadow:0 3px 3px 0 rgba(255,56,106,1);transform:translate3d(0,0,0);animation:spin 2s linear infinite}  .spinner div:first-child:after,.spinner div:first-child:before{content:'';position:absolute;border-radius:50%}  .spinner div:first-child:before{top:5px;left:5px;right:5px;bottom:5px;box-shadow:0 3px 3px 0 rgb(255, 228, 32);-webkit-animation:spin 3s linear infinite;animation:spin 3s linear infinite}  .spinner div:first-child:after{top:15px;left:15px;right:15px;bottom:15px;box-shadow:0 3px 3px 0 rgba(61, 175, 255,1);animation:spin 1.5s linear infinite}</style> -->
+    <!-- <div id="nb-global-spinner" class="spinner"> -->
+    <!-- <div class="blob blob-0"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+    <div class="blob blob-5"></div> -->
+    <!-- </div> -->
+
+<script src="runtime-es2015.af8d206063e22adf43a9.js" type="module"></script><script src="runtime-es5.af8d206063e22adf43a9.js" nomodule defer></script><script src="polyfills-es5.148dd84d7363af4534c3.js" nomodule defer></script><script src="polyfills-es2015.b78afa960af1297cf4f0.js" type="module"></script><script src="scripts.b7980e064444338e544c.js" defer></script><script src="main-es2015.ec1f7bf8107ac745582f.js" type="module"></script><script src="main-es5.ec1f7bf8107ac745582f.js" nomodule defer></script></body>
+
+</html>

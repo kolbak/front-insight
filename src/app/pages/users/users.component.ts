@@ -1,5 +1,5 @@
 import { AfterContentInit } from '@angular/core';
-import { ServerService } from './../../server.service';
+import { ServerService, User } from './../../server.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -77,13 +77,14 @@ export class UsersComponent implements OnInit {
       // window.resizeTo(this.screenWidth,this.screenHeight)
     }
 
-  GetUserToRoute(uuid:string){
+  GetUserToRoute(uuid:string,user:User){
     if (this.firstTime && uuid == this.server.allusers[0].uuid) {
       return;
     }
     this.firstTime = false;
     this.MAINUSER = uuid;
     this.server.editUuid(uuid);
+    this.server.editUser(user);
     this.router.navigate(['/pages/users/default']);
     this.menu.forEach(element => {
       element.active = false;
@@ -110,11 +111,11 @@ export class UsersComponent implements OnInit {
   filterUsersBySpecialty(selected) {
     console.log(selected);
 
-    if (selected == 'любая') 
+    if (selected == 'любая')
       this.users = this.server.allusers;
-    else 
+    else
       this.users = this.server.allusers.filter(user => user.role == selected);
 
- 
+
   }
 }

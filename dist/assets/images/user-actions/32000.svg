@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="65" viewBox="0 0 64 65">
+    <defs>
+        <clipPath id="clip-path">
+            <rect id="Card" width="56.129" height="30" fill="#fff" stroke="#c7cfd6" stroke-width="0.5px" rx="1"/>
+        </clipPath>
+        <style>
+        </style>
+    </defs>
+    <g id="Сгруппировать_32000" data-name="Сгруппировать 32000" transform="translate(1)">
+        <g id="Сгруппировать_31482" data-name="Сгруппировать 31482" transform="translate(-1)">
+            <g id="Прямоугольник_519" fill="#f6f6f6" stroke="#828d99" data-name="Прямоугольник 519" opacity="0.2">
+                <rect width="64" height="65" stroke="none" rx="4"/>
+                <rect width="63" height="64" x=".5" y=".5" fill="none" rx="3.5"/>
+            </g>
+            <g id="Сгруппировать_31783" data-name="Сгруппировать 31783">
+                <g id="Сгруппировать_31481" data-name="Сгруппировать 31481" transform="translate(17.486 18)">
+                    <g id="Сгруппировать_31406" data-name="Сгруппировать 31406">
+                        <g id="Сгруппировать_31397" data-name="Сгруппировать 31397">
+                            <rect id="Прямоугольник_521" width="30" height="30" fill="#00cfdd" data-name="Прямоугольник 521" rx="4" transform="translate(-.486)"/>
+                        </g>
+                    </g>
+                </g>
+                <g id="Сгруппировать_31784" data-name="Сгруппировать 31784" transform="translate(664.683 -119.087)">
+                    <g id="Сгруппировать_31784-2" data-name="Сгруппировать 31784" transform="translate(-640.524 145.953)">
+                        <path id="Контур_528" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2px" d="M0 11.929l5.965-5.964L0 0" data-name="Контур 528"/>
+                    </g>
+                    <path id="Линия_208" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2px" d="M0 0L9.787 0" data-name="Линия 208" transform="translate(-634.605 158.768)"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
