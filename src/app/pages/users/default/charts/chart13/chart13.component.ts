@@ -22,7 +22,7 @@ export class Chart13Component {
     // domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
     domain: ['#c4e7f2', '#0d4bdb']
   };
-  
+
   multi: any = this.genMultiData();
   constructor() {
     Object.assign(this, this.multi);
@@ -53,7 +53,7 @@ export class Chart13Component {
 
   onSelect(data): void {
   }
-  
+
   onActivate(data): void {
   }
 
@@ -115,10 +115,10 @@ export class Chart13Component {
 //   styleUrls: ['./chart13.component.scss']
 // })
 // export class Chart13Component{
-  
+
 //   @ViewChild("chart") chart: ChartComponent;
 //   public chartOptions: Partial<any>;
-  
+
 //   constructor() {
 //     this.chartOptions = {
 //       series: [{

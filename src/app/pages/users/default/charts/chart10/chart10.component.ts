@@ -1,4 +1,6 @@
+import { BehaviorSubject } from 'rxjs';
 import { Component } from '@angular/core';
+import { of } from 'rxjs';
 
 @Component({
   selector: "ngx-chart10",
@@ -22,10 +24,19 @@ export class Chart10Component {
       "value": 72
     }
   ];
+  newf = true;
+  newf1 = new BehaviorSubject(null);
 
   constructor() {
     Object.assign(this, this.single);
+
+    this.newf1.subscribe((res)=>{this.newf=res;});
+
   }
+  ngAfterViewInit(): void {
+    this.newf1.next(false);
+  }
+
 
   onSelect(data): void {
     // console.log('Item clicked', JSON.parse(JSON.stringify(data)));
