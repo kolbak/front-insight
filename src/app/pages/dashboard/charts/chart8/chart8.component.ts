@@ -7,10 +7,7 @@ import { Component } from '@angular/core';
 })
 export class Chart8Component {
   // options
-  gradient: boolean = true;
   isDoughnut: boolean = true;
-  // showLegend: boolean = true;
-  // legendPosition: string = 'right';
   colorScheme = {
     domain: ['#5A8DEE', '#00CFDD', '#FDAC41']
   };
