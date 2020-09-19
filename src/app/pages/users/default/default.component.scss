@@ -232,13 +232,16 @@
   img {
     text-align: center;
     box-shadow: 0 0 5px 0px lightgrey;
+    margin-left: 1vw;
+    vertical-align: middle
   }
 
   // ВЫБРАННЫЙ ПОЛЬЗОВАТЕЛЬ
   .current-user{
     display: block;
-    height: 100%;
+    max-height: 100px;
     margin: 0 auto;
+    margin-left: 1.5rem;
     border-radius: 10%;
   }
   // ВЫБРАННЫЙ ПОЛЬЗОВАТЕЛЬ -- end
