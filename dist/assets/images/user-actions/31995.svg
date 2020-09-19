@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65">
+    <defs>
+        <clipPath id="clip-path">
+            <rect id="Card" width="56.129" height="30" fill="#fff" stroke="#c7cfd6" stroke-width="0.5px" rx="1" transform="translate(89 65.1)"/>
+        </clipPath>
+        <style>
+        </style>
+    </defs>
+    <g id="Сгруппировать_31995" data-name="Сгруппировать 31995" transform="translate(-663 -85)">
+        <g id="Сгруппировать_31482" data-name="Сгруппировать 31482">
+            <g id="Контур_14407" fill="#f6f6f6" stroke="none" data-name="Контур 14407" opacity="0.2">
+                <path d="M61 64.5H4C2.07 64.5.5 62.93.5 61V4C.5 2.07 2.07.5 4 .5h57c1.93 0 3.5 1.57 3.5 3.5v57c0 1.93-1.57 3.5-3.5 3.5z" transform="translate(663 85)"/>
+                <path fill="#828d99" d="M4 1C2.346 1 1 2.346 1 4v57c0 1.654 1.346 3 3 3h57c1.654 0 3-1.346 3-3V4c0-1.654-1.346-3-3-3H4m0-1h57c2.21 0 4 1.79 4 4v57c0 2.21-1.79 4-4 4H4c-2.21 0-4-1.79-4-4V4c0-2.21 1.79-4 4-4z" transform="translate(663 85)"/>
+            </g>
+            <g id="Сгруппировать_31481" data-name="Сгруппировать 31481">
+                <g id="Сгруппировать_31406" data-name="Сгруппировать 31406" transform="translate(-4 -56)">
+                    <g id="Сгруппировать_31397" data-name="Сгруппировать 31397" transform="translate(89 56)">
+                        <rect id="Прямоугольник_521" width="30" height="30" fill="#f9aeae" data-name="Прямоугольник 521" rx="4" transform="translate(596 103)"/>
+                    </g>
+                </g>
+            </g>
+            <g id="Сгруппировать_31780" data-name="Сгруппировать 31780" transform="translate(689 115)">
+                <path id="Контур_14353" fill="#fff" d="M18.832 137.275a.7.7 0 0 0-.7.7v2.092h-2.089v-2.092a.7.7 0 0 0-1.395 0v2.092H8.31a4.184 4.184 0 1 0 0 1.395h10.522a.7.7 0 0 0 .7-.7v-2.789a.7.7 0 0 0-.7-.698zm-14.644 6.276a2.789 2.789 0 1 1 2.789-2.789 2.789 2.789 0 0 1-2.789 2.789z" data-name="Контур 14353" transform="translate(-3.098 -137.905)"/>
+            </g>
+        </g>
+    </g>
+</svg>

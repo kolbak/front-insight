@@ -42,6 +42,10 @@ export class ServerService {
   private msg = new BehaviorSubject<string>(
     "a865b9ef-f553-48e3-8eb3-b7f76c6a8d4f"
   );
+  private curUser = new BehaviorSubject<User>(
+    null
+  );
+  telecastUser = this.curUser.asObservable();
   telecast = this.msg.asObservable();
   allusers: User[];
   public HOST = "http://77.37.136.144:8383/";
@@ -57,6 +61,9 @@ export class ServerService {
   }
   editUuid(uuid) {
     this.msg.next(uuid);
+  }
+  editUser(user) {
+    this.msg.next(user);
   }
 
   getScreenShotsForUser(uuid: string): Observable<Media> {
