@@ -46,13 +46,15 @@ export class Chart7Component {
         toolbar: {
           show: false,
         },
-        dropShadow: /^((?!chrome|android).)*safari/i.test(navigator.userAgent) ? {
+        // dropshadow: this.dropshadowSafari(),
+        dropShadow: /^((?!chrome|android).)*safari/i.test(navigator.userAgent) ? 
+        { enabled: false } : {
           enabled: true,
           top: 5,
           blur: 3,
           color: '#39DA8A',
           opacity: 0.35
-        } : { enabled: false },
+        },
         zoom: {
           enabled: false,
         }
