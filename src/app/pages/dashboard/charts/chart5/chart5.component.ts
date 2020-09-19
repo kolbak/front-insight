@@ -43,7 +43,29 @@ export class Chart5Component {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<any>;
 
+  gradientSafaru() {
+    let is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    if (is_safari) {
+      return {
+        colors: ['#ffca28'],
+        type: "solid",
+      }
+    }
+    // Если не сафари
+    return {
+      colors: ['#ffca28'],
+      type: "gradient",
+      gradient: {
+        opacityFrom: 1,
+        opacityTo: 1,
+        stops: [0, 90, 100]
+      }
+    }
+  }
+
   constructor() {
+
     this.chartOptions = {
       series: [{
           name: "Marine Sprite",
@@ -76,15 +98,16 @@ export class Chart5Component {
         colors: ['#ffa000'],
         width: 5,
       },
-      fill: {
-        colors: ['#ffca28'],
-        type: "gradient",
-        gradient: {
-          opacityFrom: 1,
-          opacityTo: 1,
-          stops: [0, 90, 100]
-        }
-      },
+      fill: this.gradientSafaru(),
+      // fill: {
+      //   colors: ['#ffca28'],
+      //   type: "gradient",
+      //   gradient: {
+      //     opacityFrom: 1,
+      //     opacityTo: 1,
+      //     stops: [0, 90, 100]
+      //   }
+      // },
       grid: {
         xaxis: {
           lines: {
