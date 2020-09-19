@@ -233,4 +233,19 @@
     text-align: center;
     box-shadow: 0 0 5px 0px lightgrey;
   }
+
+  // ВЫБРАННЫЙ ПОЛЬЗОВАТЕЛЬ
+  .current-user{
+    display: block;
+    height: 100%;
+    margin: 0 auto;
+    border-radius: 10%;
+  }
+  // ВЫБРАННЫЙ ПОЛЬЗОВАТЕЛЬ -- end
+  .cur-user-description{
+    display: inline-block !important;
+    :nth-child(1), :nth-child(2){
+      display: inline-block !important;
+    }
+  }
 }

@@ -1,21 +1,18 @@
-<div [class]="'row has-flex'" style="width: 100%">
+<div [class]="'row has-flex'" style="width: 100%" (window:resize)="onResize()">
 
-    <div class="row" style="width: 100%; max-height: 15vh;">
+    <div class="row" style="width: 100%; max-height: 15vh;" *ngIf="screenWidth <= 1280">
         <div class="col-3" style="height: 100%;">
-            <img src="../../../../assets/images/jack.png" class="current-user"
-                style="
-                    display: block; height: 100%; 
-                    margin-left: 3rem; border-radius: 25px;">
+            <img src="../../../../assets/images/jack.png" class="current-user">
         </div>
         <div class="col-5">
-            <nb-list>
+            <nb-list [ngClass]="screenHeight < 650 ? 'cur-user-description' : ''">
                 <nb-list-item>
                     ФИО:    {{ user.full_name }}
                 </nb-list-item>
                 <nb-list-item>
                     Сектор: {{ user.sector }}
                 </nb-list-item>
-              </nb-list>
+            </nb-list>
         </div>
     </div>
 
