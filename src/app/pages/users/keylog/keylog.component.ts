@@ -16,7 +16,7 @@ export class KeylogComponent implements OnInit {
   constructor(private server : ServerService) { }
   ngOnInit(){
     this.server.telecast.subscribe((resp )=>{
-      this.media = this.server.getKeylogForUser(resp).pipe(this.server.decodefrom64());
+      this.media = this.server.getProxy(resp).pipe(this.server.decodefrom64());
       // this.screenshots.subscribe(files => this.screens = files);
       // console.log(this.screens);
     })

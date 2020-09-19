@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Component, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'ngx-chart8',
   templateUrl: './chart8.component.html',
   styleUrls: ['./chart8.component.scss']
 })
-export class Chart8Component {
+export class Chart8Component implements AfterViewInit{
   // options
   isDoughnut: boolean = true;
   colorScheme = {
@@ -27,11 +28,16 @@ export class Chart8Component {
     };
     return arr;
   }
-
+  gradient ;
+  gradientListener = new BehaviorSubject(false);
   constructor() {
     Object.assign(this, this.single);
+    this.gradientListener.subscribe((resp)=>this.gradient = resp);
   }
-
+ngAfterViewInit(){
+this.gradientListener.next(true);
+console.log('object :>> ');
+}
   onSelect(data): void { }
   onActivate(data): void { }
   onDeactivate(data): void { }
@@ -85,10 +91,10 @@ export class Chart8Component {
 //   styleUrls: ['./chart8.component.scss']
 // })
 // export class Chart8Component{
-  
+
 //   @ViewChild("chart") chart: ChartComponent;
 //   public chartOptions: Partial<any>;
-  
+
 //   constructor() {
 //     this.chartOptions = {
 //       series: [80, 30, 60],

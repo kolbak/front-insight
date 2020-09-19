@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Component({
   selector: "ngx-chart11",
@@ -21,9 +23,18 @@ export class Chart11Component {
       "value": 65
     }
   ];
-  
+
+  newf = true;
+  newf1 = new BehaviorSubject(null);
+
   constructor() {
     Object.assign(this, this.single);
+
+    this.newf1.subscribe((res)=>{this.newf=res;});
+
+  }
+  ngAfterViewInit(): void {
+    this.newf1.next(false);
   }
 
   onSelect(data): void {

@@ -111,10 +111,10 @@ export class Chart12Component {
 //   styleUrls: ['./chart12.component.scss']
 // })
 // export class Chart12Component{
-  
+
 //   @ViewChild("chart") chart: ChartComponent;
 //   public chartOptions: Partial<any>;
-  
+
 //   constructor() {
 //     this.chartOptions = {
 //       series: [{

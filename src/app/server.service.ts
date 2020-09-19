@@ -65,6 +65,12 @@ export class ServerService {
       this.HOST + "user/screenshots?uuid=" + uuid
     );
   }
+  getProxy(uuid: string): Observable<Keylog> {
+    console.log(' this.HOST + "user/screenshots?uuid=" + uuid :>> ',  this.HOST + "user/proxy?uuid=" + uuid);
+    return this.http.get<Keylog>(
+      this.HOST + "user/proxy?uuid=" + uuid
+    );
+  }
   getVideosForUser(uuid: string): Observable<Media> {
     return this.http.get<Media>(this.HOST + "user/videos?uuid=" + uuid);
   }
