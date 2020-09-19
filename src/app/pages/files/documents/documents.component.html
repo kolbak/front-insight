@@ -1,5 +1,5 @@
 <div class="chart" (window:resize)="onResize()">
-    <h4>Аналитика файлов</h4>
+    <h4 style="margin-left: 2rem; margin-top: 0.5rem;">Аналитика файлов</h4>
     <hr style="border: 2.5px #edf1f7 dashed;">
 
     <div *ngIf="screenWidth > 950" class="row adaptHeight">
@@ -48,7 +48,7 @@
     <div *ngIf="screenWidth <= 950" class="row adaptHeight">
         <div class="left" class="col-sm-12">
             <h5 style="text-align: center;">Графическое представление</h5>
-            <div style="position: relative; padding: 0; max-height: 60vh; max-width: 80vw; margin-bottom: 10vh;">
+            <div style="position: relative; padding: 0; padding-left: 1rem; max-height: 60vh; max-width: 80vw; margin-bottom: 10vh;">
                 <ngx-charts-bar-vertical-2d
                     [scheme]="{ domain: ['rgb(4, 77, 140)', 'rgb(21, 205, 192)', 'rgb(167, 213, 245)'] }"
                     [results]="filesChart"
@@ -111,7 +111,7 @@
     <ng-container [nbTreeGridColumnDef]="fileNameColumn" style="width: 50vw !important;">
         <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(fileNameColumn)" *nbTreeGridHeaderCellDef style="width: 35vw !important;">
             <nb-checkbox status="primary" [checked]="checkBoxsetAll" (change)="checkAll($event)"></nb-checkbox>
-           <span style="margin-left: 1.5rem;">{{ fileNameColumn }}</span>
+           <span [style]="screenWidth > 575 ? 'margin-left: 1.5rem;' : 'margin-left: 0.3rem;'">{{ fileNameColumn }}</span>
         </th>
         <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center; white-space: nowrap;">
             <nb-checkbox status="primary" [checked]="row.data['checkbox']" (change)="setCheckedStatus(row, $event)"></nb-checkbox>

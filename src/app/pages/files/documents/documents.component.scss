@@ -17,6 +17,12 @@ button[nbTreeGridRowToggle] {
 .tableIcon {
     margin-right: 1rem;
 }
+@media screen and (max-width: 650px) { 
+    .tableIcon {
+        margin-right: 0.1rem;
+        margin-left: 0.4rem;
+    }
+}
 
 .search-label {
     display: block;
@@ -179,6 +185,12 @@ button[nbTreeGridRowToggle] {
         margin-right: 0.75rem;
         margin-top: 1rem;
     }
+    @media screen and (max-width: 650px) { 
+        nb-checkbox:not(:only-child) {
+            margin-right: 0rem;
+            margin-left: -0.5rem;
+        }
+    }
 
     nb-card-header {
         padding-bottom: 3px;
@@ -226,16 +238,17 @@ button[nbTreeGridRowToggle] {
 .chart {
     padding: 1rem 1.5rem; 
     // margin-bottom: 4rem;
+    overflow-x: hidden;
+}
+@media screen and (max-width: 1000px) {
+    .chart { 
+        padding: 0rem;
+    }
 }
 // @media screen and (min-width: 1700px) {
 //     .chart { 
 //         margin-bottom: 2rem;
 //     }
-// }
-// @media screen and (max-width: 950px) {
-    // .chart { 
-        // margin-bottom: 26rem;
-    // }
 // }
 
 .extensions {

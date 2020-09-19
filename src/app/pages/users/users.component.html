@@ -190,7 +190,8 @@
   </div>
 
   <div
-    [class]="isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen ? 'col-12 content' : 'col-9 content'">
+    [class]="isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen ? 'col-12 content' : 'col-9 content'"
+    [style]="screenWidth > 575 ? ' ' : 'padding: 0px'">
     <nb-card class="content-card">
       <nb-card-header fixed>
         <ng-template [ngIf]="!(isMediumScreen || isSmallScreen || isTabletScreen || isXSmallScreen)" [ngIfElse]="gridPhotoPhone">
@@ -249,7 +250,7 @@
           </div>
         </ng-template>
       </nb-card-header>
-      <nb-card-body>
+      <nb-card-body style="min-height: 60vh;">
         <router-outlet></router-outlet>
       </nb-card-body>
     </nb-card>
