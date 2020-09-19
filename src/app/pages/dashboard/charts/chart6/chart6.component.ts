@@ -43,6 +43,28 @@ export class Chart6Component implements AfterContentInit{
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<any>;
   
+  gradientSafari() {
+    let is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    if (is_safari) {
+      return {
+        colors: ['#FF9538'],
+        type: "solid",
+      }
+    }
+    // Если не сафари
+    return {
+      type: "gradient",
+      gradient: {
+        gradientToColors: ["white"],
+        type: "horizontal",
+        opacityFrom: 1,
+        opacityTo: 1,
+        stops: [0, 30, 70, 100]
+      }
+    }
+  }
+
   constructor() {
     this.chartOptions = {
       series: [{
@@ -61,10 +83,7 @@ export class Chart6Component implements AfterContentInit{
           show: false,
         },
       },
-      fill: {
-        colors: ['#FF9538'],
-        type: "solid"
-      },
+      fill: this.gradientSafari(),
       stroke: {
         show: true,
         curve: 'smooth',

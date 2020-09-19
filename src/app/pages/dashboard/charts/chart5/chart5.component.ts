@@ -43,7 +43,7 @@ export class Chart5Component {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<any>;
 
-  gradientSafaru() {
+  gradientSafari() {
     let is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
     if (is_safari) {
@@ -98,7 +98,7 @@ export class Chart5Component {
         colors: ['#ffa000'],
         width: 5,
       },
-      fill: this.gradientSafaru(),
+      fill: this.gradientSafari(),
       // fill: {
       //   colors: ['#ffca28'],
       //   type: "gradient",
