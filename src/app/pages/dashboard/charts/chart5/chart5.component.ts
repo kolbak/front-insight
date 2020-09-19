@@ -43,6 +43,14 @@ export class Chart5Component {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<any>;
 
+  isApple(prop: string){
+    let obj = {};
+    if(prop == 'fill'){
+
+    } 
+    return obj;
+  }
+
   constructor() {
     this.chartOptions = {
       series: [{
@@ -76,15 +84,16 @@ export class Chart5Component {
         colors: ['#ffa000'],
         width: 5,
       },
-      fill: {
-        colors: ['#ffca28'],
-        type: "gradient",
-        gradient: {
-          opacityFrom: 1,
-          opacityTo: 1,
-          stops: [0, 90, 100]
-        }
-      },
+      fill: this.isApple('fill'),
+      // fill: {
+      //   colors: ['#ffca28'],
+      //   type: "gradient",
+      //   gradient: {
+      //     opacityFrom: 1,
+      //     opacityTo: 1,
+      //     stops: [0, 90, 100]
+      //   }
+      // },
       grid: {
         xaxis: {
           lines: {

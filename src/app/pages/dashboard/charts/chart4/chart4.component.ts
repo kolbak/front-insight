@@ -62,14 +62,8 @@ export class Chart4Component implements AfterContentInit{
         },
       },
       fill: {
-        type: "gradient",
-        gradient: {
-          gradientToColors: ["white"],
-          type: "horizontal",
-          opacityFrom: 1,
-          opacityTo: 1,
-          stops: [0, 30, 70, 100]
-        }
+        color: ['#8D77FE'],
+        type: "solid"
       },
       stroke: {
         show: true,
