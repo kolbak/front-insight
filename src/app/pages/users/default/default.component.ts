@@ -11,6 +11,13 @@ import { ActivatedRoute} from '@angular/router';
 export class DefaultComponent implements OnInit {
   isRevealed = [false, false, false];
 
+  screenHeight: number = screen.height;
+  screenWidth: number = screen.width;
+  onResize() {
+    this.screenWidth = screen.width;
+    this.screenHeight = screen.height;
+  }
+
   isSmallScreen: boolean;
   isTabletScreen: boolean;
   isXSmallScreen: boolean;
