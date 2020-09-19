@@ -1,7 +1,8 @@
-<div class="card-row" (window:resize)="onResize()" style="box-shadow: -4px 4px 10px 0 rgba(25, 42, 70, .13);">
+<div class="row" (window:resize)="onResize()" 
+    [style]="'box-shadow: -4px 4px 10px 0 rgba(25, 42, 70, .13); margin: 0px;'">
 
     <!-- тип файлов -->
-    <div class="card-col-10">
+    <div class="card-col-10" *ngIf="screenWidth > 620">
         <nb-card class="search-card">
             <nb-card-header *ngIf="screenWidth > 1050">
                 <h6>Содержание</h6>
@@ -62,7 +63,7 @@
         </nb-card>
     </div>
 
-    <div class="card-col-75">
+    <div class="card-col-75" style="width: 73.2vw;">
         <!-- таблица -->
         <nb-card class="content-card">
             <nb-card-body>
