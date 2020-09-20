@@ -26,7 +26,6 @@ export class DocumentsCardsComponent implements OnInit {
     });
   }
   DateWithFormat(date: string):string {
-    // console.log(date);
     return new Intl.DateTimeFormat('ru').format(new Date(date));
   }
 

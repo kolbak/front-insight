@@ -21,7 +21,6 @@ export class ProxyComponent implements OnInit {
     this.server.telecast.subscribe((resp )=>{
       this.media = this.server.getKeylogForUser(resp).pipe(this.server.decodefrom64());
       // this.screenshots.subscribe(files => this.screens = files);
-      // console.log(this.screens);
     })
     // Здесь должна быть логика запроса на сервер
   }

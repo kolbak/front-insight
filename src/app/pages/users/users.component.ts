@@ -103,7 +103,6 @@ export class UsersComponent implements OnInit {
     this.users = this.server.allusers.filter(user => (user.full_name + user.role).toLowerCase().match("^.*" + (document.querySelector('#searchUsers') as HTMLInputElement).value.toLowerCase() + ".*$"));
   }
   filterUsersBySpecialty(selected) {
-    console.log(selected);
 
     if (selected == 'любая')
       this.users = this.server.allusers;

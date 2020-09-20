@@ -72,13 +72,11 @@ export class FilesComponent {
   // extensions: string[] = ['']
 
   // AddExtenstion(id) {
-  //   console.log((document.querySelector('#ext' + id) as HTMLInputElement).value);
 
   //   if (id + 1 == this.extensions.length) {
   //     this.extensions.push((document.querySelector('#ext' + id) as HTMLInputElement).value);
   //   }
   //   else this.extensions[id] = (document.querySelector('#ext' + id) as HTMLInputElement).value;
-  //   console.log(this.extensions);
   // }
 
   hideSection(id) {
