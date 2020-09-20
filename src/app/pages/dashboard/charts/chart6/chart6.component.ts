@@ -39,14 +39,14 @@ export type ChartOptions = {
   styleUrls: ['./chart6.component.scss']
 })
 export class Chart6Component implements AfterContentInit{
-  
+
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<any>;
-  
+
   gradientSafari() {
     let is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-    if (is_safari) {
+    var isSafari = window['safari'] !== undefined;
+    if (is_safari|| isSafari) {
       return {
         colors: ['#FF9538'],
         type: "solid",
@@ -153,7 +153,7 @@ export class Chart6Component implements AfterContentInit{
       }
     };
   }
-  
+
   ngAfterContentInit() {
 
   }

@@ -8,40 +8,40 @@
         display: flex;
         margin: 0 !important;
     }
-    @media screen and (max-height: 890px) { 
+    @media screen and (max-height: 890px) {
         .row, .search-card {
             max-height: 88vh;
-            overflow-y: hidden;
+         
         }
     }
-    @media screen and (max-height: 800px) { 
+    @media screen and (max-height: 800px) {
         .row, .search-card {
             max-height: 85.5vh;
-            overflow-y: hidden;
+
         }
     }
-    @media screen and (max-height: 750px) { 
+    @media screen and (max-height: 750px) {
         .row, .search-card {
             max-height: 84.5vh;
-            overflow-y: hidden;
+
         }
     }
-    @media screen and (max-height: 560px) { 
+    @media screen and (max-height: 560px) {
         .row, .search-card {
             max-height: 83vh;
-            overflow-y: hidden;
+
         }
     }
-    @media screen and (max-height: 450px) { 
+    @media screen and (max-height: 450px) {
         .row, .search-card {
             max-height: 82vh;
-            overflow-y: hidden;
+
         }
     }
-    @media screen and (max-height: 425px) { 
+    @media screen and (max-height: 425px) {
         .row, .search-card {
             max-height: 81vh;
-            overflow-y: hidden;
+
         }
     }
 

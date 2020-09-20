@@ -17,7 +17,7 @@ export interface folderInfo {
   folderName: string;
   extensions: string[];
   amount: string;
-  totalVolume: string; 
+  totalVolume: string;
 }
 
 
@@ -48,28 +48,28 @@ export class DocumentsComponent implements OnInit {
     // console.log(section);
     document.location.href = 'pages/files#filesSearch'
 
-    if (section.extension == '*') { 
+    if (section.extension == '*') {
       this.dataSource.setData(this.data);
     }
     else if (section.extension == 'deleted')
       this.dataSource.setData(this.deleted);
     else if (section.extension == 'favorite')
       this.dataSource.setData(this.data.filter(d => d.data.favStar ));
-    else 
-      this.dataSource.setData(this.data.filter(d => { 
+    else
+      this.dataSource.setData(this.data.filter(d => {
         for (let i = 0; i < section.extension.length; i++) {
           if (d.data.Название[2] == section.extension[i])
             return true;
         }
-        return false; 
+        return false;
       } ));
   }
 
   files: folderInfo[] = [];
   filesChart = [];
   extensions: string[][] = [
-    ["zip", "rar"], 
-    ["doc"], 
+    ["zip", "rar"],
+    ["doc"],
     ["xlsx"],
     ["pdf"],
     ["png", "jpeg", "bmp", "gif"],
@@ -87,7 +87,7 @@ export class DocumentsComponent implements OnInit {
   }
   // Настройка чекбокса для выделения всего
   checkBoxsetAll: boolean = false;
-  checkAll($checked) 
+  checkAll($checked)
   {
     for (const iterator of this.data) {
       iterator.data.checkbox = $checked.target.checked;
@@ -120,10 +120,10 @@ export class DocumentsComponent implements OnInit {
   screenWidth: number = screen.width;
   onResize() {
     this.screenWidth = screen.width;
-    
+
     this.allColumns =                              [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.usersColumn, this.actionColumn];
-    if (this.screenWidth <= 950) this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.actionColumn];  
-    // if (this.screenWidth <= 860) this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn];    
+    if (this.screenWidth <= 950) this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.actionColumn];
+    // if (this.screenWidth <= 860) this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn];
 
     this.showOwners = this.screenWidth > 950;
     this.showActions = true;//this.screenWidth > 860;
@@ -136,13 +136,13 @@ export class DocumentsComponent implements OnInit {
 
   constructor(
     private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>,
-    public server: ServerService, 
-    private dialogService: NbDialogService, 
+    public server: ServerService,
+    private dialogService: NbDialogService,
     private nbMenuService: NbMenuService, @Inject(NB_WINDOW) private window) {
 
       this.allColumns =                              [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.usersColumn, this.actionColumn]
-      if (this.screenWidth <= 950) this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.actionColumn];    
-      // if (this.screenWidth <= 860) this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn];    
+      if (this.screenWidth <= 950) this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.actionColumn];
+      // if (this.screenWidth <= 860) this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn];
 
       let tableDate: Date, fileName: string, fileIconSrc: string, ext:string, extensions: string = ['PDF', 'PPT', 'PSD'].join('');
       //server.getAllUsers().subscribe(users => { this.userArrCell = users;
@@ -152,7 +152,7 @@ export class DocumentsComponent implements OnInit {
         fileName = DataGenerator.makeName('file_', [
           'mpeg', 'avi', 'mp4',
           'png', 'jpeg', 'bmp', 'git', 'tif',
-          'mp3', 'wav', 
+          'mp3', 'wav',
           'fb2', 'epub', 'mobi',
           'doc', 'txt', 'docx', 'pdf','pdf','pdf','pdf','pdf','pdf','pdf',
           'xls', 'xlsx',
@@ -188,13 +188,13 @@ export class DocumentsComponent implements OnInit {
 
     // Создаём рандомные данные для папок
     for (let i = 0; i < this.folderNames.length; i++) {
-      let amount =      Math.floor(Math.random()*1000), 
+      let amount =      Math.floor(Math.random()*1000),
           totalVolume = Math.floor(Math.random()*1000);
 
       this.files.push({
         folderName: this.folderNames[i],
         extensions: this.extensions[i],
-        amount: `${amount}`, 
+        amount: `${amount}`,
         totalVolume:`${totalVolume}`
       })
       // Добавляем данные на график
@@ -240,7 +240,7 @@ export class DocumentsComponent implements OnInit {
   deleted: any;
   deleteHighlightFiles()
   {
-    this.data = this.data.filter(d => !d.data.checkbox); 
+    this.data = this.data.filter(d => !d.data.checkbox);
     this.deleted = this.data.filter(d => d.data.checkbox)
     this.dataSource.setData(this.data.filter(d => !d.data.checkbox));
     this.checkBoxsetAll = false;

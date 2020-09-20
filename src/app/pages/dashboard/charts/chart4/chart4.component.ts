@@ -45,8 +45,8 @@ export class Chart4Component {
 
   gradientSafari() {
     let is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-    if (is_safari) {
+    var isSafari = window['safari'] !== undefined;
+    if (is_safari|| isSafari) {
       return {
         colors: ['#8D77FE'],
         type: "solid",

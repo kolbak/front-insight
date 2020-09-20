@@ -46,15 +46,15 @@ export class Chart2Component {
   chartValue: number = +(Math.random() * 100).toFixed(0);
   gradientSafari() {
     let is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-    //[0...100] --> [0...2] 
+    var isSafari = window['safari'] !== undefined;
+    //[0...100] --> [0...2]
     // let color: string = ['#1FA2FF', '#FFFF00', '#E02001'][Math.floor(this.chartValue / (100 / 3) )];
     let color: string = [
       '#01579b', '#0277bd', '#0288d1', '#039be5', '#03a9f4',
       '#b71c1c', '#c62828', '#d32f2f', '#e53935', '#f44336'
     ][Math.floor(this.chartValue / (100 / 10) )];
 
-    if (is_safari) {
+    if (is_safari|| isSafari) {
       return {
         colors: [color],
         type: "solid",

@@ -44,7 +44,7 @@
             </nb-card>
         </div>
     </div>
-    
+
     <div *ngIf="screenWidth <= 950" class="row adaptHeight">
         <div class="left" class="col-sm-12">
             <h5 style="text-align: center;">Графическое представление</h5>
@@ -116,7 +116,7 @@
         <td nbTreeGridCell *nbTreeGridCellDef="let row" style="align-items: center; white-space: nowrap;">
             <nb-checkbox status="primary" [checked]="row.data['checkbox']" (change)="setCheckedStatus(row, $event)"></nb-checkbox>
             <nb-icon class="tableIcon" [icon]="row.data['favStar'] ? 'star' : 'star-outline' " [status]="row.data['favStar'] ? 'warning' : 'basic' " (click)="setStarStatus(row, $event) "></nb-icon>
-            <img *ngIf="screenWidth > 950" [src]="row.data[fileNameColumn][0]" alt="Избранное" style="margin-right: 1.5rem"/> 
+            <img *ngIf="screenWidth > 950" [src]="row.data[fileNameColumn][0]" alt="Избранное" style="margin-right: 1.5rem"/>
             {{ row.data[fileNameColumn][1] }}
         </td>
     </ng-container>
@@ -146,12 +146,12 @@
         </th>
         <td nbTreeGridCell *nbTreeGridCellDef="let row" class="users">
 
-            <img width="50px" height="50px" 
+            <img width="50px" height="50px"
               onerror="
-              this.error = null; 
+              this.error = null;
               this.src='../../../../assets/images/person-outline.svg'
               this.style='opacity: 0.3; border-radius: 25px'"
-             
+
              *ngFor="let user of row.data['Пользователи']"
              src="{{server.HOST + userArrCell[user].photo}}"
              alt="{{userArrCell[user].full_name}}"
