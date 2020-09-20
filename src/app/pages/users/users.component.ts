@@ -68,13 +68,7 @@ export class UsersComponent implements OnInit {
     public router: Router,
     private breakpointObserver:BreakpointObserver,
     private sidebarService: NbSidebarService) {
-     server.getAllUsers();
-
-     if (this.screenWidth >= 575)
-      this.sidebarService.compact('menu-sidebar');
-     else
-      this.sidebarService.toggle(false, 'menu-sidebar');
-      // window.resizeTo(this.screenWidth,this.screenHeight)
+      server.getAllUsers();
     }
 
   GetUserToRoute(uuid:string,user:User){
