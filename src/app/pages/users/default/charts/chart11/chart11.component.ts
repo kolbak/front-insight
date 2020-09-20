@@ -24,8 +24,8 @@ export class Chart11Component {
     }
   ];
 
-  isAxis = true;
-  isAxisSub = new BehaviorSubject(false);
+  isAxis;
+  isAxisSub = new BehaviorSubject(null);
   constructor() {
     Object.assign(this, this.single);
 

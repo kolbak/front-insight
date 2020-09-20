@@ -13,11 +13,11 @@ import { takeUntil } from 'rxjs/operators';
   templateUrl: 'one-column.layout.html',
 })
 export class OneColumnLayoutComponent {
-
+  isAuthed = false;
     constructor(
       private router: Router,
       private sidebarService: NbSidebarService,
-      private layoutService: LayoutService, 
+      private layoutService: LayoutService,
       private userService: UserData) {
 
     if (this.screenWidth >= 575)
@@ -32,14 +32,14 @@ export class OneColumnLayoutComponent {
     this.screenWidth = screen.width;
     // Сворачиваем меню при клике на сворачивание и при 1500
     try {
-      this.userAccordion.close(); 
+      this.userAccordion.close();
     } catch(e) {}
   }
 
 
   toggleSidebar() {
 
-    this.sidebarService.toggle(true, 'menu-sidebar');      
+    this.sidebarService.toggle(true, 'menu-sidebar');
     this.layoutService.changeLayoutSize();
 
     // Сворачиваем меню при клике на сворачивание и при 1500
@@ -48,11 +48,11 @@ export class OneColumnLayoutComponent {
     } catch(e) {}
   }
   pointSidebar() {
-    this.sidebarService.expand('menu-sidebar');      
+    this.sidebarService.expand('menu-sidebar');
   }
   hideSidebar() {
     if (this.screenWidth <= 575) {
-      this.sidebarService.collapse('menu-sidebar');            
+      this.sidebarService.collapse('menu-sidebar');
     }
   }
 

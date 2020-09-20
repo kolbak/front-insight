@@ -13,7 +13,7 @@ import { RippleService } from '../../../@core/utils/ripple.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isClicked = false;
-
+  
 
   private destroy$: Subject<void> = new Subject<void>();
   public readonly materialTheme$: Observable<boolean>;
@@ -114,7 +114,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.screenWidth = screen.width;
   }
   showMenu() { // Вызывает раскрытие меню
-      this.sidebarService.toggle(true, 'menu-sidebar');    
+      this.sidebarService.toggle(true, 'menu-sidebar');
   }
 
 
@@ -139,7 +139,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // {
   //   document.querySelector('#wholePage').classList.add('pageTurnCalendar');
   //   document.querySelector('#content-start').insertAdjacentHTML('afterbegin', `
-    
+
   //   <nb-layout>
   //   <div id="calendar" style="width: 100%; height: 100px; background-color: black">
   //       <nb-calendar-range-showcase></nb-calendar-range-showcase>
