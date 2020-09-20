@@ -5,7 +5,8 @@
 
 <nb-layout windowScroll>
 
-    <nb-sidebar (window:resize)="onResize()" (pointerenter)="pointSidebar()" class="menu-sidebar" tag="menu-sidebar" responsive start>
+    <nb-sidebar [state]="'compacted'" [fixed]="true" (window:resize)="onResize()"
+        class="menu-sidebar" tag="menu-sidebar" responsive start>
 
         <!-- Для анимации.
     (pointerenter)="pointSidebar()"
@@ -61,8 +62,8 @@
         <ng-content select="nb-menu"></ng-content>
         <!-- <h6 (click)="KonamiCode()" class="bottomleft">version 1.1</h6> -->
     </nb-sidebar>
-
-    <nb-layout-column>
+<!-- margin-left: 56px -->
+    <nb-layout-column [ngClass]="{ 'layout-margin': isExpanded }">
         <!-- <ngx-header></ngx-header> -->
         <div class="container-fluid" style="position: relative; padding-left: 2%">
           <ngx-header></ngx-header>
