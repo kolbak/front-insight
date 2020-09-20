@@ -1,7 +1,6 @@
 import { User, ServerService } from './../../../server.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'ngx-default',

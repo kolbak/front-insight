@@ -24,17 +24,17 @@ export class Chart10Component {
       "value": 72
     }
   ];
-  newf = true;
-  newf1 = new BehaviorSubject(null);
 
+  isAxis = true;
+  isAxisSub = new BehaviorSubject(false);
   constructor() {
     Object.assign(this, this.single);
 
-    this.newf1.subscribe((res)=>{this.newf=res;});
+    this.isAxisSub.subscribe((res)=>{this.isAxis=res;});
 
   }
   ngAfterViewInit(): void {
-    this.newf1.next(false);
+    this.isAxisSub.next(false);
   }
 
 
