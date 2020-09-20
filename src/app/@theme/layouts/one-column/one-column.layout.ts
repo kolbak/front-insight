@@ -40,7 +40,7 @@ export class OneColumnLayoutComponent implements OnInit{
 
 
   toggleSidebar() {
-    this.isExpanded = !this.isExpanded;
+    // this.isExpanded = !this.isExpanded;
 
     this.sidebarService.toggle(true, 'menu-sidebar');
     this.layoutService.changeLayoutSize();
@@ -99,11 +99,11 @@ export class OneColumnLayoutComponent implements OnInit{
     //   this.isExpanded = !this.isExpanded;
     //   console.log('compacted',this.isExpanded)
     // })
-    // this.sidebarService.onToggle().subscribe((obj) => { // {tag: 'menu-sidebar}
-    //   console.log('toggle',this.isExpanded)
-    //   this.isExpanded = !this.isExpanded;
-    //   console.log('toggle',this.isExpanded)
-    // })
+    this.sidebarService.onToggle().subscribe((obj) => { // {tag: 'menu-sidebar}
+      // console.log('toggle',this.isExpanded)
+      this.isExpanded = !this.isExpanded;
+      // console.log('toggle',this.isExpanded)
+    })
 
     this.userService.getUsers()
       .pipe(takeUntil(this.destroy$))
