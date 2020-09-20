@@ -108,7 +108,7 @@ export class DocumentsComponent implements OnInit {
   actionColumn = 'Действия';
   allColumns = [];
 
-  gradient: boolean = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  gradient: boolean = /^((?!chrome|android).)*safari/i.test(navigator.userAgent) || window['safari'] !== undefined;
 
   dataSource: NbTreeGridDataSource<FSEntry>;
 
@@ -138,7 +138,7 @@ export class DocumentsComponent implements OnInit {
     private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>,
     public server: ServerService,
     private dialogService: NbDialogService,
-    private nbMenuService: NbMenuService, @Inject(NB_WINDOW) private window) {
+    private nbMenuService: NbMenuService, @Inject(NB_WINDOW) private windowNB) {
 
       this.allColumns =                              [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.usersColumn, this.actionColumn]
       if (this.screenWidth <= 950) this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn, this.actionColumn];
@@ -260,7 +260,7 @@ export class DocumentsComponent implements OnInit {
         map(({ item: { title } }) => title),
       )
       .subscribe(title => {
-        this.window.alert(`${title} was clicked!`)
+        this.windowNB.alert(`${title} was clicked!`)
       });
   }
 

@@ -43,8 +43,7 @@ export class Chart2Component {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<any>;
 
-  chartValue: number = +(Math.random() * 100).toFixed(0);
-  // chartValue: number =5;
+  chartValue: number = +(50 + Math.random() * 50).toFixed(0);
   gradientSafari() {
     let is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     var isSafari = window['safari'] !== undefined;
