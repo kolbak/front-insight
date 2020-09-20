@@ -54,7 +54,7 @@ export class Chart2Component {
       '#b71c1c', '#c62828', '#d32f2f', '#e53935', '#f44336'
     ][Math.floor(this.chartValue / (100 / 10) )];
 
-    if (is_safari|| isSafari) {
+    if (is_safari||isSafari) {
       return {
         colors: [color],
         type: "solid",
@@ -64,7 +64,7 @@ export class Chart2Component {
     return {
       type: "gradient",
       gradient: {
-        type: 'diagonal1',
+        type: 'horizontal',
         gradientToColors: ["red"],
         shadeIntensity: 0.15,
         inverseColors: false,
@@ -73,6 +73,16 @@ export class Chart2Component {
         stops: [0, 100]
       }
     }
+    // gradient: {
+    //   shade: "dark",
+    //   type: "horizontal",
+    //   shadeIntensity: 0.5,
+    //   gradientToColors: ["#ABE5A1"],
+    //   inverseColors: true,
+    //   opacityFrom: 1,
+    //   opacityTo: 1,
+    //   stops: [0, 100]
+    // }
   }
 
   constructor() {
