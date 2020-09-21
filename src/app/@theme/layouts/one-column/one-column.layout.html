@@ -5,7 +5,7 @@
 
 <nb-layout windowScroll>
 
-    <nb-sidebar [state]="'compacted'" [fixed]="true" (window:resize)="onResize()"
+    <nb-sidebar [state]="screenWidth <= 575 ? 'collapsed' : 'compacted'" [fixed]="true" (window:resize)="onResize()"
         class="menu-sidebar" tag="menu-sidebar" start>
 
         <!-- Для анимации.

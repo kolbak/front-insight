@@ -31,10 +31,12 @@ export class OneColumnLayoutComponent implements OnInit{
 
 
   toggleSidebar() {
-    // this.isExpanded = !this.isExpanded;
-
-    this.sidebarService.toggle(true, 'menu-sidebar');
-    this.layoutService.changeLayoutSize();
+    if(this.screenWidth > 575){
+      this.sidebarService.toggle(true, 'menu-sidebar');
+    } else {
+      this.sidebarService.toggle(false, 'menu-sidebar');
+    }
+    // this.layoutService.changeLayoutSize();
 
     // Сворачиваем меню при клике на сворачивание и при 1500
     try {
