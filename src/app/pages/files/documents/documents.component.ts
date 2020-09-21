@@ -45,7 +45,6 @@ interface FSEntry {
 export class DocumentsComponent implements OnInit {
 
   filterTableBySection(section) : void {
-    // console.log(section);
     document.location.href = 'pages/files#filesSearch'
 
     if (section.extension == '*') {
@@ -127,9 +126,6 @@ export class DocumentsComponent implements OnInit {
 
     this.showOwners = this.screenWidth > 950;
     this.showActions = true;//this.screenWidth > 860;
-
-    // console.log("onResize()");
-    // console.log(this.showActions, this.allColumns);
   }
 
   userArrCell: any = null;
@@ -182,8 +178,6 @@ export class DocumentsComponent implements OnInit {
 
       }
       this.dataSource = this.dataSourceBuilder.create(this.data);
-    // console.log(this.data);
-      //});
 
 
     // Создаём рандомные данные для папок

@@ -120,7 +120,5 @@ export class Chart2Component {
       },
       // labels: [""]
     };
-
-    console.log(this.chartOptions);
   }
 }

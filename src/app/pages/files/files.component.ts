@@ -30,18 +30,12 @@ export class FilesComponent {
   constructor(private dialogService: NbDialogService, 
     private sidebarService: NbSidebarService) {
     for (let i = 0; i < this.sections.length; i++)
-      this.deleteMode.push(false);  
-  
-    if (this.screenWidth >= 575)
-      this.sidebarService.compact('menu-sidebar');
-    else
-      this.sidebarService.toggle(false, 'menu-sidebar');
+      this.deleteMode.push(false);
   }
   
   // Для отображения "Объём данных"
   dataContains = 155;
   dataTotal    = 256; 
-
 
   // __________________ разделы __________________ \\
   deleteMode: boolean[] = [];
@@ -78,13 +72,11 @@ export class FilesComponent {
   // extensions: string[] = ['']
 
   // AddExtenstion(id) {
-  //   console.log((document.querySelector('#ext' + id) as HTMLInputElement).value);
 
   //   if (id + 1 == this.extensions.length) {
   //     this.extensions.push((document.querySelector('#ext' + id) as HTMLInputElement).value);
   //   }
   //   else this.extensions[id] = (document.querySelector('#ext' + id) as HTMLInputElement).value;
-  //   console.log(this.extensions);
   // }
 
   hideSection(id) {

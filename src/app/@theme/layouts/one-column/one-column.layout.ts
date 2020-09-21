@@ -17,21 +17,12 @@ export class OneColumnLayoutComponent implements OnInit{
       private router: Router,
       private sidebarService: NbSidebarService,
       private layoutService: LayoutService,
-      private userService: UserData) {
-    // if (this.screenWidth >= 575)
-    //   this.sidebarService.compact('menu-sidebar');
-    // else
-    //   this.sidebarService.toggle(false, 'menu-sidebar');
-  }
+      private userService: UserData) { }
 
   @ViewChild('userAccord') userAccordion;
   screenWidth: number = screen.width;
-  // isExpanded: boolean = false;
   onResize() {
     this.screenWidth = screen.width;
-    // if(this.screenWidth >= 1200){
-    //   this.sidebarService.compact('menu-sidebar');
-    // }
     // Сворачиваем меню при клике на сворачивание и при 1500
     try {
       this.userAccordion.close();
@@ -50,14 +41,6 @@ export class OneColumnLayoutComponent implements OnInit{
       this.userAccordion.close();
     } catch(e) {}
   }
-  // pointSidebar() {
-  //   this.sidebarService.expand('menu-sidebar');
-  // }
-  // hideSidebar() {
-    // if (this.screenWidth <= 575) {
-    //   this.sidebarService.collapse('menu-sidebar');
-    // }
-  // }
 
 
   KonamiCode(){
@@ -91,18 +74,8 @@ export class OneColumnLayoutComponent implements OnInit{
 
   isExpanded: boolean = false
   ngOnInit() {
-    // this.sidebarService.onExpand().subscribe((obj) => { // {tag: 'menu-sidebar}
-    //   this.isExpanded = !this.isExpanded;
-    //   console.log('expanded',this.isExpanded)
-    // });
-    // this.sidebarService.onCompact().subscribe((obj) => { // {tag: 'menu-sidebar}
-    //   this.isExpanded = !this.isExpanded;
-    //   console.log('compacted',this.isExpanded)
-    // })
     this.sidebarService.onToggle().subscribe((obj) => { // {tag: 'menu-sidebar}
-      // console.log('toggle',this.isExpanded)
       this.isExpanded = !this.isExpanded;
-      // console.log('toggle',this.isExpanded)
     })
 
     this.userService.getUsers()

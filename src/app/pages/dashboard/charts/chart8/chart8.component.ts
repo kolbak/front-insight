@@ -36,7 +36,6 @@ export class Chart8Component implements AfterViewInit{
   }
 ngAfterViewInit(){
 this.gradientListener.next(true);
-console.log('object :>> ');
 }
   onSelect(data): void { }
   onActivate(data): void { }

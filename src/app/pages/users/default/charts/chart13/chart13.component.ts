@@ -50,15 +50,6 @@ export class Chart13Component {
     }
     return arr;
   }
-
-  onSelect(data): void {
-  }
-
-  onActivate(data): void {
-  }
-
-  onDeactivate(data): void {
-  }
 }
 
 

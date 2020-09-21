@@ -31,7 +31,7 @@ export class User {
   }
   set photo(value: string) {
     this._photo = ServerService.HOST + value;
-    console.log(this._photo);
+    // console.log(this._photo);
   }
   role: string;
 }
@@ -67,13 +67,13 @@ export class ServerService {
   }
 
   getScreenShotsForUser(uuid: string): Observable<Media> {
-    console.log(' this.HOST + "user/screenshots?uuid=" + uuid :>> ',  this.HOST + "user/screenshots?uuid=" + uuid);
+    // console.log(' this.HOST + "user/screenshots?uuid=" + uuid :>> ',  this.HOST + "user/screenshots?uuid=" + uuid);
     return this.http.get<Media>(
       this.HOST + "user/screenshots?uuid=" + uuid
     );
   }
   getProxy(uuid: string): Observable<Keylog> {
-    console.log(' this.HOST + "user/screenshots?uuid=" + uuid :>> ',  this.HOST + "user/proxy?uuid=" + uuid);
+    // console.log(' this.HOST + "user/screenshots?uuid=" + uuid :>> ',  this.HOST + "user/proxy?uuid=" + uuid);
     return this.http.get<Keylog>(
       this.HOST + "user/proxy?uuid=" + uuid
     );

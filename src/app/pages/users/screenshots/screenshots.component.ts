@@ -25,7 +25,6 @@ ngOnInit(){
   this.server.telecast.subscribe((resp )=>{
     this.media = this.server.getScreenShotsForUser(resp);
     // this.screenshots.subscribe(files => this.screens = files);
-    // console.log(this.screens);
   })
 }
   viewTable: boolean = true;

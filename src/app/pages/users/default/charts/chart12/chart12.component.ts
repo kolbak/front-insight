@@ -53,15 +53,6 @@ export class Chart12Component {
   constructor() {
     Object.assign(this, this.single);
   }
-
-  onSelect(data): void {
-  }
-
-  onActivate(data): void {
-  }
-
-  onDeactivate(data): void {
-  }
 }
 
 
