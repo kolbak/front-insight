@@ -44,20 +44,30 @@ interface FSEntry {
 })
 export class DocumentsComponent implements OnInit {
 
+  section: any = { extension: '*'};
   filterTableBySection(section) : void {
     document.location.href = 'pages/files#filesSearch'
-    if (section.extension == '*') this.dataSource.setData(this.data);
-    else if (section.extension == 'deleted') this.dataSource.setData(this.deleted);
-    else if (section.extension == 'favorite') this.dataSource.setData(this.data.filter(d => d.data.favStar ));
-    else if (section.extension == 'recent') this.dataSource.setData(this.data.filter(d => +d.data.Дата > (+Date.now() - 1000*60*60*24*30*3 ) ));
-    else
-      this.dataSource.setData(this.data.filter(d => {
+    this.section = section;
+    // Обнуляет все чекбоксы при смене раздела
+    for (let i = 0; i < this.data.length; i++) {
+      this.data[i].data.checkbox = false;
+    }
+    this.checkBoxSetAll = false;
+
+    this.dataSource.setData(this.getTableFilterData(section));
+  }
+  getTableFilterData(section) {
+    if (section.extension == '*') return this.data;
+    else if (section.extension == 'deleted') return this.deleted;
+    else if (section.extension == 'favorite') return this.data.filter(d => d.data.favStar );
+    else if (section.extension == 'recent') return this.data.filter(d => +d.data.Дата > (+Date.now() - 1000*60*60*24*30*3 ) );
+    else return this.data.filter(d => {
         for (let i = 0; i < section.extension.length; i++) {
           if (d.data.Название[2] == section.extension[i])
             return true;
         }
         return false;
-      } ));
+      } );
   }
 
   files: folderInfo[] = [];
@@ -78,17 +88,18 @@ export class DocumentsComponent implements OnInit {
   setCheckedStatus(row, $checked) {
     //this.checked = checked.target.checked;
     row.data['checkbox'] = $checked.target.checked;
-    this.checkBoxsetAll = false;
+    this.checkBoxSetAll = false;
   }
   // Настройка чекбокса для выделения всего
-  checkBoxsetAll: boolean = false;
+  checkBoxSetAll: boolean = false;
   checkAll($checked)
   {
-    for (const iterator of this.data) {
+    let checkData = this.getTableFilterData(this.section);
+    for (const iterator of checkData) {
       iterator.data.checkbox = $checked.target.checked;
     }
-    this.checkBoxsetAll = $checked.target.checked;
-    this.dataSource.setData(this.data);
+    this.checkBoxSetAll = $checked.target.checked;
+    this.dataSource.setData(checkData);
   }
   //-----------------------------------Звёздочка
   setStarStatus(row, $checked) {
@@ -229,12 +240,17 @@ export class DocumentsComponent implements OnInit {
   }
 
   deleted: any;
-  deleteHighlightFiles()
+  deleteHighlightFiles() // Почему-то обновляет всю таблицу, но не удаляет виновных
   {
+    this.deleted = this.data.filter(d => d.data.checkbox);
     this.data = this.data.filter(d => !d.data.checkbox);
-    this.deleted = this.data.filter(d => d.data.checkbox)
-    this.dataSource.setData(this.data.filter(d => !d.data.checkbox));
-    this.checkBoxsetAll = false;
+   
+    this.dataSource.setData(this.getTableFilterData(this.section));
+    
+    // Обнуляем
+    for (let i = 0; i < this.deleted.length; i++)
+      this.deleted[i].data.checkbox = false;
+    this.checkBoxSetAll = false;
   }
 
   //----------------------------------------Меню действий
@@ -251,7 +267,7 @@ export class DocumentsComponent implements OnInit {
         map(({ item: { title } }) => title),
       )
       .subscribe(title => {
-        this.windowNB.alert(`${title} was clicked!`)
+        // this.windowNB.alert(`${title} was clicked!`)
       });
   }
 
