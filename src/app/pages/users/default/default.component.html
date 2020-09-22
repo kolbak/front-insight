@@ -1,8 +1,8 @@
 <div [class]="'row has-flex'" style="width: 100%" (window:resize)="onResize()">
 
     <div class="row" style="width: 100%; max-height: 15vh;" *ngIf="screenWidth <= 1280" style="margin-bottom: 2vh;">
-        <div class="col-5" style="height: 100%; width: 100%;">
-            <img src="../../../../assets/images/jack.png" class="current-user">
+        <div *ngIf="user.full_name != ''" class="col-5" style="height: 100%; width: 100%;">
+            <img *ngIf="user.photo != ''" [src]="server.HOST + user.photo" class="current-user">
         </div>
         <div class="col-7">
             <nb-list ngClass="cur-user-description"

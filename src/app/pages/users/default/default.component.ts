@@ -21,14 +21,15 @@ export class DefaultComponent implements OnInit {
   isTabletScreen: boolean;
   isXSmallScreen: boolean;
 
-  constructor(private breakpointObserver:BreakpointObserver,private server: ServerService) { }
+  constructor(private breakpointObserver:BreakpointObserver,public server: ServerService) { }
 
-  user: User;
+  user: User = new User();
 
   ngOnInit() {
-    this.user = new User();//this.server.allusers[0];
-    this.user.full_name = "John Doe";
-     this.user.sector = "Engineer";
+    try {
+      this.user = this.server.allusers[0];
+    } catch (e) {}
+
     this.server.telecastUser.subscribe(resp=>{this.user=resp?resp:this.user;})
 
 

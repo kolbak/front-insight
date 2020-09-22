@@ -56,6 +56,7 @@ export class ServerService {
     const got = this.http.get(this.HOST + "users");
     got.subscribe((response: User[]) => {
       this.allusers = response;
+      this.curUser.next(response[0]);
     });
     return got;
   }
@@ -64,6 +65,7 @@ export class ServerService {
   }
   editUser(user) {
     this.msg.next(user);
+    this.curUser.next(user);
   }
 
   getScreenShotsForUser(uuid: string): Observable<Media> {
