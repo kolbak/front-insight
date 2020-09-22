@@ -30,7 +30,7 @@ export class DocumentsCardsComponent implements OnInit {
   }
 
   viewCloser(link) {
-    if (screen.width > 1050) 
+    if (screen.width > 1050 && this.tag != 'video') 
         this.dialogService.open(ShowPicture, { context: { link: link, tag: this.tag }, });
   }
 }

@@ -149,7 +149,7 @@ export class DocumentsTableComponent implements OnInit{
   }
 
   viewCloser(link) {
-    if (link['link'] == '' || screen.width < 1050) {
+    if (link['link'] == '' || screen.width < 1050 || this.tag == 'video') {
       return;
     }
     this.dialogService.open(ShowPicture, { context: { link: link['link'], tag: this.tag }, });

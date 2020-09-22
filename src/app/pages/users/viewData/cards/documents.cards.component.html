@@ -4,9 +4,10 @@
         <nb-card-header>
             {{card.name}}
         </nb-card-header>
-        <nb-card-body>
+        <nb-card-body *ngIf="tag == 'img'">
             <!-- <a target="_blank"  [href]="server.HOST+card.link"> -->
-            <img (click)="viewCloser(card.link)" style="border-radius: 8px;height: 200px;width: auto;" [src]="server.HOST+card.link">
+            <img *ngIf="tag == 'img'" (click)="viewCloser(card.link)" style="border-radius: 8px;height: 200px;width: auto;" [src]="server.HOST+card.link">
+            <!-- <video *ngIf="tag == 'video'" (click)="viewCloser(card.link)" style="border-radius: 8px;height: 200px;width: auto;" [src]="server.HOST + card.link"></video> -->
             <!-- </a> -->
 
         </nb-card-body>
