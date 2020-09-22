@@ -64,7 +64,7 @@ export class ServerService {
     this.msg.next(uuid);
   }
   editUser(user) {
-    this.msg.next(user);
+ 
     this.curUser.next(user);
   }
 

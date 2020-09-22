@@ -24,6 +24,7 @@ export class ScreenshotsComponent implements OnInit {
 ngOnInit(){
   this.server.telecast.subscribe((resp )=>{
     this.media = this.server.getScreenShotsForUser(resp);
+    console.log('resp :>> ', resp);
     // this.screenshots.subscribe(files => this.screens = files);
   })
 }
