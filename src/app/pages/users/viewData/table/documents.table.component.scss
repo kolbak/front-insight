@@ -52,6 +52,10 @@ button[nbTreeGridRowToggle] {
     }
 }
 
+span.custom-checkbox {
+    vertical-align:middle;
+}
+
 @import "../../../../@theme/styles/themes";
 @include nb-install-component() {
     div.users {

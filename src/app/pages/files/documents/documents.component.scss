@@ -195,6 +195,7 @@ button[nbTreeGridRowToggle] {
     nb-checkbox:not(:only-child) {
         margin-right: 0.75rem;
         margin-top: 1rem;
+        vertical-align:middle;
     }
     @media screen and (max-width: 650px) { 
         nb-checkbox:not(:only-child) {
