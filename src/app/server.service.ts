@@ -40,7 +40,7 @@ export class User {
 })
 export class ServerService {
   private msg = new BehaviorSubject<string>(
-    "NoUser"
+"NoUser"
   );
   private curUser = new BehaviorSubject<User>(
     null
@@ -57,6 +57,7 @@ export class ServerService {
     got.subscribe((response: User[]) => {
       this.allusers = response;
       this.curUser.next(response[0]);
+      this.msg.next(response[0].uuid);
     });
     return got;
   }
