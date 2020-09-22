@@ -40,7 +40,7 @@ export class User {
 })
 export class ServerService {
   private msg = new BehaviorSubject<string>(
-    "a865b9ef-f553-48e3-8eb3-b7f76c6a8d4f"
+    "NoUser"
   );
   private curUser = new BehaviorSubject<User>(
     null
@@ -64,7 +64,6 @@ export class ServerService {
     this.msg.next(uuid);
   }
   editUser(user) {
- 
     this.curUser.next(user);
   }
 

@@ -20,11 +20,16 @@ export class ScreenshotsComponent implements OnInit {
   constructor(private server: ServerService) {
     this.data.push(...DataGenerator.createFileInfo(40, "screen_", ["png", "jpeg", "bmp", "gif"]));
   }
-
+NoUser;
 ngOnInit(){
   this.server.telecast.subscribe((resp )=>{
     this.media = this.server.getScreenShotsForUser(resp);
     console.log('resp :>> ', resp);
+    if(resp=="NoUser"){
+      this.NoUser = true;
+    }else{
+      this.NoUser = false;
+    }
     // this.screenshots.subscribe(files => this.screens = files);
   })
 }
