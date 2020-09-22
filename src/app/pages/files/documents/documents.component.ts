@@ -46,14 +46,10 @@ export class DocumentsComponent implements OnInit {
 
   filterTableBySection(section) : void {
     document.location.href = 'pages/files#filesSearch'
-
-    if (section.extension == '*') {
-      this.dataSource.setData(this.data);
-    }
-    else if (section.extension == 'deleted')
-      this.dataSource.setData(this.deleted);
-    else if (section.extension == 'favorite')
-      this.dataSource.setData(this.data.filter(d => d.data.favStar ));
+    if (section.extension == '*') this.dataSource.setData(this.data);
+    else if (section.extension == 'deleted') this.dataSource.setData(this.deleted);
+    else if (section.extension == 'favorite') this.dataSource.setData(this.data.filter(d => d.data.favStar ));
+    else if (section.extension == 'recent') this.dataSource.setData(this.data.filter(d => +d.data.Дата > (+Date.now() - 1000*60*60*24*30*3 ) ));
     else
       this.dataSource.setData(this.data.filter(d => {
         for (let i = 0; i < section.extension.length; i++) {
@@ -141,44 +137,44 @@ export class DocumentsComponent implements OnInit {
       // if (this.screenWidth <= 860) this.allColumns = [this.fileNameColumn, this.dateColumn, this.visibleDateColumn];
 
       let tableDate: Date, fileName: string, fileIconSrc: string, ext:string, extensions: string = ['PDF', 'PPT', 'PSD'].join('');
-      //server.getAllUsers().subscribe(users => { this.userArrCell = users;
-      // Создадим рандомные данные для таблицы
-      for (let i = 0; i < 100; i++) {
-        tableDate = DataGenerator.randomDate(new Date(2012, 0, 1), new Date());
-        fileName = DataGenerator.makeName('file_', [
-          'mpeg', 'avi', 'mp4',
-          'png', 'jpeg', 'bmp', 'git', 'tif',
-          'mp3', 'wav',
-          'fb2', 'epub', 'mobi',
-          'doc', 'txt', 'docx', 'pdf','pdf','pdf','pdf','pdf','pdf','pdf',
-          'xls', 'xlsx',
-          'ppt', 'pptx','ppt', 'pptx','ppt', 'pptx','ppt', 'pptx','ppt', 'pptx',
-          'zip', 'rar', '7z', 'gzip'
-         ]);
-        fileIconSrc = '../../../../assets/images/ext_icons/ext_icon_';
+      server.getAllUsers().subscribe(users => { this.userArrCell = users;
+        // Создадим рандомные данные для таблицы
+        for (let i = 0; i < 100; i++) {
+          tableDate = DataGenerator.randomDate(new Date(2018, 0, 1), new Date());
+          fileName = DataGenerator.makeName('file_', [
+            'mpeg', 'avi', 'mp4',
+            'png', 'jpeg', 'bmp', 'git', 'tif',
+            'mp3', 'wav',
+            'fb2', 'epub', 'mobi',
+            'doc', 'txt', 'docx', 'pdf','pdf','pdf','pdf','pdf','pdf','pdf',
+            'xls', 'xlsx',
+            'ppt', 'pptx','ppt', 'pptx','ppt', 'pptx','ppt', 'pptx','ppt', 'pptx',
+            'zip', 'rar', '7z', 'gzip'
+          ]);
+          fileIconSrc = '../../../../assets/images/ext_icons/ext_icon_';
 
-        if (fileName.split('.').length > 0 && extensions.includes(fileName.split('.')[fileName.split('.').length - 1].toLocaleUpperCase()))
-          fileIconSrc += fileName.split('.')[fileName.split('.').length - 1].toLocaleUpperCase() + '.svg';
-        else
-          fileIconSrc += 'unknown.svg';
+          if (fileName.split('.').length > 0 && extensions.includes(fileName.split('.')[fileName.split('.').length - 1].toLocaleUpperCase()))
+            fileIconSrc += fileName.split('.')[fileName.split('.').length - 1].toLocaleUpperCase() + '.svg';
+          else
+            fileIconSrc += 'unknown.svg';
 
-        this.data.push({
-          data: {
-            id: i,
-            checkbox: false,
-            favStar: false,
-            Номер: i,
-            Название: [fileIconSrc, fileName, fileName.split('.')[fileName.split('.').length - 1]],
-            Дата: tableDate,
-            tableDate: new Intl.DateTimeFormat('ru').format(tableDate),
-            Пользователи: null,//[Math.floor(Math.random() * 6)],
-            Действия: ""
-          },
-        });
+          this.data.push({
+            data: {
+              id: i,
+              checkbox: false,
+              favStar: false,
+              Номер: i,
+              Название: [fileIconSrc, fileName, fileName.split('.')[fileName.split('.').length - 1]],
+              Дата: tableDate,
+              tableDate: new Intl.DateTimeFormat('ru').format(tableDate),
+              Пользователи: [Math.floor(Math.random() * 6)],//null,
+              Действия: ""
+            },
+          });
 
-      }
-      this.dataSource = this.dataSourceBuilder.create(this.data);
-
+        }
+        this.dataSource = this.dataSourceBuilder.create(this.data);
+      });
 
     // Создаём рандомные данные для папок
     for (let i = 0; i < this.folderNames.length; i++) {
@@ -194,7 +190,8 @@ export class DocumentsComponent implements OnInit {
       // Добавляем данные на график
       this.filesChart.push({
         "name": this.folderNames[i],
-        "series": [{
+        "series": [
+          {
             "name": "Кол-во",
             "value": amount
           }, {

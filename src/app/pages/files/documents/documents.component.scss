@@ -36,12 +36,23 @@ button[nbTreeGridRowToggle] {
     width: 100%;
 }
 
-// @media screen and (min-width: 400px) {
-//     .nb-column-name,
-//     .nb-column-size {
-//         width: 50%;
-//     }
-// }
+
+
+@media screen and (max-width: 650px) {
+    #filesSearch {
+        width: 17rem !important;
+    }
+}
+@media screen and (max-width: 450px) {
+    #filesSearch {
+        width: 15rem !important;
+    }
+}
+@media screen and (max-width: 410px) {
+    #filesSearch {
+        width: 13rem !important;
+    }
+}
 
 // @media screen and (min-width: 500px) {
 //     .nb-column-name,
@@ -229,7 +240,7 @@ button[nbTreeGridRowToggle] {
 @media screen and (max-width: 950px) {
     .folders { grid-template-columns: repeat(2, 1fr); }
 }
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 690px) {
     .folders { grid-template-columns: repeat(1, 1fr); }
 }
 // .showFolder {

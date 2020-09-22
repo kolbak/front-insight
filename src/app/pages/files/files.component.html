@@ -2,7 +2,8 @@
     [style]="'box-shadow: -4px 4px 10px 0 rgba(25, 42, 70, .13); margin: 0px;'">
 
     <!-- тип файлов -->
-    <div class="card-col-10" *ngIf="screenWidth > 620">
+    <div class="card-col-10">
+        <!-- *ngIf="screenWidth > 600" -->
         <nb-card class="search-card">
             <nb-card-header *ngIf="screenWidth > 1050">
                 <h6>Содержание</h6>
@@ -10,7 +11,7 @@
             <nb-card-body>
                 <!-- список из разделов -->
                 <nb-list>
-                    <nb-list-item style="cursor: pointer;" 
+                    <nb-list-item style="cursor: pointer !important;" 
                         *ngFor="let section of sections; let i = index" 
                         [ngClass]="{active: section.title == active}" 
                         (click)="documents.filterTableBySection(section)"
@@ -22,14 +23,14 @@
 
                         <nb-icon 
                             [ngClass]="{active: section.title == active}"
-                            style="border: none !important; color: #8f9bb3"
+                            style="cursor: pointer; border: none !important; color: #8f9bb3"
                             icon="{{section.icon }}">
                         </nb-icon>
-                        <span *ngIf="screenWidth > 1050" style="font-size: 1rem; font-weight: 500;">{{ section.title }}</span>
+                        <span *ngIf="screenWidth > 1050" style="cursor: pointer; font-size: 1rem; font-weight: 500;">{{ section.title }}</span>
 
-                        <nb-icon *ngIf="deleteMode[i]"
+                        <nb-icon *ngIf="screenWidth > 500 && deleteMode[i]"
                             icon="close-outline"
-                            style="margin-left: auto; color: lightcoral !important;"
+                            style="cursor: pointer; margin-left: auto; color: lightcoral !important;"
                             (click)="hideSection(i)">
                         </nb-icon>
 
@@ -63,7 +64,7 @@
         </nb-card>
     </div>
 
-    <div class="card-col-75" style="width: 73.2vw;">
+    <div class="card-col-75" style="width: 60vw;">
         <!-- таблица -->
         <nb-card class="content-card">
             <nb-card-body>

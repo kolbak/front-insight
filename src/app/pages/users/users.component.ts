@@ -53,6 +53,16 @@ export class UsersComponent implements OnInit {
     {title: 'Proxy',     url: '../../../assets/images/user-actions/31999.svg', routerLink: '/pages/users/proxy',       active: false},
     {title: 'Терминал',  url: '../../../assets/images/user-actions/32000.svg', routerLink: '/pages/users/terminal',    active: false},
   ];
+  adaptTitle: string[] = [
+    'downloads',
+    'screenshots',
+    'videos',
+    'passwords',
+    'keylog',
+    'documents',
+    'proxy',
+    'terminal'
+  ];
 
   firstTime: boolean = true;
   public MAINUSER:string;
@@ -69,6 +79,14 @@ export class UsersComponent implements OnInit {
     private breakpointObserver:BreakpointObserver,
     private sidebarService: NbSidebarService) {
       server.getAllUsers();
+      let sectionStr = location.href.split('/')[location.href.split('/').length - 1]; 
+
+      for (let i = 0; i < this.adaptTitle.length; i++) {
+        if (sectionStr == this.adaptTitle[i]) {
+          this.menu[i].active = true;
+          break;
+        }
+      }
     }
 
   GetUserToRoute(uuid:string,user:User){

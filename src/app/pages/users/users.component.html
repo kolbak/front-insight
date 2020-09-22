@@ -6,7 +6,7 @@
     [class]="(isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen) && IsChangeUsersLayOut ?'':'col-3 search'"
   >
     <nb-card  class="search-card">
-      <nb-card-header style="display: flex; justify-content: space-between;">
+      <nb-card-header [style]="(screenWidth < 1280 ? 'min-height: 5rem;' : '') + 'display: flex; justify-content: space-between;'">
         <button style="margin-right: 1rem;" (click)="ChangeUsersLayOut()" size="large" nbButton *ngIf="(isSmallScreen || isMediumScreen || isTabletScreen || isXSmallScreen)&& IsChangeUsersLayOut" status="info"><nb-icon icon="arrow-ios-back-outline"></nb-icon></button>
 
         <nb-form-field>
@@ -24,7 +24,7 @@
           />
         </nb-form-field>
       </nb-card-header>
-      <nb-card-body style="padding: 1rem 0rem; "><!-- max-height: 40vh; -->
+      <nb-card-body style="padding: 0rem !important;"><!-- max-height: 40vh; -->
         <nb-select
           size="tiny"
           nbPrefix

@@ -54,7 +54,7 @@ export class FilesComponent {
     { title: 'Презентации',icon: 'pie-chart-outline',  extension: ['ppt', 'pptx'] },
     
     { title: 'Архивы',     icon: 'archive-outline',    extension: ['zip', 'rar', '7z', 'gzip'] },
-    { title: 'Недавние',   icon: 'clock-outline',      extension: '*' },
+    { title: 'Недавние',   icon: 'clock-outline',      extension: 'recent' },
     { title: 'Важные',     icon: 'star-outline',       extension: 'favorite' },
     { title: 'Удалённое',  icon: 'trash-2-outline',    extension: 'deleted' }
   ];
@@ -83,6 +83,8 @@ export class FilesComponent {
     this.sectionsHide.push(this.sections[id]);
     this.sections.splice(this.sections.lastIndexOf(this.sections[id]), 1);
     this.filterTable(this.sections[id]);
+
+    this.deleteMode[id] = false;
   }
 
   addSectionDialog: any;
