@@ -1,6 +1,6 @@
 import { BehaviorSubject } from 'rxjs';
 import { Component } from '@angular/core';
-import { of } from 'rxjs';
+
 
 @Component({
   selector: "ngx-chart10",
@@ -15,13 +15,13 @@ export class Chart10Component {
   single = [
     {
       "name": "Безопасные",
-      "value": 89
+      "value": +(Math.random() * 200).toFixed(0)
     },{
       "name": "Потенциально небезопасные",
-      "value": 50
+      "value": +(Math.random() * 75).toFixed(0)
     },{
       "name": "Опасные",
-      "value": 72
+      "value": +(Math.random() * 50).toFixed(0)
     }
   ];
 

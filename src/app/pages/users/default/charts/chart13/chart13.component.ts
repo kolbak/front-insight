@@ -37,7 +37,7 @@ export class Chart13Component {
         name: `${i + 1}`,
         series: []
       }
-      for(let j = 0;  j < 7; j++) {
+      for(let j = 0; j < 7; j++) {
         let objSeries = {
           name: '',
           value: 0

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { of } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Component({
@@ -14,13 +13,13 @@ export class Chart11Component {
   single = [
     {
       "name": "Положительные",
-      "value": 31
+      "value": +(Math.random() * 100).toFixed(0)
     },{
       "name": "Нейтральные",
-      "value": 24
+      "value": +(Math.random() * 75).toFixed(0)
     },{
       "name": "Отрицательные",
-      "value": 65
+      "value": +(Math.random() * 25).toFixed(0)
     }
   ];
 

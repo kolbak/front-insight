@@ -23,31 +23,25 @@ export class Chart12Component {
   single = [
     {
       "name": ".jpeg, .png, .png",
-      "value": 24
-    },
-    {
+      "value": +(Math.random() * 350).toFixed(0)
+    }, {
       "name": ".word, .xls, .txt",
-      "value": 11
-    },
-    {
+      "value": +(Math.random() * 400).toFixed(0)
+    }, {
       "name": ".pdf",
-      "value": 24
-    },
-    {
+      "value": +(Math.random() * 300).toFixed(0)
+    }, {
       "name": ".mpeg4, .avi",
-      "value": 35
-    },
-    {
+      "value": +(Math.random() * 40).toFixed(0)
+    }, {
       "name": ".mp3",
-      "value": 65
-    },
-    {
+      "value": +(Math.random() * 70).toFixed(0)
+    }, {
       "name": ".exe",
-      "value": 9
-    },
-    {
+      "value": +(Math.random() * 25).toFixed(0)
+    }, {
       "name": "Другое",
-      "value": 12
+      "value": +(Math.random() * 30).toFixed(0)
     }
   ];
   constructor() {
