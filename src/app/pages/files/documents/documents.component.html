@@ -97,7 +97,7 @@
     <input id="filesSearch" nbInput [nbFilterInput]="dataSource" class="search-input" type="text" placeholder="Поиск" />
 
     <div class="actions" style="float: right;">
-        <nb-icon icon="person-add-outline" pack="eva"></nb-icon>
+        <nb-icon  *ngIf="screenWidth > 575" icon="person-add-outline" pack="eva"></nb-icon>
         <nb-icon icon="trash-2-outline" (click)="deleteHighlightFiles()" [options]="{ animation: { type: 'shake' } }" pack="eva"></nb-icon>
         <nb-icon icon="more-vertical-outline" pack="eva"></nb-icon>
     </div>
