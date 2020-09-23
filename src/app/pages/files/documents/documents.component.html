@@ -109,7 +109,7 @@
     <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
 
     <ng-container [nbTreeGridColumnDef]="fileNameColumn" style="width: 50vw !important;">
-        <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(fileNameColumn)" *nbTreeGridHeaderCellDef style="width: 35vw !important;">
+        <th style="white-space: nowrap;" nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(fileNameColumn)" *nbTreeGridHeaderCellDef style="width: 35vw !important;">
             <nb-checkbox status="primary" [checked]="checkBoxSetAll" (change)="checkAll($event)"></nb-checkbox>
            <span [style]="screenWidth > 575 ? 'margin-left: 1.5rem;' : 'margin-left: 0.3rem;'">{{ fileNameColumn }}</span>
         </th>

@@ -111,6 +111,7 @@ button[nbTreeGridRowToggle] {
     }
     td,
     th {
+        white-space: nowrap;
         border-right: none;
         border-left: none;
         border-top: lightgray 1.5px solid;
