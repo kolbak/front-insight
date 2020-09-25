@@ -1,5 +1,7 @@
 import { BehaviorSubject } from 'rxjs';
-import { Component } from '@angular/core';
+import { ServerService } from './../../../../../server.service';
+
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -7,7 +9,7 @@ import { Component } from '@angular/core';
   templateUrl: "./chart10.component.html",
   styleUrls: ["./chart10.component.scss"],
 })
-export class Chart10Component {
+export class Chart10Component implements OnInit {
   colorScheme = {
     // domain: ['#5A8DEE', '#FDAC41', '#FF5B5C']
     domain: ['#00D68F', '#FF9A00', '#FF3D71']
@@ -24,14 +26,32 @@ export class Chart10Component {
       "value": +(Math.random() * 50).toFixed(0)
     }
   ];
-
   isAxis = true;
   isAxisSub = new BehaviorSubject(null);
-  constructor() {
-    Object.assign(this, this.single);
+  constructor(private server : ServerService) {
 
+Object.assign(this,this.single);
     this.isAxisSub.subscribe((res)=>{this.isAxis=res;});
 
+  }
+  uuid ="";
+  ngOnInit(){
+    this.server.telecast.subscribe(id=>{ if(id!=this.uuid){
+      this.uuid=id
+ this.single = [
+  {
+    "name": "Безопасные",
+    "value": +(Math.random() * 200).toFixed(0)
+  },{
+    "name": "Потенциально небезопасные",
+    "value": +(Math.random() * 75).toFixed(0)
+  },{
+    "name": "Опасные",
+    "value": +(Math.random() * 50).toFixed(0)
+  }
+]}
+
+    });
   }
   ngAfterViewInit(): void {
     this.isAxisSub.next(false);

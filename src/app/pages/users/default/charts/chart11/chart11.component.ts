@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ServerService } from './../../../../../server.service';
+import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Component({
@@ -6,7 +7,7 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
   templateUrl: "./chart11.component.html",
   styleUrls: ["./chart11.component.scss"],
 })
-export class Chart11Component {
+export class Chart11Component implements OnInit{
   colorScheme = {
     domain: ['#00ebc7', '#DBFB4B', '#a786df']
   };
@@ -25,11 +26,28 @@ export class Chart11Component {
 
   isAxis;
   isAxisSub = new BehaviorSubject(null);
-  constructor() {
+  constructor(private server: ServerService) {
     Object.assign(this, this.single);
 
     this.isAxisSub.subscribe((res)=>{this.isAxis=res;});
   }
+  uuid ="";
+  ngOnInit(){
+    this.server.telecast.subscribe(id=>{ if(id!=this.uuid){
+      this.uuid=id
+      this.single = [
+        {
+          "name": "Положительные",
+          "value": +(Math.random() * 100).toFixed(0)
+        },{
+          "name": "Нейтральные",
+          "value": +(Math.random() * 75).toFixed(0)
+        },{
+          "name": "Отрицательные",
+          "value": +(Math.random() * 25).toFixed(0)
+        }
+      ];
+    }});}
   ngAfterViewInit(): void {
     this.isAxisSub.next(false);
   }

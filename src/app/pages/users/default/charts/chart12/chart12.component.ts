@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ServerService } from '../../../../../server.service';
 
 @Component({
   selector: 'ngx-chart12',
   templateUrl: './chart12.component.html',
   styleUrls: ['./chart12.component.scss']
 })
-export class Chart12Component {
+export class Chart12Component implements OnInit {
   // single: any[];
   // view: any[] = [700, 400];
 
@@ -44,7 +45,36 @@ export class Chart12Component {
       "value": +(Math.random() * 30).toFixed(0)
     }
   ];
-  constructor() {
+  uuid ="";
+  ngOnInit(){
+    this.server.telecast.subscribe(id=>{ if(id!=this.uuid){
+      this.uuid=id
+      this.single = [
+        {
+          "name": ".jpeg, .png, .png",
+          "value": +(Math.random() * 350).toFixed(0)
+        }, {
+          "name": ".word, .xls, .txt",
+          "value": +(Math.random() * 400).toFixed(0)
+        }, {
+          "name": ".pdf",
+          "value": +(Math.random() * 300).toFixed(0)
+        }, {
+          "name": ".mpeg4, .avi",
+          "value": +(Math.random() * 40).toFixed(0)
+        }, {
+          "name": ".mp3",
+          "value": +(Math.random() * 70).toFixed(0)
+        }, {
+          "name": ".exe",
+          "value": +(Math.random() * 25).toFixed(0)
+        }, {
+          "name": "Другое",
+          "value": +(Math.random() * 30).toFixed(0)
+        }
+      ];
+    }});}
+    constructor(private server: ServerService) {
     Object.assign(this, this.single);
   }
 }

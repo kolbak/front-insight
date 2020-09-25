@@ -1,11 +1,12 @@
-import { Component, NgModule } from '@angular/core';
+import { ServerService } from './../../../../../server.service';
+import { Component, NgModule, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ngx-chart13',
   templateUrl: './chart13.component.html',
   styleUrls: ['./chart13.component.scss']
 })
-export class Chart13Component {
+export class Chart13Component implements OnInit{
   // multi: any[];
 
   // options
@@ -24,7 +25,7 @@ export class Chart13Component {
   };
 
   multi: any = this.genMultiData();
-  constructor() {
+  constructor(private server:ServerService) {
     Object.assign(this, this.multi);
   }
 
@@ -50,6 +51,12 @@ export class Chart13Component {
     }
     return arr;
   }
+  uuid ="";
+  ngOnInit(){
+    this.server.telecast.subscribe(id=>{ if(id!=this.uuid){
+      this.uuid=id
+      this.multi = this.genMultiData();
+    }});}
 }
 
 
