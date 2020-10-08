@@ -27,6 +27,8 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 // import { UsersComponent} from './pages/users/users.component';
 
+import { AuthGuardService } from './auth-guard.service';
+
 @NgModule({
   declarations: [AppComponent], // , UsersComponent
 
@@ -59,7 +61,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     CoreModule.forRoot(),
     NbThemeModule, NbLayoutModule, NbCardModule, NbCalendarRangeModule,NbEvaIconsModule, DragDropModule,
   ],
-providers:[ServerService],
+providers:[ServerService, AuthGuardService],
   bootstrap: [AppComponent],
 
 })

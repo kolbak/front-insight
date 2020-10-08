@@ -6,6 +6,8 @@ import { map, takeUntil } from 'rxjs/operators';
 import { Subject, Observable } from 'rxjs';
 import { RippleService } from '../../../@core/utils/ripple.service';
 
+import { NbAuthJWTToken, NbAuthService } from '@nebular/auth';
+
 @Component({
   selector: 'ngx-header',
   styleUrls: ['./header.component.scss'],
@@ -74,8 +76,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private userService: UserData,
     private breakpointService: NbMediaBreakpointsService,
     private rippleService: RippleService,
-    private sidebarService: NbSidebarService
+    private sidebarService: NbSidebarService,
+    private authService: NbAuthService
   ) {
+    this.authService.onTokenChange()
+      .subscribe((token: NbAuthJWTToken) => {
+        if(token.isValid()){
+          this.user = token.getPayload();
+        }
+      });
+
     this.materialTheme$ = this.themeService.onThemeChange()
       .pipe(map(theme => {
         const themeName: string = theme?.name || '';
