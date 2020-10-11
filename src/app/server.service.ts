@@ -1,4 +1,4 @@
-
+import { Router } from '@angular/router';
 import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
 import { BehaviorSubject, Observable, of } from "rxjs";
@@ -57,7 +57,8 @@ export class ServerService {
   allusers: User[];
   public HOST = "http://77.37.136.144:8383/";
   static HOST: string = "http://77.37.136.144:8383/";
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+              private router: Router) {}
 
   getAllUsers() {
     const got = this.http.get(this.HOST + "users");
@@ -116,7 +117,10 @@ export class ServerService {
     // const HOST_BLA = "http://77.37.136.144:8383/";
     return this.http.post<any>("http://77.37.136.144:8383"+'/api/user/login', JSON.stringify(user))
     .pipe(
-      tap(tokens=> this.doLoginUser(user.username,tokens)),
+      tap(tokens=>{
+        console.log(tokens);
+        this.doLoginUser(user.username,{jwt: tokens.access_token, refreshToken: tokens.refresh_token})
+      }),
       mapTo(true),
       catchError(error=>{
         return of(false);
@@ -132,6 +136,7 @@ export class ServerService {
     this.storeTokens(tokens);
     console.log("tokens:"+tokens+"user: "+username);
     this.IsAuthored.next(true);
+    this.router.navigate(['pages/dashboard'])
   }
   private storeTokens(tokens: Tokens) {
     localStorage.setItem(this.JWT_TOKEN, tokens.jwt);

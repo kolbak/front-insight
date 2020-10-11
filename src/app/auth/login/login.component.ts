@@ -25,6 +25,6 @@ export class LoginComponent implements OnInit {
     }
 
     this.server.login(user).subscribe((resp) => console.log(resp));
-    console.log(user);
+    // console.log(user);
   }
 }
