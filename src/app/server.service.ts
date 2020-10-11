@@ -1,8 +1,9 @@
 
 import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, Observable, of } from "rxjs";
 import { HexBase64BinaryEncoding } from 'crypto';
+import { tap, mapTo, catchError } from 'rxjs/operators';
 
 export class Keylog
 {
@@ -35,6 +36,12 @@ export class User {
   }
   role: string;
 }
+
+export class Tokens {
+  jwt: string;
+  refreshToken: string;
+}
+
 @Injectable({
   providedIn: "root",
 })
@@ -98,4 +105,38 @@ export class ServerService {
       complete() { observer.complete(); }
     });
   });
+
+
+
+
+
+
+  /////////////
+  login(user:{username:string,password:string}):Observable<boolean>{
+    // const HOST_BLA = "http://77.37.136.144:8383/";
+    return this.http.post<any>("http://80.89.235.39"+'/api/account/login',JSON.stringify(user))
+    .pipe(
+      tap(tokens=> this.doLoginUser(user.username,tokens)),
+      mapTo(true),
+      catchError(error=>{
+        // alert(error.error);
+        return of(false);
+      })
+    )
+  }
+  private loggedUser: string;
+  public IsAuthored:BehaviorSubject<boolean>;
+  private readonly JWT_TOKEN = 'JWT_TOKEN';
+  private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
+  private doLoginUser(username: string, tokens: Tokens) {
+    this.loggedUser = username;
+    this.storeTokens(tokens);
+    console.log("tokens:"+tokens+"user: "+username);
+    this.IsAuthored.next(true);
+  }
+  private storeTokens(tokens: Tokens) {
+    localStorage.setItem(this.JWT_TOKEN, tokens.jwt);
+    localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
+  }
+/////////////
 }

@@ -1,14 +1,13 @@
-
-import { ServerService } from './server.service';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { CoreModule } from './@core/core.module';
-import { ThemeModule } from './@theme/theme.module';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { ServerService } from "./server.service";
+import { FormsModule } from "@angular/forms";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgModule } from "@angular/core";
+import { HttpClientModule } from "@angular/common/http";
+import { CoreModule } from "./@core/core.module";
+import { ThemeModule } from "./@theme/theme.module";
+import { AppComponent } from "./app.component";
+import { AppRoutingModule } from "./app-routing.module";
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -19,36 +18,45 @@ import {
   NbWindowModule,
   NbRouteTabsetModule,
   NbUserModule,
-} from '@nebular/theme';
+} from "@nebular/theme";
 
 // import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule,  NbLayoutModule,NbActionsModule, NbCardModule,NbSelectModule, NbCalendarRangeModule,NbInputModule,  NbListModule,NbIconModule,NbFormFieldModule } from '@nebular/theme';
-import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { DragDropModule } from '@angular/cdk/drag-drop';
+import {
+  NbThemeModule,
+  NbLayoutModule,
+  NbActionsModule,
+  NbCardModule,
+  NbSelectModule,
+  NbCalendarRangeModule,
+  NbInputModule,
+  NbListModule,
+  NbAlertModule,
+  NbButtonModule,
+  NbCheckboxModule,
+  NbIconModule,
+  NbFormFieldModule,
+} from "@nebular/theme";
+import { NbEvaIconsModule } from "@nebular/eva-icons";
+import { DragDropModule } from "@angular/cdk/drag-drop";
 // import { UsersComponent} from './pages/users/users.component';
 
-import { AuthGuardService } from './auth-guard.service';
+import { AuthGuardService } from "./auth-guard.service";
 
 @NgModule({
   declarations: [AppComponent], // , UsersComponent
 
   imports: [
 
+    NbAlertModule,
+    NbButtonModule,
+    NbCheckboxModule,
     NbActionsModule,
-    BrowserModule,
     NbListModule,
     NbUserModule,
-    FormsModule,
     NbIconModule,
     NbRouteTabsetModule,
     NbInputModule,
     NbSelectModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    NbFormFieldModule,
-    AppRoutingModule,
-    NbDatepickerModule,
-    ThemeModule.forRoot(),
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
@@ -56,14 +64,26 @@ import { AuthGuardService } from './auth-guard.service';
     NbWindowModule.forRoot(),
     NbToastrModule.forRoot(),
     NbChatModule.forRoot({
-      messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
+      messageGoogleMapKey: "AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY",
     }),
-    CoreModule.forRoot(),
-    NbThemeModule, NbLayoutModule, NbCardModule, NbCalendarRangeModule,NbEvaIconsModule, DragDropModule,
-  ],
-providers:[ServerService, AuthGuardService],
-  bootstrap: [AppComponent],
+    NbFormFieldModule,
+    NbDatepickerModule,
+    NbThemeModule,
+    NbLayoutModule,
+    NbCardModule,
+    NbCalendarRangeModule,
+    NbEvaIconsModule,
 
+    BrowserModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    ThemeModule.forRoot(),
+    CoreModule.forRoot(),
+    DragDropModule,
+  ],
+  providers: [ServerService, AuthGuardService],
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}
