@@ -58,7 +58,9 @@ export class ServerService {
   public HOST = "http://77.37.136.144:8383/";
   static HOST: string = "http://77.37.136.144:8383/";
   constructor(private http: HttpClient,
-              private router: Router) {}
+              private router: Router) {
+    // this.IsAuthored = new BehaviorSubject<boolean>(false);
+  }
 
   getAllUsers() {
     const got = this.http.get(this.HOST + "users");
@@ -114,8 +116,8 @@ export class ServerService {
 
   /////////////
   login(user:{username:string,password:string}):Observable<boolean>{
-    // const HOST_BLA = "http://77.37.136.144:8383/";
-    return this.http.post<any>("http://77.37.136.144:8383"+'/api/user/login', JSON.stringify(user))
+    // "http://77.37.136.144:8383"
+    return this.http.post<any>(this.HOST+'api/user/login', JSON.stringify(user))
     .pipe(
       tap(tokens=>{
         console.log(tokens);
@@ -123,24 +125,47 @@ export class ServerService {
       }),
       mapTo(true),
       catchError(error=>{
+        console.log(error);
         return of(false);
       })
     )
   }
   private loggedUser: string;
-  public IsAuthored:BehaviorSubject<boolean>;
+  // public IsAuthored:BehaviorSubject<boolean>;
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
+
   private doLoginUser(username: string, tokens: Tokens) {
     this.loggedUser = username;
     this.storeTokens(tokens);
-    console.log("tokens:"+tokens+"user: "+username);
-    this.IsAuthored.next(true);
-    this.router.navigate(['pages/dashboard'])
+    console.log("tokens: "+tokens+"user: "+username);
+    // this.IsAuthored.next(true);
   }
+
   private storeTokens(tokens: Tokens) {
     localStorage.setItem(this.JWT_TOKEN, tokens.jwt);
     localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
+  }
+
+  refreshToken() {
+    return this.http.post<any>(ServerService.HOST+'api/tokens/update', {
+      'refreshToken': this.getRefreshToken()
+    }).pipe(tap((tokens: Tokens) => {
+      this.storeJwtToken(tokens.jwt);
+
+    }));
+  }
+
+  private getRefreshToken() {
+    return localStorage.getItem(this.REFRESH_TOKEN);
+  }
+
+  private storeJwtToken(jwt: string) {
+    localStorage.setItem(this.JWT_TOKEN, jwt);
+  }
+  
+  getJwtToken() {
+    return localStorage.getItem(this.JWT_TOKEN);
   }
 /////////////
 }
