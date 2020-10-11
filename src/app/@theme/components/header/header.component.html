@@ -1,10 +1,20 @@
-
 <!-- мобильная адаптация табсетов\\ #E1ECFE гол #8F96A0 сер #598DFF син -->
-<div style="width: 100% !important;" class="header-container padding-top" (window:resize)="onResize()">
+<div
+  style="width: 100% !important"
+  class="header-container padding-top"
+  (window:resize)="onResize()"
+>
   <!-- Вызываем менюху из небытия -->
-  <div *ngIf="screenWidth <= 860" style="width: 100% !important;" class="row">
-    <button *ngIf="screenWidth <= 575" outline status="info" nbButton size="medium" class="header-container col-2"
-      (click)="showMenu()">
+  <div *ngIf="screenWidth <= 860" style="width: 100% !important" class="row">
+    <button
+      *ngIf="screenWidth <= 575"
+      outline
+      status="info"
+      nbButton
+      size="medium"
+      class="header-container col-2"
+      (click)="showMenu()"
+    >
       <nb-icon icon="menu-2"></nb-icon>
     </button>
 
@@ -12,8 +22,8 @@
     <nb-select
       size="large"
       class="header-container col-6"
-      placeholder="Параметры">
-
+      placeholder="Параметры"
+    >
       <nb-option-group title="Сектор">
         <nb-option value="company">компания</nb-option>
         <nb-option value="department">отдел</nb-option>
@@ -26,38 +36,88 @@
       </nb-option-group>
     </nb-select>
     <!-- кнопка календаря свернутая -->
-    <nb-form-field class="header-container col-4" *ngIf="screenWidth <= 575" style="float: right;">
-      <nb-icon nbPrefix size="giant" style="margin-right: -20px; position: relative; color: #8F96A0" icon="calendar-outline"></nb-icon>
-      <input type="text" nbInput size="giant" style="height: 3rem; width: 40px; color: white;">
-      <input type="text" nbInput size="giant" style="height: 3rem; width: 40px; z-index: 4; opacity: 0; position: absolute; left: 15px;" [nbDatepicker]="formpicker">
+    <nb-form-field
+      class="header-container col-4"
+      *ngIf="screenWidth <= 575"
+      style="float: right"
+    >
+      <nb-icon
+        nbPrefix
+        size="giant"
+        style="margin-right: -20px; position: relative; color: #8f96a0"
+        icon="calendar-outline"
+      ></nb-icon>
+      <input
+        type="text"
+        nbInput
+        size="giant"
+        style="height: 3rem; width: 40px; color: white"
+      />
+      <input
+        type="text"
+        nbInput
+        size="giant"
+        style="
+          height: 3rem;
+          width: 40px;
+          z-index: 4;
+          opacity: 0;
+          position: absolute;
+          left: 15px;
+        "
+        [nbDatepicker]="formpicker"
+      />
     </nb-form-field>
 
     <nb-form-field class="header-container col-4" *ngIf="screenWidth > 575">
       <nb-icon nbPrefix icon="calendar-outline"></nb-icon>
-      <input placeholder="Выберите дату" type="text" nbInput size="giant" style="height: 3rem; padding-right: 1rem; width: 16rem" [nbDatepicker]="formpicker">
+      <input
+        placeholder="Выберите дату"
+        type="text"
+        nbInput
+        size="giant"
+        style="height: 3rem; padding-right: 1rem; width: 16rem"
+        [nbDatepicker]="formpicker"
+      />
     </nb-form-field>
 
-    <nb-rangepicker style="position: absolute; margin-left: 3rem !important;" #formpicker></nb-rangepicker>
-
+    <nb-rangepicker
+      style="position: absolute; margin-left: 3rem !important"
+      #formpicker
+    ></nb-rangepicker>
   </div>
 
-  <div *ngIf="screenWidth > 860 && screenWidth <= 1630" style="width: 100% !important;" class="row">
-
-    <nb-select size="large" class="header-container" [(selected)]="selectedItem_1" style="margin-right: 20px;">
+  <div
+    *ngIf="screenWidth > 860 && screenWidth <= 1630"
+    style="width: 100% !important"
+    class="row"
+  >
+    <nb-select
+      size="large"
+      class="header-container"
+      [(selected)]="selectedItem_1"
+      style="margin-right: 20px"
+    >
       <nb-option value="company">компания</nb-option>
       <nb-option value="department">отдел</nb-option>
     </nb-select>
 
-    <nb-select size="large" class="header-container" [(selected)]="selectedItem_2">
+    <nb-select
+      size="large"
+      class="header-container"
+      [(selected)]="selectedItem_2"
+    >
       <nb-option value="1-day">1 день</nb-option>
       <nb-option value="1-week">1 неделя</nb-option>
       <nb-option value="1-month">1 месяц</nb-option>
     </nb-select>
 
-    <nb-rangepicker-showcase *ngIf="!(screenWidth <= 860)"
+    <nb-rangepicker-showcase
+      *ngIf="!(screenWidth <= 860)"
       class="header-container"
       id="formpicker"
-      style="margin-left: 1rem; margin-right: 1rem;">
+      style="margin-left: 1rem; margin-right: 1rem"
+    >
     </nb-rangepicker-showcase>
     <!-- кнопка календаря свернутая -->
     <!-- <nb-form-field class="header-container col">
@@ -90,30 +150,33 @@
     </nb-card> -->
 
   <!-- Расширенная версия -->
-  <nb-tabset *ngIf="!(screenWidth <= 1630)"
+  <nb-tabset
+    *ngIf="!(screenWidth <= 1630)"
     class="header-container"
-    style="margin-left: 2rem">
+    style="margin-left: 2rem"
+  >
     <nb-tab tabTitle="компания"></nb-tab>
     <nb-tab tabTitle="отдел"></nb-tab>
   </nb-tabset>
 
-  <nb-tabset *ngIf="!(screenWidth <= 1630)"
+  <nb-tabset
+    *ngIf="!(screenWidth <= 1630)"
     class="header-container"
-    style="white-space: nowrap">
+    style="white-space: nowrap"
+  >
     <nb-tab tabTitle="1 день"></nb-tab>
     <nb-tab tabTitle="1 неделя"></nb-tab>
     <nb-tab tabTitle="1 месяц"></nb-tab>
   </nb-tabset>
 
-  <nb-rangepicker-showcase *ngIf="!(screenWidth <= 1630)"
+  <nb-rangepicker-showcase
+    *ngIf="!(screenWidth <= 1630)"
     class="header-container"
     id="formpicker"
-    style="margin-left: 1rem; margin-right: 1rem;">
+    style="margin-left: 1rem; margin-right: 1rem"
+  >
   </nb-rangepicker-showcase>
-
 </div>
-
-
 
 <div *ngIf="!(screenWidth <= 860)" class="header-container">
   <!-- <nb-select
@@ -128,7 +191,7 @@
     }}</nb-option>
   </nb-select> -->
 
-  <nb-actions  size="small">
+  <nb-actions size="small">
     <nb-action
       class="control-item"
       icon="email-outline"
