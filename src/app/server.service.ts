@@ -114,12 +114,11 @@ export class ServerService {
   /////////////
   login(user:{username:string,password:string}):Observable<boolean>{
     // const HOST_BLA = "http://77.37.136.144:8383/";
-    return this.http.post<any>("http://80.89.235.39"+'/api/account/login',JSON.stringify(user))
+    return this.http.post<any>("http://77.37.136.144:8383"+'/api/user/login', JSON.stringify(user))
     .pipe(
       tap(tokens=> this.doLoginUser(user.username,tokens)),
       mapTo(true),
       catchError(error=>{
-        // alert(error.error);
         return of(false);
       })
     )

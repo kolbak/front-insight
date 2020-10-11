@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       password: e.target[1].value,
     }
 
-    this.server.login(user);
+    this.server.login(user).subscribe((resp) => console.log(resp));
     console.log(user);
   }
 }
