@@ -59,7 +59,7 @@ export class ServerService {
   static HOST: string = "http://77.37.136.144:8383/";
   constructor(private http: HttpClient,
               private router: Router) {
-    // this.IsAuthored = new BehaviorSubject<boolean>(false);
+    this.IsAuthored = new BehaviorSubject<boolean>(false);
   }
 
   getAllUsers() {
@@ -131,20 +131,23 @@ export class ServerService {
     )
   }
   private loggedUser: string;
-  // public IsAuthored:BehaviorSubject<boolean>;
+  public IsAuthored:BehaviorSubject<boolean>;
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
+  private readonly IS_AUTH = 'IS_AUTH';
 
   private doLoginUser(username: string, tokens: Tokens) {
     this.loggedUser = username;
     this.storeTokens(tokens);
     console.log("tokens: "+tokens+"user: "+username);
-    // this.IsAuthored.next(true);
+    this.IsAuthored.next(true);
   }
 
   private storeTokens(tokens: Tokens) {
     localStorage.setItem(this.JWT_TOKEN, tokens.jwt);
     localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
+    this.IsAuthored.next(true);
+    localStorage.setItem(this.IS_AUTH, `${this.IsAuthored.getValue()}`);
   }
 
   refreshToken() {
@@ -166,6 +169,10 @@ export class ServerService {
   
   getJwtToken() {
     return localStorage.getItem(this.JWT_TOKEN);
+  }
+
+  getUserStatus(): boolean {
+    return !!localStorage.getItem(this.IS_AUTH);
   }
 /////////////
 }

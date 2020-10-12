@@ -1,4 +1,10 @@
-<div class="card">
+<div class="card" *ngIf="isAuth">
+  <div class="card-body">
+    <h1 class="card-title">Вы уже авторизованы</h1>
+  </div>
+</div>
+
+<div class="card" *ngIf="!isAuth">
   <div class="card-body">
     <h5 class="card-title">Авторизируйтесь</h5>
     <form (submit)="onSubmit($event)" [formGroup]="loginForm">

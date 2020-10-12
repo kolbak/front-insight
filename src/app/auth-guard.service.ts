@@ -1,17 +1,21 @@
+import { ServerService } from './server.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { NbAuthService } from '@nebular/auth';
 import { tap } from 'rxjs/operators';
+// import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuardService implements CanActivate {
-  constructor(private authService: NbAuthService
-            , private router: Router) { }
+  // isAuth: Observable<boolean>
+  constructor(private server: ServerService,
+              private router: Router) { 
+    // this.server.IsAuthored.subscribe((resp) => this.isAuth = resp)
+  }
 
   canActivate() {
-    return this.authService.isAuthenticated()
+    return this.server.IsAuthored
       .pipe(
         tap(authenticated => {
           if(!authenticated){

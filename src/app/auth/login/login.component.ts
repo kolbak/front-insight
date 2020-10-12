@@ -1,7 +1,9 @@
+import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { ServerService } from './../../server.service';
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { OnDestroy } from '@angular/core';
 
 @Component({
   selector: "ngx-login",
@@ -9,8 +11,15 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
+  isAuth: boolean = false
   constructor(private server: ServerService,
-              private router: Router) {}
+              private router: Router) {
+    let status = server.getUserStatus();
+    this.server.IsAuthored.next(status);
+    if(status){
+      this.isAuth = status;
+    }
+  }
 
   loginForm: FormGroup;
   ngOnInit(): void {
@@ -20,18 +29,25 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  // ngOnDestroy(): void {
+  //   if(this.sub){ this.sub.unsubscribe() }
+  // }
+
+  sub: Subscription
   onSubmit(e: any) {
     let user = {
       username: e.target[0].value,
       password: e.target[1].value,
     }
 
-    this.server.login(user).subscribe((resp) => {
-      console.log(resp)
-      if(resp){
-        this.router.navigate(['pages/dashboard'])
-      }
-    });
-    // console.log(user);
+    if(this.server.getJwtToken()){
+      this.router.navigate(['pages/dashboard'])
+    } else {
+      this.server.login(user).subscribe((resp) => {
+        if(resp){
+          this.router.navigate(['pages/dashboard'])
+        }
+      });
+    }
   }
 }

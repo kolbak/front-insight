@@ -21,11 +21,9 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
     // console.log("mew " + request.url + this.server.IsAuthored.getValue());
     if (this.server.getJwtToken()) {
-      // if (this.server.IsAuthored.getValue() == false) {
-      // if (error instanceof HttpErrorResponse && error.status === 401) {
-      //   this.handle401Error(request, next);
-      // }
-      request = this.addToken(request, this.server.getJwtToken());
+      if (this.server.IsAuthored.getValue() == false) {
+        request = this.addToken(request, this.server.getJwtToken());
+      }
     }
 
     return next.handle(request).pipe(
@@ -56,7 +54,7 @@ export class TokenInterceptor implements HttpInterceptor {
         switchMap((token: any) => {
           this.isRefreshing = false;
           this.refreshTokenSubject.next(token.jwt);
-          // this.server.IsAuthored.next(true);
+          this.server.IsAuthored.next(true);
           return next.handle(this.addToken(request, token.jwt));
         })
       );
