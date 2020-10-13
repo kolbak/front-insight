@@ -12,6 +12,8 @@ export class AuthGuardService implements CanActivate {
   constructor(private server: ServerService,
               private router: Router) { 
     // this.server.IsAuthored.subscribe((resp) => this.isAuth = resp)
+    let status = server.getUserStatus();
+    this.server.IsAuthored.next(status);
   }
 
   canActivate() {

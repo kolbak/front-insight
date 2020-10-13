@@ -8,14 +8,27 @@
   <div class="card-body">
     <h5 class="card-title">Авторизируйтесь</h5>
     <form (submit)="onSubmit($event)" [formGroup]="loginForm">
-      <label class="label" for="login">Логин</label>
-      <input class="input"
+      <label
+        class="label"
+        for="login"
+        [ngClass]="{
+          'message-error':
+            loginForm.get('login').invalid && loginForm.get('login').touched
+        }"
+        >Логин</label
+      >
+      <input
+        class="input"
         formControlName="login"
         id="login"
         type="text"
         class="form-control"
         aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-default"
+        [ngClass]="{
+          'message-error':
+            loginForm.get('login').invalid && loginForm.get('login').touched
+        }"
       />
       <span
         class="message-error"
@@ -26,14 +39,27 @@
         >
       </span>
 
-      <label class="label" for="password">Пароль</label>
-      <input class="input"
+      <label
+        class="label"
+        for="password"
+        [ngClass]="{
+          'message-error':
+            loginForm.get('password').invalid && loginForm.get('password').touched
+        }"
+        >Пароль</label
+      >
+      <input
+        class="input"
         formControlName="password"
         id="password"
         type="password"
         class="form-control"
         aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-default"
+        [ngClass]="{
+          'message-error':
+            loginForm.get('password').invalid && loginForm.get('password').touched
+        }"
       />
       <span
         class="message-error"

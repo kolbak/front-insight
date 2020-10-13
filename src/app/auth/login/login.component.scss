@@ -32,6 +32,13 @@ div.card {
     }
   }
 
+  input.message-error {
+    // position: absolute;
+    border-color: red;
+  }
+  label.message-error{
+    color: red;
+  }
   span.message-error {
     position: absolute;
     color: red;
