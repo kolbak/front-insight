@@ -1,9 +1,9 @@
-import { Observable, Subscription } from 'rxjs';
-import { Router } from '@angular/router';
-import { ServerService } from './../../server.service';
+import { Observable, Subscription } from "rxjs";
+import { Router } from "@angular/router";
+import { ServerService } from "./../../server.service";
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { OnDestroy } from '@angular/core';
+import { OnDestroy } from "@angular/core";
 
 @Component({
   selector: "ngx-login",
@@ -11,12 +11,11 @@ import { OnDestroy } from '@angular/core';
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
-  isAuth: boolean = false
-  constructor(private server: ServerService,
-              private router: Router) {
+  isAuth: boolean = false;
+  constructor(private server: ServerService, private router: Router) {
     let status = server.getUserStatus();
     this.server.IsAuthored.next(status);
-    if(status){
+    if (status) {
       this.isAuth = status;
     }
   }
@@ -33,29 +32,27 @@ export class LoginComponent implements OnInit {
   //   if(this.sub){ this.sub.unsubscribe() }
   // }
 
-  onFocus(){
-    if(this.incorrectData){
-      this.incorrectData = false
+  onFocus() {
+    if (this.incorrectData) {
+      this.incorrectData = false;
     }
   }
 
-  sub: Subscription
-  incorrectData: boolean
+  // sub: Subscription;
+  incorrectData: boolean;
   onSubmit(e: any) {
     let user = {
       username: e.target[0].value,
       password: e.target[1].value,
-    }
+    };
 
-    if(this.server.getJwtToken()){
-      this.router.navigate(['pages/dashboard'])
+    if (this.server.getJwtToken()) {
+      this.router.navigate(["pages/dashboard"]);
     } else {
       this.server.login(user).subscribe((resp) => {
-        if(resp){
-          this.router.navigate(['pages/dashboard'])
-        } 
-        else {
-          // console.log(resp);
+        if (resp) {
+          this.router.navigate(["pages/dashboard"]);
+        } else {
           this.incorrectData = true;
         }
       });
