@@ -33,7 +33,14 @@ export class LoginComponent implements OnInit {
   //   if(this.sub){ this.sub.unsubscribe() }
   // }
 
+  onFocus(){
+    if(this.incorrectData){
+      this.incorrectData = false
+    }
+  }
+
   sub: Subscription
+  incorrectData: boolean
   onSubmit(e: any) {
     let user = {
       username: e.target[0].value,
@@ -46,6 +53,10 @@ export class LoginComponent implements OnInit {
       this.server.login(user).subscribe((resp) => {
         if(resp){
           this.router.navigate(['pages/dashboard'])
+        } 
+        else {
+          console.log(resp);
+          this.incorrectData = true;
         }
       });
     }

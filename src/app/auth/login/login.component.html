@@ -13,7 +13,9 @@
         for="login"
         [ngClass]="{
           'message-error':
-            loginForm.get('login').invalid && loginForm.get('login').touched
+            (loginForm.get('login').invalid &&
+              loginForm.get('login').touched) ||
+            incorrectData
         }"
         >Логин</label
       >
@@ -25,9 +27,12 @@
         class="form-control"
         aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-default"
+        (focus)="onFocus()"
         [ngClass]="{
           'message-error':
-            loginForm.get('login').invalid && loginForm.get('login').touched
+            (loginForm.get('login').invalid &&
+              loginForm.get('login').touched) ||
+            incorrectData
         }"
       />
       <span
@@ -38,13 +43,18 @@
           >Не введён логин</span
         >
       </span>
+      <span class="message-error" *ngIf="incorrectData"
+        >Некорректный логин или пароль</span
+      >
 
       <label
         class="label"
         for="password"
         [ngClass]="{
           'message-error':
-            loginForm.get('password').invalid && loginForm.get('password').touched
+            (loginForm.get('password').invalid &&
+              loginForm.get('password').touched) ||
+            incorrectData
         }"
         >Пароль</label
       >
@@ -56,21 +66,29 @@
         class="form-control"
         aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-default"
+        (focus)="onFocus()"
         [ngClass]="{
           'message-error':
-            loginForm.get('password').invalid && loginForm.get('password').touched
+            (loginForm.get('password').invalid &&
+              loginForm.get('password').touched) ||
+            incorrectData
         }"
       />
       <span
         class="message-error"
         *ngIf="
-          loginForm.get('password').invalid && loginForm.get('password').touched
+          (loginForm.get('password').invalid &&
+            loginForm.get('password').touched) ||
+          incorrectData
         "
       >
         <span *ngIf="loginForm.get('password').errors['required']"
           >Не введён пароль</span
         >
       </span>
+      <span class="message-error" *ngIf="incorrectData"
+        >Некорректный логин или пароль</span
+      >
 
       <!-- <div class="field-remember">
         <input id="remember" type="checkbox" />
