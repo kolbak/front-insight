@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['pages/dashboard'])
         } 
         else {
-          console.log(resp);
+          // console.log(resp);
           this.incorrectData = true;
         }
       });

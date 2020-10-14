@@ -39,7 +39,7 @@
         class="message-error"
         *ngIf="loginForm.get('login').invalid && loginForm.get('login').touched"
       >
-        <span *ngIf="loginForm.get('login').errors['required']"
+        <span *ngIf="loginForm.get('login').errors?.required"
           >Не введён логин</span
         >
       </span>
@@ -82,7 +82,7 @@
           incorrectData
         "
       >
-        <span *ngIf="loginForm.get('password').errors['required']"
+        <span *ngIf="loginForm.get('password').errors?.required"
           >Не введён пароль</span
         >
       </span>
