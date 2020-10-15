@@ -21,9 +21,9 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
     // console.log("mew " + request.url + this.server.IsAuthored.getValue());
     if (this.server.getJwtToken()) {
-      if (this.server.IsAuthored.getValue() == false) {
+
         request = this.addToken(request, this.server.getJwtToken());
-      }
+
     }
 
     return next.handle(request).pipe(
@@ -38,6 +38,7 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   private addToken(request: HttpRequest<any>, token: string) {
+    console.log("request " + token);
     return request.clone({
       setHeaders: {
         Authorization: `Bearer ${token}`,

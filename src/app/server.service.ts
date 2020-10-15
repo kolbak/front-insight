@@ -63,7 +63,7 @@ export class ServerService {
   }
 
   getAllUsers() {
-    const got = this.http.get(this.HOST + "users");
+    const got = this.http.get("http://77.37.136.144:8383/api/users");
     got.subscribe((response: User[]) => {
       this.allusers = response;
       this.curUser.next(response[0]);
@@ -166,7 +166,7 @@ export class ServerService {
   private storeJwtToken(jwt: string) {
     localStorage.setItem(this.JWT_TOKEN, jwt);
   }
-  
+
   getJwtToken() {
     return localStorage.getItem(this.JWT_TOKEN);
   }
