@@ -15,18 +15,22 @@ export class ProxyComponent implements OnInit {
   media: any;
 
   constructor(private server: ServerService) { }
-
+  
   ngOnInit(): void {
-    // this.server.telecast.subscribe((resp) => {
-    //   console.log('resp1 ', resp);
-    //   this.media = this.server.getProxy(resp).pipe(
-    //     tap((resp) => {
-
-    //       console.log('resp2 ', resp)
-    //     })
-    //     // this.server.decodefrom64(resp)
-    //   )
-    // })
+    this.server.telecast.subscribe((resp) => {
+      console.log('resp1 proxy uuid ', resp);
+      this.media = this.server.getProxy(resp).pipe(
+        tap((resp) => {
+          console.log('resp2 proxy ', resp)
+        }),
+        mapTo(true),
+        catchError((error) => {
+          console.log('proxy error >> ', error);
+          return of(false);
+        })
+        // this.server.decodefrom64(resp)
+      )
+    })
   }
     // for (let i = 0; i < 10; i++) {
       // this.proxyHistory.push(`${i}`);
