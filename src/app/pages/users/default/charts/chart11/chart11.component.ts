@@ -25,11 +25,10 @@ export class Chart11Component implements OnInit{
   ];
 
   isAxis;
-  isAxisSub = new BehaviorSubject(null);
+  isAxisSub = new BehaviorSubject(false);
   constructor(private server: ServerService) {
     Object.assign(this, this.single);
-
-    this.isAxisSub.subscribe((res)=>{this.isAxis=res;});
+    this.isAxisSub.subscribe((res)=>{ this.isAxis=res; });
   }
   uuid ="";
   ngOnInit(){
