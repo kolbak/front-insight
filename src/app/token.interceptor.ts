@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ServerService } from "./server.service";
 import { Injectable } from "@angular/core";
 import {
@@ -7,7 +8,7 @@ import {
   HttpInterceptor,
   HttpErrorResponse,
 } from "@angular/common/http";
-import { Observable, throwError, BehaviorSubject } from "rxjs";
+import { Observable, throwError, BehaviorSubject, of } from "rxjs";
 import { catchError, filter, take, switchMap } from "rxjs/operators";
 
 @Injectable()
@@ -17,7 +18,8 @@ export class TokenInterceptor implements HttpInterceptor {
     null
   );
 
-  constructor(public server: ServerService) {}
+  constructor(public server: ServerService,
+              private router: Router) {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
     // console.log("mew " + request.url + this.server.IsAuthored.getValue());
     if (this.server.getJwtToken()) {
@@ -55,6 +57,13 @@ export class TokenInterceptor implements HttpInterceptor {
           this.refreshTokenSubject.next(token.jwt);
           this.server.IsAuthored.next(true);
           return next.handle(this.addToken(request, token.jwt));
+        }),
+        catchError((err) => {
+          console.log('h401E catch err >> ', err);
+          this.isRefreshing = false;
+          localStorage.clear();
+          this.router.navigate(['auth/login'])
+          return of(null);
         })
       );
     } else {

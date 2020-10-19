@@ -75,19 +75,19 @@ export class ServerService {
 
   getScreenShotsForUser(uuid: string): Observable<Media> {
     // console.log(' this.HOST + "user/screenshots?uuid=" + uuid :>> ',  this.HOST + "user/screenshots?uuid=" + uuid);
-    return this.http.get<Media>(this.HOST + "api/user/" + uuid + "/screenshots");
+    return this.http.get<Media>(this.HOST + "api/user/" + uuid + "screenshots");
   }
   getProxy(uuid: string): Observable<Keylog> {
     // console.log(' this.HOST + "user/screenshots?uuid=" + uuid :>> ',  this.HOST + "user/proxy?uuid=" + uuid);
-    return this.http.get<Keylog>(this.HOST + "api/user/" + uuid + "/proxy")
+    return this.http.get<Keylog>(this.HOST + "api/user/" + uuid + "proxy")
   }
   getVideosForUser(uuid: string): Observable<Media> {
     // return this.http.get<Media>(this.HOST + "user/videos?uuid=" + uuid);
-    return this.http.get<Media>(this.HOST + "api/user/" + uuid + "/videos")
+    return this.http.get<Media>(this.HOST + "api/user/" + uuid + "videos")
   }
   getKeylogForUser(uuid: string): Observable<Keylog> {
     // return this.http.get<Keylog>(this.HOST + "user/keylog?uuid=" + uuid);
-    return this.http.get<Keylog>(this.HOST + "api/user/" + uuid + "/keylog")
+    return this.http.get<Keylog>(this.HOST + "api/user/" + uuid + "keylog")
   }
   decodefrom64 = (resp) => console.log(atob(resp));
   // (source: Observable<Keylog>) =>
