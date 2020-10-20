@@ -50,9 +50,10 @@ export class ServerService {
   telecastUser = this.curUser.asObservable();
   telecast = this.msg.asObservable();
   allusers: User[];
-  // http://77.37.136.144:8383
-  public HOST = "http://localhost:4200/api/";
-  static HOST: string = "http://localhost:4200/api/";
+  public HOST = 'http://77.37.136.144:8383'
+  // public HOST = "http://localhost:4200/api/";
+  static HOST: string = 'http://77.37.136.144:8383'
+  // static HOST: string = "http://localhost:4200/api/";
   constructor(private http: HttpClient) {
     this.IsAuthored = new BehaviorSubject<boolean>(false);
   }
