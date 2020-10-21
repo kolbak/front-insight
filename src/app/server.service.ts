@@ -50,9 +50,9 @@ export class ServerService {
   telecastUser = this.curUser.asObservable();
   telecast = this.msg.asObservable();
   allusers: User[];
-  public HOST = 'http://77.37.136.144:8383'
+  public HOST = 'http://77.37.136.144:8383/'
   // public HOST = "http://localhost:4200/api/";
-  static HOST: string = 'http://77.37.136.144:8383'
+  static HOST: string = 'http://77.37.136.144:8383/'
   // static HOST: string = "http://localhost:4200/api/";
   constructor(private http: HttpClient) {
     this.IsAuthored = new BehaviorSubject<boolean>(false);
@@ -108,6 +108,7 @@ export class ServerService {
     // });
 
   login(user: { username: string; password: string }): Observable<boolean> {
+    console.log(this.HOST + "api/user/login");
     return this.http
       .post<any>(this.HOST + "api/user/login", JSON.stringify(user))
       .pipe(
