@@ -22,6 +22,11 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   ngOnInit(): void {
+    if(this.isAuth){
+      setTimeout(() => {
+        this.router.navigate(["pages/dashboard"]);
+      }, 1000)
+    }
     this.loginForm = new FormGroup({
       login: new FormControl("", Validators.required),
       password: new FormControl("", Validators.required),
